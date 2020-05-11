@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - UI.Painel.Personagem
+  - UI.Painel.Cond
+  - UI.Painel.Estrutura
+  - UI.Control.Cond
+  - UI.Control.Personagem
+  - UI.Control.Estrutura
   layers:
   - Default
   - TransparentFX
@@ -13,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - ground
   - 
   - 
   - 
@@ -38,6 +44,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 769608549
+    locked: 0
+  - name: DecoracaoSegundoPlano
+    uniqueID: 1476575053
+    locked: 0
+  - name: DecoracaoPrimeiroPlano
+    uniqueID: 3552270003
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Plataformas
+    uniqueID: 4103197675
+    locked: 0
+  - name: DecoracaoFrente
+    uniqueID: 4192315341
     locked: 0
