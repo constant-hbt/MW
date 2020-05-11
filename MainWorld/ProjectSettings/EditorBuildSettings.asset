@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TelaInicio.unity
+    guid: 5dbb1917f8843504fbd700bf6ddf7f7e
+  - enabled: 1
+    path: Assets/Scenes/SelecaoFase.unity
+    guid: df82f414b5388f243b9b6ee083271d1f
   m_configObjects: {}
