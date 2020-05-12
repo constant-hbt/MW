@@ -1,7 +1,265 @@
 fileFormatVersion: 2
 guid: 453d225f1e9c0ff40bde9f9f5aa6f86f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3513355538283101043
+    second: EstradasComAdicao_0
+  - first:
+      213: -5337608476220247504
+    second: EstradasComAdicao_1
+  - first:
+      213: -9180093190637313841
+    second: EstradasComAdicao_2
+  - first:
+      213: 4394952076270142193
+    second: EstradasComAdicao_3
+  - first:
+      213: 7996127830069750834
+    second: EstradasComAdicao_4
+  - first:
+      213: 6019881493779701052
+    second: EstradasComAdicao_5
+  - first:
+      213: -1892071286669843290
+    second: EstradasComAdicao_6
+  - first:
+      213: 5368740977270502957
+    second: EstradasComAdicao_7
+  - first:
+      213: 3536927610129821373
+    second: EstradasComAdicao_8
+  - first:
+      213: -5541221388199857541
+    second: EstradasComAdicao_9
+  - first:
+      213: -1898682658551090671
+    second: EstradasComAdicao_10
+  - first:
+      213: -5255501292699483989
+    second: EstradasComAdicao_11
+  - first:
+      213: -1664063071135488635
+    second: EstradasComAdicao_12
+  - first:
+      213: -7039630722222844038
+    second: EstradasComAdicao_13
+  - first:
+      213: 5450443620761070499
+    second: EstradasComAdicao_14
+  - first:
+      213: -6276614311408684946
+    second: EstradasComAdicao_15
+  - first:
+      213: 1262352110564672628
+    second: EstradasComAdicao_16
+  - first:
+      213: -1675314965524338237
+    second: EstradasComAdicao_17
+  - first:
+      213: 1795150119417333710
+    second: EstradasComAdicao_18
+  - first:
+      213: 6071612996029624592
+    second: EstradasComAdicao_19
+  - first:
+      213: 4521520504177680547
+    second: EstradasComAdicao_20
+  - first:
+      213: 8547007577986170459
+    second: EstradasComAdicao_21
+  - first:
+      213: -4954732284429809987
+    second: EstradasComAdicao_22
+  - first:
+      213: 3872240485029085537
+    second: EstradasComAdicao_23
+  - first:
+      213: 6015539181797215782
+    second: EstradasComAdicao_24
+  - first:
+      213: -6275277901078309406
+    second: EstradasComAdicao_25
+  - first:
+      213: 3185765270318024707
+    second: EstradasComAdicao_26
+  - first:
+      213: 3505702735162107578
+    second: EstradasComAdicao_27
+  - first:
+      213: -3643357793834680009
+    second: EstradasComAdicao_28
+  - first:
+      213: 2960948939150509623
+    second: EstradasComAdicao_29
+  - first:
+      213: 532767877690562931
+    second: EstradasComAdicao_30
+  - first:
+      213: -704309947996535146
+    second: EstradasComAdicao_31
+  - first:
+      213: -3063164749274549084
+    second: EstradasComAdicao_32
+  - first:
+      213: 4470111666968228071
+    second: EstradasComAdicao_33
+  - first:
+      213: -2093850664819414910
+    second: EstradasComAdicao_34
+  - first:
+      213: -8997981015188601735
+    second: EstradasComAdicao_35
+  - first:
+      213: 6724068575766412140
+    second: EstradasComAdicao_36
+  - first:
+      213: -7060810284823112983
+    second: EstradasComAdicao_37
+  - first:
+      213: -7773341445495118756
+    second: EstradasComAdicao_38
+  - first:
+      213: 2816023059723632855
+    second: EstradasComAdicao_39
+  - first:
+      213: -3635619352290060320
+    second: EstradasComAdicao_40
+  - first:
+      213: -6625851868428520053
+    second: EstradasComAdicao_41
+  - first:
+      213: 4307986489100837309
+    second: EstradasComAdicao_42
+  - first:
+      213: 3766831546089266833
+    second: EstradasComAdicao_43
+  - first:
+      213: -1737384027659889903
+    second: EstradasComAdicao_44
+  - first:
+      213: -320939546792885112
+    second: EstradasComAdicao_45
+  - first:
+      213: 5453336477725334470
+    second: EstradasComAdicao_46
+  - first:
+      213: -7375293367464064714
+    second: EstradasComAdicao_47
+  - first:
+      213: 2067894391605210750
+    second: EstradasComAdicao_48
+  - first:
+      213: -4648510162419173210
+    second: EstradasComAdicao_49
+  - first:
+      213: -3963124207543019935
+    second: EstradasComAdicao_50
+  - first:
+      213: 5146773749931549871
+    second: EstradasComAdicao_51
+  - first:
+      213: -4354948446531107021
+    second: EstradasComAdicao_52
+  - first:
+      213: -3235799389286953870
+    second: EstradasComAdicao_53
+  - first:
+      213: 3309269966466449866
+    second: EstradasComAdicao_54
+  - first:
+      213: -8602269045231528218
+    second: EstradasComAdicao_55
+  - first:
+      213: 3719324365624259943
+    second: EstradasComAdicao_56
+  - first:
+      213: 8141686526168916829
+    second: EstradasComAdicao_57
+  - first:
+      213: -2306064035311507817
+    second: EstradasComAdicao_58
+  - first:
+      213: 7794448733783724572
+    second: EstradasComAdicao_59
+  - first:
+      213: 494744241828718906
+    second: EstradasComAdicao_60
+  - first:
+      213: -6886564017442533479
+    second: EstradasComAdicao_61
+  - first:
+      213: 6483591916038203695
+    second: EstradasComAdicao_62
+  - first:
+      213: -2126950480425580039
+    second: EstradasComAdicao_63
+  - first:
+      213: 8445905944433608462
+    second: EstradasComAdicao_64
+  - first:
+      213: -8617629189360670840
+    second: EstradasComAdicao_65
+  - first:
+      213: 8913791310338856645
+    second: EstradasComAdicao_66
+  - first:
+      213: 3485971052274070919
+    second: EstradasComAdicao_67
+  - first:
+      213: -1255369831642100931
+    second: EstradasComAdicao_68
+  - first:
+      213: 3091810962802728979
+    second: EstradasComAdicao_69
+  - first:
+      213: -293008674865436233
+    second: EstradasComAdicao_70
+  - first:
+      213: 5273246601413784022
+    second: EstradasComAdicao_71
+  - first:
+      213: -6112639224496781416
+    second: EstradasComAdicao_72
+  - first:
+      213: 4642679442906973291
+    second: EstradasComAdicao_73
+  - first:
+      213: 1630593857044379385
+    second: EstradasComAdicao_74
+  - first:
+      213: -4307791552728737618
+    second: EstradasComAdicao_75
+  - first:
+      213: 4732924921399684694
+    second: EstradasComAdicao_76
+  - first:
+      213: -2631436791068584143
+    second: EstradasComAdicao_77
+  - first:
+      213: -2324300532029976791
+    second: EstradasComAdicao_78
+  - first:
+      213: 3924198214424835111
+    second: EstradasComAdicao_79
+  - first:
+      213: -7996178557277160622
+    second: EstradasComAdicao_80
+  - first:
+      213: 7766833065939350371
+    second: EstradasComAdicao_81
+  - first:
+      213: 8706556608150359986
+    second: EstradasComAdicao_82
+  - first:
+      213: 3715318601252766214
+    second: EstradasComAdicao_83
+  - first:
+      213: 3353405633185980268
+    second: EstradasComAdicao_84
+  - first:
+      213: -6818650559128073718
+    second: EstradasComAdicao_85
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -31,7 +289,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,9 +298,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -71,9 +329,1839 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: EstradasComAdicao_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 434
+        width: 8
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37bf30d5f32f1c030800000000000000
+      internalID: 3513355538283101043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 448
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03237c8ee510de5b0800000000000000
+      internalID: -5337608476220247504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_2
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 440
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0a41f91e1c99080800000000000000
+      internalID: -9180093190637313841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_3
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 440
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f282feb0a10efc30800000000000000
+      internalID: 4394952076270142193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 449
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c2ce965e3f7fe60800000000000000
+      internalID: 7996127830069750834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_5
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 434
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ddfaae25aea8350800000000000000
+      internalID: 6019881493779701052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_6
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 434
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a4e35c70330eb5e0800000000000000
+      internalID: -1892071286669843290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_7
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 434
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26ba495979918a40800000000000000
+      internalID: 5368740977270502957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_8
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 434
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe2f060ce0b51130800000000000000
+      internalID: 3536927610129821373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_9
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 392
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72fc8e8180a913b0800000000000000
+      internalID: -5541221388199857541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_10
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 392
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1123ed38e2686a5e0800000000000000
+      internalID: -1898682658551090671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_11
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 392
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba08a0c4b65b017b0800000000000000
+      internalID: -5255501292699483989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_12
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 392
+        width: 11
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 585af11147f08e8e0800000000000000
+      internalID: -1664063071135488635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_13
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 392
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a771bfbd7253e4e90800000000000000
+      internalID: -7039630722222844038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_14
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 403
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3abe1cb689dd3ab40800000000000000
+      internalID: 5450443620761070499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_15
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 386
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e603a58e98cf4e8a0800000000000000
+      internalID: -6276614311408684946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_16
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 386
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4740cab6e86c48110800000000000000
+      internalID: 1262352110564672628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_17
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 392
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c9a6014ae510c8e0800000000000000
+      internalID: -1675314965524338237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_18
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 386
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7ce52c587a9e810800000000000000
+      internalID: 1795150119417333710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_19
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 386
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 011bdf1e9d3b24450800000000000000
+      internalID: 6071612996029624592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_20
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 392
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0e72841faafbe30800000000000000
+      internalID: 4521520504177680547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_21
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 386
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5eff62bb121d9670800000000000000
+      internalID: 8547007577986170459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_22
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 386
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6c6651d314d3bb0800000000000000
+      internalID: -4954732284429809987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_23
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 392
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1618b038436fcb530800000000000000
+      internalID: 3872240485029085537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_24
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 386
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e877f930d7b7350800000000000000
+      internalID: 6015539181797215782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_25
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 386
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e55e5f2ffbb9e8a0800000000000000
+      internalID: -6275277901078309406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_26
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 392
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308051b62ac163c20800000000000000
+      internalID: 3185765270318024707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_27
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 386
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab6e3794012c6a030800000000000000
+      internalID: 3505702735162107578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_28
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 386
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73145dcc361307dc0800000000000000
+      internalID: -3643357793834680009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_29
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 392
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736c2245f57671920800000000000000
+      internalID: 2960948939150509623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_30
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 392
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3791c71ef85c46700800000000000000
+      internalID: 532767877690562931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_31
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 344
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69684e975d9c936f0800000000000000
+      internalID: -704309947996535146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_32
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 344
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a4fdfec3e37d75d0800000000000000
+      internalID: -3063164749274549084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_33
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 344
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e078ff90e6090e30800000000000000
+      internalID: 4470111666968228071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_34
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 344
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28829bef9e521f2e0800000000000000
+      internalID: -2093850664819414910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_35
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 338
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97489f5a0ffb02380800000000000000
+      internalID: -8997981015188601735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_36
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 338
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6b7ce77eb0b05d50800000000000000
+      internalID: 6724068575766412140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_37
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 344
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e291baa476f20e90800000000000000
+      internalID: -7060810284823112983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_38
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 338
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c542177e32b8f1490800000000000000
+      internalID: -7773341445495118756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_39
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 338
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0c22a8d06841720800000000000000
+      internalID: 2816023059723632855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_40
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 344
+        width: 25
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e71730267fab8dc0800000000000000
+      internalID: -3635619352290060320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_41
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 338
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b85b5f7b4de3c04a0800000000000000
+      internalID: -6625851868428520053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_42
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 344
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db1a90c13ea09cb30800000000000000
+      internalID: 4307986489100837309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_43
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 338
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19ed2696559764430800000000000000
+      internalID: 3766831546089266833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_44
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 338
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11315e09e6293e7e0800000000000000
+      internalID: -1737384027659889903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_45
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 355
+        width: 24
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 884090fbe2bcb8bf0800000000000000
+      internalID: -320939546792885112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_46
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 338
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cb9f7b22a42eab40800000000000000
+      internalID: 5453336477725334470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_47
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 338
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639820e12c1b5a990800000000000000
+      internalID: -7375293367464064714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_48
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 344
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7ea6a43ef2a2bc10800000000000000
+      internalID: 2067894391605210750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_49
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 338
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8363ad2ac2d7fb0800000000000000
+      internalID: -4648510162419173210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_50
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 338
+        width: 27
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16695a0e7872009c0800000000000000
+      internalID: -3963124207543019935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_51
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 344
+        width: 27
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4a9ffe4730d6740800000000000000
+      internalID: 5146773749931549871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_52
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 338
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337cf5d167d1093c0800000000000000
+      internalID: -4354948446531107021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_53
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 296
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c002579912813d0800000000000000
+      internalID: -3235799389286953870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_54
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 296
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac10a115083eced20800000000000000
+      internalID: 3309269966466449866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_55
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 296
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e6d2a051e99e9880800000000000000
+      internalID: -8602269045231528218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_56
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 294
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7653d710ec1bd9330800000000000000
+      internalID: 3719324365624259943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_57
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 296
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53e1e052c41df070800000000000000
+      internalID: 8141686526168916829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_58
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 305
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79624f95af63fffd0800000000000000
+      internalID: -2306064035311507817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_59
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 296
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c121c2d93d17b2c60800000000000000
+      internalID: 7794448733783724572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 248
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a39eed4444fadd600800000000000000
+      internalID: 494744241828718906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_61
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 247
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99fc95143820e60a0800000000000000
+      internalID: -6886564017442533479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_62
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 248
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f292d000f785af950800000000000000
+      internalID: 6483591916038203695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_63
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 248
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f9036f9ecd8b72e0800000000000000
+      internalID: -2126950480425580039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_64
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 200
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07435845b2e53570800000000000000
+      internalID: 8445905944433608462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_65
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 200
+        width: 25
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 887ae1219e7086880800000000000000
+      internalID: -8617629189360670840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_66
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 200
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c616be28f524bb70800000000000000
+      internalID: 8913791310338856645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_67
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 198
+        width: 11
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785371cd338a06030800000000000000
+      internalID: 3485971052274070919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_68
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 200
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b0b331ac7049ee0800000000000000
+      internalID: -1255369831642100931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_69
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 209
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310e38680b158ea20800000000000000
+      internalID: 3091810962802728979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_70
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 200
+        width: 26
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9a982a9260febf0800000000000000
+      internalID: -293008674865436233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_71
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 152
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d1fd4a58d55e2940800000000000000
+      internalID: 5273246601413784022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_72
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 151
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89700cfe20b8b2ba0800000000000000
+      internalID: -6112639224496781416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_73
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 152
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b648a78fa5c1e6040800000000000000
+      internalID: 4642679442906973291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_74
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 152
+        width: 26
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f67016497801a610800000000000000
+      internalID: 1630593857044379385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_75
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 104
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8dc2d0866a734c0800000000000000
+      internalID: -4307791552728737618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_76
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 104
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e2f90d32abea140800000000000000
+      internalID: 4732924921399684694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_77
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 104
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13796733e224b7bd0800000000000000
+      internalID: -2631436791068584143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_78
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 104
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92f0a151bfc6ebfd0800000000000000
+      internalID: -2324300532029976791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_79
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 104
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724b3071c7d857630800000000000000
+      internalID: 3924198214424835111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_80
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 114
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b36ecb7fdd70190800000000000000
+      internalID: -7996178557277160622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_81
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 104
+        width: 26
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363b215e58559cb60800000000000000
+      internalID: 7766833065939350371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_82
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 56
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bfc1a51b17e3d870800000000000000
+      internalID: 8706556608150359986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_83
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 55
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602821f45967f8330800000000000000
+      internalID: 3715318601252766214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_84
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 56
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f18d108a0b98e20800000000000000
+      internalID: 3353405633185980268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EstradasComAdicao_85
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 56
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a07a771794f51a0800000000000000
+      internalID: -6818650559128073718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class SeleçãoFase : MonoBehaviour
 {
+    private ControleDeFases _controleDeFases;
 
     public GameObject barraDeProgresso;
     public TextMeshProUGUI textoProgresso;
@@ -17,12 +18,13 @@ public class SeleçãoFase : MonoBehaviour
     
     void Start()
     {
-       
+        _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
     }
 
     
     void Update()
     {
+        progressoAtual = _controleDeFases.fasesConcluidas;
         barraDeProgresso.transform.localScale = new Vector3(pegarTamanhoBarra(progressoAtual, maxProgresso), barraDeProgresso.transform.localScale.y, barraDeProgresso.transform.localScale.z);
         textoProgresso.text = progressoAtual+"/"+maxProgresso;
         /*
