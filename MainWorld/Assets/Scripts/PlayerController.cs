@@ -21,11 +21,14 @@ public class PlayerController : MonoBehaviour
     public bool lookLeft;//indica se o personagem esta olhando para a esquerda
     public bool atacando; //indica que o personagem esta atacando
     public int IdAnimation; //indica o id da animação
+    private float x;//pega o scale.x do player
+    public bool validarMovimentoX =false;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
         sRender = GetComponent<SpriteRenderer>();
+        x = transform.localScale.x;
     }
 
     private void FixedUpdate()
@@ -33,11 +36,14 @@ public class PlayerController : MonoBehaviour
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
 
         //movimentar o personagem
+        if (!validarMovimentoX)
+            return;
         playerRB.velocity = new Vector3(h * speed, playerRB.velocity.y);
+        h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
     }
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
+       
         v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
 
         if (h > 0 && lookLeft == true && atacando == false)
@@ -81,8 +87,19 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump") && Grounded == true)
         {
-             playerRB.AddForce(new Vector2(0, jumpForce));
-           
+            validarMovimentoX = false;
+            /*
+            if(lookLeft == true && transform.localScale.x > 0)
+            {
+                Flip();
+            }else if(lookLeft == false && transform.localScale.x < 0)
+            {
+                Flip();
+            }*/
+
+            playerRB.AddForce(new Vector2(6 * x,15));
+            StartCoroutine("testando");
+            
         }
 
         if (atacando == true && Grounded == true)
@@ -109,7 +126,6 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetInteger("idAnimation", IdAnimation);
         playerAnimator.SetFloat("speedY", playerRB.velocity.y);
 
-        print("Velocidade = " + h);
     }
 
 
@@ -117,7 +133,7 @@ public class PlayerController : MonoBehaviour
     void Flip()
     {
         lookLeft = !lookLeft; // inverte o valor da var bool
-        float x = transform.localScale.x;
+        
 
         x *= -1; // inverte o sinal do scale x
 
@@ -139,4 +155,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     
+    
+    IEnumerator testando()
+    {
+        yield return new WaitForSeconds(0.8f);
+        validarMovimentoX = true;
+    }
 }
