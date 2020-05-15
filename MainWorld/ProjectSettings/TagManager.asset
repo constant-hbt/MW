@@ -10,6 +10,7 @@ TagManager:
   - UI.Control.Cond
   - UI.Control.Personagem
   - UI.Control.Estrutura
+  - inimigo
   layers:
   - Default
   - TransparentFX

@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
     public GameObject objetoInteração;
 
     [Header("Configuração de Ataque")]
-    public GameObject colliderAtak1;
+    public PolygonCollider2D colliderAttack1;
+    public PolygonCollider2D colliderAttack3;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -158,6 +159,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //CONTROLE DE COLISÃO
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        switch (col.gameObject.tag)
+        {
+            case "inimigo":
+                print("Colidi com um inimigo");
+                break;
+        }
+    }
 
 
     void Flip()
@@ -230,18 +241,31 @@ public class PlayerController : MonoBehaviour
 
     void habilitarColliderAtak(int tipoAtaque)
     {
-
-        print("Entrei");
-       
-            colliderAtak1.SetActive(true);
+        switch (tipoAtaque)
+        {
+            case 1:
+                colliderAttack1.enabled = true;
+                break;
+            case 3:
+                colliderAttack3.enabled = true;
+                break;
+        }
+            
         
     }
 
-    void desabilitarColliderAtak(string tipoAtaque)
+    void desabilitarColliderAtak(int tipoAtaque)
     {
-        if(tipoAtaque == "attack1")
+        switch (tipoAtaque)
         {
-            colliderAtak1.SetActive( false);
+            case 1:
+                colliderAttack1.enabled = false;
+                break;
+            case 3:
+                colliderAttack3.enabled = false;
+                break;
         }
     }
+
+    
 }
