@@ -8,23 +8,33 @@ using UnityEngine.SceneManagement;
 public class SeleçãoFase : MonoBehaviour
 {
     private ControleDeFases _controleDeFases;
+    private GameController _gameController;
+    
 
+    [Header("Controle HUD")]
+
+    //Barra de progresso de conclusão de fase
     public GameObject barraDeProgresso;
     public TextMeshProUGUI textoProgresso;
     public TextMeshProUGUI tmpFaseSelecionada;
     public float maxProgresso;//no caso como tem 9 fases esse é o maior progresso
     public float progressoAtual;
 
-    
+    //coins coletadas
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI vidaText;
+    public TextMeshProUGUI estrelaText;
     void Start()
     {
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        
     }
 
     
     void Update()
     {
-        progressoAtual = _controleDeFases.fasesConcluidas;
+        progressoAtual = _gameController.fasesConcluidas;
         barraDeProgresso.transform.localScale = new Vector3(pegarTamanhoBarra(progressoAtual, maxProgresso), barraDeProgresso.transform.localScale.y, barraDeProgresso.transform.localScale.z);
         textoProgresso.text = progressoAtual+"/"+maxProgresso;
         /*
@@ -36,6 +46,12 @@ public class SeleçãoFase : MonoBehaviour
         {
             textoProgresso.text = "100% completo";
         }*/
+
+        //Mostra a quantidade de gold coletada no HUD
+        string s = _gameController.numGold.ToString("N0");
+        goldText.text = s.Replace(",", ".");
+        vidaText.text = _gameController.numVida.ToString();
+        estrelaText.text = _gameController.numEstrelas.ToString();
     }
 
     public void nomeFase(int id)
@@ -43,7 +59,7 @@ public class SeleçãoFase : MonoBehaviour
         switch (id)
         {
             case 1:
-                print("Kington");
+                SceneManager.LoadScene("fase1-P1");
                 break;
             case 2:
                 print("Devon");

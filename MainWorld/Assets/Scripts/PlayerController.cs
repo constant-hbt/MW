@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     private         Animator        playerAnimator;
     private         Rigidbody2D     playerRB;
-    private         SpriteRenderer  sRender;
+    private GameController _gameController;
+
+    [Header("Configuração de vida(HUD)")]
+    public int vidaAtual;
 
     [Header("Configuração de movimentação")]
     private         float           h;//variavel de movimento horizontal 
@@ -56,8 +59,12 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
-        sRender = GetComponent<SpriteRenderer>();
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         x = transform.localScale.x;
+
+        //inicializa a vidaAtual do player com o limite maximo de vida ao iniciar a fase
+        vidaAtual = _gameController.vidaMax;
     }
 
   

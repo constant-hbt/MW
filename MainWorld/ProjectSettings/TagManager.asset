@@ -11,6 +11,7 @@ TagManager:
   - UI.Control.Personagem
   - UI.Control.Estrutura
   - inimigo
+  - HUD
   layers:
   - Default
   - TransparentFX

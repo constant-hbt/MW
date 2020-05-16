@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ControleDeFases : MonoBehaviour
 {
-    
-    public int fasesConcluidas = 0;
+    private GameController _gameController;
+    private GameObject HUD;
     [Header("Fases")]
     public GameObject[] btnFases;
     public GameObject[] estradasFases;
@@ -13,26 +13,30 @@ public class ControleDeFases : MonoBehaviour
     [Header("Territorios")]
     public GameObject[] territorios;
     public GameObject[] cadeados;
+
+
     
     void Start()
     {
-        
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+       // HUD = GameObject.FindGameObjectWithTag("HUD");//garante que ao iniciar a seleção de fases o HUD das fases esteja desativado
+       // HUD.SetActive(false);
     }
 
     
     void Update()
     {
-        if(fasesConcluidas > 9)
+        if(_gameController.fasesConcluidas > 9)
         {
-            fasesConcluidas = 9;
+            _gameController.fasesConcluidas = 9;
         }
         controleParaLiberarTerritorios();
-        controleLiberarFases(fasesConcluidas);
+        controleLiberarFases(_gameController.fasesConcluidas);
     }
 
     void controleParaLiberarTerritorios()
     {
-        if(fasesConcluidas > 0 && fasesConcluidas < 3)
+        if(_gameController.fasesConcluidas > 0 && _gameController.fasesConcluidas < 3)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
@@ -45,7 +49,7 @@ public class ControleDeFases : MonoBehaviour
                     territorios[i].SetActive(false);
                 }
             }
-        }else if(fasesConcluidas >= 3 && fasesConcluidas < 5)
+        }else if(_gameController.fasesConcluidas >= 3 && _gameController.fasesConcluidas < 5)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
@@ -63,7 +67,7 @@ public class ControleDeFases : MonoBehaviour
                     territorios[i].SetActive(false);
                 }
             }
-        }else if (fasesConcluidas >= 5 && fasesConcluidas < 7)
+        }else if (_gameController.fasesConcluidas >= 5 && _gameController.fasesConcluidas < 7)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
@@ -80,7 +84,7 @@ public class ControleDeFases : MonoBehaviour
                     territorios[i].SetActive(false);
                 }
             }
-        }else if(fasesConcluidas >= 7 && fasesConcluidas < 8)
+        }else if(_gameController.fasesConcluidas >= 7 && _gameController.fasesConcluidas < 8)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
@@ -97,7 +101,7 @@ public class ControleDeFases : MonoBehaviour
                     territorios[i].SetActive(false);
                 }
             }
-        }else if(fasesConcluidas >= 8 && fasesConcluidas <= 9)
+        }else if(_gameController.fasesConcluidas >= 8 && _gameController.fasesConcluidas <= 9)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
