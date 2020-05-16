@@ -5,7 +5,6 @@ using UnityEngine;
 public class ControleDeFases : MonoBehaviour
 {
     private GameController _gameController;
-    private GameObject HUD;
     [Header("Fases")]
     public GameObject[] btnFases;
     public GameObject[] estradasFases;
@@ -19,8 +18,7 @@ public class ControleDeFases : MonoBehaviour
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-       // HUD = GameObject.FindGameObjectWithTag("HUD");//garante que ao iniciar a seleção de fases o HUD das fases esteja desativado
-       // HUD.SetActive(false);
+     
     }
 
     
@@ -48,8 +46,15 @@ public class ControleDeFases : MonoBehaviour
                 {
                     territorios[i].SetActive(false);
                 }
+
+              
             }
-        }else if(_gameController.fasesConcluidas >= 3 && _gameController.fasesConcluidas < 5)
+            cadeados[0].SetActive(true);
+            cadeados[1].SetActive(true);
+            cadeados[2].SetActive(true);
+            cadeados[3].SetActive(true);
+        }
+        else if(_gameController.fasesConcluidas >= 3 && _gameController.fasesConcluidas < 5)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
@@ -57,61 +62,66 @@ public class ControleDeFases : MonoBehaviour
                 {
                     
                     territorios[i].SetActive(true);
-                    if(i == 1)
-                    {
-                        cadeados[0].SetActive(false);
-                    }
                 }
                 else
                 {
                     territorios[i].SetActive(false);
                 }
+               
             }
-        }else if (_gameController.fasesConcluidas >= 5 && _gameController.fasesConcluidas < 7)
+            cadeados[0].SetActive(false);
+            cadeados[1].SetActive(true);
+            cadeados[2].SetActive(true);
+            cadeados[3].SetActive(true);
+        }
+        else if (_gameController.fasesConcluidas >= 5 && _gameController.fasesConcluidas < 7)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
                 if (i>=0 && i <=2 )
                 {
                     territorios[i].SetActive(true);
-                    if (i == 2)
-                    {
-                        cadeados[1].SetActive(false);
-                    }
                 }
                 else
                 {
                     territorios[i].SetActive(false);
                 }
             }
-        }else if(_gameController.fasesConcluidas >= 7 && _gameController.fasesConcluidas < 8)
+
+            cadeados[0].SetActive(false);
+            cadeados[1].SetActive(false);
+            cadeados[2].SetActive(true);
+            cadeados[3].SetActive(true);
+        }
+        else if(_gameController.fasesConcluidas >= 7 && _gameController.fasesConcluidas < 8)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
                 if (i >=0 && i <= 3)
                 {
                     territorios[i].SetActive(true);
-                    if (i == 3)
-                    {
-                        cadeados[2].SetActive(false);
-                    }
                 }
                 else
                 {
                     territorios[i].SetActive(false);
                 }
             }
-        }else if(_gameController.fasesConcluidas >= 8 && _gameController.fasesConcluidas <= 9)
+            cadeados[0].SetActive(false);
+            cadeados[1].SetActive(false);
+            cadeados[2].SetActive(false);
+            cadeados[3].SetActive(true);
+
+        }
+        else if(_gameController.fasesConcluidas >= 8 && _gameController.fasesConcluidas <= 9)
         {
             for (int i = 0; i < territorios.Length; i++)
             {
-                
                     territorios[i].SetActive(true);
-                if (i == 1)
-                {
-                    cadeados[3].SetActive(false);
-                }
             }
+            cadeados[0].SetActive(false);
+            cadeados[1].SetActive(false);
+            cadeados[2].SetActive(false);
+            cadeados[3].SetActive(false);
         }
     }
     void controleLiberarFases( int fases)

@@ -30302,7 +30302,7 @@ MonoBehaviour:
   numGold: 0
   numVida: 5
   numEstrelas: 0
-  vidaMax: 0
+  vidaMax: 3
   gameControllers: []
 --- !u!4 &2003761014
 Transform:

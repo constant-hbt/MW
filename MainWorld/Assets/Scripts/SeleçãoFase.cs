@@ -24,11 +24,14 @@ public class SeleçãoFase : MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI vidaText;
     public TextMeshProUGUI estrelaText;
+
+    
     void Start()
     {
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-        
+
+       
     }
 
     

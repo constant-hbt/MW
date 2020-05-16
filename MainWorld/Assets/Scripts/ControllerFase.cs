@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ControllerFase : MonoBehaviour
 {
-    private GameObject HUD;
+    private GameController _gameController;
     void Start()
     {
-        //HUD = GameObject.FindGameObjectWithTag("HUD");
-       // HUD.SetActive(true);//garante que ao iniciar a seleção de fases o HUD das fases esteja ativado
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
         
@@ -21,5 +20,6 @@ public class ControllerFase : MonoBehaviour
     public void testar()
     {
         SceneManager.LoadScene("SelecaoFase");
+        _gameController.fasesConcluidas = _gameController.fasesConcluidas + 1;
     }
 }

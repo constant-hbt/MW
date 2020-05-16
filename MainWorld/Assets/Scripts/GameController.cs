@@ -13,9 +13,11 @@ public class GameController : MonoBehaviour
     public int numEstrelas;
 
     [Header("Banco de Dados do Player")]
-    public int vidaMax;
+    public int vidaMax = 3;
 
     public GameObject[] gameControllers;
+  
+    
     void Start()
     {
         gameControllers = GameObject.FindGameObjectsWithTag("GameController");
@@ -30,6 +32,6 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
-       
+        
     }
 }
