@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public Transform scanRayPe;
     
     public LayerMask interacao;
+    public LayerMask interacaoTeleporte;
     public GameObject objetoInteração;
 
     [Header("Configuração de Ataque")]
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour
         x = transform.localScale.x;
 
         //inicializa a vidaAtual do player com o limite maximo de vida ao iniciar a fase
-        vidaAtual = _gameController.vidaMax;
+       // vidaAtual = _gameController.vidaMax;
     }
 
   
@@ -174,6 +175,10 @@ public class PlayerController : MonoBehaviour
             case "inimigo":
                 print("Colidi com um inimigo");
                 break;
+            case "teleporte":
+                objetoInteração.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+                
+                break;
         }
     }
 
@@ -208,6 +213,8 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
+    
     
     
     IEnumerator ValidarMovimentoPlayer()
@@ -235,7 +242,16 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D scanPe = Physics2D.Raycast(scanRayPe.transform.position, peScan, 0.38f, interacao);
         Debug.DrawRay(scanRayPe.transform.position, peScan * 0.38f, Color.black);
-       
+
+        RaycastHit2D scanTeleporte = Physics2D.Raycast(scanRayCintura.transform.position, cinturaScan, 0.4f, interacaoTeleporte /*faz com que teste a colisao somente em objetos que tiverem essa layer*/);
+        Debug.DrawRay(scanRayCintura.transform.position, cinturaScan * 0.4f, Color.blue);
+
+        if(scanTeleporte == true)
+        {
+           
+            objetoInteração = scanTeleporte.collider.gameObject;
+        }
+
         if (scanCabeca == true || scanOmbro == true || scanTorax == true || scanCintura == true)
         {
                 playerAnimator.SetTrigger("attack1");

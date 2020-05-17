@@ -62,7 +62,7 @@ public class SeleçãoFase : MonoBehaviour
         switch (id)
         {
             case 1:
-                SceneManager.LoadScene("fase1-P1");
+                SceneManager.LoadScene("Fase1");
                 break;
             case 2:
                 print("Devon");
