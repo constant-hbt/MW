@@ -28,4 +28,8 @@ public class ControllerFase : MonoBehaviour
         
     }
 
+    public void testePlay(string name)
+    {
+        print(name);
+    }
 }

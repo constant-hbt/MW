@@ -13,6 +13,7 @@ TagManager:
   - inimigo
   - HUD
   - teleporte
+  - Win
   layers:
   - Default
   - TransparentFX
@@ -56,12 +57,12 @@ TagManager:
   - name: DecoracaoPrimeiroPlano
     uniqueID: 3552270003
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Plataformas
     uniqueID: 4103197675
     locked: 0
   - name: DecoracaoFrente
     uniqueID: 4192315341
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

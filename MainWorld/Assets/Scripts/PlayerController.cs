@@ -179,6 +179,9 @@ public class PlayerController : MonoBehaviour
                 objetoInteração.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 
                 break;
+            case "Win":
+                print("Passei de fase");
+                break;
         }
     }
 
