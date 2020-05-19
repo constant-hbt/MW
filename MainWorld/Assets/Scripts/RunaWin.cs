@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class RunaWin : MonoBehaviour
 {
+
+    /// <summary>
+    /// RESPONSAVEL PELO OBJETO DE CONCLUSAO DA FASE, HABILITA E DESABILITA O PAINEL DE CONCLUSAO DE FASE APÓS A COLISÃO DO PLAYER COM O OBJETO QUE CONTÉM ESTE SCRIPT
+    /// </summary>
     public GameObject painelFaseConcluida;
+
+    
     void Start()
     {
         
@@ -16,14 +22,10 @@ public class RunaWin : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    void ativarPainel()
     {
-        switch (col.gameObject.tag)
-        {
-            case "Player":
-                painelFaseConcluida.SetActive(true);
-
-                break;
-        }
+        painelFaseConcluida.SetActive(true);
     }
+
+
 }

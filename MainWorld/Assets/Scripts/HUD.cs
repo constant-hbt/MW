@@ -6,9 +6,14 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
+
+    /// <summary>
+    /// RESPONSAVEL PELAS CONFIGURACOES DO HUD COM DADOS DO PLAYER
+    /// </summary>
     private PlayerController _player;
     private SeleçãoFase _selecaoFase;
     private GameController _gameController;
+    private ControllerFase _controllerFase;
     [Header("Controle de vida - player")]
     public Image[] hpBar;//barras de vida
 
@@ -31,7 +36,7 @@ public class HUD : MonoBehaviour
         controleBarraVida();
 
         goldText.text = _gameController.numGold.ToString();
-
+        
     }
 
     void controleBarraVida()

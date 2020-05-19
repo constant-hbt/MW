@@ -3177,8 +3177,8 @@ GameObject:
   - component: {fileID: 209397242}
   - component: {fileID: 209397238}
   - component: {fileID: 209397237}
-  - component: {fileID: 209397241}
   - component: {fileID: 209397240}
+  - component: {fileID: 209397241}
   m_Layer: 5
   m_Name: btnFase4
   m_TagString: Untagged
@@ -3303,7 +3303,7 @@ Animator:
   m_GameObject: {fileID: 209397236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6613f7c8c32364f4dbe3fb91003e3bd8, type: 2}
+  m_Controller: {fileID: 9100000, guid: e45bfefcd662cb54dae35e5c5eed5907, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3315,16 +3315,46 @@ Animator:
 --- !u!114 &209397241
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155024326093284, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209397236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wareham
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wareham
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &209397242
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5048,7 +5078,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1833336800}
         m_MethodName: nomeFase
         m_Mode: 3
         m_Arguments:
@@ -5113,16 +5143,46 @@ RectTransform:
 --- !u!114 &320033912
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155025521450936, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320033908}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Devon
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Devon
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!95 &320033913
 Animator:
   serializedVersion: 3
@@ -5134,7 +5194,7 @@ Animator:
   m_GameObject: {fileID: 320033908}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b5ea8b0aa94413418b6b9f8ff2f3007, type: 2}
+  m_Controller: {fileID: 9100000, guid: cf1e6c8bdfc41eb46be565c0d9af7160, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6841,8 +6901,8 @@ GameObject:
   - component: {fileID: 464737965}
   - component: {fileID: 464737962}
   - component: {fileID: 464737961}
-  - component: {fileID: 464737964}
   - component: {fileID: 464737963}
+  - component: {fileID: 464737964}
   m_Layer: 5
   m_Name: btnFase8
   m_TagString: Untagged
@@ -6945,7 +7005,7 @@ Animator:
   m_GameObject: {fileID: 464737960}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 588c59e1c52a1dc48b6cd2f41fa2cba6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06a71eb2c50bf424298911b459301ca7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6957,16 +7017,46 @@ Animator:
 --- !u!114 &464737964
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155025139557595, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464737960}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Exeter
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Exeter
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &464737965
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15349,8 +15439,8 @@ GameObject:
   - component: {fileID: 846970180}
   - component: {fileID: 846970177}
   - component: {fileID: 846970176}
-  - component: {fileID: 846970179}
   - component: {fileID: 846970178}
+  - component: {fileID: 846970179}
   m_Layer: 5
   m_Name: btnFase7
   m_TagString: Untagged
@@ -15453,7 +15543,7 @@ Animator:
   m_GameObject: {fileID: 846970175}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0c31ca5348799b6478f19989d6a15c3d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 41fcfc2ad75fda94e9a4c40a3a70ed0f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15465,16 +15555,46 @@ Animator:
 --- !u!114 &846970179
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155024116956483, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846970175}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wantage
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wantage
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &846970180
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -23014,8 +23134,8 @@ GameObject:
   - component: {fileID: 1335431332}
   - component: {fileID: 1335431329}
   - component: {fileID: 1335431328}
-  - component: {fileID: 1335431331}
   - component: {fileID: 1335431330}
+  - component: {fileID: 1335431331}
   m_Layer: 5
   m_Name: btnFase3
   m_TagString: Untagged
@@ -23118,7 +23238,7 @@ Animator:
   m_GameObject: {fileID: 1335431327}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7b54f8a061e028344b721b2a8a5d66c9, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa7252bd65300e8419903c0d411deb0b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -23130,16 +23250,46 @@ Animator:
 --- !u!114 &1335431331
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155024521089138, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335431327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: York
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: York
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &1335431332
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25022,16 +25172,46 @@ RectTransform:
 --- !u!114 &1598779997
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155024761194288, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598779993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Kington
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Kington
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!95 &1598779998
 Animator:
   serializedVersion: 3
@@ -25043,7 +25223,7 @@ Animator:
   m_GameObject: {fileID: 1598779993}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f5f2783aa69a09c4aa207ae5d9e8bbb2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 946e7a8f0f7698e4ab4e3e9ea38e1d4f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29705,8 +29885,8 @@ GameObject:
   - component: {fileID: 1949575056}
   - component: {fileID: 1949575053}
   - component: {fileID: 1949575052}
-  - component: {fileID: 1949575055}
   - component: {fileID: 1949575054}
+  - component: {fileID: 1949575055}
   m_Layer: 5
   m_Name: btnFase6
   m_TagString: Untagged
@@ -29809,7 +29989,7 @@ Animator:
   m_GameObject: {fileID: 1949575051}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b3b91bce9f08ad242a1823596eb59867, type: 2}
+  m_Controller: {fileID: 9100000, guid: c21622dfdc61d0340bdf3c867619699b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -29821,16 +30001,46 @@ Animator:
 --- !u!114 &1949575055
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155024568590606, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949575051}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Chippenham
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Chippenham
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &1949575056
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -33843,8 +34053,8 @@ GameObject:
   - component: {fileID: 2024705365}
   - component: {fileID: 2024705364}
   - component: {fileID: 2024705363}
-  - component: {fileID: 2024705362}
   - component: {fileID: 2024705361}
+  - component: {fileID: 2024705362}
   m_Layer: 5
   m_Name: btnFase9
   m_TagString: Untagged
@@ -33885,7 +34095,7 @@ Animator:
   m_GameObject: {fileID: 2024705359}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3233a064d32b9f54ebc67dc8f59b5b5b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58c246d596988df42b83b443d7cffbd9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -33897,16 +34107,46 @@ Animator:
 --- !u!114 &2024705362
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155025661575732, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024705359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wessex
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Wessex
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2024705363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34264,8 +34504,8 @@ GameObject:
   - component: {fileID: 2055438303}
   - component: {fileID: 2055438300}
   - component: {fileID: 2055438299}
-  - component: {fileID: 2055438302}
   - component: {fileID: 2055438301}
+  - component: {fileID: 2055438302}
   m_Layer: 5
   m_Name: btnFase5
   m_TagString: Untagged
@@ -34287,7 +34527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 1
+    m_Mode: 5
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -34368,7 +34608,7 @@ Animator:
   m_GameObject: {fileID: 2055438298}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f0c832aeea34db24691acc54cb55069c, type: 2}
+  m_Controller: {fileID: 9100000, guid: a760df163ac5a884e846fb2867f4038b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -34380,16 +34620,46 @@ Animator:
 --- !u!114 &2055438302
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 5438155025108852799, guid: e5ba46974180f6f43bcdff6c1bf6f7aa,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055438298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c83464b5eb0c84993366471141d8e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Edington
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 9
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1833336800}
+          m_MethodName: nomeFaseSelecionada
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Edington
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!222 &2055438303
 CanvasRenderer:
   m_ObjectHideFlags: 0

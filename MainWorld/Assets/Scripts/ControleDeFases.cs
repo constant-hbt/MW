@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ControleDeFases : MonoBehaviour
 {
+
+
+    /// <summary>
+    /// RESPONSAVEL POR HABILITAR AS FASES E DESABILITAR CONFORME AS FASES VÃO SENDO CONCLUIDAS OU NÃO
+    /// </summary>
     private GameController _gameController;
     [Header("Fases")]
     public GameObject[] btnFases;

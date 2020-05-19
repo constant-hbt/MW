@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private GameController _gameController;
 
     [Header("Configuração de vida(HUD)")]
-    public int vidaAtual;
+    public int vidaAtual = 3;
 
     [Header("Configuração de movimentação")]
     private         float           h;//variavel de movimento horizontal 
@@ -180,7 +180,10 @@ public class PlayerController : MonoBehaviour
                 
                 break;
             case "Win":
-                print("Passei de fase");
+                col.gameObject.SendMessage("ativarPainel", SendMessageOptions.DontRequireReceiver);
+                break;
+            case "coletavel":
+                col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
                 break;
         }
     }

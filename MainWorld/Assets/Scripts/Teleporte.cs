@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Teleporte : MonoBehaviour
 {
+    /// <summary>
+    /// RESPONSAVEL PELOS OBJETOS DE TELEPORTE DO PLAYER DE UMA PARTE DA FASE PARA OUTRA
+    /// </summary>
 
     private PlayerController _playerController;// transform do player
     private ControllerFase _controllerFase;

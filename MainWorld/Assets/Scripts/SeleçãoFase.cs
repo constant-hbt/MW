@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class SeleçãoFase : MonoBehaviour
 {
+
+    /// <summary>
+    /// RESPONSAVEL PELAS CONFIGURACOES DA CENA DE SELECAO DE FASE
+    /// </summary>
     private ControleDeFases _controleDeFases;
     private GameController _gameController;
     
@@ -65,7 +69,7 @@ public class SeleçãoFase : MonoBehaviour
                 SceneManager.LoadScene("Fase1");
                 break;
             case 2:
-                print("Devon");
+                SceneManager.LoadScene("Fase2");
                 break;
             case 3:
                 print("York");

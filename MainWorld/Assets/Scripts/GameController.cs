@@ -5,6 +5,10 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
+
+    /// <summary>
+    /// ARMAZENA TODOS OS DADOS QUE DEVEM SER TRANSITADOS DENTRE AS FASES
+    /// </summary>
     [Header("Banco de Dados Seleção de Fase")]
     public int fasesConcluidas;
     public int progressoAtual;
