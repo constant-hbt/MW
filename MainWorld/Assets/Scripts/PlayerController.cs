@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Runtime.InteropServices;
 public class PlayerController : MonoBehaviour
 {
     private         Animator        playerAnimator;
@@ -56,6 +56,10 @@ public class PlayerController : MonoBehaviour
     [Header("Configuração de Ataque")]
     public PolygonCollider2D colliderAttack1;
     public PolygonCollider2D colliderAttack3;
+
+    // testando
+    [DllImport("__Internal")]
+    public static extern void Win();
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -72,12 +76,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
-
+        /*
         //movimentar o personagem
         if (!habilitarMovimentacaoPlayer)
             return;
         playerRB.velocity = new Vector3(h * speed, playerRB.velocity.y);
         h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
+        */
     }
     void Update()
     {
@@ -296,5 +301,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    //MOVIMENTAÇÃO DO PLAYER ATRAVÉS DOS BLOCOS DE COMANDO
+    IEnumerator Avancar()
+    {//configurações da movimentação de avanço do player
+
+        playerRB.velocity = new Vector2(1 * speed, playerRB.velocity.y);
+        playerAnimator.SetInteger("idAnimation", 1);
+        yield return null;
+    }
+    IEnumerator Movimentacao(string tipoMovimentacao)
+    {
+        switch (tipoMovimentacao)
+        {
+            case "avancar":
+                Win();
+                StartCoroutine("Avancar");
+                yield return new WaitForSeconds(0.6f);
+                StopCoroutine("Avancar");
+
+                pararMovimentacao();
+                break;
+        }
+    }
+
+   
+
+    private void pararMovimentacao()
+    {
+        playerRB.velocity = new Vector2(0 * speed, playerRB.velocity.y);
+        playerAnimator.SetInteger("idAnimation", 0);
+    }
 }

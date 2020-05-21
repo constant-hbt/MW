@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main World</title>
+    <!--Unity na pagina-->
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="%UNITY_WEBGL_LOADER_URL%"></script>
+
+    
+    <script>
+        var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
+      </script>
+
+    <script src="acorn_interpreter.js"></script>
+    <script src="blockly_compressed.js"></script>
+    <script src="blocks_compressed.js"></script>
+    <script src="javascript_compressed.js"></script>
+    <script src = "msg/js/pt-br.js" > </script> 
+    <script src = "storage.js" > </script> 
+    
+
+    <!--Blocos Customizados-->
+      <script src="js/Blocos Personalizados/Definicao_Blocos.js"></script>
+      <script src="js/Blocos Personalizados/Estrutura_Blocos.js"></script>
+    <!--Fim blocos customizados-->
+    <script src="focoPagina.js"></script>
+     
+    
+
+</head>
+<body>
+<!--Local destinado aos blocos blockly-->
+<div id="blocklyDiv" style = " height : 480px ; width : 350px ; " onclick="mudarFocoPagina()">
+
+    <xml id="toolbox" style="display: none">
+        <category name = "Personagem">
+            <block type="avancar"></block>
+            <block type="pular"></block>
+            <block type="pular_frente"></block>
+            <block type="defender"></block>
+            <block type="atacar"></block>
+        </category>
+        <category name = "Estruturas">
+            <block type="controls_if"></block>
+            <block type="controls_repeat_ext"></block>
+            <block type="math_number"></block>
+        </category>
+        <category name ="Condições">
+            <block type="ha_inimigos"></block>
+            <block type="nao_ha_inimigos"></block>
+        </category>
+      </xml>
+     
+      
+  </div>
+  <!--Área responsável por mostrar o código em tempo real-->
+  <div>
+      <!--Ao iniciar as fases deve se passar o valor para este campo através do plugin .jslib,
+          para definir a quantidade de blocos limite poderá ser usado naquela fase-->
+      <p id="CapacidadeTotal" hidden>5</p>
+    <p>Restam <span id="capacidade">1</span> blocos !!</p>
+</div>
+  <div >
+   <p>
+    <button onclick="stepCode()" id="execute" disabled = true>Executar</button>
+    <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>
+   </p>
+  
+  </div>
+  
+  <div class="webgl-content" style="margin-left: 200px;float: right; " onclick="mudarFocoWebGl()">
+    <div id="unityContainer" style="width: 960px; height: 600px; "></div>
+   
+  </div>
+    <script>
+
+   // var areaTexto = document.getElementById('textarea'); apagar depois
+    var botaoExecute = document.getElementById('execute');
+    var botaoReset = document.getElementById('reset');
+//----------------------------------------------------------------------------------------------------
+    var myInterpreter = null;
+    var runner;
+    var code = '';
+    var highlightPause = false;
+
+                var workspace = Blockly.inject('blocklyDiv',
+                    {toolbox: document.getElementById('toolbox'),
+                    zoom:
+                    {controls: true,
+                     wheel: true,
+                     startScale: 1.0,
+                     maxScale: 3,
+                     minScale: 0.3,
+                     scaleSpeed: 1.2},
+                     trashcan: true,
+                     maxBlocks: parseInt(document.getElementById('CapacidadeTotal').innerHTML)    } //define o maximo de bloco que pode ser usado por fase
+                     );
+
+                
+
+                function initApi(interpreter , scope){
+                    //Adiciona uma função de API ao alert
+                    var wrapper = function(text) {
+                        return alert(arguments.length ? text : '');
+                        };
+                        interpreter.setProperty(scope, 'alert',
+                             interpreter.createNativeFunction(wrapper));
+
+                    //Adiciona uma função de API para o bloco de prompt
+                    var wrapper = function(text){
+                        return interpreter.createPrimitive(prompt(text));
+                        };
+                        interpreter.setProperty(scope, prompt , 
+                                 interpreter.createNativeFunction(wrapper));
+
+
+                        //Adicionando uma função de API para destacar blocos.
+                         var wrapper = function(id) {
+                                return interpreter.createPrimitive(highlightBlock(id));
+                                };
+                                interpreter.setProperty(scope, 'highlightBlock',
+                                   interpreter.createNativeFunction(wrapper));
+
+                        // MOVIMENTAÇÃO DO PERSONAGEM        
+                            
+                        //Adicionando uma função de API para movimentação para frente
+                        var wrapper = function(){
+                            return  unityInstance.SendMessage('PlayerController','Movimentacao' , 'avancar');//arrumar depois para movimentar o player para frente
+                        }
+                        interpreter.setProperty(scope, 'avancar',
+                            interpreter.createNativeFunction(wrapper));
+
+                        //Adicionando uma função de API para pular
+                        var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao','pular');
+                        }
+                        interpreter.setProperty(scope,'pular',
+                            interpreter.createNativeFunction(wrapper));
+                        
+                        //Adicionando uma função de API para movimentação de salto com impulso para frente
+                        var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'pular_frente');//arrumar depois
+                        }
+                        interpreter.setProperty(scope, 'pular_frente',
+                            interpreter.createNativeFunction(wrapper));
+                        
+                        //Adicionando uma função de API para movimentação de defesa
+                        var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'defender');//arrumar depois
+                        }
+                        interpreter.setProperty(scope, 'defender',
+                            interpreter.createNativeFunction(wrapper));
+                        
+                        //Adicionando uma função de API para movimentação de ataque
+                        var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'atacar');//arrumar depois
+                        }
+                        interpreter.setProperty(scope, 'atacar',
+                            interpreter.createNativeFunction(wrapper));
+
+                    // BLOCOS DE CONDIÇÃO
+
+                    //Adicionando uma função de API para bool há inimigos
+                    var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'ha_inimigos');//arrumar depois
+                        }
+                        interpreter.setProperty(scope, 'ha_inimigos',
+                            interpreter.createNativeFunction(wrapper));
+                    
+                    //Adicionando uma função de API para bool não há inimigos
+                    var wrapper = function(){
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'nao_ha_inimigos');//arrumar depois
+                        }
+                        interpreter.setProperty(scope, 'nao_ha_inimigos',
+                            interpreter.createNativeFunction(wrapper));
+                        
+
+                        
+                }
+
+
+                function highlightBlock(id) {
+                    workspace.highlightBlock(id);
+                    highlightPause = true;
+                }
+
+                function resetInterpreter(){
+                    myInterpreter = null;
+                    if(runner){
+                        clearTimeout(runner);
+                        runner = null;
+                    }
+                }
+
+                function resetStepUi(clearOutput){
+                    workspace.highlightBlock(null);
+                    highlightPause = false;
+
+                    if(clearOutput){
+                       // areaTexto.value = 'Saída do programa: \n -----------------------\n'; apagar depois
+                    }
+                }
+
+                function generateCodeAndLoadIntoInterpreter(){
+                    //Código JavaScript gerado e analisado
+                    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n'; 
+                    Blockly.JavaScript.addReservedWords('highlightBlock');
+                    code = Blockly.JavaScript.workspaceToCode(workspace);
+                    resetStepUi(true);
+                }
+
+                
+                //função responsavel pelo execução do blocos
+                function stepCode(){
+
+                    if(!myInterpreter){
+                        //primeira declaração deste código
+                        //limpe a saída do programa
+                        resetStepUi(true);
+                        execute.disable = 'disable';
+                        //E, em seguida, mostre o código gerado em um alerta
+                        //Em um tempo limite para permitir que o textarea.value seja redefinido primeiro
+                        setTimeout(function(){
+                            alert('Pronto para executar o seguinte código\n'+
+                                   '===================================\n' + code);
+                           
+                        
+                    
+
+                    highlightPause = false;
+                    myInterpreter = new Interpreter(code , initApi);
+                    runner = function(){
+                        if(myInterpreter){
+                            var masCodigo = myInterpreter.step();
+                            if(masCodigo){
+                                setTimeout(runner,30);
+                            }else{
+                                   //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
+                            }
+                        }
+                    };
+                    runner();
+                },1);
+                return;
+            }
+        }
+          
+
+                //Carregue o intérprete agora e após alterações futuras
+                generateCodeAndLoadIntoInterpreter();
+                workspace.addChangeListener(function(event){
+                    if(!(event instanceof Blockly.Events.Ui)){
+                        resetInterpreter();
+                        generateCodeAndLoadIntoInterpreter();
+                        //habilita o botão de execução somente se houver blocos no espaço de trabalho
+                        if(code != ''){
+                        botaoExecute.disabled = false;
+                        botaoReset.disabled = false;//mexer aqui depois
+                        
+                    }else{
+                        botaoExecute.disabled = true;
+                        botaoReset.disabled = true;
+                    }
+
+                    }
+                });
+                
+               //Atualiza a quantidade de blocos 
+                function onchange(event){
+                            document.getElementById('capacidade').textContent = 
+                                workspace.remainingCapacity();
+
+                        }
+
+                    workspace.addChangeListener(onchange);
+                    onchange();
+             
+               //funcao responsavel por limpar a área de trabalho blockly
+                function resetarEspacoBlockly(){
+                                    resetInterpreter();
+                                    resetStepUi(false);
+                                    setTimeout(function(){
+                                        workspace.clear();
+                                    }, 3000); 
+                }
+              </script>
+</body>
+</html>
