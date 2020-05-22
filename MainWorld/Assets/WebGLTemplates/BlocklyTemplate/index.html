@@ -97,7 +97,7 @@
                      minScale: 0.3,
                      scaleSpeed: 1.2},
                      trashcan: true,
-                     maxBlocks: parseInt(document.getElementById('CapacidadeTotal').innerHTML)    } //define o maximo de bloco que pode ser usado por fase
+                    /* maxBlocks: parseInt(document.getElementById('CapacidadeTotal').innerHTML) */   } //define o maximo de bloco que pode ser usado por fase
                      );
 
                 
@@ -129,7 +129,7 @@
                             
                         //Adicionando uma função de API para movimentação para frente
                         var wrapper = function(){
-                            return  unityInstance.SendMessage('PlayerController','Movimentacao' , 'avancar');//arrumar depois para movimentar o player para frente
+                            return  unityInstance.SendMessage('playerKnight','Movimentacao' , 'avancar');//arrumar depois para movimentar o player para frente
                         }
                         interpreter.setProperty(scope, 'avancar',
                             interpreter.createNativeFunction(wrapper));

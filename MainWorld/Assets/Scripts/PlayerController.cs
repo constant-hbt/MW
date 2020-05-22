@@ -76,13 +76,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
-        /*
+        
         //movimentar o personagem
         if (!habilitarMovimentacaoPlayer)
             return;
-        playerRB.velocity = new Vector3(h * speed, playerRB.velocity.y);
+        //playerRB.velocity = new Vector3(h * speed, playerRB.velocity.y);
         h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
-        */
+        
     }
     void Update()
     {
@@ -105,20 +105,20 @@ public class PlayerController : MonoBehaviour
             {
                 h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
             }
-        }else if (h != 0)
+        }/*else if (h != 0)
         {
             IdAnimation = 1;
         }
         else
         {
             IdAnimation = 0;
-        }
+        }*/
 
         //inputs para movimentação
-        if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
+       /* if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
         {
             playerAnimator.SetTrigger("attack1");
-        }
+        }*/
         if (Input.GetButtonDown("Fire2") && v >= 0 && atacando == false)
         {
             playerAnimator.SetTrigger("attack2");
@@ -143,11 +143,11 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        if (atacando == true && Grounded == true)
+        /*if (atacando == true && Grounded == true)
         {
             h = 0;//personagem não poderá se mover enquanto estiver atacando
         }
-        if (v < 0 && Grounded == true)
+       /* if (v < 0 && Grounded == true)
         {//habilita o collisor quando o personagem estiver abaixado
             collisorAbaixado.enabled = true;
             collisorEmPé.enabled = false;
@@ -161,17 +161,17 @@ public class PlayerController : MonoBehaviour
         {//arruma o collisor quando o personagem salta
             collisorAbaixado.enabled = false;
             collisorEmPé.enabled = true;
-        }
-
+        }*/
+        
         playerAnimator.SetBool("grounded", Grounded);
-        playerAnimator.SetInteger("idAnimation", IdAnimation);
+       // playerAnimator.SetInteger("idAnimation", IdAnimation);
         playerAnimator.SetFloat("speedY", playerRB.velocity.y);
 
         //RAYCAST
         interagir();
-
+        
     }
-
+    
     //CONTROLE DE COLISÃO
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -303,32 +303,87 @@ public class PlayerController : MonoBehaviour
 
     //MOVIMENTAÇÃO DO PLAYER ATRAVÉS DOS BLOCOS DE COMANDO
     IEnumerator Avancar()
-    {//configurações da movimentação de avanço do player
+    {//configurações da movimentação de avanço do player -- OK , falta ajustar a distancia
 
-        playerRB.velocity = new Vector2(1 * speed, playerRB.velocity.y);
+        playerRB.velocity = new Vector2( 0.85f * speed, playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 1);
         yield return null;
     }
-    IEnumerator Movimentacao(string tipoMovimentacao)
+
+    public void startAvancar()//somente para testes , apagar depois
+    {
+        habilitarMovimentacaoPlayer = false;
+        StartCoroutine("Avancar");
+
+        //StopCoroutine("Avancar");
+        // pararMovimentacao();
+        
+    }
+    public IEnumerator Movimentacao(string tipoMovimentacao)
     {
         switch (tipoMovimentacao)
         {
             case "avancar":
-                Win();
+                // Win();
+                print("Entrei dentro da coroutine avancar");
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
                 StopCoroutine("Avancar");
-
                 pararMovimentacao();
                 break;
         }
     }
-
-   
-
+    
+    IEnumerator SaltoSimples()//Ok , falta ajustar a altura do salto e a distancia
+    {
+        playerRB.AddForce(new Vector2(0, jumpForceY));
+        yield return null;
+    }
+    IEnumerator SaltoLateral()//ok , falta ajustar a altura
+    {
+        habilitarMovimentacaoPlayer = false;
+        if (Grounded == true)
+        {
+            playerRB.AddForce(new Vector2(jumpForceX * x, jumpForceY));
+        }
+        StartCoroutine("ValidarMovimentoPlayer");
+        yield return null;
+    }
+    IEnumerator Defender()//ok
+    {
+        playerAnimator.SetInteger("idAnimation", 2);
+        if (Grounded == true)
+        {
+            h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
+        }
+        habilitaColisorAbaixado();
+        yield return null;
+    }
+    IEnumerator Attack1()//ok
+    {
+        playerAnimator.SetTrigger("attack1");
+        yield return null;
+    }
+    IEnumerator Attack3()//ok
+    {
+        playerAnimator.SetTrigger("attack3");
+        yield return null;
+    }
+    //---------------------------------------------------------------------------------
     private void pararMovimentacao()
     {
+        print("Parei movimentacao");
         playerRB.velocity = new Vector2(0 * speed, playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 0);
+    }
+    private void habilitaColisorAbaixado()
+    {
+        collisorAbaixado.enabled = true;
+        collisorEmPé.enabled = false;
+    }
+    private void habilitaColisorEmPe()
+    {
+        collisorAbaixado.enabled = false;
+        collisorEmPé.enabled = true;
     }
 }
