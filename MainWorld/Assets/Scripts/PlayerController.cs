@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
     public PolygonCollider2D colliderAttack1;
     public PolygonCollider2D colliderAttack3;
 
+    //teste
+    public Transform playerTransform;
+
+
     // testando
     [DllImport("__Internal")]
     public static extern void Win();
@@ -67,9 +71,6 @@ public class PlayerController : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
         x = transform.localScale.x;
-
-        //inicializa a vidaAtual do player com o limite maximo de vida ao iniciar a fase
-       // vidaAtual = _gameController.vidaMax;
     }
 
   
@@ -80,14 +81,14 @@ public class PlayerController : MonoBehaviour
         //movimentar o personagem
         if (!habilitarMovimentacaoPlayer)
             return;
-        //playerRB.velocity = new Vector3(h * speed, playerRB.velocity.y);
-        h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
+        playerRB.velocity = new Vector3(0 * speed, playerRB.velocity.y);
+       // h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
         
     }
     void Update()
     {
        
-        v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
+       // v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
 
         if (h > 0 && lookLeft == true && atacando == false)
         {
@@ -98,50 +99,50 @@ public class PlayerController : MonoBehaviour
             Flip();
         }
 
-        if (v < 0)
-        {
-            IdAnimation = 2;
-            if (Grounded == true)
-            {
-                h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
-            }
-        }/*else if (h != 0)
-        {
-            IdAnimation = 1;
-        }
-        else
-        {
-            IdAnimation = 0;
-        }*/
+        /* if (v < 0)
+         {
+             IdAnimation = 2;
+             if (Grounded == true)
+             {
+                 h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
+             }
+         }/*else if (h != 0)
+         {
+             IdAnimation = 1;
+         }
+         else
+         {
+             IdAnimation = 0;
+         }*/
 
         //inputs para movimentação
-       /* if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
-        {
-            playerAnimator.SetTrigger("attack1");
-        }*/
-        if (Input.GetButtonDown("Fire2") && v >= 0 && atacando == false)
-        {
-            playerAnimator.SetTrigger("attack2");
-        }
-        if (Input.GetButtonDown("Fire3") && v >= 0 && atacando == false)
-        {
-            playerAnimator.SetTrigger("attack3");
-        }
-        if (Input.GetButtonDown("Jump") && Grounded == true)
-        {//salto lateral
-            habilitarMovimentacaoPlayer= false;
-            playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
-            StartCoroutine("ValidarMovimentoPlayer");
-            
-        }
-        if(Input.GetKeyDown(KeyCode.V) && Grounded == true)
-        {//pulo simples 
-                
-                playerRB.AddForce(new Vector2(0, jumpForceY));
-              
-            
-        }
-        
+        /* if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
+         {
+             playerAnimator.SetTrigger("attack1");
+         }
+         if (Input.GetButtonDown("Fire2") && v >= 0 && atacando == false)
+         {
+             playerAnimator.SetTrigger("attack2");
+         }
+         if (Input.GetButtonDown("Fire3") && v >= 0 && atacando == false)
+         {
+             playerAnimator.SetTrigger("attack3");
+         }
+         /*if (Input.GetButtonDown("Jump") && Grounded == true)
+         {//salto lateral
+             habilitarMovimentacaoPlayer= false;
+             playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
+             StartCoroutine("ValidarMovimentoPlayer");
+
+         }
+         if(Input.GetKeyDown(KeyCode.V) && Grounded == true)
+         {//pulo simples 
+
+                 playerRB.AddForce(new Vector2(0, jumpForceY));
+
+
+         }*/
+
 
         /*if (atacando == true && Grounded == true)
         {
@@ -162,7 +163,7 @@ public class PlayerController : MonoBehaviour
             collisorAbaixado.enabled = false;
             collisorEmPé.enabled = true;
         }*/
-        
+
         playerAnimator.SetBool("grounded", Grounded);
        // playerAnimator.SetInteger("idAnimation", IdAnimation);
         playerAnimator.SetFloat("speedY", playerRB.velocity.y);
@@ -181,7 +182,7 @@ public class PlayerController : MonoBehaviour
                 print("Colidi com um inimigo");
                 break;
             case "teleporte":
-                objetoInteração.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+                col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 
                 break;
             case "Win":
@@ -228,11 +229,7 @@ public class PlayerController : MonoBehaviour
     
     
     
-    IEnumerator ValidarMovimentoPlayer()
-    {
-        yield return new WaitForSeconds(0.8f);
-        habilitarMovimentacaoPlayer = true;
-    }
+    
 
     void interagir()
     {
@@ -302,62 +299,77 @@ public class PlayerController : MonoBehaviour
     }
 
     //MOVIMENTAÇÃO DO PLAYER ATRAVÉS DOS BLOCOS DE COMANDO
-    IEnumerator Avancar()
-    {//configurações da movimentação de avanço do player -- OK , falta ajustar a distancia
-
-        playerRB.velocity = new Vector2( 0.85f * speed, playerRB.velocity.y);
-        playerAnimator.SetInteger("idAnimation", 1);
-        yield return null;
-    }
+    
 
     public void startAvancar()//somente para testes , apagar depois
     {
-        habilitarMovimentacaoPlayer = false;
-        StartCoroutine("Avancar");
-
-        //StopCoroutine("Avancar");
-        // pararMovimentacao();
-        
+        StartCoroutine("PuloLateral");
+    }
+    public void StartDefender()
+    {
+        StartCoroutine("Defender");
     }
     public IEnumerator Movimentacao(string tipoMovimentacao)
     {
         switch (tipoMovimentacao)
         {
             case "avancar":
-                // Win();
-                print("Entrei dentro da coroutine avancar");
+                habilitarMovimentacaoPlayer = false;
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
-                StopCoroutine("Avancar");
                 pararMovimentacao();
+                break;
+            case "puloSimples":
+                StartCoroutine("PuloSimples");
+                break;
+            case "puloLateral":
+                StartCoroutine("PuloLateral");
+                break;
+            case "defender":
+                StartCoroutine("Defender");
+                break;
+            case "attack":
+                StartCoroutine("attack1");
                 break;
         }
     }
-    
-    IEnumerator SaltoSimples()//Ok , falta ajustar a altura do salto e a distancia
-    {
-        playerRB.AddForce(new Vector2(0, jumpForceY));
+    IEnumerator Avancar()
+    {//configurações da movimentação de avanço do player -- OK , falta ajustar a distancia
+
+        playerRB.velocity = new Vector2(0.6f * speed, playerRB.velocity.y);
+        playerAnimator.SetInteger("idAnimation", 1);
         yield return null;
     }
-    IEnumerator SaltoLateral()//ok , falta ajustar a altura
+    IEnumerator PuloSimples()//Ok , falta ajustar a altura do salto e a distancia
+    {
+        if (Grounded == true)
+        {
+            playerRB.AddForce(new Vector2(0, jumpForceY));
+        }
+        yield return null;
+    }
+    IEnumerator PuloLateral()//ok , falta ajustar a altura
     {
         habilitarMovimentacaoPlayer = false;
         if (Grounded == true)
         {
-            playerRB.AddForce(new Vector2(jumpForceX * x, jumpForceY));
+            playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
         }
         StartCoroutine("ValidarMovimentoPlayer");
         yield return null;
     }
     IEnumerator Defender()//ok
     {
+        habilitaColisorAbaixado();
         playerAnimator.SetInteger("idAnimation", 2);
         if (Grounded == true)
         {
             h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
         }
-        habilitaColisorAbaixado();
-        yield return null;
+        yield return new WaitForSeconds(0.6f);
+        playerAnimator.SetInteger("idAnimation", 0);
+       habilitaColisorEmPe();
+        
     }
     IEnumerator Attack1()//ok
     {
@@ -372,9 +384,14 @@ public class PlayerController : MonoBehaviour
     //---------------------------------------------------------------------------------
     private void pararMovimentacao()
     {
-        print("Parei movimentacao");
-        playerRB.velocity = new Vector2(0 * speed, playerRB.velocity.y);
+        playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 0);
+        habilitarMovimentacaoPlayer = true;
+    }
+    IEnumerator ValidarMovimentoPlayer()
+    {
+        yield return new WaitForSeconds(0.8f);
+        habilitarMovimentacaoPlayer = true;
     }
     private void habilitaColisorAbaixado()
     {

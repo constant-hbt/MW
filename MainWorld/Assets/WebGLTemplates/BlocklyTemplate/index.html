@@ -136,14 +136,14 @@
 
                         //Adicionando uma função de API para pular
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao','pular');
+                            return unityInstance.SendMessage('PlayerController','Movimentacao','puloSimples');
                         }
                         interpreter.setProperty(scope,'pular',
                             interpreter.createNativeFunction(wrapper));
                         
                         //Adicionando uma função de API para movimentação de salto com impulso para frente
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'pular_frente');//arrumar depois
+                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'puloLateral');//arrumar depois
                         }
                         interpreter.setProperty(scope, 'pular_frente',
                             interpreter.createNativeFunction(wrapper));
