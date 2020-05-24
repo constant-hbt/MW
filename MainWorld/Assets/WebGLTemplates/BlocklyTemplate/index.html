@@ -136,28 +136,28 @@
 
                         //Adicionando uma função de API para pular
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao','puloSimples');
+                            return unityInstance.SendMessage('playerKnight','Movimentacao','puloSimples');
                         }
                         interpreter.setProperty(scope,'pular',
                             interpreter.createNativeFunction(wrapper));
                         
                         //Adicionando uma função de API para movimentação de salto com impulso para frente
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'puloLateral');//arrumar depois
+                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'puloLateral');//arrumar depois
                         }
                         interpreter.setProperty(scope, 'pular_frente',
                             interpreter.createNativeFunction(wrapper));
                         
                         //Adicionando uma função de API para movimentação de defesa
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'defender');//arrumar depois
+                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'defender');//arrumar depois
                         }
                         interpreter.setProperty(scope, 'defender',
                             interpreter.createNativeFunction(wrapper));
                         
                         //Adicionando uma função de API para movimentação de ataque
                         var wrapper = function(){
-                            return unityInstance.SendMessage('PlayerController','Movimentacao', 'atacar');//arrumar depois
+                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'atacar');//arrumar depois
                         }
                         interpreter.setProperty(scope, 'atacar',
                             interpreter.createNativeFunction(wrapper));
@@ -237,7 +237,7 @@
                         if(myInterpreter){
                             var masCodigo = myInterpreter.step();
                             if(masCodigo){
-                                setTimeout(runner,30);
+                                setTimeout(runner,80);//AQUI EH A CHAVE
                             }else{
                                    //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
                             }

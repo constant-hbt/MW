@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
         if (!habilitarMovimentacaoPlayer)
             return;
         playerRB.velocity = new Vector3(0 * speed, playerRB.velocity.y);
-       // h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
+       //h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
         
     }
     void Update()
@@ -303,11 +303,17 @@ public class PlayerController : MonoBehaviour
 
     public void startAvancar()//somente para testes , apagar depois
     {
+        habilitarMovimentacaoPlayer = false;
         StartCoroutine("PuloLateral");
+        // pararMovimentacao();
+        StartCoroutine("zerarVelocidadeAposSaltoL");
     }
     public void StartDefender()
     {
-        StartCoroutine("Defender");
+        habilitarMovimentacaoPlayer = false;
+        StartCoroutine("Avancar");
+        StartCoroutine("zerarVelocidadeAposSaltoL");
+        
     }
     public IEnumerator Movimentacao(string tipoMovimentacao)
     {
@@ -318,25 +324,32 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
                 pararMovimentacao();
+                habilitarMovimentacaoPlayer = true;
                 break;
             case "puloSimples":
                 StartCoroutine("PuloSimples");
+                yield return new WaitForSeconds(0.2f);
                 break;
             case "puloLateral":
+                habilitarMovimentacaoPlayer = false;
                 StartCoroutine("PuloLateral");
+                StartCoroutine("zerarVelocidadeAposSaltoL");
+                yield return new WaitForSeconds(1f);
                 break;
             case "defender":
                 StartCoroutine("Defender");
+                yield return new WaitForSeconds(0.2f);
                 break;
-            case "attack":
+            case "atacar":
                 StartCoroutine("attack1");
+                yield return new WaitForSeconds(0.2f);
                 break;
         }
     }
     IEnumerator Avancar()
     {//configurações da movimentação de avanço do player -- OK , falta ajustar a distancia
-
-        playerRB.velocity = new Vector2(0.6f * speed, playerRB.velocity.y);
+     
+        playerRB.velocity = new Vector2(playerRB.velocity.x + ( 0.8f * speed), playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 1);
         yield return null;
     }
@@ -350,25 +363,26 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator PuloLateral()//ok , falta ajustar a altura
     {
-        habilitarMovimentacaoPlayer = false;
+      
         if (Grounded == true)
         {
             playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
         }
-        StartCoroutine("ValidarMovimentoPlayer");
+       // StartCoroutine("zerarVelocidadeAposSaltoL");
+       
         yield return null;
     }
     IEnumerator Defender()//ok
     {
-        habilitaColisorAbaixado();
-        playerAnimator.SetInteger("idAnimation", 2);
         if (Grounded == true)
         {
-            h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
+
+            habilitaColisorAbaixado();
+            playerAnimator.SetInteger("idAnimation", 2);
         }
         yield return new WaitForSeconds(0.6f);
         playerAnimator.SetInteger("idAnimation", 0);
-       habilitaColisorEmPe();
+        habilitaColisorEmPe();
         
     }
     IEnumerator Attack1()//ok
@@ -386,12 +400,14 @@ public class PlayerController : MonoBehaviour
     {
         playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 0);
-        habilitarMovimentacaoPlayer = true;
     }
-    IEnumerator ValidarMovimentoPlayer()
+    IEnumerator zerarVelocidadeAposSaltoL()
     {
-        yield return new WaitForSeconds(0.8f);
+       
+       yield return new WaitForSeconds(0.9f);
         habilitarMovimentacaoPlayer = true;
+        pararMovimentacao();
+       
     }
     private void habilitaColisorAbaixado()
     {
