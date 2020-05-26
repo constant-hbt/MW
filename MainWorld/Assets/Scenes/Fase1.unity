@@ -2946,6 +2946,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3eee3d710e4ba148b8c2277fe4ba097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1157464939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1420671705913735196, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+    type: 3}
+  m_PrefabInstance: {fileID: 1420671706024168546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1157464944
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157464939}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &1260873582
 GameObject:
   m_ObjectHideFlags: 0
@@ -5560,10 +5587,15 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1420671705262674473, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1420671705262674478, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.248
+      value: 0.407
       objectReference: {fileID: 0}
     - target: {fileID: 1420671705262674478, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
         type: 3}
@@ -5630,10 +5662,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1420671705913735196, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420671705913735196, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+        type: 3}
+      propertyPath: m_TagString
+      value: coletavel
+      objectReference: {fileID: 0}
     - target: {fileID: 1420671705913735197, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420671705913735197, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420671705913735395, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6073277377272661749, guid: 0311359c41bdd0e42ac6a9fa52ea9213,
         type: 3}
@@ -5782,7 +5834,7 @@ PrefabInstance:
     - target: {fileID: 4883312563476396795, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4883312563476396795, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}

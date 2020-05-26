@@ -34,7 +34,7 @@
 </head>
 <body>
 <!--Local destinado aos blocos blockly-->
-<div id="blocklyDiv" style = " height : 480px ; width : 350px ; " onclick="mudarFocoPagina()">
+<div id="blocklyDiv" style = " height : 480px ; width : 350px ; " onclick="focusCanvas(0)">
 
     <xml id="toolbox" style="display: none">
         <category name = "Personagem">
@@ -72,7 +72,7 @@
   
   </div>
   
-  <div class="webgl-content" style="margin-left: 200px;float: right; " onclick="mudarFocoWebGl()">
+  <div class="webgl-content" style="margin-left: 200px;float: right; " onclick="focusCanvas(1)">
     <div id="unityContainer" style="width: 960px; height: 600px; "></div>
    
   </div>
@@ -150,14 +150,14 @@
                         
                         //Adicionando uma função de API para movimentação de defesa
                         var wrapper = function(){
-                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'defender');//arrumar depois
+                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'defender');
                         }
                         interpreter.setProperty(scope, 'defender',
                             interpreter.createNativeFunction(wrapper));
                         
                         //Adicionando uma função de API para movimentação de ataque
                         var wrapper = function(){
-                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'atacar');//arrumar depois
+                            return unityInstance.SendMessage('playerKnight','Movimentacao', 'atacar');
                         }
                         interpreter.setProperty(scope, 'atacar',
                             interpreter.createNativeFunction(wrapper));

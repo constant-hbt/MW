@@ -17,6 +17,8 @@ public class ControllerFase : MonoBehaviour
     public GameObject[] fases;
     void Start()
     {
+       
+
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
         if(fases.Length != 0)
@@ -35,5 +37,19 @@ public class ControllerFase : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    //MUDAR FOCO
+
+    public void mudandoFocoParaWebGL()
+    {
+
+        WebGLInput.captureAllKeyboardInput = true;
+
+    }
+    public void mudandoFocoParaPagina()
+    {
+        WebGLInput.captureAllKeyboardInput = false;
     }
 }

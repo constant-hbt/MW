@@ -341,7 +341,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 break;
             case "atacar":
-                StartCoroutine("attack1");
+                StartCoroutine("Attack1");
                 yield return new WaitForSeconds(0.2f);
                 break;
         }

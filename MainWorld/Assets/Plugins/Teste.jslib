@@ -1,13 +1,9 @@
 
 mergeInto(LibraryManager.library, {
-    
-    Win: function(){
-        window.alert("Parabéns , você venceu!!");
-        return true;
+    FocoPagina: function(){
+        window.alert("Foco na pagina");
     },
-    Teste: function(str){
-        window.document.getElementById('textarea').value = Pointer_stringify(str);
-    },
-   
-
+    FocoWebGL: function(){
+        window.alert("Foco no WebGL");
+    }
 });

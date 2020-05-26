@@ -26,6 +26,8 @@ Blockly.Blocks['defender'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Defender");
+        this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(345);
  this.setTooltip("");
  this.setHelpUrl("");
