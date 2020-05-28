@@ -1,9 +1,7 @@
 
 mergeInto(LibraryManager.library, {
-    FocoPagina: function(){
-        window.alert("Foco na pagina");
+    
+    SistemaLimiteBloco: function(qtdBlocoFase){
+        recriarWorkspace(qtdBlocoFase);
     },
-    FocoWebGL: function(){
-        window.alert("Foco no WebGL");
-    }
 });

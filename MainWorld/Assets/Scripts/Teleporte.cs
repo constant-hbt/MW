@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Teleporte : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Teleporte : MonoBehaviour
     public Camera cam;
     public Transform[] transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
 
+    [Header("Configuração de Limite de blocos")]
+    public int blocosDisponiveis;
+    [DllImport("__Internal")]
+    public static extern void SistemaLimiteBloco(int qtdBlocoFase);
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -31,6 +36,8 @@ public class Teleporte : MonoBehaviour
         _controllerFase.fases[1].SetActive(true);
         _playerController.transform.position = destino.position;
         cam.transform.position = transicaoCamera[0].position;
-       _controllerFase.fases[0].SetActive(false);
+        //Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
+        SistemaLimiteBloco(blocosDisponiveis);
+       _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
     }
 }

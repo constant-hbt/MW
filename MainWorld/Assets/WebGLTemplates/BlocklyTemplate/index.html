@@ -27,7 +27,7 @@
       <script src="js/Blocos Personalizados/Definicao_Blocos.js"></script>
       <script src="js/Blocos Personalizados/Estrutura_Blocos.js"></script>
     <!--Fim blocos customizados-->
-    <script src="focoPagina.js"></script>
+    <script src="js/focoPagina.js"></script>
      
     
 
@@ -97,7 +97,7 @@
                      minScale: 0.3,
                      scaleSpeed: 1.2},
                      trashcan: true,
-                    /* maxBlocks: parseInt(document.getElementById('CapacidadeTotal').innerHTML) */   } //define o maximo de bloco que pode ser usado por fase
+                     maxBlocks:0  } //define o maximo de bloco que pode ser usado por fase
                      );
 
                 
@@ -181,13 +181,32 @@
 
                         
                 }
+                
+                //Carregue o intérprete agora e após alterações futuras
+                generateCodeAndLoadIntoInterpreter();
+                workspace.addChangeListener(function(event){
+                    if(!(event instanceof Blockly.Events.Ui)){
+                        resetInterpreter();
+                        generateCodeAndLoadIntoInterpreter();
+                        //habilita o botão de execução somente se houver blocos no espaço de trabalho
+                        if(code != ''){
+                        botaoExecute.disabled = false;
+                        botaoReset.disabled = false;//mexer aqui depois
+                        
+                    }else{
+                        botaoExecute.disabled = true;
+                        botaoReset.disabled = true;
+                    }///linkar isso ao novo espaco de trabalho
 
+                    }
+                });
 
+                //Adiciona destaque ao bloco que esta sendo executado
                 function highlightBlock(id) {
                     workspace.highlightBlock(id);
                     highlightPause = true;
                 }
-
+                //reseta o interprete de codigo
                 function resetInterpreter(){
                     myInterpreter = null;
                     if(runner){
@@ -199,10 +218,10 @@
                 function resetStepUi(clearOutput){
                     workspace.highlightBlock(null);
                     highlightPause = false;
-
+                        /*
                     if(clearOutput){
                        // areaTexto.value = 'Saída do programa: \n -----------------------\n'; apagar depois
-                    }
+                    }*/
                 }
 
                 function generateCodeAndLoadIntoInterpreter(){
@@ -250,9 +269,46 @@
         }
           
 
-                //Carregue o intérprete agora e após alterações futuras
-                generateCodeAndLoadIntoInterpreter();
-                workspace.addChangeListener(function(event){
+                
+               //Atualiza a quantidade de blocos 
+                function onchange(event){
+                            document.getElementById('capacidade').textContent = 
+                                workspace.remainingCapacity();
+
+                        }
+
+                    workspace.addChangeListener(onchange);
+               
+             
+
+                //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
+                function recriarWorkspace(qtdMaxBlocos){// -->  função criada por mim
+                    code = '';
+                    workspace.dispose();
+                   workspace = Blockly.inject('blocklyDiv',
+                    {toolbox: document.getElementById('toolbox'),
+                    zoom:
+                    {controls: true,
+                     wheel: true,
+                     startScale: 1.0,
+                     maxScale: 3,
+                     minScale: 0.3,
+                     scaleSpeed: 1.2},
+                     trashcan: true,
+                     maxBlocks:qtdMaxBlocos } //define o maximo de bloco que pode ser usado por fase
+                     );
+
+                     document.getElementById('capacidade').innerHTML =  workspace.remainingCapacity();
+                        //aplica a funcao ao novo espaco de trabalho
+                     function onchange(event){
+                            document.getElementById('capacidade').textContent = 
+                                workspace.remainingCapacity();//funcao responsavel por diminuir o numero de blocos disponiveis cada vez que um bloco é acrescentado ao espaco de trabalho
+                        }
+
+                    workspace.addChangeListener(onchange);
+                    onchange();
+
+                    workspace.addChangeListener(function(event){
                     if(!(event instanceof Blockly.Events.Ui)){
                         resetInterpreter();
                         generateCodeAndLoadIntoInterpreter();
@@ -264,28 +320,20 @@
                     }else{
                         botaoExecute.disabled = true;
                         botaoReset.disabled = true;
-                    }
+                    }///linkar isso ao novo espaco de trabalho
 
                     }
                 });
-                
-               //Atualiza a quantidade de blocos 
-                function onchange(event){
-                            document.getElementById('capacidade').textContent = 
-                                workspace.remainingCapacity();
+               
+                }
 
-                        }
-
-                    workspace.addChangeListener(onchange);
-                    onchange();
-             
                //funcao responsavel por limpar a área de trabalho blockly
-                function resetarEspacoBlockly(){
+                function resetarEspacoBlockly(){// --> função criada por mim
                                     resetInterpreter();
                                     resetStepUi(false);
                                     setTimeout(function(){
                                         workspace.clear();
-                                    }, 3000); 
+                                    }, 1000); 
                 }
               </script>
 </body>

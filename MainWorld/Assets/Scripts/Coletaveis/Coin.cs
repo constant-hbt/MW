@@ -21,8 +21,7 @@ public class Coin : MonoBehaviour
 
     void coletar()
     {
-        //_gameController.numGold += valorCoin;
-        //_controllerFase.gold += valorCoin; -- apagar depois
+        _gameController.numGold += valorCoin;
         Destroy(this.gameObject);
     }
 }

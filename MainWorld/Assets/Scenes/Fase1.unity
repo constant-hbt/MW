@@ -360,6 +360,7 @@ MonoBehaviour:
   gold: 0
   estrelas: 0
   fases: []
+  blocosDisponiveis: 10
 --- !u!1 &268372523
 GameObject:
   m_ObjectHideFlags: 0

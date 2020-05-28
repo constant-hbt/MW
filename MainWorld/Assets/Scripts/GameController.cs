@@ -21,11 +21,6 @@ public class GameController : MonoBehaviour
     public int vidaMax = 3;
 
     public GameObject[] gameControllers;
-
-    [DllImport("__Internal")]
-    public static extern void FocoPagina();
-    [DllImport("__Internal")]
-    public static extern void FocoWebGL();
     void Start()
     {
         gameControllers = GameObject.FindGameObjectsWithTag("GameController");
@@ -42,9 +37,6 @@ public class GameController : MonoBehaviour
 
         
     }
-
-
-
     //SISTEMA DE ALTERNAR O FOCO NA PAGINA E NO WEBGL
     public void FocusCanvas(int focus)
     {

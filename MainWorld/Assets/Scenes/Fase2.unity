@@ -2337,6 +2337,7 @@ MonoBehaviour:
   fases:
   - {fileID: 881599737}
   - {fileID: 475935443}
+  blocosDisponiveis: 15
 --- !u!1 &295185493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2444,6 +2445,7 @@ MonoBehaviour:
   cam: {fileID: 2144691937}
   transicaoCamera:
   - {fileID: 577290055}
+  blocosDisponiveis: 20
 --- !u!1 &328860959
 GameObject:
   m_ObjectHideFlags: 0
