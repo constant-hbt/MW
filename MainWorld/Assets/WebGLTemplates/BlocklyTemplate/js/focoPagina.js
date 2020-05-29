@@ -24,7 +24,6 @@ function mudarFocoPagina(){
 
 }*/
 function focusCanvas(focus){
-    console.log("Entrei no focusCanvas do js, Estou enviando para o Unity = "+ focus);
     
         unityInstance.SendMessage('GameControllerEntreFases','FocusCanvas',focus );
 }

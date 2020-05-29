@@ -21,6 +21,11 @@ public class GameController : MonoBehaviour
     public int vidaMax = 3;
 
     public GameObject[] gameControllers;
+
+
+    [Header("Banco de dados Estrelas Adquiridas")]
+    public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
+
     void Start()
     {
         gameControllers = GameObject.FindGameObjectsWithTag("GameController");

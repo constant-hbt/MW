@@ -25,6 +25,7 @@ public class HUD : MonoBehaviour
         _player = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _selecaoFase = FindObjectOfType(typeof(SeleçãoFase)) as SeleçãoFase;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         foreach(Image img in hpBar)
         {
             img.enabled = true;
@@ -35,7 +36,7 @@ public class HUD : MonoBehaviour
 
         controleBarraVida();
 
-        goldText.text = _gameController.numGold.ToString();
+        goldText.text = _controllerFase.qtdMoedasColetadas.ToString();
         
     }
 

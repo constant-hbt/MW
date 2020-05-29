@@ -2414,6 +2414,7 @@ MonoBehaviour:
   numEstrelas: 0
   vidaMax: 3
   gameControllers: []
+  EstrelasFases: 000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &87958072
 Transform:
   m_ObjectHideFlags: 0

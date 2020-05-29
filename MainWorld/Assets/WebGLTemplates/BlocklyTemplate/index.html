@@ -61,7 +61,7 @@
   <div>
       <!--Ao iniciar as fases deve se passar o valor para este campo através do plugin .jslib,
           para definir a quantidade de blocos limite poderá ser usado naquela fase-->
-      <p id="CapacidadeTotal" hidden>5</p>
+  
     <p>Restam <span id="capacidade">1</span> blocos !!</p>
 </div>
   <div >
@@ -86,6 +86,7 @@
     var runner;
     var code = '';
     var highlightPause = false;
+    var qtdBlocosUsados = 0;
 
                 var workspace = Blockly.inject('blocklyDiv',
                     {toolbox: document.getElementById('toolbox'),
@@ -97,7 +98,7 @@
                      minScale: 0.3,
                      scaleSpeed: 1.2},
                      trashcan: true,
-                     maxBlocks:0  } //define o maximo de bloco que pode ser usado por fase
+                     maxBlocks:1 } //define o maximo de bloco que pode ser usado por fase
                      );
 
                 
@@ -236,6 +237,9 @@
                 //função responsavel pelo execução do blocos
                 function stepCode(){
 
+                    qtdBlocosUsados = workspace.getAllBlocks().length;
+                    enviarQtdBlocosUsados(qtdBlocosUsados);
+
                     if(!myInterpreter){
                         //primeira declaração deste código
                         //limpe a saída do programa
@@ -247,8 +251,8 @@
                             alert('Pronto para executar o seguinte código\n'+
                                    '===================================\n' + code);
                            
-                        
-                    
+                      
+                            
 
                     highlightPause = false;
                     myInterpreter = new Interpreter(code , initApi);
@@ -334,6 +338,13 @@
                                     setTimeout(function(){
                                         workspace.clear();
                                     }, 1000); 
+                }
+
+
+                //ENVIAR A QUANTIDADE DE BLOCOS QUE FORAM UTILIZADOS PARA PASSAR A FASE
+                function enviarQtdBlocosUsados(qtdBloco){
+                    unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
+                    console.log('Enviei os blocos = '+ qtdBloco);
                 }
               </script>
 </body>
