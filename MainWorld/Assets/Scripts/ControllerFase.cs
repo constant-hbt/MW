@@ -13,7 +13,7 @@ public class ControllerFase : MonoBehaviour
 
     [Header("Coletáveis durante a fase")]
     public int gold;//todas as moedas coletadas durante a fase;
-    public int estrelas = 100;//estrelas adquiras com o desempenho na fase
+    public int estrelas = 0;//estrelas adquiras com o desempenho na fase
 
     public GameObject[] fases;
 
