@@ -33,7 +33,7 @@ public class ControllerFase : MonoBehaviour
     
     void Start()
     {
-        SistemaLimiteBloco(qtdBlocosDisponiveis);
+       SistemaLimiteBloco(qtdBlocosDisponiveis);
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 

@@ -19,7 +19,6 @@ public class HUD : MonoBehaviour
 
     [Header("Controle HUD")]
     public TextMeshProUGUI goldText;
-    public TextMeshProUGUI vidaText;
     void Start()
     {
         _player = FindObjectOfType(typeof(PlayerController)) as PlayerController;

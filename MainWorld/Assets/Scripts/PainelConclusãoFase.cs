@@ -23,10 +23,11 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
         tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
 
-        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
+        
         switch (qtdEstrelasAdquiridas)
         {
             case 1:
