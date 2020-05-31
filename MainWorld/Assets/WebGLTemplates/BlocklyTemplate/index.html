@@ -28,7 +28,8 @@
       <script src="js/Blocos Personalizados/Estrutura_Blocos.js"></script>
     <!--Fim blocos customizados-->
     <script src="js/focoPagina.js"></script>
-     
+    <script src="js/DisableEnableWorkspace.js"></script>
+    <script src="js/ControleConclusaoFase.js"></script>
     
 
 </head>
@@ -38,20 +39,20 @@
 
     <xml id="toolbox" style="display: none">
         <category name = "Personagem">
-            <block type="avancar"></block>
-            <block type="pular"></block>
-            <block type="pular_frente"></block>
-            <block type="defender"></block>
-            <block type="atacar"></block>
+            <block type="avancar" class="bloco" disabled = "true"></block>
+            <block type="pular" class="bloco" disabled = "true"></block>
+            <block type="pular_frente" class="bloco" disabled = "true"></block>
+            <block type="defender" class="bloco" disabled = "true"></block>
+            <block type="atacar" class="bloco" disabled = "true"></block>
         </category>
         <category name = "Estruturas">
-            <block type="controls_if"></block>
-            <block type="controls_repeat_ext"></block>
-            <block type="math_number"></block>
+            <block type="controls_if" class="bloco" disabled = "true"></block>
+            <block type="controls_repeat_ext" class="bloco" disabled = "true"></block>
+            <block type="math_number" class="bloco" disabled = "true"></block>
         </category>
         <category name ="Condições">
-            <block type="ha_inimigos"></block>
-            <block type="nao_ha_inimigos"></block>
+            <block type="ha_inimigos" class="bloco" disabled = "true"></block>
+            <block type="nao_ha_inimigos" class="bloco" disabled = "true"></block>
         </category>
       </xml>
      
@@ -59,10 +60,7 @@
   </div>
   <!--Área responsável por mostrar o código em tempo real-->
   <div>
-      <!--Ao iniciar as fases deve se passar o valor para este campo através do plugin .jslib,
-          para definir a quantidade de blocos limite poderá ser usado naquela fase-->
-  
-    <p>Restam <span id="capacidade">1</span> blocos !!</p>
+    <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos !!</p>
 </div>
   <div >
    <p>
@@ -87,6 +85,7 @@
     var code = '';
     var highlightPause = false;
     var qtdBlocosUsados = 0;
+    var passeiFase = false;//variavel utilizada para saber se passei ou não de fase
 
                 var workspace = Blockly.inject('blocklyDiv',
                     {toolbox: document.getElementById('toolbox'),
@@ -98,7 +97,7 @@
                      minScale: 0.3,
                      scaleSpeed: 1.2},
                      trashcan: true,
-                     maxBlocks:1 } //define o maximo de bloco que pode ser usado por fase
+                     maxBlocks:0 } //define o maximo de bloco que pode ser usado por fase
                      );
 
                 
@@ -250,9 +249,6 @@
                         setTimeout(function(){
                             alert('Pronto para executar o seguinte código\n'+
                                    '===================================\n' + code);
-                           
-                      
-                            
 
                     highlightPause = false;
                     myInterpreter = new Interpreter(code , initApi);
@@ -263,6 +259,12 @@
                                 setTimeout(runner,80);//AQUI EH A CHAVE
                             }else{
                                    //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
+                                if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
+                                 unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
+                                    resetarEspacoBlockly();
+                                    passeiFase = false;
+                                    
+                                }
                             }
                         }
                     };
@@ -337,6 +339,7 @@
                                     resetStepUi(false);
                                     setTimeout(function(){
                                         workspace.clear();
+                                       
                                     }, 1000); 
                 }
 
@@ -346,6 +349,8 @@
                     unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
                     console.log('Enviei os blocos = '+ qtdBloco);
                 }
+
+                
               </script>
 </body>
 </html>

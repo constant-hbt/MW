@@ -19,6 +19,11 @@ public class Teleporte : MonoBehaviour
     public int blocosDisponiveis;
     [DllImport("__Internal")]
     public static extern void SistemaLimiteBloco(int qtdBlocoFase);
+
+    [DllImport("__Internal")]
+    public static extern void SistemaReiniciarWorkspaceBlockly();
+    [DllImport("__Internal")]
+    public static extern void SistemaVerifConclusaoFase(bool situacaoFase);
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -33,6 +38,10 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
+
+        //Ao teleportar para outra etapa da fase reseta o espaco blockly
+        SistemaReiniciarWorkspaceBlockly();
+        SistemaVerifConclusaoFase(true);//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
         _controllerFase.fases[1].SetActive(true);
         _playerController.transform.position = destino.position;
         cam.transform.position = transicaoCamera[0].position;

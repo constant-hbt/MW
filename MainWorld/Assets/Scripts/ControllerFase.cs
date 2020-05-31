@@ -18,8 +18,7 @@ public class ControllerFase : MonoBehaviour
     public GameObject[] fases;
 
    
-    [DllImport("__Internal")]
-    private static extern void SistemaLimiteBloco(int qtdBlocoFase);
+    
 
     //Configuração do Limite de blocos por fase
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
@@ -30,10 +29,16 @@ public class ControllerFase : MonoBehaviour
     public int qtdBlocosUsados;//quantidade de blocos que foram utilizados para concluir a fase
     public int qtdMoedasDisponiveis;//quantidade de moedas disponiveis para coleta na fase
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
-    
+
+    //Integração com o js da página
+    [DllImport("__Internal")]
+    private static extern void SistemaLimiteBloco(int qtdBlocoFase);
+    [DllImport("__Internal")]
+    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
-       SistemaLimiteBloco(qtdBlocosDisponiveis);
+        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        SistemaLimiteBloco(qtdBlocosDisponiveis);
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
@@ -89,4 +94,5 @@ public class ControllerFase : MonoBehaviour
         }
         return estrelas;
     }
+
 }

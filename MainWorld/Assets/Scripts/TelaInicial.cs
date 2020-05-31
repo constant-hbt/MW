@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Runtime.InteropServices;
+
 public class TelaInicial : MonoBehaviour
 {   
    
@@ -39,9 +41,13 @@ public class TelaInicial : MonoBehaviour
     public Button btnControle;
     public Button btnConfig;
 
+
+    //Integração com js da página
+    [DllImport("__Internal")]
+    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
-
+        SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         
     }
 

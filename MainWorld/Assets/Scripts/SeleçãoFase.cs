@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class SeleçãoFase : MonoBehaviour
 {
@@ -29,9 +30,14 @@ public class SeleçãoFase : MonoBehaviour
     public TextMeshProUGUI vidaText;
     public TextMeshProUGUI estrelaText;
 
-    
+    //Integração com js da página
+    [DllImport("__Internal")]
+    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
     void Start()
     {
+        SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 

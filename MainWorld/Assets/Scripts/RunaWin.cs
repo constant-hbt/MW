@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class RunaWin : MonoBehaviour
 {
@@ -10,7 +11,10 @@ public class RunaWin : MonoBehaviour
     /// </summary>
     public GameObject painelFaseConcluida;
 
-    
+    [DllImport("__Internal")]
+    public static extern void SistemaVerifConclusaoFase(bool situacaoFase);
+    [DllImport("__Internal")]
+    public static extern void SistemaReiniciarWorkspaceBlockly();
     void Start()
     {
         
@@ -24,6 +28,8 @@ public class RunaWin : MonoBehaviour
 
     void ativarPainel()
     {
+        SistemaReiniciarWorkspaceBlockly();
+        SistemaVerifConclusaoFase(true);//se colidir com a runa quer dizer que passei de fase, portanto eu reseto o espaco blockly
         painelFaseConcluida.SetActive(true);
     }
 
