@@ -38,11 +38,11 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
-
+        SistemaVerifConclusaoFase(true);//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
         //Ao teleportar para outra etapa da fase reseta o espaco blockly
         SistemaReiniciarWorkspaceBlockly();
-        SistemaVerifConclusaoFase(true);//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
         _controllerFase.fases[1].SetActive(true);
+        _playerController.zerarVelocidadeP();
         _playerController.transform.position = destino.position;
         cam.transform.position = transicaoCamera[0].position;
         //Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase

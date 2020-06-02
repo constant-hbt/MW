@@ -24,15 +24,18 @@ public class ControllerFase : MonoBehaviour
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
     //maximos que pode ser utilizado durante aquela fase
     [Header("Distribuição de Estrelas")]
-    public int qtdBlocosDisponiveis;//quantidade de blocos disponiveis para poder concluir a fase
+    public int qtdBlocosDisponiveisEmTodaFase;//quantidade de blocos disponiveis para poder concluir a fase
     public int qtdMinimaDeBlocosParaConclusao;//quantidade de blocos minimos que devem ser usados para concluir a fase
     public int qtdBlocosUsados;//quantidade de blocos que foram utilizados para concluir a fase
     public int qtdMoedasDisponiveis;//quantidade de moedas disponiveis para coleta na fase
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
 
+
+    [Header("Quantidade disponivel para a primeira parte da fase")]
+    public int qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
     //Integração com o js da página
     [DllImport("__Internal")]
-    private static extern void SistemaLimiteBloco(int qtdBlocoFase);
+    public static extern void SistemaLimiteBloco(int qtdBlocoFase);
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
@@ -65,32 +68,26 @@ public class ControllerFase : MonoBehaviour
     {
         float porcBlocosMinimos = 0;//contem a porcentagem de blocos minimos que podem ser usados para passar de fase
         float porcBlocosUsados = 0;//contem a porcentagem de blocos que foram usados para passar a fase
-        float porcMoedasColetadas = 0;//contem a porcentagem de estrelas que foi coletada durante a fase
+        //float porcMoedasColetadas = 0;//contem a porcentagem de estrelas que foi coletada durante a fase -- APAGAR DEPOIS
 
         //calculos
         porcBlocosMinimos = (qtdMinimaDeBlocosParaConclusao * 100) / qtdBlocosDisponiveis;
         porcBlocosUsados = (qtdBlocosUsados * 100) / qtdBlocosDisponiveis;
-        porcMoedasColetadas = (qtdMoedasColetadas * 100) / qtdMoedasDisponiveis;
+        //porcMoedasColetadas = (qtdMoedasColetadas * 100) / qtdMoedasDisponiveis; -- APAGAR DEPOIS
+        //porcMoedasColetadas == 100.0f -- APAGAR DEPOIS
 
-
-        if(porcBlocosUsados <= porcBlocosMinimos && porcMoedasColetadas == 100.0f)
-        {
+        if (porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas == qtdMoedasDisponiveis )
+        {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-            //ganha 3 estrelas
-            
-        }else if(porcBlocosUsados > porcBlocosMinimos && porcMoedasColetadas > 0f  ||
-                 porcBlocosUsados <= porcBlocosMinimos && porcMoedasColetadas > 0f )
-        {
+        }else if(porcBlocosUsados > porcBlocosMinimos && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis ||
+                 porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis)
+        {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
-            //ganha 2 estrelas
-            
         }
-        else if(porcBlocosUsados > porcBlocosMinimos  && porcMoedasColetadas == 0f ||
-                porcBlocosUsados <= porcBlocosMinimos && porcMoedasColetadas == 0f)
-        {
+        else if(porcBlocosUsados > porcBlocosMinimos  && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||
+                porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2))
+        {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
-            //ganha 1 estrela
-            
         }
         return estrelas;
     }

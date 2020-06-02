@@ -28,8 +28,9 @@ public class RunaWin : MonoBehaviour
 
     void ativarPainel()
     {
-        SistemaReiniciarWorkspaceBlockly();
         SistemaVerifConclusaoFase(true);//se colidir com a runa quer dizer que passei de fase, portanto eu reseto o espaco blockly
+
+        SistemaReiniciarWorkspaceBlockly();
         painelFaseConcluida.SetActive(true);
     }
 

@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PainelFaseIncompleta : MonoBehaviour
 {
+    private GameController _gameController;
 
     public Button btnClose;
     public GameObject painelFaseIncompleta;
     void Start()
     {
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
+        _gameController.numVida --;
         btnClose.Select();
     }
     void Update()

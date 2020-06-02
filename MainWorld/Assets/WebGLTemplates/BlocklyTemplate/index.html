@@ -15,14 +15,13 @@
         var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
       </script>
 
-    <script src="acorn_interpreter.js"></script>
-    <script src="blockly_compressed.js"></script>
-    <script src="blocks_compressed.js"></script>
-    <script src="javascript_compressed.js"></script>
+      <!--JS-->
+    <script src="js/acorn_interpreter.js"></script>
+    <script src="js/blockly_compressed.js"></script>
+    <script src="js/blocks_compressed.js"></script>
+    <script src="js/javascript_compressed.js"></script>
     <script src = "msg/js/pt-br.js" > </script> 
-    <script src = "storage.js" > </script> 
-    
-
+    <script src = "js/storage.js" > </script>
     <!--Blocos Customizados-->
       <script src="js/Blocos Personalizados/Definicao_Blocos.js"></script>
       <script src="js/Blocos Personalizados/Estrutura_Blocos.js"></script>
@@ -31,7 +30,8 @@
     <script src="js/DisableEnableWorkspace.js"></script>
     <script src="js/ControleConclusaoFase.js"></script>
     
-
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <!--Local destinado aos blocos blockly-->
@@ -64,8 +64,20 @@
 </div>
   <div >
    <p>
-    <button onclick="stepCode()" id="execute" disabled = true>Executar</button>
-    <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>
+      <div class="botao" id="execute" disabled = true onclick="stepCode()">
+            <img  class="icone-play" src="img/botãoPlay.png" alt="botao de play">
+            <p class="execute">Executar</p>
+        
+        </div>
+      
+        <!-- <button  class="botao" onclick="teste()" id="execute" >
+            <img  class="icone-play" src="img/botãoPlay.png" alt="botao de play">
+            <p class="execute">Executar</p>
+        
+        
+        </button>-->
+    <!--<button onclick="stepCode()" id="execute" disabled = true></button>
+    <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>--APAGAR DEPOIS  -->
    </p>
   
   </div>
@@ -258,13 +270,18 @@
                             if(masCodigo){
                                 setTimeout(runner,80);//AQUI EH A CHAVE
                             }else{
+                                alert("Você falhou, vou resetar o workspace");
+                               
                                    //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
-                                if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
+                              var verificarConclusaoFase = function(){  if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
                                  unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
+                                 console.log("Entrei na funcao verificarConclusaFase");
                                     resetarEspacoBlockly();
                                     passeiFase = false;
                                     
                                 }
+                              }
+                              setTimeout(verificarConclusaoFase, 1000);
                             }
                         }
                     };
@@ -290,6 +307,7 @@
                 //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
                 function recriarWorkspace(qtdMaxBlocos){// -->  função criada por mim
                     code = '';
+                    passeiFase = false;
                     workspace.dispose();
                    workspace = Blockly.inject('blocklyDiv',
                     {toolbox: document.getElementById('toolbox'),
@@ -350,6 +368,9 @@
                     console.log('Enviei os blocos = '+ qtdBloco);
                 }
 
+                function teste(){
+                    alert("Cliquei");
+                }
                 
               </script>
 </body>

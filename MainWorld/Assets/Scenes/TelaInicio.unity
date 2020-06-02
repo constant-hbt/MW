@@ -2410,7 +2410,7 @@ MonoBehaviour:
   fasesConcluidas: 0
   progressoAtual: 0
   numGold: 0
-  numVida: 5
+  numVida: 10
   numEstrelas: 0
   vidaMax: 3
   gameControllers: []

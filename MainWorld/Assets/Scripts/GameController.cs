@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public int fasesConcluidas;
     public int progressoAtual;
     public int numGold;
-    public int numVida;
+    public int numVida = 10;
     public int numEstrelas;
 
     [Header("Banco de Dados do Player")]

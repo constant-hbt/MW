@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
     public int vidaAtual = 3;
 
     [Header("Configuração de movimentação")]
-    private         float           h;//variavel de movimento horizontal 
+    //private         float           h;//variavel de movimento horizontal 
     public          float           speed; // velocidade de movimento do personagem
-    private         float           v;//variavel de movimento vertical
+   // private         float           v;//variavel de movimento vertical
     public          bool            atacando; //indica que o personagem esta atacando
     public          int             IdAnimation; //indica o id da animação
     private         bool            habilitarMovimentacaoPlayer =true;
@@ -87,33 +87,33 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-       
-       // v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
 
-        if (h > 0 && lookLeft == true && atacando == false)
-        {
-            Flip();
-        }
-        else if (h < 0 && lookLeft == false && atacando == false)
-        {
-            Flip();
-        }
-
-        /* if (v < 0)
+        // v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
+        /*
+         if (h > 0 && lookLeft == true && atacando == false)
          {
-             IdAnimation = 2;
-             if (Grounded == true)
-             {
-                 h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
-             }
-         }/*else if (h != 0)
-         {
-             IdAnimation = 1;
+             Flip();
          }
-         else
+         else if (h < 0 && lookLeft == false && atacando == false)
          {
-             IdAnimation = 0;
-         }*/
+             Flip();
+         }
+
+          if (v < 0)
+          {
+              IdAnimation = 2;
+              if (Grounded == true)
+              {
+                  h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
+              }
+          }/*else if (h != 0)
+          {
+              IdAnimation = 1;
+          }
+          else
+          {
+              IdAnimation = 0;
+          }*/
 
         //inputs para movimentação
         /* if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
@@ -182,10 +182,12 @@ public class PlayerController : MonoBehaviour
                 print("Colidi com um inimigo");
                 break;
             case "teleporte":
+                zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 
                 break;
             case "Win":
+                zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 col.gameObject.SendMessage("ativarPainel", SendMessageOptions.DontRequireReceiver);
                 break;
             case "coletavel":
@@ -418,5 +420,11 @@ public class PlayerController : MonoBehaviour
     {
         collisorAbaixado.enabled = false;
         collisorEmPé.enabled = true;
+    }
+
+    //Zerar velocidade do player
+    public void zerarVelocidadeP()
+    {
+        playerRB.velocity = new Vector2(0, 0);
     }
 }
