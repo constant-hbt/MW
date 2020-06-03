@@ -13,7 +13,10 @@ mergeInto(LibraryManager.library, {
     SistemaVerifConclusaoFase: function(situacaoFase){
         passeiFase = situacaoFase;
     },
-    TestandoPainelFaseI:function(){
-        console.log("O painel de fase incompleta foi aberto");
+    ReiniciarVarNovoCode:function(){
+        novoCode = '';
     },
+    EnviarQTDBlocosMinimosParaPassarFase:function(qtdBlocos){
+        qtdBlocosMinimos = qtdBlocos;
+    }
 });

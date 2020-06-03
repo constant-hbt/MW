@@ -15,6 +15,8 @@ public class RunaWin : MonoBehaviour
     public static extern void SistemaVerifConclusaoFase(bool situacaoFase);
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();
+
+    
     void Start()
     {
         
@@ -28,6 +30,7 @@ public class RunaWin : MonoBehaviour
 
     void ativarPainel()
     {
+
         SistemaVerifConclusaoFase(true);//se colidir com a runa quer dizer que passei de fase, portanto eu reseto o espaco blockly
 
         SistemaReiniciarWorkspaceBlockly();

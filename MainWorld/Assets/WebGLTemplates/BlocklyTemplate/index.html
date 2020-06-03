@@ -85,15 +85,13 @@
   </div>
     <script>
 
-   // var areaTexto = document.getElementById('textarea'); apagar depois
-  //  var botaoExecute = document.getElementById('execute');
-    //var botaoReset = document.getElementById('reset');
-//----------------------------------------------------------------------------------------------------
     var myInterpreter = null;
     var runner;
     var code = '';
     var highlightPause = false;
-    var qtdBlocosUsados = 0;
+    var qtdBlocosUsados = 0;//quantidade de blocos usados em cada etapa da fase
+    var qtdBlocosMinimos = 0;//quantidade de blocos minimos necessarios para passar de fase
+    var qtdBlocosTotais = 0;//quantidade de blocos usados em toda fase(pensando nas fases que ha mais de uma etapa)
     var passeiFase = false;//variavel utilizada para saber se passei ou não de fase
     
     var botaoExecutar = document.getElementById('execute');
@@ -214,6 +212,7 @@
 
                 //Adiciona destaque ao bloco que esta sendo executado
                 function highlightBlock(id) {
+                  
                     workspace.highlightBlock(id);
                     highlightPause = true;
                 }
@@ -237,6 +236,7 @@
 
                 function generateCodeAndLoadIntoInterpreter(){
                     //Código JavaScript gerado e analisado
+                    
                     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n'; 
                     Blockly.JavaScript.addReservedWords('highlightBlock');
                     code = Blockly.JavaScript.workspaceToCode(workspace);
@@ -248,6 +248,7 @@
                 function stepCode(){
 
                     qtdBlocosUsados = workspace.getAllBlocks().length;
+                    qtdBlocosTotais += qtdBlocosUsados;
                     enviarQtdBlocosUsados(qtdBlocosUsados);
 
                     if(!myInterpreter){
@@ -267,18 +268,25 @@
                         if(myInterpreter){
                             var masCodigo = myInterpreter.step();
                             if(masCodigo){
-                                setTimeout(runner,80);//AQUI EH A CHAVE
+                                setTimeout(runner,80);
                             }else{
                                 //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
                               var verificarConclusaoFase = function(){  if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
                                  unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
                                  unityInstance.SendMessage("playerKnight","retirarVida");
-                                 console.log("Entrei na funcao verificarConclusaFase");
                                     resetarEspacoBlockly();
                                     passeiFase = false;
+                                    qtdBlocosTotais = 0;
+                                }else if(passeiFase){
+                                    
+                                    
+                                    alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
+                                            "Código utilizado para concluir a fase: \n"+
+                                            mostrarCodigo(code) );
+                                    qtdBlocosTotais = 0;
                                 }
                               }
-                              setTimeout(verificarConclusaoFase, 1000);
+                              setTimeout(verificarConclusaoFase, 800);
                             }
                         }
                     };
@@ -304,6 +312,7 @@
                 //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
                 function recriarWorkspace(qtdMaxBlocos){// -->  função criada por mim
                     code = '';
+                    
                     passeiFase = false;
                     workspace.dispose();
                    workspace = Blockly.inject('blocklyDiv',
@@ -361,6 +370,28 @@
                     unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
                     console.log('Enviei os blocos = '+ qtdBloco);
                 }
+
+                function mostrarCodigo(code){//mostra o codigo utilizado contido nos blocos escolhidos
+                    var arrayCode = code.split("\n");
+                    var novoCode = '';
+
+                    for(var i=0; i< arrayCode.length; i++){
+                        if(arrayCode[i].indexOf("highlightBlock") == -1){
+                            novoCode += arrayCode[i]+"\n";
+                        }
+                    }
+
+                    return novoCode;
+                }
+
+                function msgDesempenhoBloco(qtdBlocosMinimos , qtdBlocosUsados){
+                    if(qtdBlocosUsados <= qtdBlocosMinimos){
+                        return "Parabéns pelo seu desempenho!!";
+                    }else if(qtdBlocosUsados > qtdBlocosMinimos){
+                        return "Parabéns, você concluiu a fase usando "+qtdBlocosUsados+" blocos, mais a fase poderia ter sido concluída usando "+qtdBlocosMinimos+" !!";
+                    }
+                }
+
                 
               </script>
 </body>

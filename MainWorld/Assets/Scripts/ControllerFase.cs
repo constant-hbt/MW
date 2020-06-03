@@ -38,10 +38,15 @@ public class ControllerFase : MonoBehaviour
     public static extern void SistemaLimiteBloco(int qtdBlocoFase);
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
+    [DllImport("__Internal")]
+    public static extern void EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
     void Start()
     {
         SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         SistemaLimiteBloco(qtdBlocosDisponiveis);
+        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
@@ -66,7 +71,8 @@ public class ControllerFase : MonoBehaviour
     }
     public int distribuicaoEstrelas()
     {
-        float porcBlocosMinimos = 0;//contem a porcentagem de blocos minimos que podem ser usados para passar de fase
+        bool naoTemMoeda = false;
+       /* float porcBlocosMinimos = 0;//contem a porcentagem de blocos minimos que podem ser usados para passar de fase
         float porcBlocosUsados = 0;//contem a porcentagem de blocos que foram usados para passar a fase
         //float porcMoedasColetadas = 0;//contem a porcentagem de estrelas que foi coletada durante a fase -- APAGAR DEPOIS
 
@@ -75,19 +81,31 @@ public class ControllerFase : MonoBehaviour
         porcBlocosUsados = (qtdBlocosUsados * 100) / qtdBlocosDisponiveis;
         //porcMoedasColetadas = (qtdMoedasColetadas * 100) / qtdMoedasDisponiveis; -- APAGAR DEPOIS
         //porcMoedasColetadas == 100.0f -- APAGAR DEPOIS
+           
+                                APAGAR DEPOIS SE AS MODIFICACOES DERAM CERTO
 
         //TEM ERRO AQUI
+        */
+        if(qtdMoedasDisponiveis == 0)
+        {
+            naoTemMoeda = true;
+        }
+        else
+        {
+            naoTemMoeda = false;
+        }
 
-        if (qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas == qtdMoedasDisponiveis )
+        if (qtdBlocosUsados <= qtdBlocosDisponiveis &&qtdMoedasColetadas == qtdMoedasDisponiveis )
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(qtdBlocosUsados > qtdBlocosDisponiveis && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis ||
-                 qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis)
+        }else if(qtdBlocosUsados > qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis ||
+                 qtdBlocosUsados <= qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis )
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(qtdBlocosUsados > qtdBlocosDisponiveis && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||
-                qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2))
+        else if(qtdBlocosUsados > qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||/*Ex:Não tem nenhuma moeda na fase e mesmo assim ele usa uma quantidade de blocos maior que o minimo*/
+                qtdBlocosUsados <= qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||
+                qtdBlocosUsados > qtdBlocosDisponiveis && naoTemMoeda/*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }
