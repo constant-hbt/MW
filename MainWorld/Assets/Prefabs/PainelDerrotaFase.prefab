@@ -192,7 +192,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2188460462799839085}
+      - m_Target: {fileID: 8393676362234281727}
         m_MethodName: voltarSelecaoFase
         m_Mode: 1
         m_Arguments:
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2188460462799839085}
+      - m_Target: {fileID: 8393676362234281727}
         m_MethodName: voltarSelecaoFase
         m_Mode: 1
         m_Arguments:
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2188460462799839085}
+      - m_Target: {fileID: 8393676362234281727}
         m_MethodName: jogarNovamente
         m_Mode: 3
         m_Arguments:
@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 2188460462799838995}
   - component: {fileID: 2188460462799838992}
   - component: {fileID: 2188460462799838993}
-  - component: {fileID: 2188460462799839085}
+  - component: {fileID: 8393676362234281727}
   m_Layer: 5
   m_Name: PainelDerrotaFase
   m_TagString: Untagged
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &2188460462799839085
+--- !u!114 &8393676362234281727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1101,6 +1101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClose: {fileID: 2188460462225209637}
+  painelFaseIncompleta: {fileID: 2188460462131907896}
 --- !u!1 &2188460464075069775
 GameObject:
   m_ObjectHideFlags: 0

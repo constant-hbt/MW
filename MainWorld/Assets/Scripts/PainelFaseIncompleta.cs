@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class PainelFaseIncompleta : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public Button btnClose;
     public GameObject painelFaseIncompleta;
+
+    [DllImport("__Internal")]
+    private static extern void TestandoPainelFaseI();
     void Start()
     {
+        TestandoPainelFaseI();
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
-        _gameController.numVida --;
+       
         btnClose.Select();
     }
     void Update()
@@ -35,4 +40,6 @@ public class PainelFaseIncompleta : MonoBehaviour
     {
         painelFaseIncompleta.SetActive(true);
     }
+
+    
 }

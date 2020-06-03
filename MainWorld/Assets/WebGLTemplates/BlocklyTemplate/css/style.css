@@ -1,40 +1,18 @@
-.botao{
-    margin-top: 50px;
-    margin-left: 200px;
-    background-color: rgb(228, 34, 34);
+#execute{
     width: 150px;
-    height: 50px;  
+    height: 50px;
 
-    border-radius: 5px;
-    position: relative;
-    top: 0;
+    margin-top: 25px;
+    margin-left: 200px;
 
-}
-.botao:hover{
-    top:-4px;box-shadow:0 4px 4px #999;
-    transition: all .2s ease-in-out
-}
-
-p.execute{
-    text-align: center;
-    display: block;
-    margin-top: -30px;
-    margin-left: 15px;
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
-    color: aliceblue;
-
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-style: normal;
+    font-family: "Comic Sans MS", Comic Sans, cursive;
     font-size: 20px;
 }
-
-/*icone botão play*/
-.icone-play{
-    margin-top: 10px;
-    margin-left: 10px;
+#execute:hover{
+    -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+        -moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+        box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
 }
-:disabled{
-    background-color: black
+#iconPlay{
+    margin-top: -5px;
 }

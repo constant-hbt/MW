@@ -76,16 +76,18 @@ public class ControllerFase : MonoBehaviour
         //porcMoedasColetadas = (qtdMoedasColetadas * 100) / qtdMoedasDisponiveis; -- APAGAR DEPOIS
         //porcMoedasColetadas == 100.0f -- APAGAR DEPOIS
 
-        if (porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas == qtdMoedasDisponiveis )
+        //TEM ERRO AQUI
+
+        if (qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas == qtdMoedasDisponiveis )
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(porcBlocosUsados > porcBlocosMinimos && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis ||
-                 porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis)
+        }else if(qtdBlocosUsados > qtdBlocosDisponiveis && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis ||
+                 qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas >= (qtdMoedasDisponiveis / 2) && qtdMoedasColetadas < qtdMoedasDisponiveis)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(porcBlocosUsados > porcBlocosMinimos  && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||
-                porcBlocosUsados <= porcBlocosMinimos && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2))
+        else if(qtdBlocosUsados > qtdBlocosDisponiveis && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2) ||
+                qtdBlocosUsados <= qtdBlocosDisponiveis && qtdMoedasColetadas < (qtdMoedasDisponiveis / 2))
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }

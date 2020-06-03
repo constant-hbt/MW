@@ -427,4 +427,8 @@ public class PlayerController : MonoBehaviour
     {
         playerRB.velocity = new Vector2(0, 0);
     }
+    public void retirarVida()
+    {
+        _gameController.numVida-= 1;
+    }
 }

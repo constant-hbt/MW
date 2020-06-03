@@ -15,6 +15,11 @@
         var unityInstance = UnityLoader.instantiate("unityContainer", "%UNITY_WEBGL_BUILD_URL%", {onProgress: UnityProgress});
       </script>
 
+      <!--BOOTSTRAP-->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       <!--JS-->
     <script src="js/acorn_interpreter.js"></script>
     <script src="js/blockly_compressed.js"></script>
@@ -29,7 +34,7 @@
     <script src="js/focoPagina.js"></script>
     <script src="js/DisableEnableWorkspace.js"></script>
     <script src="js/ControleConclusaoFase.js"></script>
-    
+
     <!--CSS-->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -64,20 +69,12 @@
 </div>
   <div >
    <p>
-      <div class="botao" id="execute" disabled = true onclick="stepCode()">
-            <img  class="icone-play" src="img/botãoPlay.png" alt="botao de play">
-            <p class="execute">Executar</p>
-        
-        </div>
-      
-        <!-- <button  class="botao" onclick="teste()" id="execute" >
-            <img  class="icone-play" src="img/botãoPlay.png" alt="botao de play">
-            <p class="execute">Executar</p>
-        
-        
-        </button>-->
-    <!--<button onclick="stepCode()" id="execute" disabled = true></button>
-    <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>--APAGAR DEPOIS  -->
+    
+    <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = true>
+        <img id="iconPlay" src="img/botãoPlay.png" alt="botao de play">    
+        Executar
+    </button>
+   <!-- <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>-->
    </p>
   
   </div>
@@ -89,8 +86,8 @@
     <script>
 
    // var areaTexto = document.getElementById('textarea'); apagar depois
-    var botaoExecute = document.getElementById('execute');
-    var botaoReset = document.getElementById('reset');
+  //  var botaoExecute = document.getElementById('execute');
+    //var botaoReset = document.getElementById('reset');
 //----------------------------------------------------------------------------------------------------
     var myInterpreter = null;
     var runner;
@@ -98,6 +95,8 @@
     var highlightPause = false;
     var qtdBlocosUsados = 0;
     var passeiFase = false;//variavel utilizada para saber se passei ou não de fase
+    
+    var botaoExecutar = document.getElementById('execute');
 
                 var workspace = Blockly.inject('blocklyDiv',
                     {toolbox: document.getElementById('toolbox'),
@@ -270,15 +269,13 @@
                             if(masCodigo){
                                 setTimeout(runner,80);//AQUI EH A CHAVE
                             }else{
-                                alert("Você falhou, vou resetar o workspace");
-                               
-                                   //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
+                                //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
                               var verificarConclusaoFase = function(){  if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
                                  unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
+                                 unityInstance.SendMessage("playerKnight","retirarVida");
                                  console.log("Entrei na funcao verificarConclusaFase");
                                     resetarEspacoBlockly();
                                     passeiFase = false;
-                                    
                                 }
                               }
                               setTimeout(verificarConclusaoFase, 1000);
@@ -338,15 +335,12 @@
                         generateCodeAndLoadIntoInterpreter();
                         //habilita o botão de execução somente se houver blocos no espaço de trabalho
                         if(code != ''){
-                        botaoExecute.disabled = false;
-                        botaoReset.disabled = false;//mexer aqui depois
-                        
+                       botaoExecutar.disabled = false;
                     }else{
-                        botaoExecute.disabled = true;
-                        botaoReset.disabled = true;
-                    }///linkar isso ao novo espaco de trabalho
-
+                        botaoExecutar.disabled = true;
                     }
+
+                 }
                 });
                
                 }
@@ -366,10 +360,6 @@
                 function enviarQtdBlocosUsados(qtdBloco){
                     unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
                     console.log('Enviei os blocos = '+ qtdBloco);
-                }
-
-                function teste(){
-                    alert("Cliquei");
                 }
                 
               </script>
