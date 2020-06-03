@@ -270,23 +270,28 @@
                             if(masCodigo){
                                 setTimeout(runner,80);
                             }else{
+
+                                console.log("PasseiFase = "+ passeiFase);
                                 //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
                               var verificarConclusaoFase = function(){  if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
+                                
                                  unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
                                  unityInstance.SendMessage("playerKnight","retirarVida");
-                                    resetarEspacoBlockly();
-                                    passeiFase = false;
+                                 resetarEspacoBlockly();
                                     qtdBlocosTotais = 0;
                                 }else if(passeiFase){
                                     
+                                    console.log("Entrei no else if passeiFase = "+ passeiFase);
                                     
                                     alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
                                             "Código utilizado para concluir a fase: \n"+
                                             mostrarCodigo(code) );
+                                            resetarEspacoBlockly();
                                     qtdBlocosTotais = 0;
                                 }
                               }
                               setTimeout(verificarConclusaoFase, 800);
+                              console.log("PasseiFaseFinal = "+ passeiFase);
                             }
                         }
                     };
@@ -312,7 +317,6 @@
                 //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
                 function recriarWorkspace(qtdMaxBlocos){// -->  função criada por mim
                     code = '';
-                    
                     passeiFase = false;
                     workspace.dispose();
                    workspace = Blockly.inject('blocklyDiv',

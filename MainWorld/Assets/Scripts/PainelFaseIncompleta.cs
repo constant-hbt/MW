@@ -13,10 +13,11 @@ public class PainelFaseIncompleta : MonoBehaviour
     public GameObject painelFaseIncompleta;
 
     [DllImport("__Internal")]
-    private static extern void TestandoPainelFaseI();
+    public static extern void SistemaReiniciarWorkspaceBlockly();
+
     void Start()
     {
-        TestandoPainelFaseI();
+        
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
        
@@ -33,6 +34,8 @@ public class PainelFaseIncompleta : MonoBehaviour
     }
     public void voltarSelecaoFase()
     {
+
+        SistemaReiniciarWorkspaceBlockly();
         SceneManager.LoadScene("SelecaoFase");
     }
 

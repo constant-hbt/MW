@@ -18,5 +18,8 @@ mergeInto(LibraryManager.library, {
     },
     EnviarQTDBlocosMinimosParaPassarFase:function(qtdBlocos){
         qtdBlocosMinimos = qtdBlocos;
+    },
+    TesteQtdMoeda:function(qtdMoeda){
+        alert("Metade das moedas coletadas = "+qtdMoeda);
     }
 });

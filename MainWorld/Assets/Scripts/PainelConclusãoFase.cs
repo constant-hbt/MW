@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 public class PainelConclusãoFase : MonoBehaviour
 {
     private GameController _gameController;
@@ -19,6 +20,8 @@ public class PainelConclusãoFase : MonoBehaviour
     public GameObject estrela3;
     private int qtdEstrelasAdquiridas;
 
+    [DllImport("__Internal")]
+    public static extern void SistemaReiniciarWorkspaceBlockly();
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -86,6 +89,8 @@ public class PainelConclusãoFase : MonoBehaviour
             _gameController.numGold += _controllerFase.qtdMoedasColetadas;
             
         }
+
+        SistemaReiniciarWorkspaceBlockly();
         SceneManager.LoadScene("SelecaoFase");
 
         

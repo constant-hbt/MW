@@ -4449,12 +4449,12 @@ PrefabInstance:
     - target: {fileID: 502471386383694074, guid: 785260ea98b1d9b4db1238f55b903d72,
         type: 3}
       propertyPath: m_Offset.y
-      value: 0.026196837
+      value: 1.095218
       objectReference: {fileID: 0}
     - target: {fileID: 502471386383694074, guid: 785260ea98b1d9b4db1238f55b903d72,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.33341932
+      value: 2.4714618
       objectReference: {fileID: 0}
     - target: {fileID: 502471386383694075, guid: 785260ea98b1d9b4db1238f55b903d72,
         type: 3}
