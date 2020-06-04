@@ -17,6 +17,8 @@ public class RunaWin : MonoBehaviour
     public static extern void SistemaReiniciarWorkspaceBlockly();
 
     
+
+
     void Start()
     {
         
@@ -32,9 +34,16 @@ public class RunaWin : MonoBehaviour
     {
 
         SistemaVerifConclusaoFase(true);//se colidir com a runa quer dizer que passei de fase, portanto eu reseto o espaco blockly
-
-       // SistemaReiniciarWorkspaceBlockly();
+      
         painelFaseConcluida.SetActive(true);
+        StartCoroutine("reiniciarWorkspace");//assim que o painel aparecer espera-se alguns segundos e reinicia o espaço blockly
+    }
+    IEnumerator reiniciarWorkspace()
+    {
+       // yield return new WaitForSeconds(0.5f);
+       // ChamandoAlertFinalFase();
+        yield return new WaitForSeconds(0.5f);
+        SistemaReiniciarWorkspaceBlockly();
     }
 
 

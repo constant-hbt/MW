@@ -43,8 +43,7 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
 
-    [DllImport("__Internal")]
-    public static extern void TesteQtdMoeda(float qtdMoeda);
+    
     void Start()
     {
         SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
@@ -78,20 +77,7 @@ public class ControllerFase : MonoBehaviour
         bool naoTemMoeda = false;
 
         float metadeMoedaD = qtdMoedasDisponiveis * 0.5f;
-       /* float porcBlocosMinimos = 0;//contem a porcentagem de blocos minimos que podem ser usados para passar de fase
-        float porcBlocosUsados = 0;//contem a porcentagem de blocos que foram usados para passar a fase
-        //float porcMoedasColetadas = 0;//contem a porcentagem de estrelas que foi coletada durante a fase -- APAGAR DEPOIS
-
-        //calculos
-        porcBlocosMinimos = (qtdMinimaDeBlocosParaConclusao * 100) / qtdBlocosDisponiveis;
-        porcBlocosUsados = (qtdBlocosUsados * 100) / qtdBlocosDisponiveis;
-        //porcMoedasColetadas = (qtdMoedasColetadas * 100) / qtdMoedasDisponiveis; -- APAGAR DEPOIS
-        //porcMoedasColetadas == 100.0f -- APAGAR DEPOIS
-           
-                                APAGAR DEPOIS SE AS MODIFICACOES DERAM CERTO
-
-        //TEM ERRO AQUI
-        */
+       
         if(qtdMoedasDisponiveis == 0)
         {
             naoTemMoeda = true;
@@ -116,7 +102,7 @@ public class ControllerFase : MonoBehaviour
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }
-        TesteQtdMoeda(metadeMoedaD);
+        
         return estrelas;
     }
 

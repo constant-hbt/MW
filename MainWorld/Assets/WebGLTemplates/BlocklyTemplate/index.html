@@ -88,6 +88,7 @@
     var myInterpreter = null;
     var runner;
     var code = '';
+    var codeCompleto = '';//Contém o código contido em todas as etapas da fase
     var highlightPause = false;
     var qtdBlocosUsados = 0;//quantidade de blocos usados em cada etapa da fase
     var qtdBlocosMinimos = 0;//quantidade de blocos minimos necessarios para passar de fase
@@ -240,13 +241,14 @@
                     Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n'; 
                     Blockly.JavaScript.addReservedWords('highlightBlock');
                     code = Blockly.JavaScript.workspaceToCode(workspace);
+                   
                     resetStepUi(true);
                 }
 
                 
                 //função responsavel pelo execução do blocos
                 function stepCode(){
-
+                    codeCompleto += Blockly.JavaScript.workspaceToCode(workspace);
                     qtdBlocosUsados = workspace.getAllBlocks().length;
                     qtdBlocosTotais += qtdBlocosUsados;
                     enviarQtdBlocosUsados(qtdBlocosUsados);
@@ -279,14 +281,10 @@
                                  unityInstance.SendMessage("playerKnight","retirarVida");
                                  resetarEspacoBlockly();
                                     qtdBlocosTotais = 0;
+
                                 }else if(passeiFase){
                                     
                                     console.log("Entrei no else if passeiFase = "+ passeiFase);
-                                    
-                                    alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
-                                            "Código utilizado para concluir a fase: \n"+
-                                            mostrarCodigo(code) );
-                                            resetarEspacoBlockly();
                                     qtdBlocosTotais = 0;
                                 }
                               }
@@ -395,7 +393,16 @@
                         return "Parabéns, você concluiu a fase usando "+qtdBlocosUsados+" blocos, mais a fase poderia ter sido concluída usando "+qtdBlocosMinimos+" !!";
                     }
                 }
+                function chamandoAlertDesempenho(){
 
+                    setTimeout(function(){
+                        alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
+                                            "Código utilizado para concluir a fase: \n"+
+                                            mostrarCodigo(codeCompleto) );
+                    codeCompleto = '';
+                    }, 5);
+                    
+                }
                 
               </script>
 </body>

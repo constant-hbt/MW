@@ -22,6 +22,12 @@ public class PainelConclusãoFase : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();
+
+    [DllImport("__Internal")]
+    public static extern void ChamandoAlertFinalFase();
+
+    private bool habilitarAlertCodigo = false;
+
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -50,16 +56,22 @@ public class PainelConclusãoFase : MonoBehaviour
                 break;
         }
 
-       
+        habilitarAlertCodigo = true;//verificar depois
         
     }
     void Update()
     {
-        
+        if (habilitarAlertCodigo)
+        {
+            ChamandoAlertFinalFase();
+            habilitarAlertCodigo = false;
+        }
     }
 
-    public void btnReiniciar(int numeroFase)
+    public void BtnReiniciar(int numeroFase)
     {
+        ///contabilizarDesempenho(idFase);
+
         switch (numeroFase)
         {
             case 1:
@@ -73,27 +85,33 @@ public class PainelConclusãoFase : MonoBehaviour
         
     }
 
-    public void btnPlay(int idFase)
+    public void btnPlay()
     {
-        if(_gameController.fasesConcluidas < idFase)
-        {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
-         //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
-         //ao idFase como concluida
-            _gameController.fasesConcluidas = idFase;
-            
-        }
-        if(_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
-        {
-            _gameController.numEstrelas += qtdEstrelasAdquiridas - _gameController.EstrelasFases[idFase - 1];//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
-            _gameController.EstrelasFases[idFase - 1] = qtdEstrelasAdquiridas;
-            _gameController.numGold += _controllerFase.qtdMoedasColetadas;
-            
-        }
+       
 
-        SistemaReiniciarWorkspaceBlockly();
+        //SistemaReiniciarWorkspaceBlockly();
         SceneManager.LoadScene("SelecaoFase");
 
         
     }
+
+   public void contabilizarDesempenho(int idFase)
+    {
+        if (_gameController.fasesConcluidas < idFase)
+        {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
+         //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
+         //ao idFase como concluida
+            _gameController.fasesConcluidas = idFase;
+
+        }
+        if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
+        {
+            _gameController.numEstrelas += qtdEstrelasAdquiridas - _gameController.EstrelasFases[idFase - 1];//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
+            _gameController.EstrelasFases[idFase - 1] = qtdEstrelasAdquiridas;
+            _gameController.numGold += _controllerFase.qtdMoedasColetadas;
+
+        }
+    }
+    
 
 }
