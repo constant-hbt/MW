@@ -4631,6 +4631,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 502471386383694075, guid: 785260ea98b1d9b4db1238f55b903d72,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 502471386383694075, guid: 785260ea98b1d9b4db1238f55b903d72,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3414223677018731621, guid: 785260ea98b1d9b4db1238f55b903d72,
         type: 3}
       propertyPath: painelFaseConcluida
