@@ -5489,7 +5489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778910638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.176, y: 0.398, z: -0}
+  m_LocalPosition: {x: -0.14, y: 0.295, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1609259445}
@@ -5537,9 +5537,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.009676963, y: -0.13410044}
+  m_Offset: {x: -0.009676963, y: -0.12869674}
   serializedVersion: 2
-  m_Radius: 0.11870679
+  m_Radius: 0.113303095
 --- !u!50 &778910644
 Rigidbody2D:
   serializedVersion: 4
@@ -5552,7 +5552,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.07267223
+  m_Mass: 0.06873359
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -5613,6 +5613,7 @@ MonoBehaviour:
   jumpForceY: 15
   jumpForceX: 6
   lookLeft: 0
+  tileChao: {fileID: 1710082739}
   scanRayCabeca: {fileID: 864389135}
   scanRayOmbro: {fileID: 401512101}
   scanRayTorax: {fileID: 664298132}
@@ -8558,7 +8559,7 @@ GameObject:
   - component: {fileID: 1710082741}
   m_Layer: 8
   m_Name: PlataformasColisor
-  m_TagString: Untagged
+  m_TagString: chao
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

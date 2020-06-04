@@ -11,13 +11,10 @@ public class PlayerController : MonoBehaviour
     [Header("Configuração de vida(HUD)")]
     public int vidaAtual = 3;
 
-    [Header("Configuração de movimentação")]
-    //private         float           h;//variavel de movimento horizontal 
+    [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
-   // private         float           v;//variavel de movimento vertical
     public          bool            atacando; //indica que o personagem esta atacando
     public          int             IdAnimation; //indica o id da animação
-    private         bool            habilitarMovimentacaoPlayer =true;
     
     public          Collider2D      collisorEmPé;// Collisor em pé 
     public          Collider2D      collisorAbaixado;//Collisor abaixado
@@ -32,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public          bool            lookLeft;//indica se o personagem esta olhando para a esquerda
     private         float           x;//pega o scale.x do player
 
+
+    public GameObject tileChao; //utilizado somente para mudar a tag do chao enquanto o personagem estiver andando
     
     [Header("Configuração de Interação com inimigos")]
    
@@ -78,94 +77,12 @@ public class PlayerController : MonoBehaviour
     {
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
         
-        //movimentar o personagem
-        if (!habilitarMovimentacaoPlayer)
-            return;
-        playerRB.velocity = new Vector3(0 * speed, playerRB.velocity.y);
-       //h = Input.GetAxisRaw("Horizontal");//capta a entra dos cursores seta direita e seta esquerda
-        
     }
     void Update()
     {
 
-        // v = Input.GetAxis("Vertical");//capta a entra dos cursores seta cima e seta baixo
-        /*
-         if (h > 0 && lookLeft == true && atacando == false)
-         {
-             Flip();
-         }
-         else if (h < 0 && lookLeft == false && atacando == false)
-         {
-             Flip();
-         }
-
-          if (v < 0)
-          {
-              IdAnimation = 2;
-              if (Grounded == true)
-              {
-                  h = 0; //quando o personagem estiver em posição de defesa, ele não poderá se movimentar para frente
-              }
-          }/*else if (h != 0)
-          {
-              IdAnimation = 1;
-          }
-          else
-          {
-              IdAnimation = 0;
-          }*/
-
-        //inputs para movimentação
-        /* if (Input.GetButtonDown("Fire1") && v >= 0 && atacando == false)
-         {
-             playerAnimator.SetTrigger("attack1");
-         }
-         if (Input.GetButtonDown("Fire2") && v >= 0 && atacando == false)
-         {
-             playerAnimator.SetTrigger("attack2");
-         }
-         if (Input.GetButtonDown("Fire3") && v >= 0 && atacando == false)
-         {
-             playerAnimator.SetTrigger("attack3");
-         }
-         /*if (Input.GetButtonDown("Jump") && Grounded == true)
-         {//salto lateral
-             habilitarMovimentacaoPlayer= false;
-             playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
-             StartCoroutine("ValidarMovimentoPlayer");
-
-         }
-         if(Input.GetKeyDown(KeyCode.V) && Grounded == true)
-         {//pulo simples 
-
-                 playerRB.AddForce(new Vector2(0, jumpForceY));
-
-
-         }*/
-
-
-        /*if (atacando == true && Grounded == true)
-        {
-            h = 0;//personagem não poderá se mover enquanto estiver atacando
-        }
-       /* if (v < 0 && Grounded == true)
-        {//habilita o collisor quando o personagem estiver abaixado
-            collisorAbaixado.enabled = true;
-            collisorEmPé.enabled = false;
-        }
-        else if (v >= 0 && Grounded == true)
-        {//habilita o collisor quando o personagem estiver em pé
-            collisorAbaixado.enabled = false;
-            collisorEmPé.enabled = true;
-        }
-        else if (v != 0 && Grounded == false)
-        {//arruma o collisor quando o personagem salta
-            collisorAbaixado.enabled = false;
-            collisorEmPé.enabled = true;
-        }*/
 
         playerAnimator.SetBool("grounded", Grounded);
-       // playerAnimator.SetInteger("idAnimation", IdAnimation);
         playerAnimator.SetFloat("speedY", playerRB.velocity.y);
 
         //RAYCAST
@@ -192,6 +109,18 @@ public class PlayerController : MonoBehaviour
                 break;
             case "coletavel":
                 col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
+                break;
+            
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        switch (collision.gameObject.tag)
+        {
+            case "chao":
+                print("Estou colidindo com o chao");
+                playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 break;
         }
     }
@@ -305,15 +234,15 @@ public class PlayerController : MonoBehaviour
 
     public void startAvancar()//somente para testes , apagar depois
     {
-        habilitarMovimentacaoPlayer = false;
+        desmarcarFreezyX();
         StartCoroutine("PuloLateral");
-        // pararMovimentacao();
-        StartCoroutine("zerarVelocidadeAposSaltoL");
     }
     public void StartDefender()
     {
-        habilitarMovimentacaoPlayer = false;
+        desmarcarFreezyX();
+        mudarTagChao();
         StartCoroutine("Avancar");
+        
         StartCoroutine("zerarVelocidadeAposSaltoL");
         
     }
@@ -322,20 +251,20 @@ public class PlayerController : MonoBehaviour
         switch (tipoMovimentacao)
         {
             case "avancar":
-                habilitarMovimentacaoPlayer = false;
+                desmarcarFreezyX();
+                mudarTagChao();
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
                 pararMovimentacao();
-                habilitarMovimentacaoPlayer = true;
                 break;
             case "puloSimples":
                 StartCoroutine("PuloSimples");
                 yield return new WaitForSeconds(0.2f);
                 break;
             case "puloLateral":
-                habilitarMovimentacaoPlayer = false;
+                desmarcarFreezyX();
                 StartCoroutine("PuloLateral");
-                StartCoroutine("zerarVelocidadeAposSaltoL");
+                
                 yield return new WaitForSeconds(1f);
                 break;
             case "defender":
@@ -400,16 +329,20 @@ public class PlayerController : MonoBehaviour
     //---------------------------------------------------------------------------------
     private void pararMovimentacao()
     {
-        playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
+         playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
+        
         playerAnimator.SetInteger("idAnimation", 0);
+        voltarTagChao();
+        
     }
     IEnumerator zerarVelocidadeAposSaltoL()
     {
        
-       yield return new WaitForSeconds(0.9f);
-        habilitarMovimentacaoPlayer = true;
+       yield return new WaitForSeconds(0.6f);
         pararMovimentacao();
-       
+        //playerAnimator.SetInteger("idAnimation", 0);
+        //playerAnimator.SetInteger("idAnimation", 0);
+
     }
     private void habilitaColisorAbaixado()
     {
@@ -423,12 +356,31 @@ public class PlayerController : MonoBehaviour
     }
 
     //Zerar velocidade do player
-    public void zerarVelocidadeP()
+    public void marcarFreezyX()
     {
-        playerRB.velocity = new Vector2(0, 0);
+        playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
+
+    public void desmarcarFreezyX()
+    {
+        playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     public void retirarVida()
     {
         _gameController.numVida-= 1;
+    }
+
+    public void zerarVelocidadeP()
+    {
+        playerRB.velocity = new Vector2(0, 0);
+    }
+
+    public void mudarTagChao()
+    {
+        tileChao.tag = "Untagged";
+    }
+    public void voltarTagChao()
+    {
+        tileChao.tag = "chao";
     }
 }

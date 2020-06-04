@@ -15,6 +15,7 @@ TagManager:
   - teleporte
   - Win
   - coletavel
+  - chao
   layers:
   - Default
   - TransparentFX
