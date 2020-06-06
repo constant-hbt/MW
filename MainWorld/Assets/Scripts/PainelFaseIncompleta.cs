@@ -15,6 +15,8 @@ public class PainelFaseIncompleta : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();
 
+    [DllImport("__Internal")]
+    public static extern void ReiniciarVarCodeCompleto();
     void Start()
     {
         
@@ -30,6 +32,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
+        ReiniciarVarCodeCompleto();
         SceneManager.LoadScene("Fase"+idFase);
     }
     public void voltarSelecaoFase()

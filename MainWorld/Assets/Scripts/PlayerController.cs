@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
     private         Animator        playerAnimator;
     private         Rigidbody2D     playerRB;
     private GameController _gameController;
-
+    private ControllerFase _controllerFase;
+    /*
     [Header("Configuração de vida(HUD)")]
     public int vidaAtual = 3;
-
+    */
     [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
     public          bool            atacando; //indica que o personagem esta atacando
@@ -63,20 +64,57 @@ public class PlayerController : MonoBehaviour
     // testando
     [DllImport("__Internal")]
     public static extern void Win();
+
+    [DllImport("__Internal")]
+    public static extern void Teste(int qtdB, float veloX , float veloY , bool grounded);
+
+
+    //teste para verificar se o player concluiu a fase ou não
+    private int qtdBlocosUsados = -1; // quantidade de blocos usados na fase
+    private bool passeiFase ;
+    public GameObject painelFaseIncompleta;
+    private bool validar = false;
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
 
         x = transform.localScale.x;
+
+        passeiFase = false;
     }
 
   
     private void FixedUpdate()
     {
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
+
+
+        if (validar)
+        {
+            if (_controllerFase.qtdBlocosUsados == 0)//garante que nao entrara no if abaixo quando nao tiver blocos na area de trabalho
+            {
+                qtdBlocosUsados = -1;
+            }
+            else
+            {
+                qtdBlocosUsados = _controllerFase.qtdBlocosUsados;
+                validar = false;
+            }
+        }
         
+
+        if(qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
+        {
+            Teste(_controllerFase.qtdBlocosUsados, playerRB.velocity.x, playerRB.velocity.y, Grounded);
+            print("entrei");
+            painelFaseIncompleta.SetActive(true);
+            this.retirarVida();
+            qtdBlocosUsados = -1;
+        }
     }
     void Update()
     {
@@ -104,6 +142,8 @@ public class PlayerController : MonoBehaviour
                 
                 break;
             case "Win":
+                this.passeiFase = true;
+                qtdBlocosUsados = -1;//resetar a var e nao deixar entrar no if que ativa o painel de fase incompleta
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 col.gameObject.SendMessage("ativarPainel", SendMessageOptions.DontRequireReceiver);
                 break;
@@ -236,11 +276,12 @@ public class PlayerController : MonoBehaviour
     {
         desmarcarFreezyX();
         StartCoroutine("PuloLateral");
+        StartCoroutine("diminuirQTD");
     }
     public void StartDefender()
     {
         desmarcarFreezyX();
-        mudarTagChao();
+        mudarTagChao("semTagChao");
         StartCoroutine("Avancar");
         
         StartCoroutine("zerarVelocidadeAposSaltoL");
@@ -252,7 +293,7 @@ public class PlayerController : MonoBehaviour
         {
             case "avancar":
                 desmarcarFreezyX();
-                mudarTagChao();
+                mudarTagChao("semTagChao");
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
                 pararMovimentacao();
@@ -264,7 +305,6 @@ public class PlayerController : MonoBehaviour
             case "puloLateral":
                 desmarcarFreezyX();
                 StartCoroutine("PuloLateral");
-                
                 yield return new WaitForSeconds(1f);
                 break;
             case "defender":
@@ -282,6 +322,8 @@ public class PlayerController : MonoBehaviour
      
         playerRB.velocity = new Vector2(playerRB.velocity.x + ( 0.8f * speed), playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 1);
+        passeiFase = false;
+        StartCoroutine("diminuirQTD");
         yield return null;
     }
     IEnumerator PuloSimples()//Ok , falta ajustar a altura do salto e a distancia
@@ -290,6 +332,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.AddForce(new Vector2(0, jumpForceY));
         }
+        StartCoroutine("diminuirQTD");
         yield return null;
     }
     IEnumerator PuloLateral()//ok , falta ajustar a altura
@@ -299,8 +342,8 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
         }
-       // StartCoroutine("zerarVelocidadeAposSaltoL");
-       
+        // StartCoroutine("zerarVelocidadeAposSaltoL");
+        StartCoroutine("diminuirQTD");
         yield return null;
     }
     IEnumerator Defender()//ok
@@ -313,17 +356,20 @@ public class PlayerController : MonoBehaviour
         }
         yield return new WaitForSeconds(0.6f);
         playerAnimator.SetInteger("idAnimation", 0);
+       
         habilitaColisorEmPe();
-        
+        StartCoroutine("diminuirQTD");
     }
     IEnumerator Attack1()//ok
     {
         playerAnimator.SetTrigger("attack1");
+        StartCoroutine("diminuirQTD");
         yield return null;
     }
     IEnumerator Attack3()//ok
     {
         playerAnimator.SetTrigger("attack3");
+        StartCoroutine("diminuirQTD");
         yield return null;
     }
     //---------------------------------------------------------------------------------
@@ -332,7 +378,7 @@ public class PlayerController : MonoBehaviour
          playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
         
         playerAnimator.SetInteger("idAnimation", 0);
-        voltarTagChao();
+        mudarTagChao("comTagChao");
         
     }
     IEnumerator zerarVelocidadeAposSaltoL()
@@ -340,8 +386,6 @@ public class PlayerController : MonoBehaviour
        
        yield return new WaitForSeconds(0.6f);
         pararMovimentacao();
-        //playerAnimator.SetInteger("idAnimation", 0);
-        //playerAnimator.SetInteger("idAnimation", 0);
 
     }
     private void habilitaColisorAbaixado()
@@ -375,12 +419,27 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = new Vector2(0, 0);
     }
 
-    public void mudarTagChao()
+    public void mudarTagChao(string tipoTag)
     {
-        tileChao.tag = "Untagged";
+        switch (tipoTag)
+        {
+            case "semTagChao":
+                tileChao.tag = "Untagged";
+                break;
+            case "comTagChao":
+                tileChao.tag = "chao";
+                break;
+        }
+        ;
     }
-    public void voltarTagChao()
+    IEnumerator diminuirQTD()
     {
-        tileChao.tag = "chao";
+        yield return new WaitForSeconds(1.5f);
+        qtdBlocosUsados--;
+    }
+
+    public void mudarValidar()
+    {
+        validar = true;
     }
 }

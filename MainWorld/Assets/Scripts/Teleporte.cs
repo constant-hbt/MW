@@ -23,7 +23,7 @@ public class Teleporte : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();
     [DllImport("__Internal")]
-    public static extern void SistemaVerifConclusaoFase(bool situacaoFase);
+    public static extern void SistemaVerifConclusaoFase(string situacaoFase);
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -38,7 +38,7 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
-        SistemaVerifConclusaoFase(true);//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
+        SistemaVerifConclusaoFase("passeiFase");//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
         //Ao teleportar para outra etapa da fase reseta o espaco blockly
         SistemaReiniciarWorkspaceBlockly();
         _controllerFase.fases[1].SetActive(true);

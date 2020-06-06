@@ -70,7 +70,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
-        ///contabilizarDesempenho(idFase);
+        
 
         switch (numeroFase)
         {

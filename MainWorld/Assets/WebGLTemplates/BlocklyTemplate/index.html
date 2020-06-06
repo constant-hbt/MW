@@ -93,7 +93,7 @@
     var qtdBlocosUsados = 0;//quantidade de blocos usados em cada etapa da fase
     var qtdBlocosMinimos = 0;//quantidade de blocos minimos necessarios para passar de fase
     var qtdBlocosTotais = 0;//quantidade de blocos usados em toda fase(pensando nas fases que ha mais de uma etapa)
-    var passeiFase = false;//variavel utilizada para saber se passei ou não de fase
+    var passeiFase ='';//variavel utilizada para saber se passei ou não de fase
     
     var botaoExecutar = document.getElementById('execute');
 
@@ -253,6 +253,8 @@
                     qtdBlocosTotais += qtdBlocosUsados;
                     enviarQtdBlocosUsados(qtdBlocosUsados);
 
+
+                    unityInstance.SendMessage('playerKnight', 'mudarValidar');
                     if(!myInterpreter){
                         //primeira declaração deste código
                         //limpe a saída do programa
@@ -266,30 +268,39 @@
 
                     highlightPause = false;
                     myInterpreter = new Interpreter(code , initApi);
+                    
                     runner = function(){
                         if(myInterpreter){
                             var masCodigo = myInterpreter.step();
                             if(masCodigo){
-                                setTimeout(runner,80);
+                                
+
+                                setTimeout(runner,80);//se der erro voltar para 80
                             }else{
 
                                 console.log("PasseiFase = "+ passeiFase);
                                 //faz algo quando o codigo acabar de ser lido (Ex: resetar a area de trabalho ao passar de fase)
-                              var verificarConclusaoFase = function(){  if(!passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
-                                
-                                 unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
-                                 unityInstance.SendMessage("playerKnight","retirarVida");
-                                 resetarEspacoBlockly();
-                                    qtdBlocosTotais = 0;
+                              
+                                    /*
+                    var verificarConclusaoFase= function (){  
+                    if(passeiFase){//se passeiFase() returnar false quer dizer que não passei de fase
+                        console.log("Entrei no else if passeiFase = "+ passeiFase);
+                                   qtdBlocosTotais = 0;
+                               
 
-                                }else if(passeiFase){
-                                    
-                                    console.log("Entrei no else if passeiFase = "+ passeiFase);
-                                    qtdBlocosTotais = 0;
-                                }
-                              }
-                              setTimeout(verificarConclusaoFase, 800);
+                               }else if(!passeiFase){
+                                   
+                                unityInstance.SendMessage("PainelDerrotaFase","ativarFaseIncompleta");
+                                unityInstance.SendMessage("playerKnight","retirarVida");
+                                resetarEspacoBlockly();
+                                   qtdBlocosTotais = 0;
+
+                                   
+                               }
+                             }
+                              setTimeout(verificarConclusaoFase, 1200);
                               console.log("PasseiFaseFinal = "+ passeiFase);
+                              */
                             }
                         }
                     };
@@ -356,6 +367,8 @@
                
                 }
 
+
+
                //funcao responsavel por limpar a área de trabalho blockly
                 function resetarEspacoBlockly(){// --> função criada por mim
                                     resetInterpreter();
@@ -403,6 +416,7 @@
                     }, 1000);
                     
                 }
+               
                 
               </script>
 </body>
