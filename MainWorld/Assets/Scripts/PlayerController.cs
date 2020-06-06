@@ -73,7 +73,8 @@ public class PlayerController : MonoBehaviour
     private int qtdBlocosUsados = -1; // quantidade de blocos usados na fase
     private bool passeiFase ;
     public GameObject painelFaseIncompleta;
-    private bool validar = false;
+    private bool validarConclusaoFase = false;
+    private bool interpreteAcabou = false;
 
     void Start()
     {
@@ -93,7 +94,7 @@ public class PlayerController : MonoBehaviour
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
 
 
-        if (validar)
+        if (validarConclusaoFase)
         {
             if (_controllerFase.qtdBlocosUsados == 0)//garante que nao entrara no if abaixo quando nao tiver blocos na area de trabalho
             {
@@ -102,18 +103,19 @@ public class PlayerController : MonoBehaviour
             else
             {
                 qtdBlocosUsados = _controllerFase.qtdBlocosUsados;
-                validar = false;
+                validarConclusaoFase = false;
             }
         }
         
 
-        if(qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
+        if(interpreteAcabou && qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
         {
             Teste(_controllerFase.qtdBlocosUsados, playerRB.velocity.x, playerRB.velocity.y, Grounded);
             print("entrei");
             painelFaseIncompleta.SetActive(true);
             this.retirarVida();
             qtdBlocosUsados = -1;
+            interpreteAcabou = false;
         }
     }
     void Update()
@@ -440,6 +442,11 @@ public class PlayerController : MonoBehaviour
 
     public void mudarValidar()
     {
-        validar = true;
+        validarConclusaoFase = true;
+    }
+    IEnumerator respostaInterprete()
+    {
+        yield return new WaitForSeconds(1.5f);
+        interpreteAcabou = true;
     }
 }

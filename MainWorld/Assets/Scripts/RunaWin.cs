@@ -40,8 +40,8 @@ public class RunaWin : MonoBehaviour
     }
     IEnumerator reiniciarWorkspace()
     {
-        yield return new WaitForSeconds(1f);
-        ChamandoAlertFinalFase();
+        //yield return new WaitForSeconds(1f);
+        //ChamandoAlertFinalFase();
         yield return new WaitForSeconds(0.5f);
         SistemaReiniciarWorkspaceBlockly();
     }
