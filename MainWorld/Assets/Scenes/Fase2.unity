@@ -5263,7 +5263,9 @@ MonoBehaviour:
   jumpForceY: 15
   jumpForceX: 6
   lookLeft: 0
-  tileChao: {fileID: 1710082739}
+  tileChao:
+  - {fileID: 1710082739}
+  - {fileID: 2013617313}
   scanRayCabeca: {fileID: 864389135}
   scanRayOmbro: {fileID: 401512101}
   scanRayTorax: {fileID: 664298132}
@@ -5280,7 +5282,7 @@ MonoBehaviour:
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
   playerTransform: {fileID: 0}
-  painelFaseIncompleta: {fileID: 0}
+  painelFaseIncompleta: {fileID: 1403440150}
 --- !u!1 &808340542
 GameObject:
   m_ObjectHideFlags: 0
@@ -11380,6 +11382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1147219892563695732, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0eb61ce74bdfee42831ce0fc15bee1c, type: 3}

@@ -1846,7 +1846,8 @@ MonoBehaviour:
   jumpForceY: 15
   jumpForceX: 6
   lookLeft: 0
-  tileChao: {fileID: 841923057}
+  tileChao:
+  - {fileID: 841923057}
   scanRayCabeca: {fileID: 864389135}
   scanRayOmbro: {fileID: 401512101}
   scanRayTorax: {fileID: 664298132}

@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private         float           x;//pega o scale.x do player
 
 
-    public GameObject tileChao; //utilizado somente para mudar a tag do chao enquanto o personagem estiver andando
+    public GameObject[] tileChao; //utilizado somente para mudar a tag do chao enquanto o personagem estiver andando
     
     [Header("Configuração de Interação com inimigos")]
    
@@ -71,10 +71,13 @@ public class PlayerController : MonoBehaviour
 
     //teste para verificar se o player concluiu a fase ou não
     private int qtdBlocosUsados = -1; // quantidade de blocos usados na fase
+    private int qtdBlocosCadaParteFase = 0;
     private bool passeiFase ;
     public GameObject painelFaseIncompleta;
     private bool validarConclusaoFase = false;
     private bool interpreteAcabou = false;
+
+    private int parteFase;
 
     void Start()
     {
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
         x = transform.localScale.x;
 
         passeiFase = false;
+        parteFase = 0;
     }
 
   
@@ -96,19 +100,18 @@ public class PlayerController : MonoBehaviour
 
         if (validarConclusaoFase)
         {
-            if (_controllerFase.qtdBlocosUsados == 0)//garante que nao entrara no if abaixo quando nao tiver blocos na area de trabalho
+            if (qtdBlocosCadaParteFase == 0)//garante que nao entrara no if abaixo quando nao tiver blocos na area de trabalho
             {
                 qtdBlocosUsados = -1;
             }
             else
             {
-                qtdBlocosUsados = _controllerFase.qtdBlocosUsados;
+                qtdBlocosUsados = qtdBlocosCadaParteFase;
                 validarConclusaoFase = false;
             }
         }
-        
 
-        if(interpreteAcabou && qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
+        if (interpreteAcabou && qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
         {
             Teste(_controllerFase.qtdBlocosUsados, playerRB.velocity.x, playerRB.velocity.y, Grounded);
             print("entrei");
@@ -141,6 +144,7 @@ public class PlayerController : MonoBehaviour
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+                parteFase += 1;
                 
                 break;
             case "Win":
@@ -283,7 +287,7 @@ public class PlayerController : MonoBehaviour
     public void StartDefender()
     {
         desmarcarFreezyX();
-        mudarTagChao("semTagChao");
+        mudarTagChao("semTagChao" , parteFase);
         StartCoroutine("Avancar");
         
         StartCoroutine("zerarVelocidadeAposSaltoL");
@@ -295,7 +299,7 @@ public class PlayerController : MonoBehaviour
         {
             case "avancar":
                 desmarcarFreezyX();
-                mudarTagChao("semTagChao");
+                mudarTagChao("semTagChao", parteFase);
                 StartCoroutine("Avancar");
                 yield return new WaitForSeconds(0.6f);
                 pararMovimentacao();
@@ -380,7 +384,7 @@ public class PlayerController : MonoBehaviour
          playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
         
         playerAnimator.SetInteger("idAnimation", 0);
-        mudarTagChao("comTagChao");
+        mudarTagChao("comTagChao", parteFase);
         
     }
     IEnumerator zerarVelocidadeAposSaltoL()
@@ -421,15 +425,15 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = new Vector2(0, 0);
     }
 
-    public void mudarTagChao(string tipoTag)
+    public void mudarTagChao(string tipoTag , int parteFase)
     {
         switch (tipoTag)
         {
             case "semTagChao":
-                tileChao.tag = "Untagged";
+                tileChao[parteFase].tag = "Untagged";
                 break;
             case "comTagChao":
-                tileChao.tag = "chao";
+                tileChao[parteFase].tag = "chao";
                 break;
         }
         ;
@@ -448,5 +452,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         interpreteAcabou = true;
+    }
+
+    public void receberBlocos( int qtdBlocoParte)
+    {
+        qtdBlocosCadaParteFase = qtdBlocoParte;
     }
 }
