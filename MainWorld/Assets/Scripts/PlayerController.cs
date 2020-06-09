@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
 
     //teste para verificar se o player concluiu a fase ou não
-    private int qtdBlocosUsados = -1; // quantidade de blocos usados na fase
+    public int qtdBlocosUsados = -1; // quantidade de blocos usados na fase
     private int qtdBlocosCadaParteFase = 0;
     private bool passeiFase ;
     public GameObject painelFaseIncompleta;

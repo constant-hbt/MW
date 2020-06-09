@@ -48,5 +48,8 @@ public class Teleporte : MonoBehaviour
         //Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
         SistemaLimiteBloco(blocosDisponiveis);
        _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
+
+
+        _playerController.qtdBlocosUsados = -1;
     }
 }
