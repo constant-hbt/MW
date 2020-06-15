@@ -25,9 +25,6 @@ public class HUD : MonoBehaviour
     }
     void Update()
     {
-
-        
-
         goldText.text = _controllerFase.qtdMoedasColetadas.ToString();
         vidaText.text = _gameController.numVida.ToString();
     }

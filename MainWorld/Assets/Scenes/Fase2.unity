@@ -2534,6 +2534,7 @@ MonoBehaviour:
   cam: {fileID: 2144691937}
   transicaoCamera:
   - {fileID: 577290055}
+  parteFase: 1
   blocosDisponiveis: 10
 --- !u!1 &328860959
 GameObject:
@@ -5281,8 +5282,8 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 0}
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
-  playerTransform: {fileID: 0}
   painelFaseIncompleta: {fileID: 1403440150}
+  qtdBlocosUsados: -1
 --- !u!1 &808340542
 GameObject:
   m_ObjectHideFlags: 0

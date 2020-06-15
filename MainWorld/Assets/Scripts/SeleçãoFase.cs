@@ -12,27 +12,27 @@ public class SeleçãoFase : MonoBehaviour
     /// <summary>
     /// RESPONSAVEL PELAS CONFIGURACOES DA CENA DE SELECAO DE FASE
     /// </summary>
-    private ControleDeFases _controleDeFases;
-    private GameController _gameController;
+    private         ControleDeFases         _controleDeFases;
+    private         GameController          _gameController;
     
 
     [Header("Controle HUD")]
 
     //Barra de progresso de conclusão de fase
-    public GameObject barraDeProgresso;
-    public TextMeshProUGUI textoProgresso;
-    public TextMeshProUGUI tmpFaseSelecionada;
-    public float maxProgresso;//no caso como tem 9 fases esse é o maior progresso
-    public float progressoAtual;
+    public          GameObject          barraDeProgresso;
+    public          TextMeshProUGUI     textoProgresso;
+    public          TextMeshProUGUI     tmpFaseSelecionada;
+    public          float               maxProgresso;//no caso como tem 9 fases esse é o maior progresso
+    public          float               progressoAtual;
 
     //coins coletadas
-    public TextMeshProUGUI goldText;
-    public TextMeshProUGUI vidaText;
-    public TextMeshProUGUI estrelaText;
+    public          TextMeshProUGUI     goldText;
+    public          TextMeshProUGUI     vidaText;
+    public          TextMeshProUGUI     estrelaText;
 
     //Integração com js da página
     [DllImport("__Internal")]
-    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+    private static extern void          SistemaDeEnableDisableBlocos(bool situacao);
 
     void Start()
     {

@@ -1863,7 +1863,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 690481063}
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
-  playerTransform: {fileID: 778910641}
+  qtdBlocosUsados: -1
   painelFaseIncompleta: {fileID: 1962855189}
 --- !u!1 &841923057
 GameObject:

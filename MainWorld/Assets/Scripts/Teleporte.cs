@@ -9,28 +9,25 @@ public class Teleporte : MonoBehaviour
     /// RESPONSAVEL PELOS OBJETOS DE TELEPORTE DO PLAYER DE UMA PARTE DA FASE PARA OUTRA
     /// </summary>
 
-    private PlayerController _playerController;// transform do player
-    private ControllerFase _controllerFase;
-    public Transform destino;
-    public Camera cam;
-    public Transform[] transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
+    private         PlayerController            _playerController;// transform do player
+    private         ControllerFase              _controllerFase;
+    public          Transform                   destino;
+    public          Camera                      cam;
+    public          Transform[]                 transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
 
     [Header("Configuração de Limite de blocos")]
-    public int blocosDisponiveis;
+    public          int                         blocosDisponiveis;
     [DllImport("__Internal")]
-    public static extern void SistemaLimiteBloco(int qtdBlocoFase);
+    public static extern void            SistemaLimiteBloco(int qtdBlocoFase);
 
     [DllImport("__Internal")]
-    public static extern void SistemaReiniciarWorkspaceBlockly();
-    [DllImport("__Internal")]
-    public static extern void SistemaVerifConclusaoFase(string situacaoFase);
+    public static extern void            SistemaReiniciarWorkspaceBlockly();
+    
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -38,18 +35,14 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
-        SistemaVerifConclusaoFase("passeiFase");//quando os blocos acabarem de executar , nao irá executar as config de painel de derrota
-        //Ao teleportar para outra etapa da fase reseta o espaco blockly
-        SistemaReiniciarWorkspaceBlockly();
-        _controllerFase.fases[1].SetActive(true);
-        _playerController.zerarVelocidadeP();
-        _playerController.transform.position = destino.position;
-        cam.transform.position = transicaoCamera[0].position;
-        //Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
-        SistemaLimiteBloco(blocosDisponiveis);
-       _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
-
-
-        _playerController.qtdBlocosUsados = -1;
+       
+        SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
+        _controllerFase.fases[1].SetActive(true);//habilita a próxima parte da fase
+        _playerController.zerarVelocidadeP();//zera a velocidade do player
+        _playerController.transform.position = destino.position;//muda a posição do player para o inicio da proxima parte da fase
+        cam.transform.position = transicaoCamera[0].position;//muda a posição da câmera para a proxima parte da fase
+        SistemaLimiteBloco(blocosDisponiveis);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
+        _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
+        _playerController.qtdBlocosUsados = -1;//necessário para não entrar no if que habilita o painel de fase incompleta , pois ao iniciar a próxima etapa o usuário necessitará de tempo ate dispor os blocos
     }
 }

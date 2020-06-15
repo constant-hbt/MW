@@ -22,10 +22,5 @@ mergeInto(LibraryManager.library, {
     ReiniciarVarCodeCompleto: function(){
         codeCompleto = '';
     },
-    Teste:function(qtdBlocosUsados, veloX , veloY , grounded){
-        console.log("Entrei no if dentro do player para mostrar que nao passei de fase");
-        console.log("Quantidade de blocos usados = "+qtdBlocosUsados );
-        console.log("Velocidade x = "+ veloX+" Velocidade y ="+veloY);
-        console.log("Estou no chao ="+ grounded);
-    },
+    
 });

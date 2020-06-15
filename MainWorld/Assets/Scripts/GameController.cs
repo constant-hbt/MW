@@ -11,20 +11,20 @@ public class GameController : MonoBehaviour
     /// ARMAZENA TODOS OS DADOS QUE DEVEM SER TRANSITADOS DENTRE AS FASES
     /// </summary>
     [Header("Banco de Dados Seleção de Fase")]
-    public int fasesConcluidas;
-    public int progressoAtual;
-    public int numGold;
-    public int numVida = 10;
-    public int numEstrelas;
+    public      int         fasesConcluidas;
+    public      int         progressoAtual;
+    public      int         numGold;
+    public      int         numVida = 10;
+    public      int         numEstrelas;
 
     [Header("Banco de Dados do Player")]
-    public int vidaMax = 3;
+    public      int         vidaMax = 3;
 
-    public GameObject[] gameControllers;
+    public      GameObject[] gameControllers;
 
 
     [Header("Banco de dados Estrelas Adquiridas")]
-    public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
+    public      int[]       EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
 
     void Start()
     {

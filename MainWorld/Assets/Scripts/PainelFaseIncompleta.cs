@@ -7,10 +7,10 @@ using System.Runtime.InteropServices;
 
 public class PainelFaseIncompleta : MonoBehaviour
 {
-    private GameController _gameController;
+    private         GameController      _gameController;
 
-    public Button btnClose;
-    public GameObject painelFaseIncompleta;
+    public          Button              btnClose;
+    public          GameObject          painelFaseIncompleta;
 
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();

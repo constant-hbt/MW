@@ -9,14 +9,14 @@ public class ControleDeFases : MonoBehaviour
     /// <summary>
     /// RESPONSAVEL POR HABILITAR AS FASES E DESABILITAR CONFORME AS FASES VÃO SENDO CONCLUIDAS OU NÃO
     /// </summary>
-    private GameController _gameController;
+    private             GameController          _gameController;
     [Header("Fases")]
-    public GameObject[] btnFases;
-    public GameObject[] estradasFases;
+    public              GameObject[]            btnFases;
+    public              GameObject[]            estradasFases;
 
     [Header("Territorios")]
-    public GameObject[] territorios;
-    public GameObject[] cadeados;
+    public              GameObject[]            territorios;
+    public              GameObject[]            cadeados;
 
 
     

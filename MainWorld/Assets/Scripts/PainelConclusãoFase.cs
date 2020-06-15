@@ -7,31 +7,32 @@ using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 public class PainelConclusãoFase : MonoBehaviour
 {
-    private GameController _gameController;
-    private ControllerFase _controllerFase;
+    private             GameController          _gameController;
+    private             ControllerFase          _controllerFase;
 
-    public TextMeshProUGUI tmpEstrelas;
-    public TextMeshProUGUI tmpMoedas;
+    public              TextMeshProUGUI         tmpEstrelas;
+    public              TextMeshProUGUI         tmpMoedas;
 
     [Header("Configuração Estrelas")]
 
-    public GameObject estrela1;
-    public GameObject estrela2;
-    public GameObject estrela3;
-    private int qtdEstrelasAdquiridas;
+    public              GameObject              estrela1;
+    public              GameObject              estrela2;
+    public              GameObject              estrela3;
+    private             int                     qtdEstrelasAdquiridas;
 
     [DllImport("__Internal")]
-    public static extern void SistemaReiniciarWorkspaceBlockly();
+    public static extern void                   SistemaReiniciarWorkspaceBlockly();
 
     [DllImport("__Internal")]
-    public static extern void ChamandoAlertFinalFase();
+    public static extern void                   ChamandoAlertFinalFase();
 
-    private bool habilitarAlertCodigo = false;
+    private             bool                    habilitarAlertCodigo = false;
 
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
         tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
@@ -56,7 +57,7 @@ public class PainelConclusãoFase : MonoBehaviour
                 break;
         }
 
-        habilitarAlertCodigo = true;//verificar depois
+        habilitarAlertCodigo = true;
         
     }
     void Update()
@@ -70,8 +71,6 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
-        
-
         switch (numeroFase)
         {
             case 1:
@@ -81,18 +80,11 @@ public class PainelConclusãoFase : MonoBehaviour
                 SceneManager.LoadScene("Fase2");
                 break;
         }
-
-        
     }
 
     public void btnPlay()
     {
-       
-
-        //SistemaReiniciarWorkspaceBlockly();
         SceneManager.LoadScene("SelecaoFase");
-
-        
     }
 
    public void contabilizarDesempenho(int idFase)

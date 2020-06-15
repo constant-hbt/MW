@@ -10,38 +10,34 @@ public class ControllerFase : MonoBehaviour
     /// <summary>
     /// RESPONSAVEL PELAS CONFIGURAÇÕES UNIVERSAIS DENTRO DE CADA FASE
     /// </summary>
-    private GameController _gameController;
+    private                 GameController          _gameController;
 
     [Header("Coletáveis durante a fase")]
-    public int gold;//todas as moedas coletadas durante a fase;
-    public int estrelas = 0;//estrelas adquiras com o desempenho na fase
-
-    public GameObject[] fases;
-
-   
-    
+    public                  int                     gold;//todas as moedas coletadas durante a fase;
+    public                  int                     estrelas = 0;//estrelas adquiras com o desempenho na fase
+    public                  GameObject[]            fases;
 
     //Configuração do Limite de blocos por fase
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
     //maximos que pode ser utilizado durante aquela fase
     [Header("Distribuição de Estrelas")]
-    public int qtdBlocosDisponiveisEmTodaFase;//quantidade de blocos disponiveis para poder concluir a fase
-    public int qtdMinimaDeBlocosParaConclusao;//quantidade de blocos minimos que devem ser usados para concluir a fase
-    public int qtdBlocosUsados;//quantidade de blocos que foram utilizados para concluir a fase
-    public int qtdMoedasDisponiveis;//quantidade de moedas disponiveis para coleta na fase
-    public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
+    public                  int                     qtdBlocosDisponiveisEmTodaFase;//quantidade de blocos disponiveis para poder concluir a fase
+    public                  int                     qtdMinimaDeBlocosParaConclusao;//quantidade de blocos minimos que devem ser usados para concluir a fase
+    public                  int                     qtdBlocosUsados;//quantidade de blocos que foram utilizados para concluir a fase
+    public                  int                     qtdMoedasDisponiveis;//quantidade de moedas disponiveis para coleta na fase
+    public                  int                     qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
 
 
     [Header("Quantidade disponivel para a primeira parte da fase")]
-    public int qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
+    public                  int                     qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
     //Integração com o js da página
     [DllImport("__Internal")]
-    public static extern void SistemaLimiteBloco(int qtdBlocoFase);
+    public static extern void                       SistemaLimiteBloco(int qtdBlocoFase);
     [DllImport("__Internal")]
-    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+    private static extern void                      SistemaDeEnableDisableBlocos(bool situacao);
 
     [DllImport("__Internal")]
-    public static extern void EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
+    public static extern void                       EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
 
     
     void Start()
@@ -87,18 +83,18 @@ public class ControllerFase : MonoBehaviour
             naoTemMoeda = false;
         }
 
-        if (qtdBlocosUsados <= qtdBlocosDisponiveis &&qtdMoedasColetadas == qtdMoedasDisponiveis ||
-            qtdBlocosUsados <= qtdBlocosDisponiveis && naoTemMoeda)
+        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas == qtdMoedasDisponiveis ||
+            qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(qtdBlocosUsados > qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis ||
-                 qtdBlocosUsados <= qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis )
+        }else if(qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis ||
+                 qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis )
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(qtdBlocosUsados > qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas <  metadeMoedaD ||/*Ex:Não tem nenhuma moeda na fase e mesmo assim ele usa uma quantidade de blocos maior que o minimo*/
-                qtdBlocosUsados <= qtdBlocosDisponiveis && !naoTemMoeda && qtdMoedasColetadas < metadeMoedaD ||
-                qtdBlocosUsados > qtdBlocosDisponiveis && naoTemMoeda/*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
+        else if(qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas <  metadeMoedaD ||/*Ex:Não tem nenhuma moeda na fase e mesmo assim ele usa uma quantidade de blocos maior que o minimo*/
+                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas < metadeMoedaD ||
+                qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && naoTemMoeda/*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }

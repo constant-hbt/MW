@@ -14,32 +14,32 @@ public class TelaInicial : MonoBehaviour
     
 
     [Header("GameObject dos Botões de Configuração")]
-    public GameObject botaoConfig;
-    public GameObject botaoSom;
-    public GameObject botaoControl;
+    public              GameObject          botaoConfig;
+    public              GameObject          botaoSom;
+    public              GameObject          botaoControl;
 
     [Header("Paineis")]
-    public GameObject painelSom;
-    public GameObject painelControles;
+    public              GameObject          painelSom;
+    public              GameObject          painelControles;
 
     [Header("Painel Controles / Botões de Controle")]
 
-    public GameObject[] btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
+    public              GameObject[]        btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
     //usado para redimensionar o tamanho de cada obj que contem os botões, para assim adequar o scrollBar
-    public RectTransform contentPersonagem;
-    public RectTransform contentEstruturas;
-    public RectTransform contentCond;
+    public              RectTransform       contentPersonagem;
+    public              RectTransform       contentEstruturas;
+    public              RectTransform       contentCond;
     //usada para ativar e ativar os objetos contendo cada grupo de botões
-    public GameObject[] paineisDeControles;
-    public ScrollRect scrollRect;
+    public              GameObject[]        paineisDeControles;
+    public              ScrollRect          scrollRect;
 
     [Header("Botões de Configuração")]
     
-    public Button closePainelControle;
-    public Button closePainelSom;
-    public Button btnSom;
-    public Button btnControle;
-    public Button btnConfig;
+    public              Button              closePainelControle;
+    public              Button              closePainelSom;
+    public              Button              btnSom;
+    public              Button              btnControle;
+    public              Button              btnConfig;
 
 
     //Integração com js da página
