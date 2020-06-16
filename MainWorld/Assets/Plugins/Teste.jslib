@@ -21,6 +21,10 @@ mergeInto(LibraryManager.library, {
     },
     ReiniciarVarCodeCompleto: function(){
         codeCompleto = '';
+        
+    },
+    ReiniciarVarBlocosTotais: function(){
+        qtdBlocosTotais = 0;
     },
     
 });
