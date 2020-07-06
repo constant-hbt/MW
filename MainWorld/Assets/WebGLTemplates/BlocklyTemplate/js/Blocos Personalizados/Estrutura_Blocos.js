@@ -17,9 +17,10 @@ Blockly.JavaScript['defender'] = function(block) {
 };
 
 Blockly.JavaScript['atacar'] = function(block) {
+  var value_ataque = Blockly.JavaScript.valueToCode(block, 'Ataque', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = '...;\n';
-  return "atacar();\n";
+  return "atacar("+value_ataque+")";
 };
 
 Blockly.JavaScript['pular_frente'] = function(block) {

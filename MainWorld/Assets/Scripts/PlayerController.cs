@@ -62,6 +62,22 @@ public class PlayerController : MonoBehaviour
     private         bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
     private         int             parteFase;//denomina em que parte da fase o personagem está
 
+
+    //TESTE  HA INIMIGO
+    [DllImport("__Internal")]
+    public static extern void CondicaoHaInimigo(bool temp_situacaoInimigo);
+   
+    [DllImport("__Internal")]
+    public static extern void CondicaoNaoHaInimigo(bool temp_situacaoInimigo);
+
+    [DllImport("__Internal")]
+    public static extern void Teste(bool condInim);
+
+
+
+    private bool colidiComInimigo = false;
+    private bool rayCast_ColidindoInimigo = false;
+    private bool rayCast_NaoColidindoInimigo = true;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -96,9 +112,9 @@ public class PlayerController : MonoBehaviour
         }
 
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
-        if (interpreteAcabou && qtdBlocosUsados == 0 && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
+        if (interpreteAcabou /*&& qtdBlocosUsados == 0*/ && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
         {
-            
+            //
             painelFaseIncompleta.SetActive(true);
             this.retirarVida();
             qtdBlocosUsados = -1;
@@ -112,6 +128,8 @@ public class PlayerController : MonoBehaviour
 
         //RAYCAST
         interagir();
+
+        interagirInimigo();
     }
     
     //CONTROLE DE COLISÃO
@@ -182,6 +200,24 @@ public class PlayerController : MonoBehaviour
 
     void interagir()
     {
+
+        RaycastHit2D scanTeleporte = Physics2D.Raycast(scanRayCintura.transform.position, cinturaScan, 0.4f, interacaoTeleporte /*faz com que teste a colisao somente em objetos que tiverem essa layer*/);
+        Debug.DrawRay(scanRayCintura.transform.position, cinturaScan * 0.4f, Color.blue);
+
+        if (scanTeleporte == true)
+        {
+
+            objetoInteração = scanTeleporte.collider.gameObject;
+        }
+
+
+    }
+
+    public void interagirInimigo()
+    {
+        bool testeColisaoInimigo = false;
+        bool testeNaoColidindoInimigo = true;
+
         RaycastHit2D scanCabeca = Physics2D.Raycast(scanRayCabeca.transform.position, cabecaScan, 0.2f, interacao);
         Debug.DrawRay(scanRayCabeca.transform.position, cabecaScan * 0.17f, Color.red);
 
@@ -199,24 +235,50 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D scanPe = Physics2D.Raycast(scanRayPe.transform.position, peScan, 0.38f, interacao);
         Debug.DrawRay(scanRayPe.transform.position, peScan * 0.38f, Color.black);
-
-        RaycastHit2D scanTeleporte = Physics2D.Raycast(scanRayCintura.transform.position, cinturaScan, 0.4f, interacaoTeleporte /*faz com que teste a colisao somente em objetos que tiverem essa layer*/);
-        Debug.DrawRay(scanRayCintura.transform.position, cinturaScan * 0.4f, Color.blue);
-
-        if(scanTeleporte == true)
-        {
-           
-            objetoInteração = scanTeleporte.collider.gameObject;
-        }
-
+        /*
         if (scanCabeca == true || scanOmbro == true || scanTorax == true || scanCintura == true)
         {
-                playerAnimator.SetTrigger("attack1");
+            playerAnimator.SetTrigger("attack1");
 
-        }else if(scanJoelho == true || scanPe == true)
+        }
+        else if (scanJoelho == true || scanPe == true)
         {
             playerAnimator.SetTrigger("attack3");
+        }*/
+        if (scanCabeca == true || scanOmbro == true || scanTorax == true || scanCintura == true || scanJoelho == true || scanPe == true)
+        {
+            testeColisaoInimigo = true;
+            testeNaoColidindoInimigo = false;
+            //colidiComInimigo = true;
+            // Teste(true);
+            //  CondicaoInimigo(true);
         }
+        else
+        {
+            testeColisaoInimigo = false;
+            testeNaoColidindoInimigo = true;
+            // CondicaoInimigo(false);
+            // Debug.Log("RayCast nao ta achando o inimigo");
+        }
+
+        if (rayCast_ColidindoInimigo != testeColisaoInimigo)
+        {
+            // Teste(rayCast_ColidindoInimigo);
+            Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
+            rayCast_ColidindoInimigo = testeColisaoInimigo;
+            CondicaoHaInimigo(rayCast_ColidindoInimigo);
+        }
+        if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
+        {
+            Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
+            rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+        }
+    }
+
+    public void retornoFuncHaInimigo()
+    {//quando eu terminar de executar o bloco ha inimigos reinicio a var colidiInimigo para ver se a mais inimigos perto do player
+        colidiComInimigo = false;
     }
 
     void habilitarColliderAtak(int tipoAtaque)
@@ -272,10 +334,10 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("Defender");
                 yield return new WaitForSeconds(0.2f);
                 break;
-            case "atacar":
-                StartCoroutine("Attack1");
+            /*case "atacar":
+                StartCoroutine("Ataque" , valor_ataque);
                 yield return new WaitForSeconds(0.2f);
-                break;
+                break;*/
         }
     }
     IEnumerator Avancar()
@@ -315,17 +377,18 @@ public class PlayerController : MonoBehaviour
             habilitaColisorAbaixado();
             playerAnimator.SetInteger("idAnimation", 2);
         }
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(2f);
         playerAnimator.SetInteger("idAnimation", 0);
        
         habilitaColisorEmPe();
         StartCoroutine("diminuirQTDBlocosU");
     }
-    IEnumerator Attack1()//ok
+    IEnumerator Ataque(int valor_ataque)//ok
     {
+        Debug.Log("Meu ataque tem o valor de = " + valor_ataque);
         playerAnimator.SetTrigger("attack1");
         StartCoroutine("diminuirQTDBlocosU");
-        yield return null;
+        yield return new WaitForSeconds(0.2f);
     }
     IEnumerator Attack3()//ok
     {

@@ -26,5 +26,16 @@ mergeInto(LibraryManager.library, {
     ReiniciarVarBlocosTotais: function(){
         qtdBlocosTotais = 0;
     },
+    CondicaoHaInimigo: function(temp_situacaoInimigo){
+        retornoSendHaInim = temp_situacaoInimigo;
+    }
+    ,
+    CondicaoNaoHaInimigo: function(temp_situacaoInimigo){
+        retornoSendNaoHaInim = temp_situacaoInimigo;
+    }
+    ,
+    Teste: function(condInim){
+        console.log("Valor de retorno da funcao CondicaoInimigo: "+ condInim);
+    },
     
 });

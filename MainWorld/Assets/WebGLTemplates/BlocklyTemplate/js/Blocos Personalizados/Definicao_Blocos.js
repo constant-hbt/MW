@@ -36,11 +36,12 @@ Blockly.Blocks['defender'] = {
 
 Blockly.Blocks['atacar'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Atacar");
+    this.appendValueInput("Ataque")
+        .setCheck("String")
+        .appendField("Ataque");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(345);
+    this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
   }

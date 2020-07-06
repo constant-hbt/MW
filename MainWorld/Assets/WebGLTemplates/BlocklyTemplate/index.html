@@ -61,6 +61,9 @@
             <block type="ha_inimigos" class="bloco" disabled = "true"></block>
             <block type="nao_ha_inimigos" class="bloco" disabled = "true"></block>
         </category>
+        <category id="catVariables" class = "bloco" color = "330" custom = "VARIABLE" name = "Variaveis" disabled = "true">
+
+        </category>
       </xml>
      
       
@@ -97,6 +100,8 @@
     var qtdBlocosMinimos = 0;//quantidade de blocos minimos necessarios para passar de fase
     var qtdBlocosTotais = 0;//quantidade de blocos usados em toda fase(pensando nas fases que ha mais de uma etapa)
     var botaoExecutar = document.getElementById('execute');
+    var retornoSendHaInim = false;//retorno da requisição sendMessage do ha_inimigo
+    var retornoSendNaoHaInim = false;//retorno da requisição sendMessage do nao_ha_inimigo
 
     // --> Criação do espaço de trabalho blockly
     var workspace = Blockly.inject('blocklyDiv',
@@ -169,8 +174,10 @@
                         interpreter.createNativeFunction(wrapper));
                     
                     //Adicionando uma função de API para movimentação de ataque
-                    var wrapper = function(){
-                        return unityInstance.SendMessage('playerKnight','Movimentacao', 'atacar');
+                    var wrapper = function(value_ataque){
+
+
+                        return unityInstance.SendMessage('playerKnight','Ataque',value_ataque);
                     }
                     interpreter.setProperty(scope, 'atacar',
                         interpreter.createNativeFunction(wrapper));
@@ -179,14 +186,19 @@
 
                 //Adicionando uma função de API para bool há inimigos
                 var wrapper = function(){
-                        return unityInstance.SendMessage('PlayerController','Movimentacao', 'ha_inimigos');//arrumar depois
-                    }
+                    console.log("Antes de entrar na promise RetornoSendM = " + retornoSendHaInim);
+
+                            return retornoSendHaInim;
+                             }
                     interpreter.setProperty(scope, 'ha_inimigos',
                         interpreter.createNativeFunction(wrapper));
                 
                 //Adicionando uma função de API para bool não há inimigos
                 var wrapper = function(){
-                        return unityInstance.SendMessage('PlayerController','Movimentacao', 'nao_ha_inimigos');//arrumar depois
+                    console.log("Antes de entrar na promise RetornoSendM = " + retornoSendNaoHaInim);
+
+                        return retornoSendNaoHaInim;   
+                        
                     }
                     interpreter.setProperty(scope, 'nao_ha_inimigos',
                         interpreter.createNativeFunction(wrapper)); 
@@ -219,7 +231,10 @@
                             if(masCodigo){
                                 setTimeout(runner,80);
                             }else{
-                                unityInstance.SendMessage('playerKnight', 'respostaInterprete');
+                                setTimeout(function(){
+                                    console.log("INTERPRETE ACABOU, TO ATIVANDO O PAINEL");
+                                    unityInstance.SendMessage('playerKnight', 'respostaInterprete');
+                                },1000);
                             }
                         }
                     };

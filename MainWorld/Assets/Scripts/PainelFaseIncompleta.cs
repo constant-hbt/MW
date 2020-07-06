@@ -43,6 +43,8 @@ public class PainelFaseIncompleta : MonoBehaviour
     {
 
         SistemaReiniciarWorkspaceBlockly();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("SelecaoFase");
     }
 
