@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
     public          bool            Grounded; //indica se o player esta no chao
     public          LayerMask       oqueEhChao; //indica o que é superficie para o teste do grounded
     public          Transform       groundCheck; //objeto responsavel por fazer a detecção para vermos se estamos tocando o chão
-    
-    public          float           jumpForceY = 15; //força aplicada no eixo y para gerar o pulo do personagem
-    public          float           jumpForceX = 6;//força aplicada no eixo x para gerar o pulo do personagem
+
+    public          float           jumpForceY_puloSimples = 15;
+    public          float           jumpForceY_pularFrente = 10; //força aplicada no eixo y para gerar o pulo do personagem
+    public          float           jumpForceX_pularFrente = 5.5f;//força aplicada no eixo x para gerar o pulo do personagem
     
     public          bool            lookLeft;//indica se o personagem esta olhando para a esquerda
     private         float           x;//pega o scale.x do player
@@ -266,13 +267,13 @@ public class PlayerController : MonoBehaviour
             // Teste(rayCast_ColidindoInimigo);
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-            CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            //CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
@@ -353,7 +354,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Grounded == true)
         {
-            playerRB.AddForce(new Vector2(0, jumpForceY));
+            playerRB.AddForce(new Vector2(0, jumpForceY_puloSimples));
         }
         StartCoroutine("diminuirQTDBlocosU");
         yield return null;
@@ -363,7 +364,7 @@ public class PlayerController : MonoBehaviour
       
         if (Grounded == true)
         {
-            playerRB.AddForce(new Vector2(jumpForceX * x,jumpForceY));
+            playerRB.AddForce(new Vector2(jumpForceX_pularFrente * x,jumpForceY_pularFrente));
         }
         // StartCoroutine("zerarVelocidadeAposSaltoL");
         StartCoroutine("diminuirQTDBlocosU");
@@ -481,10 +482,7 @@ public class PlayerController : MonoBehaviour
     public void StartDefender()//somente para testes , apagar depois
     {
         desmarcarFreezyX();
-        mudarTagChao("semTagChao", parteFase);
-        StartCoroutine("Avancar");
-
-        StartCoroutine("zerarVelocidadeAposSaltoL");
+        StartCoroutine("PuloSimples");
 
     }
 }
