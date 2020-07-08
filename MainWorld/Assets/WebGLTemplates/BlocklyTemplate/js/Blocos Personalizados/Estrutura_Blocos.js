@@ -42,3 +42,9 @@ Blockly.JavaScript['nao_ha_inimigos'] = function(block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return ["nao_ha_inimigos()", Blockly.JavaScript.ORDER_NONE];
 };
+
+Blockly.JavaScript['virar'] = function(block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...;\n';
+  return "virar();\n";
+};

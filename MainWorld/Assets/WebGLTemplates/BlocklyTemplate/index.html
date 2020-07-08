@@ -51,6 +51,7 @@
             <block type="pular_frente" class="bloco" disabled = "true"></block>
             <block type="defender" class="bloco" disabled = "true"></block>
             <block type="atacar" class="bloco" disabled = "true"></block>
+            <block type="virar" class="bloco" disabled = "true"></block>
         </category>
         <category name = "Estruturas">
             <block type="controls_if" class="bloco" disabled = "true"></block>
@@ -202,6 +203,12 @@
                     }
                     interpreter.setProperty(scope, 'nao_ha_inimigos',
                         interpreter.createNativeFunction(wrapper)); 
+
+                        var wrapper = function(){
+                        return unityInstance.SendMessage('playerKnight','Flip');
+                    }
+                    interpreter.setProperty(scope, 'virar',
+                        interpreter.createNativeFunction(wrapper));
             }
              //--------------
 

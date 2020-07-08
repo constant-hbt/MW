@@ -209,6 +209,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 785330823907895646, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134
+      objectReference: {fileID: 0}
+    - target: {fileID: 785330823907895646, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 152
+      objectReference: {fileID: 0}
     - target: {fileID: 1147219890567773210, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -217,17 +227,17 @@ PrefabInstance:
     - target: {fileID: 1147219890567773210, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: startAvancar
+      value: startPuloFrente
       objectReference: {fileID: 0}
     - target: {fileID: 1147219890567773211, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 183.79999
+      value: 206
       objectReference: {fileID: 0}
     - target: {fileID: 1147219890567773211, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -103.60004
+      value: -319
       objectReference: {fileID: 0}
     - target: {fileID: 1147219890842079992, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
@@ -237,17 +247,17 @@ PrefabInstance:
     - target: {fileID: 1147219890842079992, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartDefender
+      value: StartPuloSimples
       objectReference: {fileID: 0}
     - target: {fileID: 1147219890842079993, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 182.6
+      value: 153
       objectReference: {fileID: 0}
     - target: {fileID: 1147219890842079993, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 195.9
+      value: -318
       objectReference: {fileID: 0}
     - target: {fileID: 1147219892563695720, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
         type: 3}
@@ -368,6 +378,76 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719562608220265280, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 778910646}
+    - target: {fileID: 2719562608220265280, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: testeAtaque
+      objectReference: {fileID: 0}
+    - target: {fileID: 4880606527862409068, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 778910646}
+    - target: {fileID: 4880606527862409068, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartAvancar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020434699762932496, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 5020434699762932496, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 208
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559812026174553975, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 778910646}
+    - target: {fileID: 5559812026174553975, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartDefender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734081540339378096, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5734081540339378096, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -96
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911468694087189346, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 207
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911468694087189346, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -94
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069902758858376181, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 778910646}
+    - target: {fileID: 7069902758858376181, guid: a0eb61ce74bdfee42831ce0fc15bee1c,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartVirar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0eb61ce74bdfee42831ce0fc15bee1c, type: 3}
@@ -2461,6 +2541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  moveX: 0.8
   atacando: 0
   IdAnimation: 0
   "collisorEmP\xE9": {fileID: 778910642}
@@ -2491,6 +2572,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 690481063}
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
+  forcaDano: 0
   painelFaseIncompleta: {fileID: 1962855189}
   qtdBlocosUsados: -1
 --- !u!1 &841923057

@@ -80,3 +80,15 @@ Blockly.Blocks['nao_ha_inimigos'] = {
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['virar'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Virar");
+        this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(345);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

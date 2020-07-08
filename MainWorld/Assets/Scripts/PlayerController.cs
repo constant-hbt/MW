@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     
     [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
+    public          float           moveX = 0.8f;
     public          bool            atacando; //indica que o personagem esta atacando
     public          int             IdAnimation; //indica o id da animação
     
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
     [Header("Configuração de Ataque")]
     public          PolygonCollider2D colliderAttack1;//colisor da arma usado na animação de ataque1, que só é ativado em um momento especifico da animação de ataque
     public          PolygonCollider2D colliderAttack3;//colisor da arma usado na animação de ataque3, que só é ativado em um momento específico da animação
+    public          float             forcaDano;
+
 
     [Header("Sistema de Configuração de fase")]
     public          GameObject      painelFaseIncompleta;//gameObject do obj painelFaseIncompleta
@@ -139,7 +142,7 @@ public class PlayerController : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case "inimigo":
-                print("Colidi com um inimigo");//somente utilizado para testes
+                print("Dei um dano no inimigo com força igual a = "+forcaDano);//somente utilizado para testes
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
@@ -174,7 +177,7 @@ public class PlayerController : MonoBehaviour
     {
         lookLeft = !lookLeft; // inverte o valor da var bool
         x *= -1; // inverte o sinal do scale x
-
+        moveX *= -1;
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 
         cabecaScan.x = cabecaScan.x * -1;
@@ -335,16 +338,13 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine("Defender");
                 yield return new WaitForSeconds(0.2f);
                 break;
-            /*case "atacar":
-                StartCoroutine("Ataque" , valor_ataque);
-                yield return new WaitForSeconds(0.2f);
-                break;*/
+            
         }
     }
     IEnumerator Avancar()
     {//configurações da movimentação de avanço do player 
      
-        playerRB.velocity = new Vector2(playerRB.velocity.x + ( 0.8f * speed), playerRB.velocity.y);
+        playerRB.velocity = new Vector2(playerRB.velocity.x + ( moveX * speed), playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 1);
         passeiFase = false;
         StartCoroutine("diminuirQTDBlocosU");
@@ -384,11 +384,16 @@ public class PlayerController : MonoBehaviour
         habilitaColisorEmPe();
         StartCoroutine("diminuirQTDBlocosU");
     }
+    public void testeAtaque()
+    {
+        StartCoroutine("Ataque", 10);
+    }
     IEnumerator Ataque(int valor_ataque)//ok
     {
+        forcaDano = valor_ataque;
         Debug.Log("Meu ataque tem o valor de = " + valor_ataque);
         playerAnimator.SetTrigger("attack1");
-        StartCoroutine("diminuirQTDBlocosU");
+        //StartCoroutine("diminuirQTDBlocosU");
         yield return new WaitForSeconds(0.2f);
     }
     IEnumerator Attack3()//ok
@@ -398,6 +403,10 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
     //---------------------------------------------------------------------------------
+
+  
+
+
     private void pararMovimentacao()
     {
          playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
@@ -472,17 +481,39 @@ public class PlayerController : MonoBehaviour
         qtdBlocosCadaParteFase = qtdBlocoParte;
     }
 
+
     //BOTOÕES UTILIZADOS PARA TESTE
-    public void startAvancar()//somente para testes , apagar depois
+    public void startPuloFrente()//somente para testes , apagar depois
     {
         desmarcarFreezyX();
         StartCoroutine("PuloLateral");
         StartCoroutine("diminuirQTDBlocosU");
     }
-    public void StartDefender()//somente para testes , apagar depois
+    public void StartPuloSimples()//somente para testes , apagar depois
     {
         desmarcarFreezyX();
         StartCoroutine("PuloSimples");
 
+    }
+    public void StartDefender()
+    {
+        StartCoroutine("Defender");
+    }
+    public void StartAvancar()
+    {
+        StartCoroutine("TESTEAvancar");
+    }
+    IEnumerator TESTEAvancar()
+    {//configurações da movimentação de avanço do player 
+        desmarcarFreezyX();
+        mudarTagChao("semTagChao", parteFase);
+        StartCoroutine("Avancar");
+        yield return new WaitForSeconds(0.6f);
+        pararMovimentacao();
+
+    }
+    public void StartVirar()
+    {
+        Flip();
     }
 }
