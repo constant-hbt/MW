@@ -94,16 +94,21 @@ public class ControllerFase : MonoBehaviour
             qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis ||
-                 qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis )
+        }else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas > metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
+                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas > metadeMoedaD && qtdMoedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas <  metadeMoedaD ||/*Ex:Não tem nenhuma moeda na fase e mesmo assim ele usa uma quantidade de blocos maior que o minimo*/
-                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && !naoTemMoeda && qtdMoedasColetadas < metadeMoedaD ||
-                qtdBlocosUsados > qtdMinimaDeBlocosParaConclusao && naoTemMoeda/*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
+        else if(qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas < metadeMoedaD && !naoTemMoeda ||
+                qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas == 0 && naoTemMoeda ||
+                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
+        }
+        else
+        {
+            Debug.Log("Erro aqui no distribuicao Estrelas"); //BUG AQUI
+            estrelas = 100;
         }
         
         return estrelas;

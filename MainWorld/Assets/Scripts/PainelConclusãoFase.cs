@@ -34,6 +34,7 @@ public class PainelConclusãoFase : MonoBehaviour
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
+        Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
         tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
 
@@ -95,7 +96,7 @@ public class PainelConclusãoFase : MonoBehaviour
          //ao idFase como concluida
             _gameController.fasesConcluidas = idFase;
 
-        }
+        } //AQUI PROVAVELMENTE TENHA UM BUG
         if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
         {
             _gameController.numEstrelas += qtdEstrelasAdquiridas - _gameController.EstrelasFases[idFase - 1];//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
