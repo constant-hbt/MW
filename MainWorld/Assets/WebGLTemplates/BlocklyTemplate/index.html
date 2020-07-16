@@ -16,18 +16,22 @@
       <!--BOOTSTRAP-->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
       <!--JS-->
     
-    <script src="js/acorn_interpreter.js"></script>
-    <script src="js/blockly_compressed.js"></script>
-    <script src="js/blocks_compressed.js"></script>
-    <script src="js/javascript_compressed.js"></script>
-    <script src = "msg/js/pt-br.js" > </script> 
-    <script src = "js/storage.js" > </script>
-    <script src="js/IntegracaoBlockly.js"></script>
+    <script src="js/Config_Blockly/acorn_interpreter.js"></script>
+    <script src="js/Config_Blockly/blockly_compressed.js"></script>
+    <script src="js/Config_Blockly/blocks_compressed.js"></script>
+    <script src="js/Config_Blockly/javascript_compressed.js"></script>
     
+    <script src = "js/Config_Blockly/messages.js" > </script> 
+    <script src = "js/Config_Blockly/storage.js" > </script>
+    
+    <!--WORKSPACE BLOCKLY-->
+    <script src="js/Config_Blockly/Workspace_Blockly/Api.js"></script>
+    <script src="js/Config_Blockly/Workspace_Blockly/func_Blockly.js"></script>
+    <!--FIM WORKSPACE BLOCKLY-->
     <!--Blocos Customizados-->
       <script src="js/Blocos Personalizados/Definicao_Blocos.js"></script>
       <script src="js/Blocos Personalizados/Estrutura_Blocos.js"></script>
@@ -87,7 +91,7 @@
   <div >
    <p>
     
-    <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = true>
+    <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = "true">
         <img id="iconPlay" src="img/botãoPlay.png" alt="botao de play">    
         Executar
     </button>
@@ -100,312 +104,6 @@
     <div id="unityContainer" style="width: 960px; height: 600px; "></div>
    
   </div>
-   <script>
-
-          //VARIÁVEIS ---------
-    var myInterpreter = null;
-    var runner;
-    var code = '';
-    var codeCompleto = '';//Contém o código contido em todas as etapas da fase
-    var highlightPause = false;
-    var qtdBlocosUsados = 0;//quantidade de blocos usados em cada etapa da fase
-    var qtdBlocosMinimos = 0;//quantidade de blocos minimos necessarios para passar de fase
-    var qtdBlocosTotais = 0;//quantidade de blocos usados em toda fase(pensando nas fases que ha mais de uma etapa)
-    var botaoExecutar = document.getElementById('execute');
-    var retornoSendHaInim = false;//retorno da requisição sendMessage do ha_inimigo
-    var retornoSendNaoHaInim = false;//retorno da requisição sendMessage do nao_ha_inimigo
-
-    // --> Criação do espaço de trabalho blockly
-    var workspace = Blockly.inject('blocklyDiv',
-    {toolbox: document.getElementById('toolbox'),
-    zoom:
-    {controls: true,
-     wheel: true,
-     startScale: 1.0,
-     maxScale: 3,
-     minScale: 0.3,
-     scaleSpeed: 1.2},
-     trashcan: true,
-     maxBlocks:0 } //define o maximo de bloco que pode ser usado por fase
-     );
-
-    //----------------------
-
-            //Funções da API    
-            function initApi(interpreter , scope){
-                //Adiciona uma função de API ao alert
-                var wrapper = function(text) {
-                    return alert(arguments.length ? text : '');
-                    };
-                    interpreter.setProperty(scope, 'alert',
-                         interpreter.createNativeFunction(wrapper));
-
-                //Adiciona uma função de API para o bloco de prompt
-                var wrapper = function(text){
-                    return interpreter.createPrimitive(prompt(text));
-                    };
-                    interpreter.setProperty(scope, prompt , 
-                             interpreter.createNativeFunction(wrapper));
-
-
-                    //Adicionando uma função de API para destacar blocos.
-                     var wrapper = function(id) {
-                            return interpreter.createPrimitive(highlightBlock(id));
-                            };
-                            interpreter.setProperty(scope, 'highlightBlock',
-                               interpreter.createNativeFunction(wrapper));
-
-                    // MOVIMENTAÇÃO DO PERSONAGEM        
-                        
-                    //Adicionando uma função de API para movimentação para frente
-                    var wrapper = function(){
-                        return  unityInstance.SendMessage('playerKnight','Movimentacao' , 'avancar');//arrumar depois para movimentar o player para frente
-                    }
-                    interpreter.setProperty(scope, 'avancar',
-                        interpreter.createNativeFunction(wrapper));
-
-                    //Adicionando uma função de API para pular
-                    var wrapper = function(){
-                        return unityInstance.SendMessage('playerKnight','Movimentacao','puloSimples');
-                    }
-                    interpreter.setProperty(scope,'pular',
-                        interpreter.createNativeFunction(wrapper));
-                    
-                    //Adicionando uma função de API para movimentação de salto com impulso para frente
-                    var wrapper = function(){
-                        return unityInstance.SendMessage('playerKnight','Movimentacao', 'puloLateral');//arrumar depois
-                    }
-                    interpreter.setProperty(scope, 'pular_frente',
-                        interpreter.createNativeFunction(wrapper));
-                    
-                    //Adicionando uma função de API para movimentação de defesa
-                    var wrapper = function(){
-                        return unityInstance.SendMessage('playerKnight','Movimentacao', 'defender');
-                    }
-                    interpreter.setProperty(scope, 'defender',
-                        interpreter.createNativeFunction(wrapper));
-                    
-                    //Adicionando uma função de API para movimentação de ataque
-                    var wrapper = function(value_ataque){
-                        
-
-                        return unityInstance.SendMessage('playerKnight','Ataque',value_ataque);
-                    }
-                    interpreter.setProperty(scope, 'atacar',
-                        interpreter.createNativeFunction(wrapper));
-
-                // BLOCOS DE CONDIÇÃO
-
-                //Adicionando uma função de API para bool há inimigos
-                var wrapper = function(){
-                    console.log("Antes de entrar na promise RetornoSendM = " + retornoSendHaInim);
-
-                            return retornoSendHaInim;
-                             }
-                    interpreter.setProperty(scope, 'ha_inimigos',
-                        interpreter.createNativeFunction(wrapper));
-                
-                //Adicionando uma função de API para bool não há inimigos
-                var wrapper = function(){
-                    console.log("Antes de entrar na promise RetornoSendM = " + retornoSendNaoHaInim);
-
-                        return retornoSendNaoHaInim;   
-                        
-                    }
-                    interpreter.setProperty(scope, 'nao_ha_inimigos',
-                        interpreter.createNativeFunction(wrapper)); 
-
-                        var wrapper = function(){
-                        return unityInstance.SendMessage('playerKnight','Flip');
-                    }
-                    interpreter.setProperty(scope, 'virar',
-                        interpreter.createNativeFunction(wrapper));
-            }
-             //--------------
-
-   //FUNÇÕES Blockly
-                //função responsavel pelo Botão executar
-                function stepCode(){
-
-                    codeCompleto += Blockly.JavaScript.workspaceToCode(workspace);
-                    qtdBlocosUsados = workspace.getAllBlocks().length;
-                    qtdBlocosTotais += qtdBlocosUsados;
-                    enviarQtdBlocosUsados(qtdBlocosUsados);
-                    unityInstance.SendMessage('playerKnight', 'mudarValidar');
-
-                    if(!myInterpreter){
-                        //primeira declaração deste código
-                        //limpe a saída do programa
-                        resetStepUi(true);
-                        execute.disable = 'disable';
-                        //E, em seguida, mostre o código gerado em um alerta
-                        //Em um tempo limite para permitir que o textarea.value seja redefinido primeiro
-                        setTimeout(function(){
-                    highlightPause = false;
-                    myInterpreter = new Interpreter(code , initApi);
-                    runner = function(){
-                        if(myInterpreter){
-                            var masCodigo = myInterpreter.step();
-                            if(masCodigo){
-                                setTimeout(runner,80);
-                            }else{
-                                setTimeout(function(){
-                                    console.log("INTERPRETE ACABOU, TO ATIVANDO O PAINEL");
-                                    unityInstance.SendMessage('playerKnight', 'respostaInterprete');
-                                },1000);
-                            }
-                        }
-                    };
-                    runner();
-                },1);
-                return;
-            }
-        }
-            //Carregue o intérprete agora e após alterações futuras
-                generateCodeAndLoadIntoInterpreter();
-                workspace.addChangeListener(function(event){
-                    if(!(event instanceof Blockly.Events.Ui)){
-                        resetInterpreter();
-                        generateCodeAndLoadIntoInterpreter();
-                        //habilita o botão de execução somente se houver blocos no espaço de trabalho
-                        if(code != ''){
-                        botaoExecute.disabled = false;
-                        botaoReset.disabled = false;//mexer aqui depois
-                        
-                    }else{
-                        botaoExecute.disabled = true;
-                        botaoReset.disabled = true;
-                    }///linkar isso ao novo espaco de trabalho
-
-                    }
-                });
-
-                //Adiciona destaque ao bloco que esta sendo executado
-                function highlightBlock(id) {
-                  
-                    workspace.highlightBlock(id);
-                    highlightPause = true;
-                }
-                //reseta o interprete de codigo
-                function resetInterpreter(){
-                    myInterpreter = null;
-                    if(runner){
-                        clearTimeout(runner);
-                        runner = null;
-                    }
-                }
-                function resetStepUi(clearOutput){
-                    workspace.highlightBlock(null);
-                    highlightPause = false;
-                }
-                function generateCodeAndLoadIntoInterpreter(){
-                    //Código JavaScript gerado e analisado
-                    Blockly.JavaScript.STATEMENT_PREFIX = 'highlightBlock(%1);\n'; 
-                    Blockly.JavaScript.addReservedWords('highlightBlock');
-                    code = Blockly.JavaScript.workspaceToCode(workspace);
-                    resetStepUi(true);
-                }
-
-                 //Atualiza a quantidade de blocos
-               workspace.addChangeListener(onchange); 
-               function onchange(event){
-                           document.getElementById('capacidade').textContent = 
-                               workspace.remainingCapacity();
-                       }
-
-               
-        //Funções autorais
-             //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
-             function recriarWorkspace(qtdMaxBlocos){// -> função criada por mim
-                code = '';
-                qtdBlocosUsados = 0;
-                workspace.dispose();
-               workspace = Blockly.inject('blocklyDiv',
-                {toolbox: document.getElementById('toolbox'),
-                zoom:
-                {controls: true,
-                 wheel: true,
-                 startScale: 1.0,
-                 maxScale: 3,
-                 minScale: 0.3,
-                 scaleSpeed: 1.2},
-                 trashcan: true,
-                 maxBlocks:qtdMaxBlocos } //define o maximo de bloco que pode ser usado por fase
-                 );
-
-                 document.getElementById('capacidade').innerHTML =  workspace.remainingCapacity();
-                    //aplica a funcao ao novo espaco de trabalho
-                 function onchange(event){
-                        document.getElementById('capacidade').textContent = 
-                            workspace.remainingCapacity();//funcao responsavel por diminuir o numero de blocos disponiveis cada vez que um bloco é acrescentado ao espaco de trabalho
-                    }
-
-                workspace.addChangeListener(onchange);
-                onchange();
-
-                workspace.addChangeListener(function(event){
-                if(!(event instanceof Blockly.Events.Ui)){
-                    resetInterpreter();
-                    generateCodeAndLoadIntoInterpreter();
-                    //habilita o botão de execução somente se houver blocos no espaço de trabalho
-                    if(code != ''){
-                   botaoExecutar.disabled = false;
-                }else{
-                    botaoExecutar.disabled = true;
-                }
-             }
-            });
-        }
-
-            //ENVIAR A QUANTIDADE DE BLOCOS QUE FORAM UTILIZADOS PARA PASSAR A FASE
-            function enviarQtdBlocosUsados(qtdBloco){//-> função criada por mim
-                unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
-                unityInstance.SendMessage('playerKnight', 'receberBlocos', qtdBloco);
-                console.log('Enviei os blocos = '+ qtdBloco);
-            }
-
-            function mostrarCodigo(code){//mostra o codigo utilizado contido nos blocos escolhidos || Função criada por mim
-                var arrayCode = code.split("\n");
-                var novoCode = '';
-
-                for(var i=0; i< arrayCode.length; i++){
-                    if(arrayCode[i].indexOf("highlightBlock") == -1){
-                        novoCode += arrayCode[i]+"\n";
-                    }
-                }
-
-                return novoCode;
-            }
-
-            function msgDesempenhoBloco(qtdBlocosMinimos , qtdBlocosUsados){// -> função criada por mim
-                if(qtdBlocosUsados <= qtdBlocosMinimos){
-                    return "Parabéns pelo seu desempenho!!";
-                }else if(qtdBlocosUsados > qtdBlocosMinimos){
-                    return "Parabéns, você concluiu a fase usando "+qtdBlocosUsados+" blocos, mais a fase poderia ter sido concluída usando "+qtdBlocosMinimos+" !!";
-                }
-            }
-
-            function chamandoAlertDesempenho(){//Função criada por mim
-                setTimeout(function(){
-                    alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
-                                        "Código utilizado para concluir a fase: \n"+
-                                        mostrarCodigo(codeCompleto) );
-                codeCompleto = '';
-                qtdBlocosTotais = 0;
-                }, 1000);
-            }
-
-             //funcao responsavel por limpar a área de trabalho blockly
-             function resetarEspacoBlockly(){// --> função criada por mim
-                resetInterpreter();
-                resetStepUi(false);
-                setTimeout(function(){
-                    workspace.clear();
-                    
-                }, 1000); 
-}
-   //-----
-
-   </script>
+  <script src="js/Config_Blockly/Workspace_Blockly/InstanciaWorkspace.js"></script>
 </body>
 </html>
