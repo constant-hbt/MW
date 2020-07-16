@@ -55,8 +55,7 @@ public class PlayerController : MonoBehaviour
     public          PolygonCollider2D colliderAttack1;//colisor da arma usado na animação de ataque1, que só é ativado em um momento especifico da animação de ataque
     public          PolygonCollider2D colliderAttack3;//colisor da arma usado na animação de ataque3, que só é ativado em um momento específico da animação
     public          float             forcaDano;
-
-
+    
     [Header("Sistema de Configuração de fase")]
     public          GameObject      painelFaseIncompleta;//gameObject do obj painelFaseIncompleta
     public          int             qtdBlocosUsados = -1; // quantidade de blocos usados na fase
@@ -142,7 +141,12 @@ public class PlayerController : MonoBehaviour
         switch (col.gameObject.tag)
         {
             case "inimigo":
+                //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
+                //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
+                //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
+
                 print("Dei um dano no inimigo com força igual a = "+forcaDano);//somente utilizado para testes
+               
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
@@ -261,22 +265,22 @@ public class PlayerController : MonoBehaviour
         {
             testeColisaoInimigo = false;
             testeNaoColidindoInimigo = true;
-            // CondicaoInimigo(false);
-            // Debug.Log("RayCast nao ta achando o inimigo");
+             //CondicaoInimigo(false);
+             Debug.Log("RayCast nao ta achando o inimigo");
         }
 
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
-            // Teste(rayCast_ColidindoInimigo);
+             Teste(rayCast_ColidindoInimigo);
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
+            CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            //CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 

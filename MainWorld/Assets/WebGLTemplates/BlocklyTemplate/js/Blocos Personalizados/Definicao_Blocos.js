@@ -37,7 +37,7 @@ Blockly.Blocks['defender'] = {
 Blockly.Blocks['atacar'] = {
   init: function() {
     this.appendValueInput("Ataque")
-        .setCheck("String")
+        .setCheck(["variable_get","forca_atack"])
         .appendField("Ataque");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -63,7 +63,7 @@ Blockly.Blocks['ha_inimigos'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Há inimigos");
-    this.setOutput(true, null);
+    this.setOutput(true, "Boolean");
     this.setColour(300);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -74,7 +74,7 @@ Blockly.Blocks['nao_ha_inimigos'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Não há inimigos");
-    this.setOutput(true, null);
+    this.setOutput(true, "Boolean");
     this.setColour(300);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -88,6 +88,39 @@ Blockly.Blocks['virar'] = {
         this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(345);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['valor_ataque'] = {
+  
+  init: function() {
+    var valid = document.getElementById('valorInicialCampoForca');
+    var limit = document.getElementById('limiteForcaAtaque');
+
+    function verifValidar(valid,limit){
+      return new Blockly.FieldNumber(valid, 0, limit, 1);
+    }
+    
+
+    this.appendDummyInput()
+      .appendField("Força")
+        .appendField(verifValidar(valid.value, limit.value), "valor_ataque");
+    this.setOutput(true, "valor_forca");
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['forca_atack'] = {
+  init: function() {
+    this.appendValueInput("forca_atack")
+        .setCheck(["valor_forca", "variable_get"])
+        .appendField("Força");
+    this.setOutput(true, "forca_atack");
+    this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
   }

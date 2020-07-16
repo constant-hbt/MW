@@ -3918,6 +3918,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1077128935}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1082606475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3363012396055502231, guid: 22a2ffad1b904204f8f57ff679b09054,
+    type: 3}
+  m_PrefabInstance: {fileID: 4883312563964788510}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1260873582
 GameObject:
   m_ObjectHideFlags: 0
@@ -7509,11 +7521,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3363012396055502231, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363012396055502231, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363012396055502231, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3363012396055502231, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4883312563476396788, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: vidaText
       value: 
       objectReference: {fileID: 4883312563964788511}
+    - target: {fileID: 4883312563476396788, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: manaText
+      value: 
+      objectReference: {fileID: 1082606475}
     - target: {fileID: 4883312563476396790, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_Camera
@@ -7642,6 +7679,31 @@ PrefabInstance:
     - target: {fileID: 4883312564085609880, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330043644149827304, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330043644149827304, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330043644149827304, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330043644149827304, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7330043644149827304, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

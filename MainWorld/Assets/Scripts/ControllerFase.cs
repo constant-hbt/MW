@@ -11,6 +11,7 @@ public class ControllerFase : MonoBehaviour
     /// RESPONSAVEL PELAS CONFIGURAÇÕES UNIVERSAIS DENTRO DE CADA FASE
     /// </summary>
     private                 GameController          _gameController;
+    private PlayerController _playerController;
 
     [Header("Coletáveis durante a fase")]
     public                  int                     gold;//todas as moedas coletadas durante a fase;
@@ -39,17 +40,20 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void                       EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
 
-    
+    [DllImport("__Internal")]
+    public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
+
     void Start()
     {
-       // SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       // SistemaLimiteBloco(qtdBlocosDisponiveis);
-      // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        SistemaLimiteBloco(qtdBlocosDisponiveis);
+       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
 
-        if(fases.Length != 0)
+        if (fases.Length != 0)
         {
             foreach (GameObject o in fases)
             {
@@ -57,6 +61,9 @@ public class ControllerFase : MonoBehaviour
             }//desabilita todas as partes da fase , e em seguida habilita somente a primeira parte
             fases[0].SetActive(true);
         }
+
+        //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
+        AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
     }
 
    

@@ -16,9 +16,11 @@ public class GameController : MonoBehaviour
     public      int         numGold;
     public      int         numVida = 10;
     public      int         numEstrelas;
+    
 
     [Header("Banco de Dados do Player")]
     public      int         vidaMax = 3;
+    public int manaPlayer = 1;
 
     public      GameObject[] gameControllers;
 

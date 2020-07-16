@@ -20,7 +20,7 @@ Blockly.JavaScript['atacar'] = function(block) {
   var value_ataque = Blockly.JavaScript.valueToCode(block, 'Ataque', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = '...;\n';
-  return "atacar("+value_ataque+")";
+  return ["atacar("+value_ataque+")", Blockly.JavaScript.ORDER_NONE];//erro aqui
 };
 
 Blockly.JavaScript['pular_frente'] = function(block) {
@@ -47,4 +47,22 @@ Blockly.JavaScript['virar'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = '...;\n';
   return "virar();\n";
+};
+
+Blockly.JavaScript['valor_ataque'] = function(block) {
+ 
+  var number_number = block.getFieldValue('valor_ataque');
+ // TODO: Assemble JavaScript into code variable.
+ var code = '...';
+ // TODO: Change ORDER_NONE to the correct strength.
+ return [parseInt(number_number), Blockly.JavaScript.ORDER_NONE];
+};
+
+
+Blockly.JavaScript['forca_atack'] = function(block) {
+  var value_forca_atack = Blockly.JavaScript.valueToCode(block, 'forca_atack', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = '...';
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [value_forca_atack, Blockly.JavaScript.ORDER_NONE];
 };

@@ -51,11 +51,20 @@
             <block type="pular_frente" class="bloco" disabled = "true"></block>
             <block type="defender" class="bloco" disabled = "true"></block>
             <block type="atacar" class="bloco" disabled = "true"></block>
+            <block type="valor_ataque" class="bloco" disabled = "true"></block>
+            <block type ="forca_atack" class="bloco" disabled = "true"></block>
             <block type="virar" class="bloco" disabled = "true"></block>
+
         </category>
         <category name = "Estruturas">
             <block type="controls_if" class="bloco" disabled = "true"></block>
-            <block type="controls_repeat_ext" class="bloco" disabled = "true"></block>
+            <block type="controls_repeat_ext" class="bloco" disabled = "true">
+                <value name="TIMES">
+                    <shadow type="math_number" >
+                      <field name="NUM">1</field>
+                    </shadow>
+                </value>
+            </block>
             <block type="math_number" class="bloco" disabled = "true"></block>
         </category>
         <category name ="Condições">
@@ -71,6 +80,8 @@
   </div>
   <!--Área responsável por mostrar o código em tempo real-->
   <div>
+    <input type="text" hidden=true name="validar" id="valorInicialCampoForca" value="1">
+    <input type="text" hidden=true name="validar" id="limiteForcaAtaque" value="1" > <!--Para aumentar o limite da forca do ataque basta alterar o value deste campo-->
     <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos !!</p>
 </div>
   <div >
@@ -176,7 +187,7 @@
                     
                     //Adicionando uma função de API para movimentação de ataque
                     var wrapper = function(value_ataque){
-
+                        
 
                         return unityInstance.SendMessage('playerKnight','Ataque',value_ataque);
                     }
