@@ -45,9 +45,9 @@ public class ControllerFase : MonoBehaviour
 
     void Start()
     {
-        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-        SistemaLimiteBloco(qtdBlocosDisponiveis);
-       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       // SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       //SistemaLimiteBloco(qtdBlocosDisponiveis);
+       //EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -63,7 +63,7 @@ public class ControllerFase : MonoBehaviour
         }
 
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-        AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+        //AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
     }
 
    
