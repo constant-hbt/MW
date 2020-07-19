@@ -498,6 +498,9 @@ GameObject:
   m_Component:
   - component: {fileID: 85407953}
   - component: {fileID: 85407954}
+  - component: {fileID: 85407955}
+  - component: {fileID: 85407957}
+  - component: {fileID: 85407956}
   m_Layer: 11
   m_Name: inim_Goblin
   m_TagString: Untagged
@@ -513,8 +516,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85407952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -124.31251, y: -123.37501, z: -16875.002}
-  m_LocalScale: {x: 187.50002, y: 187.50002, z: 187.50002}
+  m_LocalPosition: {x: -350, y: -123.37501, z: -16875.002}
+  m_LocalScale: {x: 187.5, y: 187.50002, z: 187.50002}
   m_Children:
   - {fileID: 354761856}
   m_Father: {fileID: 841834250}
@@ -571,6 +574,74 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &85407955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85407952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643c57b830ac18b4bb6fc5aa936334c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 3
+  vidaAtual: 3
+  barrasVida: {fileID: 97034045}
+  vidaCheia: {fileID: 1450767042}
+  tmpVida: {fileID: 97034047}
+  danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
+    type: 3}
+  olhandoEsquerda: 0
+  playerEsquerda: 1
+--- !u!50 &85407956
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85407952}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 6
+--- !u!61 &85407957
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85407952}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33, y: 0.36}
+    newSize: {x: 0.33, y: 0.36}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.36}
+  m_EdgeRadius: 0
 --- !u!1 &97034045
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +697,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1/1
+  m_text: -/-
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
@@ -1053,7 +1124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -301.87497, y: -142.5}
+  m_AnchoredPosition: {x: -301.875, y: -142.5}
   m_SizeDelta: {x: -859.9999, y: -500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &216317084
@@ -1077,6 +1148,8 @@ MonoBehaviour:
   qtdMoedasDisponiveis: 3
   qtdMoedasColetadas: 0
   qtdBlocosDisponiveis: 10
+  fxDano:
+  - {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff, type: 3}
 --- !u!1 &237886484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2348,8 +2421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490109301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0057, y: -0.0029, z: 0}
-  m_LocalScale: {x: 0.34745634, y: 0.71529746, z: 0}
+  m_LocalPosition: {x: 0.0015, y: -0.0029, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.7, z: 0}
   m_Children: []
   m_Father: {fileID: 354761856}
   m_RootOrder: 1
@@ -2403,7 +2476,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &496170765
 GameObject:
   m_ObjectHideFlags: 0
@@ -6395,8 +6468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450767041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3474563, y: 0.7152975, z: 0}
+  m_LocalPosition: {x: -0.14, y: -0.002, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 354761856}
   m_RootOrder: 0
@@ -6450,7 +6523,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &1456410042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7168,14 +7241,13 @@ GameObject:
   - component: {fileID: 1651489870}
   - component: {fileID: 1651489869}
   - component: {fileID: 1651489868}
-  - component: {fileID: 1651489872}
   m_Layer: 11
   m_Name: inimigoTeste
   m_TagString: inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1651489868
 Rigidbody2D:
   serializedVersion: 4
@@ -7287,27 +7359,6 @@ Transform:
   m_Father: {fileID: 841834250}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1651489872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651489867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643c57b830ac18b4bb6fc5aa936334c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockForcePrefab: {fileID: 0}
-  knockPosition: {fileID: 0}
-  knockX: 0
-  olhandoEsquerda: 0
-  playerEsquerda: 0
-  vida: 0
-  barrasVida: {fileID: 0}
-  vidaCheia: {fileID: 0}
-  loots: {fileID: 0}
 --- !u!4 &1672249919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 427451373077903434, guid: 0311359c41bdd0e42ac6a9fa52ea9213,

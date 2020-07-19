@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
     [Header("Configuração de Ataque")]
     public          PolygonCollider2D colliderAttack1;//colisor da arma usado na animação de ataque1, que só é ativado em um momento especifico da animação de ataque
     public          PolygonCollider2D colliderAttack3;//colisor da arma usado na animação de ataque3, que só é ativado em um momento específico da animação
-    public          float             forcaDano;
+    public          int             forcaDano;
     
     [Header("Sistema de Configuração de fase")]
     public          GameObject      painelFaseIncompleta;//gameObject do obj painelFaseIncompleta
@@ -393,7 +393,7 @@ public class PlayerController : MonoBehaviour
     }
     public void testeAtaque()
     {
-        StartCoroutine("Ataque", 10);
+        StartCoroutine("Ataque", forcaDano);
     }
     IEnumerator Ataque(int valor_ataque)//ok
     {

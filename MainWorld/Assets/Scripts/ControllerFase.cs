@@ -31,6 +31,11 @@ public class ControllerFase : MonoBehaviour
 
     [Header("Quantidade disponivel para a primeira parte da fase")]
     public                  int                     qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
+
+    [Header("Prefabs")]
+    public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
+    //public GameObject fxMorte; //guarda o prefab com a animacao de morte      DESCOMENTAR QUANDO INTRODUZIR A ANIMACAO DE MORTE
+
     //Integração com o js da página
     [DllImport("__Internal")]
     public static extern void                       SistemaLimiteBloco(int qtdBlocoFase);
@@ -42,6 +47,8 @@ public class ControllerFase : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
+
+    
 
     void Start()
     {
