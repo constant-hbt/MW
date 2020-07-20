@@ -17,6 +17,7 @@ TagManager:
   - coletavel
   - chao
   - arma
+  - explosaoInimigo
   layers:
   - Default
   - TransparentFX

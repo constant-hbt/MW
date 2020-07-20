@@ -65,6 +65,15 @@ public class PlayerController : MonoBehaviour
     private         bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
     private         int             parteFase;//denomina em que parte da fase o personagem está
 
+    [Header("Sistema de KnockBack")]
+    public GameObject knockForcePrefab; //força de repulsão
+    public Transform knockPosition;
+    // private float kX;
+    // public float knockX;//pega o valor padrao do position x
+
+    [Header("Prefabs")]
+    public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
+    public GameObject fxMorte; //guarda o prefab com a animacao de morte  
 
     //TESTE  HA INIMIGO
     [DllImport("__Internal")]
@@ -371,7 +380,7 @@ public class PlayerController : MonoBehaviour
       
         if (Grounded == true)
         {
-            playerRB.AddForce(new Vector2(jumpForceX_pularFrente * x,jumpForceY_pularFrente));
+            playerRB.AddForce(new Vector2(jumpForceX_pularFrente ,jumpForceY_pularFrente));
         }
         // StartCoroutine("zerarVelocidadeAposSaltoL");
         StartCoroutine("diminuirQTDBlocosU");
@@ -411,7 +420,10 @@ public class PlayerController : MonoBehaviour
     }
     //---------------------------------------------------------------------------------
 
-  
+    public void explosaoInimigo() //SOFRE O DANO PELA EXPLOSAO DO INIMIGO, CASO O VALOR UTILIZADO NO ATAQUE SEJA MAIOR QUE A VIDA DO INIMIGO
+    {
+        Debug.Log("Fui atingido pela explosao do inimigo");
+    }
 
 
     private void pararMovimentacao()
@@ -493,6 +505,7 @@ public class PlayerController : MonoBehaviour
     public void startPuloFrente()//somente para testes , apagar depois
     {
         desmarcarFreezyX();
+        
         StartCoroutine("PuloLateral");
         StartCoroutine("diminuirQTDBlocosU");
     }

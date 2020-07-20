@@ -11,9 +11,11 @@ public class Inimigo : MonoBehaviour
     private PlayerController _playerController;
     private ControllerFase _controllerFase;
     private SpriteRenderer sRender;
-    private Animator animator;
+    private Animator _animator;
 
-    
+
+    [Header("Sistema dano no player")]
+    public GameObject objPlayer;
 
     [Header("Sistema de vida")]
     public int vida;
@@ -22,9 +24,12 @@ public class Inimigo : MonoBehaviour
     public GameObject barrasVida;
     public Transform vidaCheia;
     public TextMeshProUGUI tmpVida;
-
+    private bool died = false;
+    public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
     //mostrar o dano
     public GameObject danoTxtPrefab;
+    public GameObject explosaoPrefab;
+    public GameObject posicaoExplosao;
 
     [Header("Flip")]
     public bool olhandoEsquerda;//INDICA SE O inimigo ESTA olhando A ESQUERDA OU DIREITA
@@ -32,6 +37,10 @@ public class Inimigo : MonoBehaviour
 
     [Header("Sistema de invunerabilidade")]
     private bool getHit =false;
+
+    [Header("Prefabs")]
+    public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
+    public GameObject fxMorte; //guarda o prefab com a animacao de morte  
 
     /*
     [Header("Configuração de loot")]
@@ -42,7 +51,7 @@ public class Inimigo : MonoBehaviour
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         sRender = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
 
        
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
@@ -58,10 +67,14 @@ public class Inimigo : MonoBehaviour
         //FAZ COM QUE O INIMIGO SEMPRE ESTEJA VIRADO NA DIRECAO DO PLAYER
         verifDirPlayer();
 
+        //Personagem no chao
+        _animator.SetBool("Grounded", true);
+
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (died) { return; }
         switch (col.gameObject.tag)
         {
             case "arma":
@@ -72,9 +85,9 @@ public class Inimigo : MonoBehaviour
                 if (!getHit)
                 {
                     getHit = true;
-                    //animator.SetTrigger("hit"); DESCOMENTAR APOS A IMPLEMENTACAO DAS ANIMACOES E ANIMATOR
-                    int forcaDanoPlayer = _playerController.forcaDano;
+                    _animator.SetTrigger("hit");
 
+                    int forcaDanoPlayer = _playerController.forcaDano;
                     vidaAtual -= Mathf.RoundToInt(forcaDanoPlayer); //diminuo a vida do inimigo apartir da forcaDano do player
                     percVida = (float)vidaAtual / (float)vida;//recalculo o percentual de vida do inimigo
                     
@@ -88,12 +101,24 @@ public class Inimigo : MonoBehaviour
                     {
                         //INIMIGO SOMENTE MORRE
                         Debug.Log("INIMIGO MORREU");
+                        died = true;
+                        this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
+                        _animator.SetInteger("idAnimation", 1);
+                       // StartCoroutine("loot"); DESCOMENTAR QUANDO IMPLEMENTAR A COROUTINE DE LOOT
+
                     }
                     else if(vidaAtual < 0)
                     {
                         //QUER DIZER QUE PLAYER DEU UM DANO MAIS FORTE QUE O NUMERO DE VIDA DO INIMIGO, PORTANTO O INIMIGO MORRE , MAIS SOLTA UMA EXPLOSAO QUE ATINGE O PLAYER
                        
                         Debug.Log("INIMIGO MORREU MAIS EXPLODIU E DEU DANO NO PLAYER");
+                        died = true;
+                        this.gameObject.layer = 9;
+                        _animator.SetInteger("idAnimation", 1);
+
+                        objPlayer.SendMessage("explosaoInimigo", SendMessageOptions.DontRequireReceiver);
+
+                        StartCoroutine("loot");//PROXIMO PASSO SERÁ IMPLEMENTAR A ANIMACAO DA EXPLOSAO DO PLAYER E O DANO TOMADO
 
                     }
                     else if(vidaAtual > 0)
@@ -117,7 +142,7 @@ public class Inimigo : MonoBehaviour
                     Destroy(danoTemp, 0.7f);//DESTROI O DANO CRIADO
 
                     //EFEITO HIT
-                    GameObject fxTemp = Instantiate(_controllerFase.fxDano[0], transform.position, transform.localRotation);
+                    GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
                     Destroy(fxTemp, 1);
 
                 }
@@ -138,6 +163,7 @@ public class Inimigo : MonoBehaviour
 
         //faz com que a barra de vida altere o lado conforme personagem se vira
         barrasVida.transform.localScale = new Vector3(barrasVida.transform.localScale.x * -1 , barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
+        posicaoExplosao.transform.localScale = new Vector3(posicaoExplosao.transform.localScale.x * -1, posicaoExplosao.transform.localScale.y, posicaoExplosao.transform.localScale.z);
     }
 
     void atualizarTMPVida(TextMeshProUGUI tmpVida, int vidaAtual, int vida)
@@ -171,5 +197,30 @@ public class Inimigo : MonoBehaviour
         }
         
     }
-    
+
+    IEnumerator loot()
+    {
+        yield return new WaitForSeconds(1);
+
+        GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
+        yield return new WaitForSeconds(0.5f);//depois de meio segundo desabilita a imagem do inimigo
+        sRender.enabled = false;
+
+       /* //Controle de loot
+        int qtdMoedas = Random.Range(1, 5);
+        for (int l = 0; l < qtdMoedas; l++)
+        {
+            GameObject lootTemp = Instantiate(loots, transform.position, transform.localRotation);//Instanciando a coin
+            lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-35, 35), 100));
+            yield return new WaitForSeconds(0.1f);
+
+        }*/
+
+
+        yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
+        Destroy(fxMorte, 1);
+        Destroy(this.gameObject);
+
+    }
+
 }
