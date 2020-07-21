@@ -29,6 +29,7 @@ public class Inimigo : MonoBehaviour
 
     [Header("Sistema de ataque")]
     public int forcaDanoInim;
+    public PolygonCollider2D colliderAttack;
 
     [Header("Flip")]
     public bool olhandoEsquerda;//INDICA SE O inimigo ESTA olhando A ESQUERDA OU DIREITA
@@ -127,6 +128,8 @@ public class Inimigo : MonoBehaviour
                     {
                         //INIMIGO SOLTA UM ATAQUE
                         Debug.Log("INIMIGO COTRA-ATACOU COM UM HIT");
+                        StartCoroutine("contraAtaque");
+                        
                     }
 
                     //INSTANCIANDO PREFABS
@@ -225,4 +228,29 @@ public class Inimigo : MonoBehaviour
 
     }
 
+    IEnumerator contraAtaque()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _animator.SetTrigger("attack");
+    }
+
+    public void habilitarColliderAttack(int x)//Habilita e desabilita o collider de ataque 
+    {
+        switch (x)
+        {
+            case 0:
+                colliderAttack.enabled = true;
+                break;
+
+            case 1:
+                colliderAttack.enabled = false;
+                break;
+        }
+    }
+
+    public void retirarVidaPlayer()
+    {
+        _playerController.vidaPlayer -= this.forcaDanoInim;
+        Debug.Log("Vida do inimigo após o dano = " + _playerController.vidaPlayer);
+    }
 }

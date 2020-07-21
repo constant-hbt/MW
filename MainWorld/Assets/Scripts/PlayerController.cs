@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private Inimigo _inimigo;
 
     [Header("Sistema de vida")]
-    private int vidaPlayer ;//vida do player dentro da fase
+    public int vidaPlayer ;//vida do player dentro da fase
     public Transform pontoAnimMorte;//guarda as coordenadas dos eixos do ponto de origem que a animacao deve iniciar
     private bool estaMorto ;
     
@@ -169,14 +169,24 @@ public class PlayerController : MonoBehaviour
     {
         switch (col.gameObject.tag)
         {
-            /*case "inimigo":
+            case "armaInimigo":
                 //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
 
-                print("Dei um dano no inimigo com força igual a = "+forcaDano);//somente utilizado para testes
-               
-                break;*/
+                print("Tomei um dano no inimigo com força igual a = "+_inimigo.forcaDanoInim);//somente utilizado para testes
+                playerAnimator.SetTrigger("hit");
+
+                //EFEITO HIT
+                GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
+                Destroy(fxTemp, 0.5f);
+
+                col.gameObject.transform.root.SendMessage("retirarVidaPlayer",SendMessageOptions.DontRequireReceiver);//VER A QUESTAO DE RETIRAR VIDA DO PLAYER
+                
+
+                
+
+                break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
@@ -224,7 +234,7 @@ public class PlayerController : MonoBehaviour
         peScan.x = peScan.x * -1;
 
     }
-    void atack(int atk)//não utilizado ainda
+    void atack(int atk)
     {
         switch (atk)
         {

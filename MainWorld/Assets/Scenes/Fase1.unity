@@ -523,6 +523,7 @@ Transform:
   - {fileID: 354761856}
   - {fileID: 1458871893}
   - {fileID: 1223269307}
+  - {fileID: 1026863190}
   m_Father: {fileID: 841834250}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -599,6 +600,7 @@ MonoBehaviour:
     type: 3}
   posicaoExplosao: {fileID: 1458871892}
   forcaDanoInim: 1
+  colliderAttack: {fileID: 752419987}
   olhandoEsquerda: 0
   playerEsquerda: 1
   loots:
@@ -1387,6 +1389,7 @@ MonoBehaviour:
     type: 3}
   posicaoExplosao: {fileID: 422052335}
   forcaDanoInim: 1
+  colliderAttack: {fileID: 0}
   olhandoEsquerda: 0
   playerEsquerda: 1
   loots:
@@ -3753,6 +3756,77 @@ Canvas:
   m_SortingLayerID: -179652971
   m_SortingOrder: 3
   m_TargetDisplay: 0
+--- !u!1 &752419985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752419986}
+  - component: {fileID: 752419987}
+  m_Layer: 11
+  m_Name: colliderAttack
+  m_TagString: armaInimigo
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &752419986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752419985}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1026863190}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &752419987
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752419985}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.440431, y: -0.1400415}
+      - {x: 0.35656932, y: -0.049503416}
+      - {x: 0.35136133, y: -0.13292317}
+      - {x: 0.08508529, y: -0.115061685}
+      - {x: -0.09055257, y: -0.034814373}
+      - {x: -0.17772086, y: 0.0079942625}
+      - {x: -0.2546416, y: 0.084944576}
+      - {x: -0.3322264, y: 0.19199292}
+      - {x: -0.40687093, y: 0.18324438}
+      - {x: -0.43925488, y: 0.12186983}
+      - {x: -0.31572348, y: -0.011078003}
+      - {x: -0.23915267, y: -0.050228678}
+      - {x: 0.13121322, y: -0.22711205}
+      - {x: 0.26376203, y: -0.2389003}
+      - {x: 0.4260568, y: -0.21188103}
 --- !u!1 &778910638
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,8 +3928,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778910638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -421, y: -110, z: -16875.002}
-  m_LocalScale: {x: 187.50002, y: 187.50002, z: 187.50002}
+  m_LocalPosition: {x: -421, y: -110, z: 0}
+  m_LocalScale: {x: 187.50002, y: 187.50002, z: 0}
   m_Children:
   - {fileID: 1609259445}
   - {fileID: 400809075}
@@ -3999,7 +4073,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 690481063}
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
-  forcaDano: 4
+  forcaDano: 2
   painelFaseIncompleta: {fileID: 1962855189}
   qtdBlocosUsados: -1
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
@@ -5052,6 +5126,37 @@ Transform:
   - {fileID: 713147119}
   m_Father: {fileID: 237042363}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1026863189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1026863190}
+  m_Layer: 11
+  m_Name: ColliderAtaque
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1026863190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026863189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 752419986}
+  m_Father: {fileID: 85407953}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1077128935
 PrefabInstance:
@@ -9076,6 +9181,7 @@ MonoBehaviour:
     type: 3}
   posicaoExplosao: {fileID: 0}
   forcaDanoInim: 0
+  colliderAttack: {fileID: 0}
   olhandoEsquerda: 0
   playerEsquerda: 1
   loots: []
