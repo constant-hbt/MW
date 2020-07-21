@@ -14,9 +14,6 @@ public class Inimigo : MonoBehaviour
     private Animator _animator;
 
 
-    [Header("Sistema dano no player")]
-    public GameObject objPlayer;
-
     [Header("Sistema de vida")]
     public int vida;
     public int vidaAtual;
@@ -28,8 +25,10 @@ public class Inimigo : MonoBehaviour
     public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
     //mostrar o dano
     public GameObject danoTxtPrefab;
-    public GameObject explosaoPrefab;
     public GameObject posicaoExplosao;
+
+    [Header("Sistema de ataque")]
+    public int forcaDanoInim;
 
     [Header("Flip")]
     public bool olhandoEsquerda;//INDICA SE O inimigo ESTA olhando A ESQUERDA OU DIREITA
@@ -38,9 +37,13 @@ public class Inimigo : MonoBehaviour
     [Header("Sistema de invunerabilidade")]
     private bool getHit =false;
 
+    [Header("Configuração de loot")]
+    public GameObject[] loots;
+
     [Header("Prefabs")]
     public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
     public GameObject fxMorte; //guarda o prefab com a animacao de morte  
+    public GameObject fxHitPlayer;//guarda o prefab da animação de quando ele explode e da um hit no player
 
     /*
     [Header("Configuração de loot")]
@@ -104,7 +107,7 @@ public class Inimigo : MonoBehaviour
                         died = true;
                         this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
-                       // StartCoroutine("loot"); DESCOMENTAR QUANDO IMPLEMENTAR A COROUTINE DE LOOT
+                        StartCoroutine("loot");
 
                     }
                     else if(vidaAtual < 0)
@@ -116,10 +119,9 @@ public class Inimigo : MonoBehaviour
                         this.gameObject.layer = 9;
                         _animator.SetInteger("idAnimation", 1);
 
-                        objPlayer.SendMessage("explosaoInimigo", SendMessageOptions.DontRequireReceiver);
-
                         StartCoroutine("loot");//PROXIMO PASSO SERÁ IMPLEMENTAR A ANIMACAO DA EXPLOSAO DO PLAYER E O DANO TOMADO
 
+                        _playerController.SendMessage("explosaoInimigo", forcaDanoInim, SendMessageOptions.DontRequireReceiver);
                     }
                     else if(vidaAtual > 0)
                     {
@@ -128,17 +130,15 @@ public class Inimigo : MonoBehaviour
                     }
 
                     //INSTANCIANDO PREFABS
-
-
                     GameObject danoTemp = Instantiate(danoTxtPrefab, transform.position, transform.localRotation);//mostrando dano tomado
                     danoTemp.GetComponentInChildren<TextMeshPro>().text = forcaDanoPlayer.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
                     danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
-                    int forcaX = 50;//Fazer o dano sair um pouco para o lado
+                    int forcaX = 20;//Fazer o dano sair um pouco para o lado
                     if (playerEsquerda == false)
                     {
                         forcaX *= -1;
                     }
-                    danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 230));//jogar o dano para cima
+                    danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 150));//jogar o dano para cima
                     Destroy(danoTemp, 0.7f);//DESTROI O DANO CRIADO
 
                     //EFEITO HIT
@@ -147,7 +147,7 @@ public class Inimigo : MonoBehaviour
 
                 }
 
-
+                
                 break;
         }
     }
@@ -200,25 +200,27 @@ public class Inimigo : MonoBehaviour
 
     IEnumerator loot()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
         yield return new WaitForSeconds(0.5f);//depois de meio segundo desabilita a imagem do inimigo
         sRender.enabled = false;
 
-       /* //Controle de loot
+        yield return new WaitForSeconds(0.5f);
+        //Controle de loot
         int qtdMoedas = Random.Range(1, 5);
         for (int l = 0; l < qtdMoedas; l++)
         {
-            GameObject lootTemp = Instantiate(loots, transform.position, transform.localRotation);//Instanciando a coin
+            int lootSelect = Random.Range(0, loots.Length);
+            GameObject lootTemp = Instantiate(loots[lootSelect], transform.position, transform.localRotation);//Instanciando a coin
             lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-35, 35), 100));
             yield return new WaitForSeconds(0.1f);
 
-        }*/
+        }
 
 
         yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
-        Destroy(fxMorte, 1);
+        Destroy(fxMorte, 0.5f);
         Destroy(this.gameObject);
 
     }

@@ -4,10 +4,17 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 public class PlayerController : MonoBehaviour
 {
+    private SpriteRenderer sRender;
     private         Animator        playerAnimator;
     private         Rigidbody2D     playerRB;
     private         GameController  _gameController;
     private         ControllerFase  _controllerFase;
+    private Inimigo _inimigo;
+
+    [Header("Sistema de vida")]
+    private int vidaPlayer ;//vida do player dentro da fase
+    public Transform pontoAnimMorte;//guarda as coordenadas dos eixos do ponto de origem que a animacao deve iniciar
+    private bool estaMorto ;
     
     [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
@@ -73,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
-    public GameObject fxMorte; //guarda o prefab com a animacao de morte  
+    public GameObject fxMorte; //responsavel por guardar a animacao pos morte do player
 
     //TESTE  HA INIMIGO
     [DllImport("__Internal")]
@@ -94,13 +101,18 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator = GetComponent<Animator>();
         playerRB = GetComponent<Rigidbody2D>();
+        sRender = GetComponent<SpriteRenderer>();
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        _inimigo = FindObjectOfType(typeof(Inimigo)) as Inimigo;
 
         x = transform.localScale.x;
 
         passeiFase = false;
         parteFase = 0;
+
+        estaMorto = false;
+        vidaPlayer = 1;
     }
 
   
@@ -131,6 +143,14 @@ public class PlayerController : MonoBehaviour
             this.retirarVida();
             qtdBlocosUsados = -1;
             interpreteAcabou = false;
+        }
+        if(vidaPlayer <= 0 && !estaMorto)
+        {
+            playerAnimator.SetInteger("idAnimation", 3); //ESSE IF PRECISA DE AJUSTES(VERIFICAR O LOCAL CORRETO QUE ELE DEVE SER INSERIDO)
+            StartCoroutine("mortePlayer");
+            estaMorto = true;
+
+            //DEPOIS VAI PARA O INTERPRETE E CHAMAR O PAINEL DE FASE INCOMPLETA
         }
     }
     void Update()
@@ -420,12 +440,32 @@ public class PlayerController : MonoBehaviour
     }
     //---------------------------------------------------------------------------------
 
-    public void explosaoInimigo() //SOFRE O DANO PELA EXPLOSAO DO INIMIGO, CASO O VALOR UTILIZADO NO ATAQUE SEJA MAIOR QUE A VIDA DO INIMIGO
+    public void explosaoInimigo(int forcaAtaqueInimigo) //chama a coroutina com as configuracoes de hitInimigo
     {
-        Debug.Log("Fui atingido pela explosao do inimigo");
+        StartCoroutine("hitInimigo", forcaAtaqueInimigo);
     }
 
+    IEnumerator hitInimigo(int forcaAtaqueInimigo)//funcao responsavel por dar o hit no player caso o ataque dele seja maior doque a vida do inimigo
+    {
+        yield return new WaitForSeconds(3.5f);
+        GameObject hitTemp = Instantiate(_inimigo.fxHitPlayer, transform.position, transform.localRotation);//instancia a animacao de hit no player
+        Destroy(hitTemp, 0.7f);//destroi o prefab de hit
+        playerAnimator.SetTrigger("hit");//inicia a animacao de hit
+        yield return new WaitForSeconds(0.2f);
+        this.vidaPlayer -= forcaAtaqueInimigo;//retira a vida do Player de acordo com a força do ataque do inimigo
+    }
+    IEnumerator mortePlayer()//funcao responsavel pela animacao de morte do player caso sua vida seja <= 0
+    {
+        
+        yield return new WaitForSeconds(1.2f);
+        sRender.enabled = false;//deixa o player invisivel
+        yield return new WaitForSeconds(0.2f);
+        GameObject morteTemp = Instantiate(fxMorte, pontoAnimMorte.position, transform.localRotation);//instancia a animacao de morte
+        yield return new WaitForSeconds(0.5f);
+        Destroy(morteTemp);//destroi a animacao de morte
+        this.gameObject.SetActive(false);//desativa o gameObject do player
 
+    }
     private void pararMovimentacao()
     {
          playerRB.velocity = new Vector2(0 , playerRB.velocity.y);
