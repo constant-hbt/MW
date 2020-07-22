@@ -234,6 +234,7 @@ public class PlayerController : MonoBehaviour
                //Destroy(knockTemp, 0.03f);//EXCLUI PREFAB KNOCKBACK //APAGAR DEPOIS
                 collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
                 break;
+           
         }
     }
 

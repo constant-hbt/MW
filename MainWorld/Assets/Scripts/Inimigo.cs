@@ -61,6 +61,8 @@ public class Inimigo : MonoBehaviour
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
         vidaAtual = vida;
         atualizarTMPVida(tmpVida, vidaAtual, vida);
+
+        died = false;
     }
 
     // Update is called once per frame
@@ -78,7 +80,7 @@ public class Inimigo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (died) { return; }
+        //if (died) { return; }
         switch (col.gameObject.tag)
         {
             case "arma":
@@ -86,8 +88,8 @@ public class Inimigo : MonoBehaviour
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
                 Debug.Log("Tomei dano do player, com a força de "+ _playerController.forcaDano);
-                if (!getHit)
-                {
+              /*  if (!getHit)
+                {*/
                     getHit = true;
                     _animator.SetTrigger("hit");
 
@@ -149,7 +151,7 @@ public class Inimigo : MonoBehaviour
                     GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
                     Destroy(fxTemp, 1);
 
-                }
+               /* }*/
 
                 
                 break;
