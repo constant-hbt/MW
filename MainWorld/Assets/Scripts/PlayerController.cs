@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     [Header("Sistema de vida")]
     public int vidaPlayer ;//vida do player dentro da fase
     public Transform pontoAnimMorte;//guarda as coordenadas dos eixos do ponto de origem que a animacao deve iniciar
-    private bool estaMorto ;
+    private bool estaMorto ;//verifica se o player esta morto
+    public bool tomeiHit;//verifica se o player ja tomou um hit do inimigo, limita o collider de ataque do inimigo a acerta-lo somente uma vez com sua animacao de ataque
     
     [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour
         parteFase = 0;
 
         estaMorto = false;
+        tomeiHit = false;
         vidaPlayer = 1;
     }
 
@@ -146,12 +148,23 @@ public class PlayerController : MonoBehaviour
         }
         if(vidaPlayer <= 0 && !estaMorto)
         {
-            playerAnimator.SetInteger("idAnimation", 3); //ESSE IF PRECISA DE AJUSTES(VERIFICAR O LOCAL CORRETO QUE ELE DEVE SER INSERIDO)
-            StartCoroutine("mortePlayer");
             estaMorto = true;
-
+            playerAnimator.SetInteger("idAnimation", 3);//ESSE IF PRECISA DE AJUSTES(VERIFICAR O LOCAL CORRETO QUE ELE DEVE SER INSERIDO)
+            StartCoroutine("mortePlayer");
             //DEPOIS VAI PARA O INTERPRETE E CHAMAR O PAINEL DE FASE INCOMPLETA
         }
+        if (estaMorto)
+        {
+            playerRB.velocity = new Vector2(0, 0);
+            playerAnimator.SetInteger("idAnimation", 3);//fixa o idAnimation do animator em 3 para que ao morrer ele trave na animacao de morte, para que nenhuma outra aconteca
+            
+        }
+
+        if (tomeiHit)
+        {
+            StartCoroutine("habilitarNovoHit");//se após tomar dano o player ainda estiver vivo , apos 5 segundos é habilitado novamente a tomada de hit;
+        }
+        
     }
     void Update()
     {
@@ -173,19 +186,20 @@ public class PlayerController : MonoBehaviour
                 //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
+                if (!tomeiHit)
+                {
+                    tomeiHit = true;
+                    print("Tomei um dano no inimigo com força igual a = " + _inimigo.forcaDanoInim);//somente utilizado para testes
+                    playerAnimator.SetTrigger("hit");
 
-                print("Tomei um dano no inimigo com força igual a = "+_inimigo.forcaDanoInim);//somente utilizado para testes
-                playerAnimator.SetTrigger("hit");
+                    //EFEITO HIT
+                    GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
+                    Destroy(fxTemp, 0.5f);
 
-                //EFEITO HIT
-                GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
-                Destroy(fxTemp, 0.5f);
+                    col.gameObject.transform.parent.parent.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);//VER A QUESTAO DE RETIRAR VIDA DO PLAYER -- parent.parent pego dois objetos acima do colliderAtaque de acordo com a hierarquia do objeto
+                    //VER A QUESTAO QUE O INIMIGO TA DANDO DOIS HITS AO INVES DE UM -- TRAVAR ISSO
 
-                col.gameObject.transform.parent.parent.SendMessage("retirarVidaPlayer",SendMessageOptions.DontRequireReceiver);//VER A QUESTAO DE RETIRAR VIDA DO PLAYER -- parent.parent pego dois objetos acima do colliderAtaque de acordo com a hierarquia do objeto
-                //VER A QUESTAO QUE O INIMIGO TA DANDO DOIS HITS AO INVES DE UM -- TRAVAR ISSO
-
-                
-
+                }
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
@@ -214,6 +228,11 @@ public class PlayerController : MonoBehaviour
                 break;
             case "inimigo":
                 Debug.Log("Levei dano do inimigo");
+                playerAnimator.SetTrigger("hit");
+                //USADO NO KNOCKBACK
+              // GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation); APAGAR DEPOIS
+               //Destroy(knockTemp, 0.03f);//EXCLUI PREFAB KNOCKBACK //APAGAR DEPOIS
+                collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
                 break;
         }
     }
@@ -285,16 +304,7 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit2D scanPe = Physics2D.Raycast(scanRayPe.transform.position, peScan, 0.38f, interacao);
         Debug.DrawRay(scanRayPe.transform.position, peScan * 0.38f, Color.black);
-        /*
-        if (scanCabeca == true || scanOmbro == true || scanTorax == true || scanCintura == true)
-        {
-            playerAnimator.SetTrigger("attack1");
-
-        }
-        else if (scanJoelho == true || scanPe == true)
-        {
-            playerAnimator.SetTrigger("attack3");
-        }*/
+        
         if (scanCabeca == true || scanOmbro == true || scanTorax == true || scanCintura == true || scanJoelho == true || scanPe == true)
         {
             testeColisaoInimigo = true;
@@ -345,7 +355,7 @@ public class PlayerController : MonoBehaviour
             
         
     }
-
+    //JUNTAR ESTAS DUAS FUNCOES EM UMA SO DEPOIS
     void desabilitarColliderAtak(int tipoAtaque)
     {
         switch (tipoAtaque)
@@ -362,6 +372,7 @@ public class PlayerController : MonoBehaviour
     //MOVIMENTAÇÃO DO PLAYER ATRAVÉS DOS BLOCOS DE COMANDO
     public IEnumerator Movimentacao(string tipoMovimentacao)
     {
+        
         switch (tipoMovimentacao)
         {
             case "avancar":
@@ -457,12 +468,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator hitInimigo(int forcaAtaqueInimigo)//funcao responsavel por dar o hit no player caso o ataque dele seja maior doque a vida do inimigo
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(1.5f);
         GameObject hitTemp = Instantiate(_inimigo.fxHitPlayer, transform.position, transform.localRotation);//instancia a animacao de hit no player
         Destroy(hitTemp, 0.7f);//destroi o prefab de hit
         playerAnimator.SetTrigger("hit");//inicia a animacao de hit
         yield return new WaitForSeconds(0.2f);
         this.vidaPlayer -= forcaAtaqueInimigo;//retira a vida do Player de acordo com a força do ataque do inimigo
+
     }
     IEnumerator mortePlayer()//funcao responsavel pela animacao de morte do player caso sua vida seja <= 0
     {
@@ -475,6 +487,11 @@ public class PlayerController : MonoBehaviour
         Destroy(morteTemp);//destroi a animacao de morte
         this.gameObject.SetActive(false);//desativa o gameObject do player
 
+    }
+    IEnumerator habilitarNovoHit()
+    {
+        yield return new WaitForSeconds(5f);//depois de 5 segundos habilita novamente a possibilidade de se tomar hit's
+        tomeiHit = false;
     }
     private void pararMovimentacao()
     {
@@ -571,7 +588,11 @@ public class PlayerController : MonoBehaviour
     }
     public void StartAvancar()
     {
-        StartCoroutine("TESTEAvancar");
+        if (!tomeiHit)
+        {
+            StartCoroutine("TESTEAvancar");
+        }
+        
     }
     IEnumerator TESTEAvancar()
     {//configurações da movimentação de avanço do player 
@@ -586,4 +607,5 @@ public class PlayerController : MonoBehaviour
     {
         Flip();
     }
+    
 }

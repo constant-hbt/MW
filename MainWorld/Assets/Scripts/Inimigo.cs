@@ -117,10 +117,11 @@ public class Inimigo : MonoBehaviour
                        
                         Debug.Log("INIMIGO MORREU MAIS EXPLODIU E DEU DANO NO PLAYER");
                         died = true;
+                        this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;
                         _animator.SetInteger("idAnimation", 1);
 
-                        StartCoroutine("loot");//PROXIMO PASSO SERÁ IMPLEMENTAR A ANIMACAO DA EXPLOSAO DO PLAYER E O DANO TOMADO
+                        StartCoroutine("loot");
 
                         _playerController.SendMessage("explosaoInimigo", forcaDanoInim, SendMessageOptions.DontRequireReceiver);
                     }
@@ -252,5 +253,16 @@ public class Inimigo : MonoBehaviour
     {
         _playerController.vidaPlayer -= this.forcaDanoInim;
         Debug.Log("Vida do inimigo após o dano = " + _playerController.vidaPlayer);
+
+        GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position,_playerController.transform.localRotation);//mostrando dano tomado
+        danoTemp.GetComponentInChildren<TextMeshPro>().text = this.forcaDanoInim.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
+        danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
+        int forcaX = 20;//Fazer o dano sair um pouco para o lado
+        if (playerEsquerda == true)
+        {
+            forcaX *= -1;
+        }
+        danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 150));//jogar o dano para cima
+        Destroy(danoTemp, 0.7f);//DESTROI O DANO CRIADO
     }
 }

@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 85407958}
   m_Layer: 11
   m_Name: inim_Goblin
-  m_TagString: Untagged
+  m_TagString: inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -517,7 +517,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85407952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -350, y: -108, z: -16875.002}
+  m_LocalPosition: {x: -350, y: -109, z: -16875.002}
   m_LocalScale: {x: 187.5, y: 187.50002, z: 187.50002}
   m_Children:
   - {fileID: 354761856}
@@ -628,9 +628,9 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 6
+  m_Constraints: 5
 --- !u!61 &85407957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 237042364}
   m_Layer: 11
   m_Name: inim_Goblin (1)
-  m_TagString: Untagged
+  m_TagString: inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1340,7 +1340,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 6
+  m_Constraints: 5
 --- !u!61 &237042366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3843,7 +3843,7 @@ GameObject:
   - component: {fileID: 778910642}
   - component: {fileID: 778910645}
   - component: {fileID: 778910646}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: playerKnight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4001,7 +4001,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!61 &778910645
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4042,6 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaPlayer: 0
   pontoAnimMorte: {fileID: 1549031385}
+  tomeiHit: 0
   speed: 1.5
   moveX: 0.8
   atacando: 0
@@ -4074,7 +4075,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 690481063}
   colliderAttack1: {fileID: 690481064}
   colliderAttack3: {fileID: 102956936}
-  forcaDano: 2
+  forcaDano: 3
   painelFaseIncompleta: {fileID: 1962855189}
   qtdBlocosUsados: -1
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
@@ -9252,7 +9253,7 @@ GameObject:
   m_Layer: 0
   m_Name: k
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9264,7 +9265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1978354982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.188, y: -0.313, z: 0}
+  m_LocalPosition: {x: 0.129, y: -0.296, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 778910641}
