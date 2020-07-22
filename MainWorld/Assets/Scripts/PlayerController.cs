@@ -181,8 +181,8 @@ public class PlayerController : MonoBehaviour
                 GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
                 Destroy(fxTemp, 0.5f);
 
-                col.gameObject.transform.root.SendMessage("retirarVidaPlayer",SendMessageOptions.DontRequireReceiver);//VER A QUESTAO DE RETIRAR VIDA DO PLAYER
-                
+                col.gameObject.transform.parent.parent.SendMessage("retirarVidaPlayer",SendMessageOptions.DontRequireReceiver);//VER A QUESTAO DE RETIRAR VIDA DO PLAYER -- parent.parent pego dois objetos acima do colliderAtaque de acordo com a hierarquia do objeto
+                //VER A QUESTAO QUE O INIMIGO TA DANDO DOIS HITS AO INVES DE UM -- TRAVAR ISSO
 
                 
 

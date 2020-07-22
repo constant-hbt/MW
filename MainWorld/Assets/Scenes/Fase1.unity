@@ -4040,6 +4040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc812f1d23f8f6543a84bbb4225a846c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vidaPlayer: 0
   pontoAnimMorte: {fileID: 1549031385}
   speed: 1.5
   moveX: 0.8
