@@ -25,7 +25,7 @@ public class Inimigo : MonoBehaviour
     public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
     //mostrar o dano
     public GameObject danoTxtPrefab;
-    public GameObject posicaoExplosao;
+    
 
     [Header("Sistema de ataque")]
     public int forcaDanoInim;
@@ -169,8 +169,7 @@ public class Inimigo : MonoBehaviour
 
         //faz com que a barra de vida altere o lado conforme personagem se vira
         barrasVida.transform.localScale = new Vector3(barrasVida.transform.localScale.x * -1 , barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
-        posicaoExplosao.transform.localScale = new Vector3(posicaoExplosao.transform.localScale.x * -1, posicaoExplosao.transform.localScale.y, posicaoExplosao.transform.localScale.z);
-    }
+       }
 
     void atualizarTMPVida(TextMeshProUGUI tmpVida, int vidaAtual, int vida)
     {
