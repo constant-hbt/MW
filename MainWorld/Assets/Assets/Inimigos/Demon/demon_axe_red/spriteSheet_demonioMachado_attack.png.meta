@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 979452e4e66cbb14ab5aba8b4f408585
+guid: 8b3d89a67e5b65a4aa2e727cc45222c2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7500690451134026123
-    second: Take Hit_0
+      213: -7285452846123987112
+    second: spriteSheet_demonioMachado_attack_0
   - first:
-      213: -889859373511162655
-    second: Take Hit_1
+      213: -4744006347023055843
+    second: spriteSheet_demonioMachado_attack_1
   - first:
-      213: -3088938797480143695
-    second: Take Hit_2
+      213: -7502966527364010315
+    second: spriteSheet_demonioMachado_attack_2
   - first:
-      213: -9206091644520726168
-    second: Take Hit_3
+      213: -6388535696336302244
+    second: spriteSheet_demonioMachado_attack_3
+  - first:
+      213: 8679604969999958297
+    second: spriteSheet_demonioMachado_attack_4
+  - first:
+      213: 8337947075841564566
+    second: spriteSheet_demonioMachado_attack_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Take Hit_0
+      name: spriteSheet_demonioMachado_attack_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 150
-        height: 150
+        width: 100
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57eedf966c138e790800000000000000
-      internalID: -7500690451134026123
+      spriteID: 85fcbe68c3fd4ea90800000000000000
+      internalID: -7285452846123987112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Take Hit_1
+      name: spriteSheet_demonioMachado_attack_1
       rect:
         serializedVersion: 2
-        x: 150
+        x: 100
         y: 0
-        width: 150
-        height: 150
+        width: 100
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +152,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e4c0dd4d9596a3f0800000000000000
-      internalID: -889859373511162655
+      spriteID: d140e79bc57e92eb0800000000000000
+      internalID: -4744006347023055843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Take Hit_2
+      name: spriteSheet_demonioMachado_attack_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be62de12bb10e790800000000000000
+      internalID: -7502966527364010315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spriteSheet_demonioMachado_attack_3
       rect:
         serializedVersion: 2
         x: 300
         y: 0
-        width: 150
-        height: 150
+        width: 100
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,20 +194,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b416439782e125d0800000000000000
-      internalID: -3088938797480143695
+      spriteID: c5fc8f0d1ac5757a0800000000000000
+      internalID: -6388535696336302244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Take Hit_3
+      name: spriteSheet_demonioMachado_attack_4
       rect:
         serializedVersion: 2
-        x: 450
+        x: 400
         y: 0
-        width: 150
-        height: 150
+        width: 100
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +215,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86186aedc646d3080800000000000000
-      internalID: -9206091644520726168
+      spriteID: 9110093dbb6247870800000000000000
+      internalID: 8679604969999958297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spriteSheet_demonioMachado_attack_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69f1b8b60b656b370800000000000000
+      internalID: 8337947075841564566
       vertices: []
       indices: 
       edges: []
