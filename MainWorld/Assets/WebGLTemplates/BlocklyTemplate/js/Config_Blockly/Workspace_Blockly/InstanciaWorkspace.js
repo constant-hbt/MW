@@ -1,6 +1,9 @@
 
 var botaoExecutar = document.getElementById('execute');
 
+//TESTE MANA -- SE NAO FUNCIONAR APAGAR DAQUI PARA BAIXO
+//var blocosVarForcaMana = []; //responsavel por guardar todos os ids blocos de força de ataque que forem criados no workspace
+ 
 // --> Criação do espaço de trabalho blockly
 var workspace = Blockly.inject('blocklyDiv',
 {toolbox: document.getElementById('toolbox'),
@@ -17,7 +20,38 @@ zoom:
 
 //----------------------
 
-       
+       //TESTE MANA -- CASO DER ERRADO APAGAR APARTIR DAQUI
+    /*
+       workspace.addChangeListener(captarInsercao);
+       function captarInsercao(event){
+                   if(event.type == Blockly.Events.BLOCK_CREATE
+                    && workspace.getBlockById(event.blockId).styleName_ == "forca_atack"){
+                      console.log(workspace.getBlockById(event.blockId));
+                       //console.log(event);
+                       //console.log("Entrei");
+                      ids.push(workspace.getBlockById(event.blockId).id);
+                      console.log(ids);
+                   }
+               }
+               workspace.addChangeListener(captarRemocao);
+       function captarRemocao(event){
+           if(event.type == Blockly.Events.BLOCK_DELETE
+           ){
+               console.log(event.oldXml.textContent);
+               console.log(ids);
+               for(var i=0; i<= ids.length; i++){
+                     if(ids[i] == event.ids){
+                         ids.splice(i,1);
+                         console.log("Opa deletou um bloco do loop em");
+                     }
+                    
+               }
+               console.log(ids);
+           }
+       }         
+
+*/
+       //CASO TESTE MANA DER ERRADO APAGAR ATE AQUI
 
 //FUNÇÕES Blockly
             
@@ -86,4 +120,6 @@ zoom:
             }
          }
         });
+
+
     }

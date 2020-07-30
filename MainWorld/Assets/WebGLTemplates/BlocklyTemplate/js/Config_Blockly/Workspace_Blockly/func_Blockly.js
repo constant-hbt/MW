@@ -10,7 +10,8 @@
        
        var retornoSendHaInim = false;//retorno da requisição sendMessage do ha_inimigo
        var retornoSendNaoHaInim = false;//retorno da requisição sendMessage do nao_ha_inimigo
- //#endregion
+
+       //#endregion
 
       
 
