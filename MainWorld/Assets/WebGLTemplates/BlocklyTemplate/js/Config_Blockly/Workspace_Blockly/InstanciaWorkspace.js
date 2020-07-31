@@ -2,8 +2,8 @@
 var botaoExecutar = document.getElementById('execute');
 
 //TESTE MANA -- SE NAO FUNCIONAR APAGAR DAQUI PARA BAIXO
-//var blocosVarForcaMana = []; //responsavel por guardar todos os ids blocos de força de ataque que forem criados no workspace
- 
+var idBlocoAttack = []; //responsavel por guardar todos os ids blocos de força de ataque que forem criados no workspace
+var usuParouDigit ;
 // --> Criação do espaço de trabalho blockly
 var workspace = Blockly.inject('blocklyDiv',
 {toolbox: document.getElementById('toolbox'),
@@ -20,37 +20,92 @@ zoom:
 
 //----------------------
 
-       //TESTE MANA -- CASO DER ERRADO APAGAR APARTIR DAQUI
-    /*
-       workspace.addChangeListener(captarInsercao);
-       function captarInsercao(event){
-                   if(event.type == Blockly.Events.BLOCK_CREATE
-                    && workspace.getBlockById(event.blockId).styleName_ == "forca_atack"){
-                      console.log(workspace.getBlockById(event.blockId));
-                       //console.log(event);
-                       //console.log("Entrei");
-                      ids.push(workspace.getBlockById(event.blockId).id);
-                      console.log(ids);
-                   }
-               }
-               workspace.addChangeListener(captarRemocao);
-       function captarRemocao(event){
-           if(event.type == Blockly.Events.BLOCK_DELETE
-           ){
-               console.log(event.oldXml.textContent);
-               console.log(ids);
-               for(var i=0; i<= ids.length; i++){
-                     if(ids[i] == event.ids){
-                         ids.splice(i,1);
-                         console.log("Opa deletou um bloco do loop em");
+         //#region ENTRADA
+         workspace.addChangeListener(captarInsercao);
+         function captarInsercao(event){
+             
+             console.log("Esse é o evento" +event);
+                     if(event.type == Blockly.Events.BLOCK_CREATE
+                      && event.xml.attributes[0].textContent == "valor_ataque"){
+                         console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR INSERCAO");
+                         obj = 
+                            {
+                                id:workspace.getBlockById(event.blockId).id,
+                                valor:event.xml.textContent,
+                            };
+                            idBlocoAttack.push(obj);
+                        console.log(idBlocoAttack);//APAGAR DEPOIS
                      }
-                    
-               }
-               console.log(ids);
-           }
-       }         
+                 }
+         //#endregion 
+          
+         //#region ATUALIZAÇÃO
+         workspace.addChangeListener(captarAtualizacao);
+         function captarAtualizacao(event){
+             console.log("Dentro do change" + event.name);
+             if(event.type == Blockly.Events.BLOCK_CHANGE
+             && event.name == "valor_ataque"){
+                 console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR ATUALIZACAO");
+                 var valManaatt;
+                 clearTimeout(usuParouDigit);
+                 usuParouDigit = setTimeout(function(){
+                     console.log(event);
+                     for(var i=0; i<idBlocoAttack.length;i++){
+                             if(idBlocoAttack[i].id == event.blockId){
+                                 console.log( "Valor antes de alterar no array ids = "+ idBlocoAttack[i].valor);
+                                 idBlocoAttack[i].valor = event.newValue;
+                                 console.log("Valor depois de alterar o array ids = "+ idBlocoAttack[i].valor);
+                                 valManaatt = idBlocoAttack[i].valor;
+                             }   
+                     }
+                     unityInstance.SendMessage('ControllerFase','alteracaoDisponibilidadeManaRemocao', valManaatt);
+                     //mana.value -= valManaatt; //VAI ENVIAR UMA REQUISICAO AO UNITY PARA MUDAR O VALOR DA MANA
+                 }, 1000);
+ 
+             }
+         }       
+         //#endregion
 
-*/
+      //#region REMOCAO
+      workspace.addChangeListener(captarRemocao);
+      function captarRemocao(event){
+         
+          if(event.type == Blockly.Events.BLOCK_DELETE){
+              var bool = false;
+              console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR REMOCAO");
+              for(var x =0; x< idBlocoAttack.length; x++){//verifica se o bloco é do tipo forcaAttack
+                  if(idBlocoAttack[x].id == event.blockId){//caso não for, nao executa as instrucoes a seguir
+                      bool = true;
+                  }
+              }
+
+              if(bool){
+                  console.log(event);
+                  var valManaAntigo ;
+                      for(var i=0; i< idBlocoAttack.length; i++){
+                          if(idBlocoAttack[i].id == event.blockId){
+                              valManaAntigo = idBlocoAttack[i].valor;
+                              idBlocoAttack.splice(i,1);
+                        
+                              console.log("Opa deletou um bloco do loop em");
+                          }
+                   
+                      }
+                  console.log(idBlocoAttack);
+                      //var voltarValMana;APAGAR
+                        //  voltarValMana = parseInt(mana.value) + parseInt(valManaAntigo);APAGAR
+                          unityInstance.SendMessage('ControllerFase', 'alteracaoDisponibilidadeManaAdicao',valManaAntigo);
+                         // mana.value = voltarValMana;//VAI ENVIAR UMA REQUISICAO PRO UNITY
+              }else{
+                  console.log("Não sou o bloco desejado");
+              }
+              
+          }
+      }
+     //#endregion
+//#endregion 
+
+
        //CASO TESTE MANA DER ERRADO APAGAR ATE AQUI
 
 //FUNÇÕES Blockly
@@ -121,5 +176,91 @@ zoom:
          }
         });
 
+            //TESTE MANA -- CASO DER ERRADO APAGAR APARTIR DAQUI
+          //#region FUNÇÕES RESPONSAVEIS POR CAPTAR A ENTRADA, ATUALIZAÇÃO E REMOCÃO DO BLOCO forcaAttack
+                    //#region ENTRADA
+                    workspace.addChangeListener(captarInsercao);
+                    function captarInsercao(event){
+                        
+                        console.log("Esse é o evento" +event);
+                                if(event.type == Blockly.Events.BLOCK_CREATE
+                                 && event.xml.attributes[0].textContent == "valor_ataque"){
+                                    console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR INSERCAO");
+                                    obj = 
+                                       {
+                                           id:workspace.getBlockById(event.blockId).id,
+                                           valor:event.xml.textContent,
+                                       };
+                                       idBlocoAttack.push(obj);
+                                   console.log(idBlocoAttack);//APAGAR DEPOIS
+                                }
+                            }
+                    //#endregion 
+                     
+                    //#region ATUALIZAÇÃO
+                    workspace.addChangeListener(captarAtualizacao);
+                    function captarAtualizacao(event){
+                        console.log("Dentro do change" + event.name);
+                        if(event.type == Blockly.Events.BLOCK_CHANGE
+                        && event.name == "valor_ataque"){
+                            console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR ATUALIZACAO");
+                            var valManaatt;
+                            clearTimeout(usuParouDigit);
+                            usuParouDigit = setTimeout(function(){
+                                console.log(event);
+                                for(var i=0; i<idBlocoAttack.length;i++){
+                                        if(idBlocoAttack[i].id == event.blockId){
+                                            console.log( "Valor antes de alterar no array ids = "+ idBlocoAttack[i].valor);
+                                            idBlocoAttack[i].valor = event.newValue;
+                                            console.log("Valor depois de alterar o array ids = "+ idBlocoAttack[i].valor);
+                                            valManaatt = idBlocoAttack[i].valor;
+                                        }   
+                                }
+                                unityInstance.SendMessage('ControllerFase','alteracaoDisponibilidadeManaRemocao', valManaatt);
+                                //mana.value -= valManaatt; //VAI ENVIAR UMA REQUISICAO AO UNITY PARA MUDAR O VALOR DA MANA
+                            }, 1000);
+            
+                        }
+                    }       
+                    //#endregion
+
+                 //#region REMOCAO
+                 workspace.addChangeListener(captarRemocao);
+                 function captarRemocao(event){
+                    
+                     if(event.type == Blockly.Events.BLOCK_DELETE){
+                         var bool = false;
+                         console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR REMOCAO");
+                         for(var x =0; x< idBlocoAttack.length; x++){//verifica se o bloco é do tipo forcaAttack
+                             if(idBlocoAttack[x].id == event.blockId){//caso não for, nao executa as instrucoes a seguir
+                                 bool = true;
+                             }
+                         }
+         
+                         if(bool){
+                             console.log(event);
+                             var valManaAntigo ;
+                                 for(var i=0; i< idBlocoAttack.length; i++){
+                                     if(idBlocoAttack[i].id == event.blockId){
+                                         valManaAntigo = idBlocoAttack[i].valor;
+                                         idBlocoAttack.splice(i,1);
+                                   
+                                         console.log("Opa deletou um bloco do loop em");
+                                     }
+                              
+                                 }
+                             console.log(idBlocoAttack);
+                                 //var voltarValMana;
+                                  //   voltarValMana = parseInt(mana.value) + parseInt(valManaAntigo);
+                                     unityInstance.SendMessage('ControllerFase', 'alteracaoDisponibilidadeManaAdicao',valManaAntigo);
+                                    // mana.value = voltarValMana;//VAI ENVIAR UMA REQUISICAO PRO UNITY
+                         }else{
+                             console.log("Não sou o bloco desejado");
+                         }
+                         
+                     }
+                 }
+                //#endregion
+          //#endregion 
 
     }

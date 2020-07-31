@@ -40,7 +40,8 @@ mergeInto(LibraryManager.library, {
     AlterarLimiteBlocoForcaAtaque:function(limitForcaAtaque){
         var limit = document.getElementById('limiteForcaAtaque');
         limit.value =limitForcaAtaque;
-        console.log("Valor do limite do bloco força ataque = " + limiteForcaAtaque);
+        console.log("Valor do limite do bloco força ataque = " + limiteForcaAtaque.value);
+        console.log("Valor passado para variavel limit = " + limit.value);
     },
     
 });

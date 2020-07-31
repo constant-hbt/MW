@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 
-
 public class ControllerFase : MonoBehaviour
 {
     /// <summary>
@@ -12,6 +11,7 @@ public class ControllerFase : MonoBehaviour
     /// </summary>
     private                 GameController          _gameController;
     private PlayerController _playerController;
+    private HUD _hud;
 
     [Header("Coletáveis durante a fase")]
     public                  int                     gold;//todas as moedas coletadas durante a fase;
@@ -30,13 +30,13 @@ public class ControllerFase : MonoBehaviour
 
 
     [Header("Quantidade disponivel para a primeira parte da fase")]
-    public                  int                     qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
-
+    public                  int                   qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
+    public int qtdManaDisponivelFase;
         
 
     //Integração com o js da página
     [DllImport("__Internal")]
-    public static extern void                       SistemaLimiteBloco(int qtdBlocoFase);
+    public static extern void                    SistemaLimiteBloco(int qtdBlocoFase);
     [DllImport("__Internal")]
     private static extern void                      SistemaDeEnableDisableBlocos(bool situacao);
 
@@ -50,13 +50,14 @@ public class ControllerFase : MonoBehaviour
 
     void Start()
     {
-       // SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       //SistemaLimiteBloco(qtdBlocosDisponiveis);
-       //EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       SistemaLimiteBloco(qtdBlocosDisponiveis);
+       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        _hud = FindObjectOfType(typeof(HUD)) as HUD;
 
         if (fases.Length != 0)
         {
@@ -67,8 +68,13 @@ public class ControllerFase : MonoBehaviour
             fases[0].SetActive(true);
         }
 
+        if(_gameController.manaPlayer < qtdManaDisponivelFase)//a cada fase que passar a mana vai aumentar proporcionalmente, caso ja tenha passado a fase e volte a joga-la a mana vai estar no valor do adquirido na ultima fase que habilitou
+        {
+            _gameController.manaPlayer = qtdManaDisponivelFase;//alimento gameController com a quantidade de mana que o player tem no inicio daquela fase que ainda não jogou
+        }
+        
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-        //AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+        AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
     }
 
    
@@ -112,11 +118,36 @@ public class ControllerFase : MonoBehaviour
         }
         else
         {
-            Debug.Log("Erro aqui no distribuicao Estrelas"); //BUG AQUI
+            Debug.Log("Erro aqui no distribuicao Estrelas"); //SE ENTRAR AQUI É QUE TEM ALGO ERRADO NA FUNCAO
             estrelas = 100;
         }
         
         return estrelas;
+    }
+
+    public void alteracaoDisponibilidadeManaAdicao( int valorMana)//altera dinamicamente a mana a partir da utilizacao pelo player atraves do bloco valor_ataque
+    {
+       
+            Debug.Log("Entrei dentro do adicaoMana");
+        int manaAtual =qtdManaDisponivelFase;
+        int novoValMana = manaAtual + valorMana;
+
+        qtdManaDisponivelFase = novoValMana;
+        _hud.manaText.text = novoValMana.ToString();
+            AlterarLimiteBlocoForcaAtaque(novoValMana);
+
+        
+    }
+    public void alteracaoDisponibilidadeManaRemocao(int valorMana)
+    {
+        Debug.Log("Entrei dentro do retiradaMana");
+        int manaAtual = qtdManaDisponivelFase;
+        int novoValMana = manaAtual - valorMana;
+
+        qtdManaDisponivelFase = novoValMana;
+        _hud.manaText.text = novoValMana.ToString();
+        AlterarLimiteBlocoForcaAtaque(novoValMana);
+        Debug.Log("Dentro do alteracaoDisp , valor do novoValMan = " + novoValMana);
     }
 
 }

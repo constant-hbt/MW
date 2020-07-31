@@ -29,21 +29,20 @@ public class HUD : MonoBehaviour
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
 
 
-        //manaText.text = _gameController.manaPlayer.ToString();
     }
     void Update()
     {
         goldText.text = _controllerFase.qtdMoedasColetadas.ToString();
-       // vidaText.text = _gameController.numVida.ToString();
-        
+         vidaText.text = _gameController.numVida.ToString();
+        manaText.text = _controllerFase.qtdManaDisponivelFase.ToString();
         
     }
 
-    public void alterarMana(int mana)
+   /* public void alterarMana(int mana)
     {
         manaText.text = mana.ToString();
         AlterarLimiteBlocoForcaAtaque(mana);
-    }
+    }*/
 
     
 }

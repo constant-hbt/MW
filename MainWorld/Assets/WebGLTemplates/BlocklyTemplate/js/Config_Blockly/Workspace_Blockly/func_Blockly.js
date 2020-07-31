@@ -90,7 +90,7 @@
 
             //ENVIAR A QUANTIDADE DE BLOCOS QUE FORAM UTILIZADOS PARA PASSAR A FASE
             function enviarQtdBlocosUsados(qtdBloco){//-> função criada por mim
-                unityInstance.SendMessage('GameController','quantidadeBlocoUsadosNaFase',qtdBloco );
+                unityInstance.SendMessage('ControllerFase','quantidadeBlocoUsadosNaFase',qtdBloco );
                 unityInstance.SendMessage('playerKnight', 'receberBlocos', qtdBloco);
                 console.log('Enviei os blocos = '+ qtdBloco);
             }

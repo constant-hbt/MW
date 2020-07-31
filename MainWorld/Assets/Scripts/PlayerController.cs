@@ -310,9 +310,7 @@ public class PlayerController : MonoBehaviour
         {
             testeColisaoInimigo = true;
             testeNaoColidindoInimigo = false;
-            //colidiComInimigo = true;
-            // Teste(true);
-            //  CondicaoInimigo(true);
+            
         }
         else
         {
@@ -324,16 +322,16 @@ public class PlayerController : MonoBehaviour
 
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
-             //Teste(rayCast_ColidindoInimigo);
+             Teste(rayCast_ColidindoInimigo);
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
+            CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-           // CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
