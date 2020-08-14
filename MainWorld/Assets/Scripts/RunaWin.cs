@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
-
+using System;
 public class RunaWin : MonoBehaviour
 {
 
     /// <summary>
     /// RESPONSAVEL PELO OBJETO DE CONCLUSAO DA FASE, HABILITA E DESABILITA O PAINEL DE CONCLUSAO DE FASE APÓS A COLISÃO DO PLAYER COM O OBJETO QUE CONTÉM ESTE SCRIPT
     /// </summary>
+    /// 
+    private ControllerFase _controllerFase;
     public              GameObject      painelFaseConcluida;
 
     [DllImport("__Internal")]
@@ -19,7 +21,7 @@ public class RunaWin : MonoBehaviour
 
     void Start()
     {
-        
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
     }
 
     
@@ -30,6 +32,7 @@ public class RunaWin : MonoBehaviour
 
     void ativarPainel()
     {
+        _controllerFase.data_FimFase = DateTime.Now.ToLocalTime();//pega a hora em que ativa o painel de conclusao de fase e assim o usuario terá concluido a fase
         painelFaseConcluida.SetActive(true);
         StartCoroutine("reiniciarWorkspace");//assim que o painel aparecer espera-se alguns segundos e reinicia o espaço blockly
     }

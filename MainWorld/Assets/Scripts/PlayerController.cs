@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public int vidaPlayer ;//vida do player dentro da fase
     public Transform pontoAnimMorte;//guarda as coordenadas dos eixos do ponto de origem que a animacao deve iniciar
     private bool estaMorto ;//verifica se o player esta morto
+    private bool ativPainelPosMorte; //ativa o painel apos a morte do player
     public bool tomeiHit;//verifica se o player ja tomou um hit do inimigo, limita o collider de ataque do inimigo a acerta-lo somente uma vez com sua animacao de ataque
     
     [Header("Configuração de movimentação")] 
@@ -113,6 +114,7 @@ public class PlayerController : MonoBehaviour
         parteFase = 0;
 
         estaMorto = false;
+        ativPainelPosMorte = false;
         tomeiHit = false;
         vidaPlayer = 1;
     }
@@ -138,19 +140,22 @@ public class PlayerController : MonoBehaviour
         }
 
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
-        if (interpreteAcabou /*&& qtdBlocosUsados == 0*/ && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase)
+        if (interpreteAcabou /*&& qtdBlocosUsados == 0*/ && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase || ativPainelPosMorte)
         {
             //
             painelFaseIncompleta.SetActive(true);
+            _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
             this.retirarVida();
             qtdBlocosUsados = -1;
             interpreteAcabou = false;
+            ativPainelPosMorte = false;
         }
         if(vidaPlayer <= 0 && !estaMorto)
         {
-            estaMorto = true;
+            
             playerAnimator.SetInteger("idAnimation", 3);//ESSE IF PRECISA DE AJUSTES(VERIFICAR O LOCAL CORRETO QUE ELE DEVE SER INSERIDO)
             StartCoroutine("mortePlayer");
+            estaMorto = true;//vai definir que o player esta morto e portanto assim o painel de fase incompleta sera ativado
             //DEPOIS VAI PARA O INTERPRETE E CHAMAR O PAINEL DE FASE INCOMPLETA
         }
         if (estaMorto)
@@ -412,7 +417,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.AddForce(new Vector2(0, jumpForceY_puloSimples));
         }
-        StartCoroutine("diminuirQTDBlocosU");
+        StartCoroutine("diminuirQTDBlocosU");//verificar e apagar depois
         yield return null;
     }
     IEnumerator PuloLateral()//ok , falta ajustar a altura
@@ -423,7 +428,7 @@ public class PlayerController : MonoBehaviour
             playerRB.AddForce(new Vector2(jumpForceX_pularFrente ,jumpForceY_pularFrente));
         }
         // StartCoroutine("zerarVelocidadeAposSaltoL");
-        StartCoroutine("diminuirQTDBlocosU");
+        StartCoroutine("diminuirQTDBlocosU"); //verificar e apagar depois
         yield return null;
     }
     IEnumerator Defender()//ok
@@ -438,12 +443,12 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetInteger("idAnimation", 0);
        
         habilitaColisorEmPe();
-        StartCoroutine("diminuirQTDBlocosU");
+        StartCoroutine("diminuirQTDBlocosU");//verificar e apagar depois
     }
-    public void testeAtaque()
+    /*public void testeAtaque()
     {
         StartCoroutine("Ataque", forcaDano);
-    }
+    } APAGAR DEPOIS*/
     IEnumerator Ataque(int valor_ataque)//ok
     {
         forcaDano = valor_ataque;
@@ -455,12 +460,12 @@ public class PlayerController : MonoBehaviour
     IEnumerator Attack3()//ok
     {
         playerAnimator.SetTrigger("attack3");
-        StartCoroutine("diminuirQTDBlocosU");
+        StartCoroutine("diminuirQTDBlocosU");//VERIFICAR E APAGAR DEPOIS
         yield return null;
     }
     //---------------------------------------------------------------------------------
 
-    public void explosaoInimigo(int forcaAtaqueInimigo) //chama a coroutina com as configuracoes de hitInimigo
+    public void explosaoInimigo(int forcaAtaqueInimigo) //chama a coroutina com as configuracoes de hitInimigo --> É ativada pelo inimigo
     {
         StartCoroutine("hitInimigo", forcaAtaqueInimigo);
     }
@@ -482,6 +487,7 @@ public class PlayerController : MonoBehaviour
         sRender.enabled = false;//deixa o player invisivel
         yield return new WaitForSeconds(0.2f);
         GameObject morteTemp = Instantiate(fxMorte, pontoAnimMorte.position, transform.localRotation);//instancia a animacao de morte
+        ativPainelPosMorte = true;
         yield return new WaitForSeconds(0.5f);
         Destroy(morteTemp);//destroi a animacao de morte
         this.gameObject.SetActive(false);//desativa o gameObject do player
@@ -498,7 +504,7 @@ public class PlayerController : MonoBehaviour
         
         playerAnimator.SetInteger("idAnimation", 0);
         mudarTagChao("comTagChao", parteFase);
-        
+        marcarFreezyX();
     }
     IEnumerator zerarVelocidadeAposSaltoL()
     {
@@ -522,10 +528,15 @@ public class PlayerController : MonoBehaviour
     {
         playerRB.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
+    public void marcarFreezyX()
+    {
+        playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+    }
     public void retirarVida()
     {
         _gameController.numVida-= 1;
     }
+    
 
     public void zerarVelocidadeP()
     {
@@ -545,7 +556,7 @@ public class PlayerController : MonoBehaviour
         }
         ;
     }
-    IEnumerator diminuirQTDBlocosU()
+    IEnumerator diminuirQTDBlocosU() // verificar se esta sendo usada e caso nao for entao apague
     {
         yield return new WaitForSeconds(1.5f);
         qtdBlocosUsados--;
@@ -601,7 +612,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.6f);
         pararMovimentacao();
 
-    }
+    } 
     public void StartVirar()
     {
         Flip();

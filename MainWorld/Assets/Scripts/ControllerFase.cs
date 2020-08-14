@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
-
+using System;
 public class ControllerFase : MonoBehaviour
 {
     /// <summary>
@@ -14,9 +14,11 @@ public class ControllerFase : MonoBehaviour
     private HUD _hud;
 
     [Header("Coletáveis durante a fase")]
-    public                  int                     gold;//todas as moedas coletadas durante a fase;
-    public                  int                     estrelas = 0;//estrelas adquiras com o desempenho na fase
-    public                  GameObject[]            fases;
+    public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
+    public int estrelas = 0;//estrelas adquiras com o desempenho na fase
+    public DateTime data_InicioFase;//computado ao iniciar a fase
+    public DateTime data_FimFase;//vai ser computado ao colidir com o runaWin
+    public GameObject[] fases;
 
     //Configuração do Limite de blocos por fase
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
@@ -26,7 +28,6 @@ public class ControllerFase : MonoBehaviour
     public                  int                     qtdMinimaDeBlocosParaConclusao;//quantidade de blocos minimos que devem ser usados para concluir a fase
     public                  int                     qtdBlocosUsados;//quantidade de blocos que foram utilizados para concluir a fase
     public                  int                     qtdMoedasDisponiveis;//quantidade de moedas disponiveis para coleta na fase
-    public                  int                     qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
 
 
     [Header("Quantidade disponivel para a primeira parte da fase")]
@@ -50,6 +51,8 @@ public class ControllerFase : MonoBehaviour
 
     void Start()
     {
+        data_InicioFase = DateTime.Now.ToLocalTime();//Pega a data/hora que a fase é iniciada
+
        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
        SistemaLimiteBloco(qtdBlocosDisponiveis);
        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
@@ -105,8 +108,8 @@ public class ControllerFase : MonoBehaviour
             qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas > metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
-                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas > metadeMoedaD && qtdMoedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
+        }else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
+                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
@@ -128,7 +131,7 @@ public class ControllerFase : MonoBehaviour
     public void alteracaoDisponibilidadeManaAdicao( int valorMana)//altera dinamicamente a mana a partir da utilizacao pelo player atraves do bloco valor_ataque
     {
        
-            Debug.Log("Entrei dentro do adicaoMana");
+        Debug.Log("Entrei dentro do adicaoMana");
         int manaAtual =qtdManaDisponivelFase;
         int novoValMana = manaAtual + valorMana;
 

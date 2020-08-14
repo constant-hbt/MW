@@ -9,9 +9,12 @@ public class PainelConclusãoFase : MonoBehaviour
 {
     private             GameController          _gameController;
     private             ControllerFase          _controllerFase;
+    private Desempenho_Controller _desempenhoController;
 
     public              TextMeshProUGUI         tmpEstrelas;
     public              TextMeshProUGUI         tmpMoedas;
+    public GameObject painelConclusaFase;
+    private bool jaEnvieiRegistro = false; //verifica se o registro ja foi enviado ao ativar o painel ao concluir a fase
 
     [Header("Configuração Estrelas")]
 
@@ -32,6 +35,7 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        _desempenhoController = FindObjectOfType(typeof(Desempenho_Controller)) as Desempenho_Controller;
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
         Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
@@ -59,7 +63,7 @@ public class PainelConclusãoFase : MonoBehaviour
         }
 
         habilitarAlertCodigo = true;
-        
+        jaEnvieiRegistro = false;
     }
     void Update()
     {
@@ -69,18 +73,24 @@ public class PainelConclusãoFase : MonoBehaviour
             habilitarAlertCodigo = false;
         }
     }
+    private void FixedUpdate()
+    {
+        if (painelConclusaFase.activeSelf && !jaEnvieiRegistro)
+        {
+            Debug.Log("Vou enviar os registros ao banco");
+
+            Debug.Log("Estou enviando os dados para o banco");
+            _desempenhoController.EnviarRegistroDesempenho();
+
+            jaEnvieiRegistro = true;
+        }
+    }
 
     public void BtnReiniciar(int numeroFase)
     {
-        switch (numeroFase)
-        {
-            case 1:
-                SceneManager.LoadScene("Fase1");
-                break;
-            case 2:
-                SceneManager.LoadScene("Fase2");
-                break;
-        }
+        SceneManager.LoadScene("Fase" + numeroFase);
+        _gameController.idFaseEmExecucao = numeroFase;
+        _gameController.descricaoFase = "Fase" + numeroFase;
     }
 
     public void btnPlay()
@@ -96,15 +106,14 @@ public class PainelConclusãoFase : MonoBehaviour
          //ao idFase como concluida
             _gameController.fasesConcluidas = idFase;
 
-        } //AQUI PROVAVELMENTE TENHA UM BUG
-        if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
-        {
-            _gameController.numEstrelas += qtdEstrelasAdquiridas - _gameController.EstrelasFases[idFase - 1];//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
-            _gameController.EstrelasFases[idFase - 1] = qtdEstrelasAdquiridas;
-            _gameController.numGold += _controllerFase.qtdMoedasColetadas;
-
         }
+        //if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
+        //{
+        _gameController.numEstrelas += qtdEstrelasAdquiridas;//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
+        _gameController.EstrelasFases[idFase - 1] += qtdEstrelasAdquiridas;
+        _gameController.numGold += _controllerFase.qtdMoedasColetadas;
+
+        // }
     }
-    
 
 }

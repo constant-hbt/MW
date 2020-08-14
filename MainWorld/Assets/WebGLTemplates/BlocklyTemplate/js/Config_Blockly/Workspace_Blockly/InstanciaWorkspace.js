@@ -252,8 +252,10 @@ zoom:
                              console.log(idBlocoAttack);
                                  //var voltarValMana;
                                   //   voltarValMana = parseInt(mana.value) + parseInt(valManaAntigo);
+                                  
                                      unityInstance.SendMessage('ControllerFase', 'alteracaoDisponibilidadeManaAdicao',valManaAntigo);
                                     // mana.value = voltarValMana;//VAI ENVIAR UMA REQUISICAO PRO UNITY
+                                    
                          }else{
                              console.log("Não sou o bloco desejado");
                          }

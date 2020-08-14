@@ -41,7 +41,9 @@ public class SeleçãoFase : MonoBehaviour
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
-       
+        //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
+        _gameController.descricaoFase = "";
+        _gameController.idFaseEmExecucao = 0;
     }
 
     
@@ -73,30 +75,48 @@ public class SeleçãoFase : MonoBehaviour
         {
             case 1:
                 SceneManager.LoadScene("Fase1");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase1";
                 break;
             case 2:
                 SceneManager.LoadScene("Fase2");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase2";
                 break;
             case 3:
                 print("York");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase3";
                 break;
             case 4:
                 print("Wareham");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase4";
                 break;
             case 5:
                 print("Edington");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase5";
                 break;
             case 6:
                 print("Chippenham");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase6";
                 break;
             case 7:
                 print("Wantage");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase7";
                 break;
             case 8:
                 print(" Exeter");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase8";
                 break;
             case 9:
                 print("Wessex");
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase9";
                 break;
         }
     }

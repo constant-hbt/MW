@@ -46,10 +46,6 @@ public class Inimigo : MonoBehaviour
     public GameObject fxMorte; //guarda o prefab com a animacao de morte  
     public GameObject fxHitPlayer;//guarda o prefab da animação de quando ele explode e da um hit no player
 
-    /*
-    [Header("Configuração de loot")]
-    public GameObject loots;
-    */
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -108,6 +104,8 @@ public class Inimigo : MonoBehaviour
                         //INIMIGO SOMENTE MORRE
                         Debug.Log("INIMIGO MORREU");
                         died = true;
+
+                        this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
                         StartCoroutine("loot");
@@ -119,6 +117,7 @@ public class Inimigo : MonoBehaviour
                        
                         Debug.Log("INIMIGO MORREU MAIS EXPLODIU E DEU DANO NO PLAYER");
                         died = true;
+
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;
                         _animator.SetInteger("idAnimation", 1);
@@ -211,7 +210,7 @@ public class Inimigo : MonoBehaviour
         yield return new WaitForSeconds(0.5f);//depois de meio segundo desabilita a imagem do inimigo
         sRender.enabled = false;
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f); APAGAR DEPOIS
         //Controle de loot
         int qtdMoedas = Random.Range(1, 5);
         for (int l = 0; l < qtdMoedas; l++)
