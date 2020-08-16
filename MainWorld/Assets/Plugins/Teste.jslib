@@ -42,6 +42,8 @@ mergeInto(LibraryManager.library, {
         limit.value =limitForcaAtaque;
         console.log("Valor do limite do bloco força ataque = " + limiteForcaAtaque.value);
         console.log("Valor passado para variavel limit = " + limit.value);
+
+        alterarLimiteBlocoForca(limitForcaAtaque);
     },
     
 });

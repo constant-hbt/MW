@@ -141,11 +141,18 @@ public class ControllerFase : MonoBehaviour
 
         
     }
-    public void alteracaoDisponibilidadeManaRemocao(int valorMana)
+    public void alteracaoDisponibilidadeManaRemocao(string valorAntigoNovoMana)
+
     {
+        string []novoVal = valorAntigoNovoMana.Split(',');
+
         Debug.Log("Entrei dentro do retiradaMana");
-        int manaAtual = qtdManaDisponivelFase;
-        int novoValMana = manaAtual - valorMana;
+        Debug.Log("novoVal pos 0 = " + novoVal[0] + " novoVal pos1 = " + novoVal[1]);
+        int valorAntesAtt = Int32.Parse(novoVal[0]);
+        int valorDepoisAtt = Int32.Parse(novoVal[1]);
+
+        int manaAtual = qtdManaDisponivelFase + valorAntesAtt;
+        int novoValMana = manaAtual - valorDepoisAtt;
 
         qtdManaDisponivelFase = novoValMana;
         _hud.manaText.text = novoValMana.ToString();

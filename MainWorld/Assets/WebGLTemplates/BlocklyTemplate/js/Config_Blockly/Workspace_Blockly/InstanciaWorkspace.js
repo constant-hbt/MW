@@ -58,6 +58,8 @@ zoom:
                                  valManaatt = idBlocoAttack[i].valor;
                              }   
                      }
+
+                     
                      unityInstance.SendMessage('ControllerFase','alteracaoDisponibilidadeManaRemocao', valManaatt);
                      //mana.value -= valManaatt; //VAI ENVIAR UMA REQUISICAO AO UNITY PARA MUDAR O VALOR DA MANA
                  }, 1000);
@@ -185,6 +187,8 @@ zoom:
                         console.log("Esse é o evento" +event);
                                 if(event.type == Blockly.Events.BLOCK_CREATE
                                  && event.xml.attributes[0].textContent == "valor_ataque"){
+
+                                    console.log(event);
                                     console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR INSERCAO");
                                     obj = 
                                        {
@@ -205,25 +209,48 @@ zoom:
                         && event.name == "valor_ataque"){
                             console.log("ENTREI DENTRO DO OUVINTE DE CAPTAR ATUALIZACAO");
                             var valManaatt;
+                            var valManaAntesAtt;
+                            
                             clearTimeout(usuParouDigit);
                             usuParouDigit = setTimeout(function(){
                                 console.log(event);
                                 for(var i=0; i<idBlocoAttack.length;i++){
                                         if(idBlocoAttack[i].id == event.blockId){
                                             console.log( "Valor antes de alterar no array ids = "+ idBlocoAttack[i].valor);
+                                            valManaAntesAtt = idBlocoAttack[i].valor;
                                             idBlocoAttack[i].valor = event.newValue;
                                             console.log("Valor depois de alterar o array ids = "+ idBlocoAttack[i].valor);
                                             valManaatt = idBlocoAttack[i].valor;
                                         }   
                                 }
-                                unityInstance.SendMessage('ControllerFase','alteracaoDisponibilidadeManaRemocao', valManaatt);
+                                var valorAntigoNovoMana = valManaAntesAtt.toString()+","+valManaatt.toString(); //pos 0 = valor antigo mana , pos 1 = valor da mana apos att
+                               // valorAntigoNovoMana.push(valManaAntesAtt);
+                                //valorAntigoNovoMana.push(valManaatt);
+                                console.log("Array com valor antigos e novos mana = "+valorAntigoNovoMana);
+                                unityInstance.SendMessage('ControllerFase','alteracaoDisponibilidadeManaRemocao', valorAntigoNovoMana);
                                 //mana.value -= valManaatt; //VAI ENVIAR UMA REQUISICAO AO UNITY PARA MUDAR O VALOR DA MANA
                             }, 1000);
-            
+                            console.log("Se der erro depois disso aqui é por causa do teste");
+                            //let tmp = Blockly.mainWorkspace.blockDB_(event.blockId);
+                            //tmp.update.call(tmp);
+                            console.log(Blockly.mainWorkspace.getAllBlocks().length);
+                            console.log(Blockly.mainWorkspace.getAllBlocks()[0].inputList[0].fieldRow[1].max_);
+                            /*
+                            var limitForcaAtaque = document.getElementById('limiteForcaAtaque');
+                            var blocos_temp = Blockly.mainWorkspace.getAllBlocks();
+                            console.log(blocos_temp);
+                                for(var i=0; i< blocos_temp.length; i++ ){
+                                     if(blocos_temp[i].type == "valor_ataque"){
+                                         console.log("Entrei dentro do if");
+                                        blocos_temp[i].inputList[0].fieldRow[1].max_ = blocos_temp[i].inputList[0].fieldRow[1].value_ + parseInt(limitForcaAtaque.value);
+                                  }
+                                }
+                                    */
+                            
                         }
                     }       
                     //#endregion
-
+                   
                  //#region REMOCAO
                  workspace.addChangeListener(captarRemocao);
                  function captarRemocao(event){
@@ -264,5 +291,5 @@ zoom:
                  }
                 //#endregion
           //#endregion 
-
+         
     }

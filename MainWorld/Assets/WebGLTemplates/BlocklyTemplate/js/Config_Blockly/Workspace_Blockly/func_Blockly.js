@@ -136,6 +136,15 @@
                 }, 1000); 
 }
    //-----
-
+   function alterarLimiteBlocoForca(val_forca){
+    console.log("Entrei dentro da funcao alterarLimiteBlocoForca");
+    var limitForcaAtaque = document.getElementById('limiteForcaAtaque');
+    var blocos_temp = Blockly.mainWorkspace.getAllBlocks();
+        for(var i=0; i< blocos_temp.length; i++ ){
+            if(blocos_temp[i].type == "valor_ataque"){
+ blocos_temp[i].inputList[0].fieldRow[1].max_ = blocos_temp[i].inputList[0].fieldRow[1].value_ + parseInt(limitForcaAtaque.value);
+            }
+        }
+}
                 
       //#endregion
