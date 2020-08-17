@@ -8,7 +8,7 @@ public class Historico_Controller : MonoBehaviour
     private GameController _gameController;
     private ControllerFase _controllerFase;
 
-    string WEB_URL = "localhost:3000";
+    string WEB_URL = "http://localhost:3000";
     string rota = "/novoHistorico";
     void Start()
     {
