@@ -19,9 +19,21 @@ public class Coin : MonoBehaviour
         
     }
 
-    void coletar()
+    void coletar(string tipoMoeda)
     {
-        _controllerFase.qtdMoedasColetadas += valorCoin;
-        Destroy(this.gameObject);
+        switch (tipoMoeda)
+        {
+            case "coletavel":
+                _controllerFase.qtdMoedasColetadas += valorCoin;
+                Destroy(this.gameObject);
+                break;
+            case "loot":
+                _controllerFase.qtdMoedasColetadas += valorCoin;
+                _controllerFase.qtdMoedasLootColetadas += valorCoin;
+                Destroy(this.gameObject);
+                break;
+        }
+        
     }
+    
 }

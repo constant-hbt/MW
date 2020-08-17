@@ -218,9 +218,12 @@ public class PlayerController : MonoBehaviour
                 col.gameObject.SendMessage("ativarPainel", SendMessageOptions.DontRequireReceiver);
                 break;
             case "coletavel":
-                col.gameObject.SendMessage("coletar", SendMessageOptions.DontRequireReceiver);
+                col.gameObject.SendMessage("coletar","coletavel", SendMessageOptions.DontRequireReceiver);
                 break;
-            
+            case "loot":
+                col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
+                break;
+
         }
     }
 

@@ -2388,6 +2388,8 @@ GameObject:
   m_Component:
   - component: {fileID: 87958072}
   - component: {fileID: 87958071}
+  - component: {fileID: 87958074}
+  - component: {fileID: 87958073}
   m_Layer: 0
   m_Name: GameControllerEntreFases
   m_TagString: Untagged
@@ -2407,14 +2409,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a1c991e55afef46bddb88d2195c5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id_usuario_ativ_turma: 1
+  idGame: 1
+  descricaoFase: 
+  gameControllers: []
+  idFaseEmExecucao: 0
   fasesConcluidas: 0
   progressoAtual: 0
   numGold: 0
   numVida: 10
   numEstrelas: 0
-  vidaMax: 3
-  gameControllers: []
+  errosFase: 
   EstrelasFases: 000000000000000000000000000000000000000000000000000000000000000000000000
+  vidaMax: 3
+  manaPlayer: 1
 --- !u!4 &87958072
 Transform:
   m_ObjectHideFlags: 0
@@ -2429,6 +2437,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87958073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87958070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87879392af901d74e9bc6bdbfdd94d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &87958074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87958070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fb50c99089d5f4ab83a08e2bc2a47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &109984709
 GameObject:
   m_ObjectHideFlags: 0

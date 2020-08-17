@@ -2,16 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using System;
 public class Historico_Controller : MonoBehaviour
 {
+    private GameController _gameController;
+    private ControllerFase _controllerFase;
+
     string WEB_URL = "localhost:3000";
     string rota = "/novoHistorico";
     void Start()
     {
-        
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
     }
 
-    public void SendPostRegistrarHistorico(Historico historico)
+    public void EnviarRegistroHistorico()
+    {
+       
+
+        Debug.Log("Entrei na funcao enviarRegistroHistorico()");
+
+        Debug.Log("Erro aqui " + _controllerFase.data_InicioFase.ToString());
+
+        Historico objHistorico = new Historico();
+        objHistorico.Moedas = _gameController.numGold;
+        objHistorico.Estrelas = _gameController.numEstrelas;
+        objHistorico.Vidas = _gameController.numVida;
+        objHistorico.Ultima_fase_concluida = _gameController.fasesConcluidas;
+        objHistorico.Data_hora = DateTime.Now.ToLocalTime().ToString();
+        objHistorico.Id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
+
+
+
+        Debug.Log("Enviei o obj historico, este é o valor do id_usuario_ativ_turma = " + objHistorico.Id_usuario_ativ_turma);
+        SendRestPostRegistrarHistorico(objHistorico);
+    }
+
+    public void SendRestPostRegistrarHistorico(Historico historico)
     {
         StartCoroutine(RegistrarHistorico(WEB_URL, rota, historico));
     }

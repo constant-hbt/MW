@@ -24,8 +24,7 @@ public class Desempenho_Controller : MonoBehaviour
     }
     public void EnviarRegistroDesempenho()
     {
-        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        
 
         Debug.Log("Entrei na funcao enviarRegistroDesempenho()");
 

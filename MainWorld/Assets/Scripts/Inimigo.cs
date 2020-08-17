@@ -213,6 +213,7 @@ public class Inimigo : MonoBehaviour
         //yield return new WaitForSeconds(0.5f); APAGAR DEPOIS
         //Controle de loot
         int qtdMoedas = Random.Range(1, 5);
+        
         for (int l = 0; l < qtdMoedas; l++)
         {
             int lootSelect = Random.Range(0, loots.Length);

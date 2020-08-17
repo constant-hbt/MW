@@ -15,6 +15,7 @@ public class ControllerFase : MonoBehaviour
 
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
+    public int qtdMoedasLootColetadas; //moedas coletadas por loot adquiridos apartir dos inimigos
     public int estrelas = 0;//estrelas adquiras com o desempenho na fase
     public DateTime data_InicioFase;//computado ao iniciar a fase
     public DateTime data_FimFase;//vai ser computado ao colidir com o runaWin
@@ -92,6 +93,12 @@ public class ControllerFase : MonoBehaviour
     public int distribuicaoEstrelas()
     {
         bool naoTemMoeda = false;
+        int moedasColetadas = qtdMoedasColetadas - qtdMoedasLootColetadas;
+
+        if(moedasColetadas < 0)
+        {
+            moedasColetadas *= -1;
+        }
 
         float metadeMoedaD = qtdMoedasDisponiveis * 0.5f;
        
@@ -104,18 +111,18 @@ public class ControllerFase : MonoBehaviour
             naoTemMoeda = false;
         }
 
-        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas == qtdMoedasDisponiveis ||
+        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas == qtdMoedasDisponiveis ||
             qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-        }else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
-                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas >= metadeMoedaD && qtdMoedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
+        }else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
+                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas < metadeMoedaD && !naoTemMoeda ||
-                qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas == 0 && naoTemMoeda ||
-                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && qtdMoedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
+        else if(qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda ||
+                qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas == 0 && naoTemMoeda ||
+                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }

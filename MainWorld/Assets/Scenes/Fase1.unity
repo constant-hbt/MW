@@ -924,14 +924,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b96c62df21e42248b781860af8c812d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
+  qtdMoedasColetadas: 0
+  qtdMoedasLootColetadas: 0
   estrelas: 0
   fases: []
   qtdBlocosDisponiveisEmTodaFase: 10
   qtdMinimaDeBlocosParaConclusao: 7
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 3
-  qtdMoedasColetadas: 0
   qtdBlocosDisponiveis: 10
   qtdManaDisponivelFase: 10
 --- !u!1 &237886484
@@ -2815,7 +2815,7 @@ MonoBehaviour:
   olhandoEsquerda: 0
   playerEsquerda: 1
   loots:
-  - {fileID: 5845169080400941912, guid: 8bb1648f112be1149bbfca6f8b94d9ea, type: 3}
+  - {fileID: 5845169080400941912, guid: 264656586bf6df448bdf95684c7d1cef, type: 3}
   fxDano:
   - {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff, type: 3}
   fxMorte: {fileID: 2168333012426403654, guid: d8e817979b0363b418bd6c5e2afa34ca, type: 3}
@@ -4618,6 +4618,11 @@ PrefabInstance:
       propertyPath: estrela3
       value: 
       objectReference: {fileID: 1077128938}
+    - target: {fileID: 8764502751774501153, guid: 1d86fec885786df499b5950b8597d6de,
+        type: 3}
+      propertyPath: painelConclusaFase
+      value: 
+      objectReference: {fileID: 1077128936}
     - target: {fileID: 8764502752482049151, guid: 1d86fec885786df499b5950b8597d6de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

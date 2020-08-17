@@ -18,6 +18,8 @@ TagManager:
   - chao
   - arma
   - armaInimigo
+  - explosaoInimigo
+  - loot
   layers:
   - Default
   - TransparentFX
