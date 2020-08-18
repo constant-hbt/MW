@@ -18,23 +18,17 @@ public class Historico_Controller : MonoBehaviour
 
     public void EnviarRegistroHistorico()
     {
-       
-
-        Debug.Log("Entrei na funcao enviarRegistroHistorico()");
-
-        Debug.Log("Erro aqui " + _controllerFase.data_InicioFase.ToString());
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
 
         Historico objHistorico = new Historico();
         objHistorico.Moedas = _gameController.numGold;
         objHistorico.Estrelas = _gameController.numEstrelas;
         objHistorico.Vidas = _gameController.numVida;
         objHistorico.Ultima_fase_concluida = _gameController.fasesConcluidas;
-        objHistorico.Data_hora = DateTime.Now.ToLocalTime().ToString();
+        objHistorico.Data_hora = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");
         objHistorico.Id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
 
-
-
-        Debug.Log("Enviei o obj historico, este é o valor do id_usuario_ativ_turma = " + objHistorico.Id_usuario_ativ_turma);
         SendRestPostRegistrarHistorico(objHistorico);
     }
 

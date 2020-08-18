@@ -11,6 +11,7 @@ public class Desempenho_Controller : MonoBehaviour
 
     string WEB_URL = "http://localhost:3000";//servico ->> 51514 casa ->>>> 49478
     string rota = "/novoDesempenho";
+    string rotaAtt = "/atualizaDesempenho";
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -24,15 +25,16 @@ public class Desempenho_Controller : MonoBehaviour
     }
     public void EnviarRegistroDesempenho()
     {
-        
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
 
         Debug.Log("Entrei na funcao enviarRegistroDesempenho()");
 
         Debug.Log("Erro aqui " + _controllerFase.data_InicioFase.ToString());
 
         FaseConcluida objFaseConcluida = new FaseConcluida();
-        objFaseConcluida.Data_inicio = _controllerFase.data_InicioFase.ToString();
-        objFaseConcluida.Data_fim = _controllerFase.data_FimFase.ToString();
+        objFaseConcluida.Data_inicio = _controllerFase.data_InicioFase;
+        objFaseConcluida.Data_fim = _controllerFase.data_FimFase;
         objFaseConcluida.QtdErros = _gameController.errosFase[_gameController.idFaseEmExecucao - 1];
         objFaseConcluida.QtdEstrelas = _controllerFase.estrelas;
         objFaseConcluida.QtdMoedas = _controllerFase.qtdMoedasColetadas;
@@ -40,6 +42,7 @@ public class Desempenho_Controller : MonoBehaviour
         Desempenho objDesempenho = new Desempenho();
         objDesempenho.IdGame = _gameController.idGame;
         objDesempenho.DescricaoFase = _gameController.descricaoFase;
+        objDesempenho.Id_Desempenho = _gameController.id_Desempenho;
         objDesempenho.Moedas = _gameController.numGold + _controllerFase.qtdMoedasColetadas;
         objDesempenho.Estrelas = _gameController.numEstrelas + _controllerFase.estrelas;
         objDesempenho.Vidas = _gameController.numVida;
@@ -58,8 +61,15 @@ public class Desempenho_Controller : MonoBehaviour
     public void SendRestPostRegistrarDesemepenho(Desempenho desempenho)
     {
 
-       
-        StartCoroutine(RegistrarDesempenho(WEB_URL, rota, desempenho));
+       if(desempenho.Id_Desempenho == 0)
+        {
+            StartCoroutine(RegistrarDesempenho(WEB_URL, rota, desempenho));
+        }
+        else
+        {
+            StartCoroutine(AtualizarDesempenho(WEB_URL, rotaAtt, desempenho));
+        }
+        
     }
 
     IEnumerator RegistrarDesempenho(string url, string rota, Desempenho p_desempenho)
@@ -90,9 +100,53 @@ public class Desempenho_Controller : MonoBehaviour
                 if (www.isDone)
                 {
                     string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);//downloadHandler.data manda a informacao vinda do servidor(banco)
+                    
+                    Desempenho retorno_Desempenho = JsonUtility.FromJson<Desempenho>(jsonResult);//crio uma var do tipo mensagem e preencho com o json retornado do servidor
+                    _gameController.id_Desempenho = retorno_Desempenho.Id_Desempenho;
+                    
+                    // Debug.Log("Retorno = " + retorno_Desempenho.Id_Desempenho);
+                    // Mensagem mensagem_rest = JsonUtility.FromJson<Mensagem>(jsonResult);//crio uma var do tipo mensagem e preencho com o json retornado do servidor
+                    // callback(mensagem_rest);//preencho a callback com a informação retornada do servidor
+
+                }
+            }
+        }
+
+        yield return null;
+    }
+
+    IEnumerator AtualizarDesempenho(string url, string rota, Desempenho p_desempenho)
+    {
+        string urlNew = string.Format("{0}{1}", url, rota);//concatena a rota com a url
+        Debug.Log("Nova url " + urlNew);
+        string jsonData = JsonUtility.ToJson(p_desempenho);
+        Debug.Log("Mandei este jsonData =" + jsonData);
+
+        using (UnityWebRequest www = UnityWebRequest.Put(urlNew, jsonData))
+        {
+
+            www.SetRequestHeader("content-type", "application/json");
+            www.uploadHandler.contentType = "application/json";
+            www.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(jsonData));//transforma o conteudo json em bytes para realizar o envio
+
+            yield return www.SendWebRequest();//faz o envio da requisição
+
+            //processa e trabalha com o retorno da requisição
+            if (www.isNetworkError)
+            {
+                // Mensagem mensagem_erro = new Mensagem((int)www.responseCode, www.error);//responseCode = numero de status, error = mensagem de erro
+                Debug.Log(www.error);
+                // callback(mensagem_erro);
+            }
+            else
+            {
+                if (www.isDone)
+                {
+                    string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);//downloadHandler.data manda a informacao vinda do servidor(banco)
                     Debug.Log(jsonResult);
-                   // Mensagem mensagem_rest = JsonUtility.FromJson<Mensagem>(jsonResult);//crio uma var do tipo mensagem e preencho com o json retornado do servidor
-                   // callback(mensagem_rest);//preencho a callback com a informação retornada do servidor
+                 
+                    // Mensagem mensagem_rest = JsonUtility.FromJson<Mensagem>(jsonResult);//crio uma var do tipo mensagem e preencho com o json retornado do servidor
+                    // callback(mensagem_rest);//preencho a callback com a informação retornada do servidor
 
                 }
             }

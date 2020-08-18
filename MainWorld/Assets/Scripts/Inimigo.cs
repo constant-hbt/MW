@@ -207,7 +207,7 @@ public class Inimigo : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
-        yield return new WaitForSeconds(0.5f);//depois de meio segundo desabilita a imagem do inimigo
+        yield return new WaitForSeconds(0.3f);//depois de meio segundo desabilita a imagem do inimigo
         sRender.enabled = false;
 
         //yield return new WaitForSeconds(0.5f); APAGAR DEPOIS

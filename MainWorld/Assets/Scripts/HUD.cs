@@ -38,7 +38,7 @@ public class HUD : MonoBehaviour
         
     }
 
-   /* public void alterarMana(int mana)
+   /* public void alterarMana(int mana) APAGAR
     {
         manaText.text = mana.ToString();
         AlterarLimiteBlocoForcaAtaque(mana);

@@ -17,9 +17,9 @@ public class ControllerFase : MonoBehaviour
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
     public int qtdMoedasLootColetadas; //moedas coletadas por loot adquiridos apartir dos inimigos
     public int estrelas = 0;//estrelas adquiras com o desempenho na fase
-    public DateTime data_InicioFase;//computado ao iniciar a fase
-    public DateTime data_FimFase;//vai ser computado ao colidir com o runaWin
     public GameObject[] fases;
+    public string data_InicioFase;//computado ao iniciar a fase
+    public string data_FimFase;//vai ser computado ao colidir com o runaWin
 
     //Configuração do Limite de blocos por fase
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
@@ -52,11 +52,11 @@ public class ControllerFase : MonoBehaviour
 
     void Start()
     {
-        data_InicioFase = DateTime.Now.ToLocalTime();//Pega a data/hora que a fase é iniciada
+        data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-       SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       SistemaLimiteBloco(qtdBlocosDisponiveis);
-       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       //SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       //SistemaLimiteBloco(qtdBlocosDisponiveis);
+       //EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -78,7 +78,7 @@ public class ControllerFase : MonoBehaviour
         }
         
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-        AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+       // AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
     }
 
    

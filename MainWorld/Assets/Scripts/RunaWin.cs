@@ -32,14 +32,14 @@ public class RunaWin : MonoBehaviour
 
     void ativarPainel()
     {
-        _controllerFase.data_FimFase = DateTime.Now.ToLocalTime();//pega a hora em que ativa o painel de conclusao de fase e assim o usuario terá concluido a fase
+        _controllerFase.data_FimFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//pega a hora em que ativa o painel de conclusao de fase e assim o usuario terá concluido a fase
         painelFaseConcluida.SetActive(true);
         StartCoroutine("reiniciarWorkspace");//assim que o painel aparecer espera-se alguns segundos e reinicia o espaço blockly
     }
     IEnumerator reiniciarWorkspace()
     {
         yield return new WaitForSeconds(0.5f);
-        SistemaReiniciarWorkspaceBlockly();
+       // SistemaReiniciarWorkspaceBlockly();
     }
 
 

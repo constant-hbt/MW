@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
     public int id_usuario_ativ_turma;
     public int idGame;
     public string descricaoFase;//ao clicar para abrir a fase essa variavel sera alimentada
+    public int id_Desempenho; //caso estiver com valor 0 representa que ainda nao possui nenhum registro de desempenho, caso contrario ja possui registro
 
     [Header("Configurações do GAME")]
     public GameObject[] gameControllers;
