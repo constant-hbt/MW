@@ -14,7 +14,8 @@ public class SeleçãoFase : MonoBehaviour
     /// </summary>
     private         ControleDeFases         _controleDeFases;
     private         GameController          _gameController;
-    
+
+    public GameObject painelEntrarFase;
 
     [Header("Controle HUD")]
 
@@ -119,6 +120,20 @@ public class SeleçãoFase : MonoBehaviour
                 _gameController.descricaoFase = "Fase9";
                 break;
         }
+    }
+
+    public void ativarPainelEntrarFase()
+    {
+        if(painelEntrarFase.activeSelf == false)
+        {
+            painelEntrarFase.SetActive(true);
+        }
+        else
+        {
+            painelEntrarFase.SetActive(false);
+        }
+
+        
     }
 
 
