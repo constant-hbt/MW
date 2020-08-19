@@ -44,7 +44,7 @@ public class Historico_Controller : MonoBehaviour
         string jsonData = JsonUtility.ToJson(p_historico);
         Debug.Log("Mandei este jsonData =" + jsonData);
 
-        using (UnityWebRequest www = UnityWebRequest.Post(urlNew, jsonData))
+       /* using (UnityWebRequest www = UnityWebRequest.Post(urlNew, jsonData))
         {
 
             www.SetRequestHeader("content-type", "application/json");
@@ -71,7 +71,7 @@ public class Historico_Controller : MonoBehaviour
 
                 }
             }
-        }
+        }*/
 
         yield return null;
     }

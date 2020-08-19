@@ -23,9 +23,9 @@ public class Inimigo : MonoBehaviour
     public TextMeshProUGUI tmpVida;
     private bool died = false;
     public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
+    public Transform pontoSaidaLoot; //ponto de referencia da origem dos loots
     //mostrar o dano
     public GameObject danoTxtPrefab;
-    
 
     [Header("Sistema de ataque")]
     public int forcaDanoInim;
@@ -205,20 +205,25 @@ public class Inimigo : MonoBehaviour
     IEnumerator loot()
     {
         yield return new WaitForSeconds(1.5f);
-
+       
         GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
         yield return new WaitForSeconds(0.3f);//depois de meio segundo desabilita a imagem do inimigo
+        barrasVida.SetActive(false);
         sRender.enabled = false;
 
-        //yield return new WaitForSeconds(0.5f); APAGAR DEPOIS
         //Controle de loot
-        int qtdMoedas = Random.Range(1, 5);
+        int qtdMoedas = Random.Range(1, 3);
         
         for (int l = 0; l < qtdMoedas; l++)
         {
+            
             int lootSelect = Random.Range(0, loots.Length);
-            GameObject lootTemp = Instantiate(loots[lootSelect], transform.position, transform.localRotation);//Instanciando a coin
-            lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-35, 35), 100));
+            
+            
+            pontoSaidaLoot.position = new Vector3(pontoSaidaLoot.position.x +0.08f, pontoSaidaLoot.position.y, pontoSaidaLoot.position.z);
+
+            GameObject lootTemp = Instantiate(loots[lootSelect], pontoSaidaLoot.position, transform.localRotation);//Instanciando a coin
+           //lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0,35), 100)); APAGAR DEPOIS
             yield return new WaitForSeconds(0.1f);
 
         }
