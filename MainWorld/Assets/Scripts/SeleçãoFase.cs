@@ -14,7 +14,7 @@ public class SeleçãoFase : MonoBehaviour
     /// </summary>
     private         ControleDeFases         _controleDeFases;
     private         GameController          _gameController;
-
+    private PainelEntrarFase _painelEntrarFase;
     public GameObject painelEntrarFase;
 
     [Header("Controle HUD")]
@@ -31,6 +31,10 @@ public class SeleçãoFase : MonoBehaviour
     public          TextMeshProUGUI     vidaText;
     public          TextMeshProUGUI     estrelaText;
 
+    //TESTE PAINEL
+    public Vector4 posicaoPainelEF;
+    public RectTransform rectCanvasEntrarFase;
+
     //Integração com js da página
     [DllImport("__Internal")]
     private static extern void          SistemaDeEnableDisableBlocos(bool situacao);
@@ -41,7 +45,7 @@ public class SeleçãoFase : MonoBehaviour
 
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-
+        _painelEntrarFase = FindObjectOfType(typeof(PainelEntrarFase)) as PainelEntrarFase;
         //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
         _gameController.descricaoFase = "";
         _gameController.idFaseEmExecucao = 0;
@@ -72,61 +76,80 @@ public class SeleçãoFase : MonoBehaviour
 
     public void nomeFase(int id)
     {//responsavel por chamar as fases
-        switch (id)
+
+        if (_painelEntrarFase == null)
         {
-            case 1:
-                SceneManager.LoadScene("Fase1");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase1";
-                break;
-            case 2:
-                SceneManager.LoadScene("Fase2");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase2";
-                break;
-            case 3:
-                print("York");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase3";
-                break;
-            case 4:
-                print("Wareham");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase4";
-                break;
-            case 5:
-                print("Edington");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase5";
-                break;
-            case 6:
-                print("Chippenham");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase6";
-                break;
-            case 7:
-                print("Wantage");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase7";
-                break;
-            case 8:
-                print(" Exeter");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase8";
-                break;
-            case 9:
-                print("Wessex");
-                _gameController.idFaseEmExecucao = id;
-                _gameController.descricaoFase = "Fase9";
-                break;
+            _painelEntrarFase = FindObjectOfType(typeof(PainelEntrarFase)) as PainelEntrarFase;
         }
+
+        switch (id)
+            {
+                case 1:
+                //SceneManager.LoadScene("Fase1");
+                rectCanvasEntrarFase.localPosition = new Vector4(-309f, -111, 3, 4);//posX = 1, posY = 2, Height = 3 , Width = 4;
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase1";
+                    break;
+                case 2:
+                //    SceneManager.LoadScene("Fase2");
+                rectCanvasEntrarFase.localPosition = new Vector4(-289, 19, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                     _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase2";
+                    break;
+                case 3:
+                rectCanvasEntrarFase.localPosition = new Vector4(-178, -47, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase3";
+                    break;
+                case 4:
+                rectCanvasEntrarFase.localPosition = new Vector4(-110, 206, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                     _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase4";
+                    break;
+                case 5:
+                rectCanvasEntrarFase.localPosition = new Vector4(-82, 95, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase5";
+                    break;
+                case 6:
+                rectCanvasEntrarFase.localPosition = new Vector4(155, 201, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase6";
+                    break;
+                case 7:
+                rectCanvasEntrarFase.localPosition = new Vector4(358, 97, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase7";
+                    break;
+                case 8:
+                rectCanvasEntrarFase.localPosition = new Vector4(-38, -64, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase8";
+                    break;
+                case 9:
+                rectCanvasEntrarFase.localPosition = new Vector4(348, -148, 3, 4);
+                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    _gameController.idFaseEmExecucao = id;
+                    _gameController.descricaoFase = "Fase9";
+                    break;
+            }
+
     }
 
-    public void ativarPainelEntrarFase()
+    public void ativarPainelEntrarFase(int idFase)
     {
         if(painelEntrarFase.activeSelf == false)
         {
             painelEntrarFase.SetActive(true);
+            nomeFase(idFase);
         }
         else
         {
