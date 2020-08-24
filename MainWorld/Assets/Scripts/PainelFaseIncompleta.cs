@@ -35,8 +35,8 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
+       //ReiniciarVarCodeCompleto();
+       // ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         _gameController.idFaseEmExecucao = idFase;
         _gameController.descricaoFase = "Fase" + idFase;
@@ -44,9 +44,9 @@ public class PainelFaseIncompleta : MonoBehaviour
     public void voltarSelecaoFase()
     {
 
-        SistemaReiniciarWorkspaceBlockly();
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
+        //SistemaReiniciarWorkspaceBlockly();
+       // ReiniciarVarCodeCompleto();
+       // ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("SelecaoFase");
     }
 

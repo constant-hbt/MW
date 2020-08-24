@@ -54,9 +54,9 @@ public class ControllerFase : MonoBehaviour
     {
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-       SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       SistemaLimiteBloco(qtdBlocosDisponiveis);
-       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       //SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       //SistemaLimiteBloco(qtdBlocosDisponiveis);
+      // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -72,13 +72,13 @@ public class ControllerFase : MonoBehaviour
             fases[0].SetActive(true);
         }
 
-        if(_gameController.manaPlayer < qtdManaDisponivelFase)//a cada fase que passar a mana vai aumentar proporcionalmente, caso ja tenha passado a fase e volte a joga-la a mana vai estar no valor do adquirido na ultima fase que habilitou
+       // if(_gameController.manaPlayer < qtdManaDisponivelFase)//a cada fase que passar a mana vai aumentar proporcionalmente, caso ja tenha passado a fase e volte a joga-la a mana vai estar no valor do adquirido na ultima fase que habilitou
         {
-            _gameController.manaPlayer = qtdManaDisponivelFase;//alimento gameController com a quantidade de mana que o player tem no inicio daquela fase que ainda não jogou
+       //     _gameController.manaPlayer = qtdManaDisponivelFase;//alimento gameController com a quantidade de mana que o player tem no inicio daquela fase que ainda não jogou
         }
         
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-        AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+      //  AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
     }
 
    
