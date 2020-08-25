@@ -15,10 +15,10 @@ public class PainelSugestão : MonoBehaviour
     public GameObject btnProximo;
 
     private int idPainelAtivo;
-
+    private string subTitulo;
     void Start()
     {
-        
+        idPainelAtivo = 1;
     }
 
 
@@ -28,8 +28,12 @@ public class PainelSugestão : MonoBehaviour
     {
         
     }
-
-    public void botaoProximo()
+    private void OnDisable()
+    {
+        idPainelAtivo = 1;
+        alterarPainelAtivo(idPainelAtivo);
+    }
+    public void botaoAnterior()
     {
         if(idPainelAtivo == 1)
         {
@@ -42,7 +46,7 @@ public class PainelSugestão : MonoBehaviour
         alterarPainelAtivo(idPainelAtivo);
     }
 
-    public void botaoAnterior()
+    public void botaoProximo()
     {
         if(idPainelAtivo == 3)
         {
@@ -56,33 +60,46 @@ public class PainelSugestão : MonoBehaviour
 
     public void alterarPainelAtivo(int numPainelAtivo)
     {
+        Debug.Log("Valor de idPainelAtivo = " + numPainelAtivo);
         switch (numPainelAtivo)
         {
             case 1:
                 btnAnterior.SetActive(false);
-
-                for(int i=0; i < paineis.Length; i++)
-                {
-                    if((i + 1) == numPainelAtivo)
-                    {
-                        paineis[i].SetActive(true);
-                        botoesPaineis[i].SetActive(true);
-                    }
-                    else
-                    {
-                        paineis[i].SetActive(false);
-                        botoesPaineis[i].SetActive(false);
-                    }
-                }
+                btnProximo.SetActive(true);
+                tmpSubTitulo.text = "Sugestão1";
                 break;
             case 2:
-
+                btnAnterior.SetActive(true);
+                btnProximo.SetActive(true);
+                tmpSubTitulo.text = "Sugestao2";
                 break;
             case 3:
-
+                btnAnterior.SetActive(true);
+                btnProximo.SetActive(false);
+                tmpSubTitulo.text = "Sugestao3";
                 break;
 
 
         }
+
+        for (int i = 0; i < paineis.Length; i++)
+        {
+            if ((i + 1) == numPainelAtivo)
+            {
+                paineis[i].SetActive(true);
+                botoesPaineis[i].SetActive(true);
+            }
+            else
+            {
+                paineis[i].SetActive(false);
+                botoesPaineis[i].SetActive(false);
+            }
+        }
+
+        
+    }
+    public void btnClose()
+    {
+        this.gameObject.SetActive(false);
     }
 }

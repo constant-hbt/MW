@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Runtime.InteropServices;
 using System;
+
+
+public enum GameState
+{
+    GAMEPLAY,
+    PAUSE,
+
+}
 public class ControllerFase : MonoBehaviour
 {
     /// <summary>
@@ -12,6 +20,9 @@ public class ControllerFase : MonoBehaviour
     private                 GameController          _gameController;
     private PlayerController _playerController;
     private HUD _hud;
+
+    [Header("Controle da fase")]
+    public GameState estadoAtual;
 
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
@@ -76,15 +87,26 @@ public class ControllerFase : MonoBehaviour
         {
        //     _gameController.manaPlayer = qtdManaDisponivelFase;//alimento gameController com a quantidade de mana que o player tem no inicio daquela fase que ainda não jogou
         }
-        
+
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-      //  AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+        //  AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+
+
+        //Teste com estado do game
+        estadoAtual = GameState.GAMEPLAY;
     }
 
    
     void Update()
     {
-        
+        if(this.estadoAtual != GameState.GAMEPLAY)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
     public void quantidadeBlocoUsadosNaFase(int qtdBlocos)//passo por parametro os blocos usados de uma variavel que esta na pagina web
     {
@@ -167,4 +189,22 @@ public class ControllerFase : MonoBehaviour
         Debug.Log("Dentro do alteracaoDisp , valor do novoValMan = " + novoValMana);
     }
 
+
+    public void alterarEstado(GameState novoEstado)
+    {
+        estadoAtual = novoEstado;
+    }
+
+    public void pausarGame(bool pauseState) {
+
+        switch (pauseState)
+        {
+            case true:
+                Time.timeScale = 0;
+                break;
+            case false:
+                Time.timeScale = 1;
+                break;
+        }
+    }
 }

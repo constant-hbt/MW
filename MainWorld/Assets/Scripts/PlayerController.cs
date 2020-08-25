@@ -122,6 +122,8 @@ public class PlayerController : MonoBehaviour
   
     private void FixedUpdate()
     {
+        
+
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
 
 
@@ -173,8 +175,11 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+       
+
         playerAnimator.SetBool("grounded", Grounded);
         playerAnimator.SetFloat("speedY", playerRB.velocity.y);
+
 
         //RAYCAST
         interagir();

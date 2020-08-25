@@ -64,7 +64,7 @@ public class Inimigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
         //FAZ COM QUE O INIMIGO SEMPRE ESTEJA VIRADO NA DIRECAO DO PLAYER
         verifDirPlayer();
