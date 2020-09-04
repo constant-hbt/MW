@@ -50,8 +50,7 @@ public class ControllerFase : MonoBehaviour
     //Integração com o js da página
     [DllImport("__Internal")]
     public static extern void                    SistemaLimiteBloco(int qtdBlocoFase);
-    [DllImport("__Internal")]
-    private static extern void                      SistemaDeEnableDisableBlocos(bool situacao);
+    
 
     [DllImport("__Internal")]
     public static extern void                       EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
@@ -59,15 +58,17 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
 
-    
+    [DllImport("__Internal")]
+    public static extern void AlterarToolboxFases(int idFase);
+
+
 
     void Start()
     {
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
-
-       //SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       //SistemaLimiteBloco(qtdBlocosDisponiveis);
-      // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+        AlterarToolboxFases(_gameController.idFaseEmExecucao);
+       SistemaLimiteBloco(qtdBlocosDisponiveis);
+       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -89,11 +90,10 @@ public class ControllerFase : MonoBehaviour
         }
 
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-        //  AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+          AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
 
 
-        //Teste com estado do game
-        estadoAtual = GameState.GAMEPLAY;
+        
     }
 
    

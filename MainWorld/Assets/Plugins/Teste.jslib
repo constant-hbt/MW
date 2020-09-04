@@ -45,5 +45,8 @@ mergeInto(LibraryManager.library, {
 
         alterarLimiteBlocoForca(limitForcaAtaque);
     },
-    
+    AlterarToolboxFases(idToolbox){
+        mudarToolbox(idToolbox);
+        console.log('Mudei o toolbox da fase'+idToolbox);
+    }
 });

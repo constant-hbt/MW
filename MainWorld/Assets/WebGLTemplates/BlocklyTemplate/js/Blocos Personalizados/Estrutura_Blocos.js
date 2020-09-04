@@ -59,8 +59,8 @@ Blockly.JavaScript['valor_ataque'] = function(block) {
 };
 
 
-Blockly.JavaScript['forca_atack'] = function(block) {
-  var value_forca_atack = Blockly.JavaScript.valueToCode(block, 'forca_atack', Blockly.JavaScript.ORDER_ATOMIC);
+Blockly.JavaScript['adaptadorAtack'] = function(block) {
+  var value_forca_atack = Blockly.JavaScript.valueToCode(block, 'adaptadorAtack', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
   var code = '...';
   // TODO: Change ORDER_NONE to the correct strength.

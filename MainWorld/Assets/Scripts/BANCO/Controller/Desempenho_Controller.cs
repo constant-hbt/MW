@@ -79,7 +79,7 @@ public class Desempenho_Controller : MonoBehaviour
         string jsonData = JsonUtility.ToJson(p_desempenho);
         Debug.Log("Mandei este jsonData =" + jsonData);
 
-       /* using (UnityWebRequest www = UnityWebRequest.Post(urlNew, jsonData))
+        using (UnityWebRequest www = UnityWebRequest.Post(urlNew, jsonData))
         {
 
             www.SetRequestHeader("content-type", "application/json");
@@ -110,7 +110,7 @@ public class Desempenho_Controller : MonoBehaviour
 
                 }
             }
-        }*/
+        }
 
         yield return null;
     }
@@ -122,7 +122,7 @@ public class Desempenho_Controller : MonoBehaviour
         string jsonData = JsonUtility.ToJson(p_desempenho);
         Debug.Log("Mandei este jsonData =" + jsonData);
 
-      /* using (UnityWebRequest www = UnityWebRequest.Put(urlNew, jsonData))
+      using (UnityWebRequest www = UnityWebRequest.Put(urlNew, jsonData))
         {
 
             www.SetRequestHeader("content-type", "application/json");
@@ -150,7 +150,7 @@ public class Desempenho_Controller : MonoBehaviour
 
                 }
             }
-        }*/
+        }
 
         yield return null;
     }

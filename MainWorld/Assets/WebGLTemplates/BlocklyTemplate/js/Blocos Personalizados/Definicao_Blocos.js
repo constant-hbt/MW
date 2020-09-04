@@ -114,12 +114,12 @@ Blockly.Blocks['valor_ataque'] = {
   }
 };
 
-Blockly.Blocks['forca_atack'] = {
+Blockly.Blocks['adaptadorAtack'] = {
   init: function() {
-    this.appendValueInput("forca_atack")
+    this.appendValueInput("adaptadorAtack")
         .setCheck(["valor_forca", "variable_get"])
-        .appendField("Força");
-    this.setOutput(true, "forca_atack");
+        .appendField("Adaptador");
+    this.setOutput(true, "adaptadorAtack");
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
