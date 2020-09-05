@@ -59,14 +59,14 @@ public class ControllerFase : MonoBehaviour
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
 
     [DllImport("__Internal")]
-    public static extern void AlterarToolboxFases(int idFase);
+    public static extern void AlterarToolboxFases(string idFase);
 
 
 
     void Start()
     {
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
-        AlterarToolboxFases(_gameController.idFaseEmExecucao);
+        AlterarToolboxFases(_gameController.idFaseEmExecucao.ToString());
        SistemaLimiteBloco(qtdBlocosDisponiveis);
        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
