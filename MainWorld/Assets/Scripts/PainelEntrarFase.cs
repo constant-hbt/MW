@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 public class PainelEntrarFase : MonoBehaviour
 {
     // Start is called before the first frame update
+    private GameController _gameController;
 
     public TextMeshProUGUI tmpTitulo;
     public TextMeshProUGUI tmpDescricao;
     public TextMeshProUGUI tmpObjetivo;
 
+    
+
     public int idBotaoFaseSelecionado;
     private string faseHaExecutar;
+
+
+    [DllImport("__Internal")]
+    public static extern void AlterarToolboxFases(int idFase);
     private void Awake()
     {
        
@@ -20,7 +28,7 @@ public class PainelEntrarFase : MonoBehaviour
     }
     void Start()
     {
-        
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         
     }
     private void OnEnable()
@@ -117,6 +125,7 @@ public class PainelEntrarFase : MonoBehaviour
     }
     public void btnJogar()
     {
+        AlterarToolboxFases(_gameController.idFaseEmExecucao);
         SceneManager.LoadScene(faseHaExecutar);
     }
 }

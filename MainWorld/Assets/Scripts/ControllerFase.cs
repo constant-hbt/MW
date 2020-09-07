@@ -49,7 +49,7 @@ public class ControllerFase : MonoBehaviour
 
     //Integração com o js da página
     [DllImport("__Internal")]
-    public static extern void                    SistemaLimiteBloco(int qtdBlocoFase);
+    public static extern void                    SistemaLimiteBloco(int qtdBlocoFase, int toolbox);
     
 
     [DllImport("__Internal")]
@@ -58,22 +58,21 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
 
-    [DllImport("__Internal")]
-    public static extern void AlterarToolboxFases(string idFase);
 
 
 
     void Start()
     {
-        data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
-        AlterarToolboxFases(_gameController.idFaseEmExecucao.ToString());
-       SistemaLimiteBloco(qtdBlocosDisponiveis);
-       EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
-
-
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
+        data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
+        
+         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+
+
+        
 
         if (fases.Length != 0)
         {

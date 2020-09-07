@@ -1,8 +1,9 @@
 
 mergeInto(LibraryManager.library, {
     
-    SistemaLimiteBloco: function(qtdBlocoFase){
-        recriarWorkspace(qtdBlocoFase);
+    SistemaLimiteBloco: function(qtdBlocoFase, toolbox){
+        recriarWorkspace(qtdBlocoFase, toolbox);
+        console.log("VALOR DE TOOLBOX DENTRO DA FUNCAO SISTEMALIMITEBLOCO = "+ toolbox);
     },
     SistemaDeEnableDisableBlocos: function(situacao){
         HabilitarEDesabilitarBlocos(situacao);

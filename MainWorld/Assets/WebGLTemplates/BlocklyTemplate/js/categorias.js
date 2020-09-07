@@ -5,7 +5,7 @@ function mudarToolbox(idToolbox){
     //criando tag div
     var div = document.createElement('div');
     div.id = "divBlockly";
-    div.style = " height : 480px ; width : 350px ; display: none";
+    div.style = " height : 480px ; width : 350px ;";
 
      //criando tag xml
      var xml = document.createElement('xml');
@@ -18,32 +18,41 @@ function mudarToolbox(idToolbox){
     //verifica para o toolbox de qual fase deseja ser alterado
     switch(idToolbox){
          
-        case '1':
+        case 1:
             category = toolboxFase1(idToolbox);
+            console.log("Alterei a toolbox para 1");
             break;
         case '2':
             category = toolboxFase2e3(idToolbox);
+            console.log("Alterei a toolbox para 2");
             break;
         case '3':
             category = toolboxFase2e3(idToolbox);
+            console.log("Alterei a toolbox para 3");
             break;
         case '4':
             category = toolboxFase4(idToolbox);
+            console.log("Alterei a toolbox para 4");
             break;
         case '5':
             category = toolboxFase5(idToolbox);
+            console.log("Alterei a toolbox para 5");
             break;
         case '6':
             category = toolboxFase6e7(idToolbox);
+            console.log("Alterei a toolbox para 6");
             break;
         case '7':
             category = toolboxFase6e7(idToolbox);
+            console.log("Alterei a toolbox para 7");
             break;
         case '8':
             category = toolboxFase8e9(idToolbox);
+            console.log("Alterei a toolbox para 8");
             break;
         case '9':
             category = toolboxFase8e9(idToolbox);
+            console.log("Alterei a toolbox para 9");
             break;
     }
 
@@ -59,10 +68,11 @@ function mudarToolbox(idToolbox){
 
     // xml.appendChild(category);
      div.appendChild(xml);
-     body.appendChild(div);
- 
      console.log(div);
-     workspace.updateToolbox(document.getElementById('toolbox'+idToolbox));
+     body.appendChild(div);
+    
+    console.log("VALOR DO IDTOOLBOX = "+idToolbox);
+     
    
 }
 
