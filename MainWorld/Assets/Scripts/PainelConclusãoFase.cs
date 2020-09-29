@@ -78,7 +78,7 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         if (habilitarAlertCodigo)
         {
-            ChamandoAlertFinalFase();
+            //ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }

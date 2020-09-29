@@ -124,8 +124,6 @@ public class PainelEntrarFase : MonoBehaviour
     }
     public void btnJogar()
     {
-        
-        Debug.Log("Antes de chamar a fase" + faseHaExecutar);
         SceneManager.LoadScene(faseHaExecutar);
         
     }

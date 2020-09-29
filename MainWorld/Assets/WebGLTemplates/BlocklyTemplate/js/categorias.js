@@ -4,15 +4,15 @@ function mudarToolbox(idToolbox){
     
     //criando tag div
     var divBlockly = document.getElementById('blocklyDiv');
-    var div = document.createElement('div');
+    /*var div = document.createElement('div');
     div.id = "divBlockly";
-    div.style = " height : 480px ; width : 350px ;";
+    div.style = " height : 480px ; width : 350px ;"; APAGAR DEPOIS*/
 
      //criando tag xml
      var xml = document.createElement('xml');
      xml.id = "toolbox"+idToolbox;
      xml.style="display: none";
-
+     xml.setAttribute("name","toolbox" );
      //criando tag category
     var category= [];
 
@@ -71,8 +71,15 @@ function mudarToolbox(idToolbox){
 
     
      divBlockly.appendChild(xml);
-     console.log(div);
-     body.appendChild(div);
+     //body.appendChild(div);   APAGAR DEPOIS
+     let toolboxAtivas = document.getElementsByName("toolbox");
+    for(let i=0; i<toolboxAtivas.length; i++){
+        if(toolboxAtivas[i].id != 'toolbox'+idToolbox){
+            divBlockly.removeChild(toolboxAtivas[i]);
+        }else{
+            console.log(toolboxAtivas[i]);
+        }
+    }
     
 }
 
