@@ -38,7 +38,7 @@
     <!--Fim blocos customizados-->
     <script src="js/js.js"></script>
     <script src="js/categorias.js"></script>
-
+    
     <!--CSS-->
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -52,9 +52,9 @@
             <block type="pular" class="bloco" disabled = "true"></block>
             <block type="pular_frente" class="bloco" disabled = "true"></block>
             <block type="defender" class="bloco" disabled = "true"></block>
-            <block type="atacar" class="bloco" disabled = "true"></block>
+           <block type="atacar" class="bloco" disabled = "true"></block>
             <block type="valor_ataque" class="bloco" disabled = "true"></block>
-            <block type ="adaptadorAtack" class="bloco" disabled = "true"></block>
+            <block type ="adaptadorAtack" class="bloco" disabled = "true"></block>-
             <block type="virar" class="bloco" disabled = "true"></block>
 
         </category>
@@ -67,7 +67,7 @@
                     </shadow>
                 </value>
             </block>
-            <block type="math_number" class="bloco" disabled = "true"></block>
+           <!-- <block type="math_number" class="bloco" disabled = "true"></block>-->
         </category>
         <category name ="Condições">
             <block type="ha_inimigos" class="bloco" disabled = "true"></block>
@@ -83,7 +83,7 @@
   <!--Área responsável por mostrar o código em tempo real-->
   <div>
     <input type="text" hidden=true name="validar" id="valorInicialCampoForca" value="0">
-    <input type="text"  name="validar" id="limiteForcaAtaque" value="1" > <!--Para aumentar o limite da forca do ataque basta alterar o value deste campo-->
+    <input type="text"  hidden=true name="validar" id="limiteForcaAtaque" value="1" > 
     <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos !!</p>
 </div>
   <div >

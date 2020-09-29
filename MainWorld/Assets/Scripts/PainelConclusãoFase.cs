@@ -10,6 +10,7 @@ public class PainelConclusãoFase : MonoBehaviour
     private             GameController          _gameController;
     private             ControllerFase          _controllerFase;
     private Desempenho_Controller _desempenhoController;
+    private Teleporte _teleporte;
 
     public              TextMeshProUGUI         tmpEstrelas;
     public              TextMeshProUGUI         tmpMoedas;
@@ -22,6 +23,10 @@ public class PainelConclusãoFase : MonoBehaviour
     public              GameObject              estrela2;
     public              GameObject              estrela3;
     private             int                     qtdEstrelasAdquiridas;
+
+    public Camera cam;
+    public RectTransform pConclusaoFase;
+    public RectTransform rectHud;
 
     [DllImport("__Internal")]
     public static extern void                   SistemaReiniciarWorkspaceBlockly();
@@ -36,6 +41,7 @@ public class PainelConclusãoFase : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _desempenhoController = FindObjectOfType(typeof(Desempenho_Controller)) as Desempenho_Controller;
+        _teleporte = FindObjectOfType(typeof(Teleporte)) as Teleporte;
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
         Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
@@ -43,6 +49,9 @@ public class PainelConclusãoFase : MonoBehaviour
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
 
         
+        pConclusaoFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y,0 ,0) ;
+        
+
         switch (qtdEstrelasAdquiridas)
         {
             case 1:
@@ -80,7 +89,7 @@ public class PainelConclusãoFase : MonoBehaviour
             Debug.Log("Vou enviar os registros ao banco");
 
             Debug.Log("Estou enviando os dados para o banco");
-            _desempenhoController.EnviarRegistroDesempenho();
+           // _desempenhoController.EnviarRegistroDesempenho();
 
             jaEnvieiRegistro = true;
         }

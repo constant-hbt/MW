@@ -139,12 +139,13 @@ zoom:
 
                //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
         function recriarWorkspace(qtdMaxBlocos, toolbox){// -> função criada por mim
+            console.log("Valor do id toolbox dentro da func recriarWorkspace = "+toolbox);
             code = '';
             qtdBlocosUsados = 0;
             workspace.dispose();
-            console.log(toolbox.value);
+            //console.log(toolbox.value);
            workspace = Blockly.inject('blocklyDiv',
-            {toolbox: document.getElementById('toolbox'+toolbox),//voltar para toolbox
+            {toolbox: document.getElementById('toolbox'/*+toolbox*/),//voltar para toolbox
             zoom:
             {controls: true,
              wheel: true,
@@ -155,7 +156,9 @@ zoom:
              trashcan: true,
              maxBlocks:qtdMaxBlocos } //define o maximo de bloco que pode ser usado por fase
              );
+             console.log("Antes do updateToolbox");
              workspace.updateToolbox(document.getElementById('toolbox'+toolbox));
+             console.log("Depois do updateToolbox");
              document.getElementById('capacidade').innerHTML =  workspace.remainingCapacity();
                 //aplica a funcao ao novo espaco de trabalho
              function onchange(event){

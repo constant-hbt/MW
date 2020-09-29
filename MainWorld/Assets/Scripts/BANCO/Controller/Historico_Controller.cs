@@ -71,7 +71,7 @@ public class Historico_Controller : MonoBehaviour
 
                 }
             }
-        }
+        } 
 
         yield return null;
     }

@@ -39,6 +39,9 @@ public class SeleçãoFase : MonoBehaviour
     [DllImport("__Internal")]
     private static extern void          SistemaDeEnableDisableBlocos(bool situacao);
 
+    [DllImport("__Internal")]
+    public static extern void AlterarToolboxFases(int idFase);
+
     void Start()
     {
       SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
@@ -85,28 +88,28 @@ public class SeleçãoFase : MonoBehaviour
         switch (id)
             {
                 case 1:
-                //SceneManager.LoadScene("Fase1");
-                rectCanvasEntrarFase.localPosition = new Vector4(-309f, -111, 3, 4);//posX = 1, posY = 2, Height = 3 , Width = 4;
-                _painelEntrarFase.idBotaoFaseSelecionado = id;
-                    _gameController.idFaseEmExecucao = id;
-                    _gameController.descricaoFase = "Fase1";
+                SceneManager.LoadScene("Fase1");
+                //rectCanvasEntrarFase.localPosition = new Vector4(-309f, -111, 3, 4);//posX = 1, posY = 2, Height = 3 , Width = 4;
+                //_painelEntrarFase.idBotaoFaseSelecionado = id;
+                   _gameController.idFaseEmExecucao = id;
+                   _gameController.descricaoFase = "Fase1";
 
-                _painelEntrarFase.chamar();
+                //_painelEntrarFase.chamar();
                     break;
                 case 2:
-                //    SceneManager.LoadScene("Fase2");
-                rectCanvasEntrarFase.localPosition = new Vector4(-289, 19, 3, 4);
-                _painelEntrarFase.idBotaoFaseSelecionado = id;
+                    SceneManager.LoadScene("Fase2");
+                //rectCanvasEntrarFase.localPosition = new Vector4(-289, 19, 3, 4);
+                //_painelEntrarFase.idBotaoFaseSelecionado = id;
                      _gameController.idFaseEmExecucao = id;
                     _gameController.descricaoFase = "Fase2";
-                _painelEntrarFase.chamar();
+                //_painelEntrarFase.chamar();
                 break;
                 case 3:
-                rectCanvasEntrarFase.localPosition = new Vector4(-178, -47, 3, 4);
-                _painelEntrarFase.idBotaoFaseSelecionado = id;
-                    _gameController.idFaseEmExecucao = id;
-                    _gameController.descricaoFase = "Fase3";
-                _painelEntrarFase.chamar();
+                //rectCanvasEntrarFase.localPosition = new Vector4(-178, -47, 3, 4);
+                //_painelEntrarFase.idBotaoFaseSelecionado = id;
+                //    _gameController.idFaseEmExecucao = id;
+                 //   _gameController.descricaoFase = "Fase3";
+                //_painelEntrarFase.chamar();
                 break;
                 case 4:
                 rectCanvasEntrarFase.localPosition = new Vector4(-110, 206, 3, 4);
@@ -151,7 +154,7 @@ public class SeleçãoFase : MonoBehaviour
                 _painelEntrarFase.chamar();
                 break;
             }
-
+        AlterarToolboxFases(id);
     }
 
     public void ativarPainelEntrarFase(int idFase)

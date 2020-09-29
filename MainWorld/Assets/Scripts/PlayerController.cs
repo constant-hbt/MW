@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
                 playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;//marca o freeze position x e o rotation z como true
                 break;
             case "inimigo":
-                Debug.Log("Levei dano do inimigo");
+              //  Debug.Log("Levei dano do inimigo");
                 playerAnimator.SetTrigger("hit");
                 //USADO NO KNOCKBACK
               // GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation); APAGAR DEPOIS
@@ -329,19 +329,19 @@ public class PlayerController : MonoBehaviour
         {
             testeColisaoInimigo = false;
             testeNaoColidindoInimigo = true;
-             Debug.Log("RayCast nao ta achando o inimigo");
+            // Debug.Log("RayCast nao ta achando o inimigo");
         }
 
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             // Teste(rayCast_ColidindoInimigo);
-            Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
+           // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
             CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
-            Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
+           // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
             CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }

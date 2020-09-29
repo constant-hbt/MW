@@ -19,8 +19,7 @@ public class PainelEntrarFase : MonoBehaviour
     private string faseHaExecutar;
 
 
-    [DllImport("__Internal")]
-    public static extern void AlterarToolboxFases(int idFase);
+    
     private void Awake()
     {
        
@@ -125,7 +124,9 @@ public class PainelEntrarFase : MonoBehaviour
     }
     public void btnJogar()
     {
-        AlterarToolboxFases(_gameController.idFaseEmExecucao);
+        
+        Debug.Log("Antes de chamar a fase" + faseHaExecutar);
         SceneManager.LoadScene(faseHaExecutar);
+        
     }
 }

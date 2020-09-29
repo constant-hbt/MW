@@ -3,6 +3,7 @@ function mudarToolbox(idToolbox){
     var body = document.getElementById('body');
     
     //criando tag div
+    var divBlockly = document.getElementById('blocklyDiv');
     var div = document.createElement('div');
     div.id = "divBlockly";
     div.style = " height : 480px ; width : 350px ;";
@@ -22,7 +23,7 @@ function mudarToolbox(idToolbox){
             category = toolboxFase1(idToolbox);
             console.log("Alterei a toolbox para 1");
             break;
-        case '2':
+        case 2:
             category = toolboxFase2e3(idToolbox);
             console.log("Alterei a toolbox para 2");
             break;
@@ -56,24 +57,23 @@ function mudarToolbox(idToolbox){
             break;
     }
 
+    console.log("Tamanho do array category = "+category.length);
+
              if(category.length == 1){
                 var categoryTemp = category[0];
                 xml.appendChild(categoryTemp);
             }else if(category.length > 1){
                 for(var i=0; i< category.length;i++){
-                    var categoryTemp = category[i];
+                   var categoryTemp = category[i];
                     xml.appendChild(categoryTemp);
                 }
             }
 
-    // xml.appendChild(category);
-     div.appendChild(xml);
+    
+     divBlockly.appendChild(xml);
      console.log(div);
      body.appendChild(div);
     
-    console.log("VALOR DO IDTOOLBOX = "+idToolbox);
-     
-   
 }
 
 function toolboxFase1(idToolbox){
@@ -89,39 +89,43 @@ function toolboxFase1(idToolbox){
     var blocoAvancar = document.createElement('block');
     blocoAvancar.setAttribute('type', "avancar");
     blocoAvancar.setAttribute('disabled','true');
+    blocoAvancar.setAttribute('class','bloco');
 
     //bloco virar
     var blocoVirar = document.createElement('block');
     blocoVirar.setAttribute('type', 'virar');
     blocoVirar.setAttribute('disabled','true');
+    blocoVirar.setAttribute('class','bloco');
 
     //criando a estrutura html da div
     category.appendChild(blocoAvancar);
     category.appendChild(blocoVirar);
     
     arrayCategory.push(category);
+    console.log(arrayCategory);
     return arrayCategory;
 }
 
 function toolboxFase2e3(idToolbox){
-    
+    console.log("Estou dentro da func toolbox2e3");
     var arrayCategory = toolboxFase1(idToolbox) ;
-
+    console.log("Passei o arrayCategory da funcao toolbox2e3");
     //criando tag dos blocos
     //bloco avancar
     var blocoPular = document.createElement('block');
     blocoPular.setAttribute('type', "pular");
     blocoPular.setAttribute('disabled','true');
-
+    blocoPular.setAttribute('class','bloco');
     //bloco virar
     var blocoPularFrente = document.createElement('block');
     blocoPularFrente.setAttribute('type', 'pular_frente');
     blocoPularFrente.setAttribute('disabled','true');
+    blocoPularFrente.setAttribute('class','bloco');
 
     //criando a estrutura html da div
     arrayCategory[0].appendChild(blocoPular);
     arrayCategory[0].appendChild(blocoPularFrente);
-
+    console.log("Array category na fase2 = "+arrayCategory[0]);
     return arrayCategory;
 }
 
@@ -133,6 +137,7 @@ function toolboxFase4(idToolbox){
     var blocoDefender = document.createElement('block');
     blocoDefender.setAttribute('type',"defender");
     blocoDefender.setAttribute('disabled','true');
+    blocoDefender.setAttribute('class','bloco');
 
     arrayCategory[0].appendChild(blocoDefender);
     console.log(arrayCategory[0]);
@@ -148,14 +153,17 @@ function toolboxFase5(idToolbox){
     var blocoAtacar = document.createElement('block');
     blocoAtacar.setAttribute('type','atacar');
     blocoAtacar.setAttribute('disabled','true');
+    blocoAtacar.setAttribute('class','bloco');
 
     var blocoAdaptadorAtaq = document.createElement('block');
     blocoAdaptadorAtaq.setAttribute('type', 'adaptadorAtack');
     blocoAdaptadorAtaq.setAttribute('disabled','true');
+    blocoAdaptadorAtaq.setAttribute('class','bloco');
 
     var blocoValorAtaq = document.createElement('block');
     blocoValorAtaq.setAttribute('type', 'valor_ataque');
     blocoValorAtaq.setAttribute('disabled','true');
+    blocoValorAtaq.setAttribute('class','bloco');
 
     arrayCategory[0].appendChild(blocoAtacar);
     arrayCategory[0].appendChild(blocoAdaptadorAtaq);

@@ -29,7 +29,7 @@ function HabilitarEDesabilitarBlocos(situacao){
 
 //Capta o event beforeunload e envia uma req sendMessage ao unity para salvar o Historico do jogo no momento que o usuario tentar atualizar ou fechar a pagina
 
-window.addEventListener('beforeunload', function (e) {
+ window.addEventListener('beforeunload', function (e) {
     // Cancel the event
     e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
     // Chrome requires returnValue to be set
@@ -37,4 +37,4 @@ window.addEventListener('beforeunload', function (e) {
     console.log("Chamando a funcao EnviarRegistroHistorico de dentro do unity");
     unityInstance.SendMessage("GameControllerEntreFases","EnviarRegistroHistorico");
     return ;
-  });
+  }); 

@@ -14,6 +14,7 @@ public class Teleporte : MonoBehaviour
     public          Transform                   destino;
     public          Camera                      cam;
     public          Transform[]                 transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
+    public RectTransform objHud;
 
     [Header("Configuração de Limite de blocos")]
     public          int                         blocosDisponiveis;
@@ -40,7 +41,8 @@ public class Teleporte : MonoBehaviour
         _controllerFase.fases[1].SetActive(true);//habilita a próxima parte da fase
         _playerController.zerarVelocidadeP();//zera a velocidade do player
         _playerController.transform.position = destino.position;//muda a posição do player para o inicio da proxima parte da fase
-        cam.transform.position = transicaoCamera[0].position;//muda a posição da câmera para a proxima parte da fase
+        cam.transform.position = new Vector3( transicaoCamera[0].position.x, transicaoCamera[0].position.y, 0 );//muda a posição da câmera para a proxima parte da fase
+        objHud.localPosition = new Vector4(1820, 0, 0, 0);
         SistemaLimiteBloco(blocosDisponiveis);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
         _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
         _playerController.qtdBlocosUsados = -1;//necessário para não entrar no if que habilita o painel de fase incompleta , pois ao iniciar a próxima etapa o usuário necessitará de tempo ate dispor os blocos

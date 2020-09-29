@@ -58,18 +58,28 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
 
+    [DllImport("__Internal")]
+    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
+    [DllImport("__Internal")]
+    public static extern void AlterarToolboxFases(int idFase);
 
 
-
+    private void Awake()
+    {
+       // Debug.Log("VALOR DO IDFASEEMEXECUCAO = " + _gameController.idFaseEmExecucao);
+         //AlterarToolboxFases(_gameController.idFaseEmExecucao); NAO DESCOMENTAR
+    }
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
-        
-         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+
+        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         
@@ -89,7 +99,7 @@ public class ControllerFase : MonoBehaviour
         }
 
         //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-          AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
+        //  AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
 
 
         
@@ -132,7 +142,7 @@ public class ControllerFase : MonoBehaviour
             naoTemMoeda = false;
         }
 
-        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas == qtdMoedasDisponiveis ||
+        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= qtdMoedasDisponiveis ||
             qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;

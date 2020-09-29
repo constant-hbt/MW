@@ -12,6 +12,9 @@ public class PainelFaseIncompleta : MonoBehaviour
     public          Button              btnClose;
     public          GameObject          painelFaseIncompleta;
 
+    public RectTransform rectPainelDerrotaFase;
+    public RectTransform rectHud;
+
     [DllImport("__Internal")]
     public static extern void SistemaReiniciarWorkspaceBlockly();
 
@@ -27,6 +30,8 @@ public class PainelFaseIncompleta : MonoBehaviour
 
        
         btnClose.Select();
+        rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
+
     }
     void Update()
     {

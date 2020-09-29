@@ -37,7 +37,7 @@ Blockly.Blocks['defender'] = {
 Blockly.Blocks['atacar'] = {
   init: function() {
     this.appendValueInput("Ataque")
-        .setCheck(["variable_get","forca_atack"])
+        .setCheck(["variable_get","adaptadorAtack"])
         .appendField("Ataque");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
