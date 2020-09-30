@@ -7,7 +7,21 @@ function mudarToolbox(idToolbox){
     /*var div = document.createElement('div');
     div.id = "divBlockly";
     div.style = " height : 480px ; width : 350px ;"; APAGAR DEPOIS*/
+   
+    let toolboxAtivas = document.getElementsByName("toolbox");
+    let toolboxJaExiste = false;
+    for(let i=0; i<toolboxAtivas.length; i++){
+        if(toolboxAtivas[i].id != 'toolbox'+idToolbox){
+            divBlockly.removeChild(toolboxAtivas[i]);
+        }else if(toolboxAtivas[i].id == 'toolbox'+idToolbox && !toolboxJaExiste){
+            toolboxJaExiste = true;
+        }/*else if(toolboxAtivas[i].id == 'toolbox'+idToolbox && toolboxJaExiste){
+            divBlockly.removeChild(toolboxAtivas[i]);
+        }*/
+    }
 
+
+    if(!toolboxJaExiste){
      //criando tag xml
      var xml = document.createElement('xml');
      xml.id = "toolbox"+idToolbox;
@@ -72,14 +86,10 @@ function mudarToolbox(idToolbox){
     
      divBlockly.appendChild(xml);
      //body.appendChild(div);   APAGAR DEPOIS
-     let toolboxAtivas = document.getElementsByName("toolbox");
-    for(let i=0; i<toolboxAtivas.length; i++){
-        if(toolboxAtivas[i].id != 'toolbox'+idToolbox){
-            divBlockly.removeChild(toolboxAtivas[i]);
-        }else{
-            console.log(toolboxAtivas[i]);
-        }
+    }else{
+        console.log("Ja existe esse toolbox");
     }
+     
     
 }
 

@@ -4789,6 +4789,18 @@ Transform:
   m_Father: {fileID: 475935444}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &677599097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2188460462225209637, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+    type: 3}
+  m_PrefabInstance: {fileID: 730603998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &681986498
 GameObject:
   m_ObjectHideFlags: 0
@@ -5136,12 +5148,22 @@ PrefabInstance:
         type: 3}
       propertyPath: rectPainelDerrotaFase
       value: 
-      objectReference: {fileID: 730603999}
+      objectReference: {fileID: 1403440153}
     - target: {fileID: 8393676362234281727, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
         type: 3}
       propertyPath: rectHud
       value: 
       objectReference: {fileID: 4883312563964788511}
+    - target: {fileID: 8393676362234281727, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+        type: 3}
+      propertyPath: painelFaseIncompleta
+      value: 
+      objectReference: {fileID: 1403440150}
+    - target: {fileID: 8393676362234281727, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bafb5e3929b7c5b4190db23eb7d9ff07, type: 3}
 --- !u!224 &730603999 stripped
@@ -7564,7 +7586,7 @@ PrefabInstance:
     - target: {fileID: 6326796984499226058, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6326796985759961034, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
@@ -7985,6 +8007,28 @@ PrefabInstance:
 --- !u!1 &1403440150 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2188460462131907896, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+    type: 3}
+  m_PrefabInstance: {fileID: 730603998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1403440151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403440150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f185276d8de854880b3e23b2eaa577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnClose: {fileID: 677599097}
+  painelFaseIncompleta: {fileID: 1403440150}
+  rectPainelDerrotaFase: {fileID: 1403440153}
+  rectHud: {fileID: 4883312563964788511}
+--- !u!224 &1403440153 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2188460462131907899, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
     type: 3}
   m_PrefabInstance: {fileID: 730603998}
   m_PrefabAsset: {fileID: 0}
@@ -11954,6 +11998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BotoesTeste
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295949457577743538, guid: 720e13acaac8ee44ba44e10a3b2d8540,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6295949457577743539, guid: 720e13acaac8ee44ba44e10a3b2d8540,
         type: 3}

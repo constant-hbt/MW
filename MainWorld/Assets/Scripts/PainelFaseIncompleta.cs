@@ -25,12 +25,12 @@ public class PainelFaseIncompleta : MonoBehaviour
     public static extern void ReiniciarVarBlocosTotais();
     void Start()
     {
-        
+        Debug.Log("Ativei o painel fase incompleta");
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-
-       
-        btnClose.Select();
         rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
+
+        btnClose.Select();
+        
 
     }
     void Update()
@@ -57,7 +57,9 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void ativarFaseIncompleta()
     {
+       
         painelFaseIncompleta.SetActive(true);
+       
     }
 
     

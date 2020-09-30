@@ -144,8 +144,12 @@ zoom:
             qtdBlocosUsados = 0;
             workspace.dispose();
             //console.log(toolbox.value);
+            let valorToolbox = toolbox;
+                    if(valorToolbox == 0){
+                         valorToolbox = '';//utilizado para garantir que o document.getElementById('toolbox') vá sempre pegar um valor valido
+                        }
            workspace = Blockly.inject('blocklyDiv',
-            {toolbox: document.getElementById('toolbox'/*+toolbox*/),//voltar para toolbox
+            {toolbox: document.getElementById('toolbox'+ valorToolbox/*+toolbox*/),//voltar para toolbox
             zoom:
             {controls: true,
              wheel: true,
