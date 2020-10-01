@@ -34,6 +34,9 @@ public class PainelConclusãoFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void                   ChamandoAlertFinalFase();
 
+    [DllImport("__Internal")]
+    public static extern void CentralizarWebGl();
+
     private             bool                    habilitarAlertCodigo = false;
 
     void Start()
@@ -104,7 +107,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void btnPlay()
     {
-        SceneManager.LoadScene("SelecaoFase");
+        StartCoroutine(voltarSelecaoFase());
     }
 
    public void contabilizarDesempenho(int idFase)
@@ -123,6 +126,14 @@ public class PainelConclusãoFase : MonoBehaviour
         _gameController.numGold += _controllerFase.qtdMoedasColetadas;
 
         // }
+    }
+
+    IEnumerator voltarSelecaoFase()
+    {
+        CentralizarWebGl();
+        yield return new WaitForSeconds(1.7f);
+        SceneManager.LoadScene("SelecaoFase");
+
     }
 
 }

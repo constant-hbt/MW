@@ -50,4 +50,10 @@ mergeInto(LibraryManager.library, {
         mudarToolbox(idToolbox);
         console.log('Mudei o toolbox da fase'+idToolbox);
     },
+    DisponibilizarToobox:function(){
+        disponibilizarDivToolbox();
+    },
+    CentralizarWebGl:function(){
+        centralizarWebGl();
+    }
 });

@@ -44,7 +44,10 @@
 </head>
 <body id="body">
 <!--Local destinado aos blocos blockly-->
-<div id="blocklyDiv" style = " height : 480px ; width : 350px ; " onclick="focusCanvas(0)">
+<div id="divToolboxButton" class="transparencia">
+
+
+<div id="blocklyDiv"  style = " height : 480px ; width : 350px ; " onclick="focusCanvas(0)">
 
     <xml id="toolbox" name = "toolbox" style="display: none">
         <category name = "Personagem">
@@ -79,6 +82,7 @@
       </xml>
      
       
+      
   </div>
   <!--Área responsável por mostrar o código em tempo real-->
   <div>
@@ -86,19 +90,22 @@
     <input type="text"  hidden=true name="validar" id="limiteForcaAtaque" value="1" > 
     <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos !!</p>
 </div>
-  <div >
-   <p>
-    
-    <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = "true">
-        <img id="iconPlay" src="img/botãoPlay.png" alt="botao de play">    
-        Executar
-    </button>
-   <!-- <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>-->
-   </p>
-  
-  </div>
-  
-  <div class="webgl-content" style="margin-left: 200px;float: right; " onclick="focusCanvas(1)">
+
+    <div >
+        <p>
+   
+            <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = "true">
+                <img id="iconPlay" src="img/botãoPlay.png" alt="botao de play">    
+                          Executar
+            </button>
+            <!-- <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>-->
+        </p>
+    </div>
+</div>
+
+ 
+  <!--/* style="margin-left: 200px;float: right; " -->
+  <div id="divWebGl" class="webgl-content divRightInicial" onclick="focusCanvas(1)">
     <div id="unityContainer" style="width: 960px; height: 600px; "></div>
    
   </div>

@@ -16,3 +16,49 @@
 #iconPlay{
     margin-top: -5px;
 }
+
+.divRightAlterada{ /*Responsavel pela div do webGL*/
+    margin-left: 200px;
+    float: right;
+    -webkit-transition: 1.2s ease-out; 
+     -moz-transition: 1.2s ease-out; 
+     -o-transition: 1.2s ease-out;
+     transition: 1.2s ease-out
+}
+.divRightInicial{ /*Centralizada a div do WebGL*/
+    margin-left: 0px;
+    float: none;
+    -webkit-transition: 1.2s ease-out; 
+     -moz-transition: 1.2s ease-out; 
+     -o-transition: 1.2s ease-out;
+     transition: 1.2s ease-out;
+     transition-delay: 0.4s;
+}
+
+.transparencia{ /*Esconde a div resposanvel pelo toolbox*/
+    filter:alpha(opacity=0);
+    opacity: 0;
+    -moz-opacity:0;
+    -webkit-opacity:0;
+        
+    -webkit-transition: 0.5s ease-in-out; 
+     -moz-transition: 0.5s ease-in-out; 
+     -o-transition: 0.5s ease-in-out;
+     transition: 0.5s ease-in-out;
+    
+}
+
+.semTransparencia{ /*Deixa a div do toolbox visivel*/
+    filter:alpha(opacity=100);
+    opacity: 1;
+    -moz-opacity:1;
+    -webkit-opacity:1;
+
+    -webkit-transition: 1s ease-in-out; 
+     -moz-transition: 1s ease-in-out; 
+     -o-transition: 1s ease-in-out;
+     transition: 1s ease-in-out;
+     transition-timing-function: ease-in-out;
+
+     transition-delay: 0.7s;
+}

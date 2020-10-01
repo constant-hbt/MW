@@ -23,6 +23,12 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void ReiniciarVarBlocosTotais();
+
+    [DllImport("__Internal")]
+    public static extern void CentralizarWebGl();
+
+    [DllImport("__Internal")]
+    public static extern void DisponibilizarToobox();
     void Start()
     {
         Debug.Log("Ativei o painel fase incompleta");
@@ -40,6 +46,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
+        DisponibilizarToobox();
        ReiniciarVarCodeCompleto();
        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
@@ -48,11 +55,7 @@ public class PainelFaseIncompleta : MonoBehaviour
     }
     public void voltarSelecaoFase()
     {
-
-        SistemaReiniciarWorkspaceBlockly();
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
-        SceneManager.LoadScene("SelecaoFase");
+        StartCoroutine(voltarSelecaoF());
     }
 
     public void ativarFaseIncompleta()
@@ -60,6 +63,17 @@ public class PainelFaseIncompleta : MonoBehaviour
        
         painelFaseIncompleta.SetActive(true);
        
+    }
+
+    IEnumerator voltarSelecaoF()
+    {
+        CentralizarWebGl();
+        yield return new WaitForSeconds(1.7f);
+        SistemaReiniciarWorkspaceBlockly();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
+        SceneManager.LoadScene("SelecaoFase");
+
     }
 
     

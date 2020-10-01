@@ -8,6 +8,9 @@ public class PainelIniciarLevel : MonoBehaviour
 {
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
+    [DllImport("__Internal")]
+    private static extern void DisponibilizarToobox();
     public Button botaoIniciarLevel;
     
     void Start()
@@ -27,6 +30,7 @@ public class PainelIniciarLevel : MonoBehaviour
         //Teste com estado do game
         //estadoAtual = GameState.GAMEPLAY; APAGAR DEPOIS
 
+        DisponibilizarToobox();
         SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         this.gameObject.SetActive(false);
     }
