@@ -17,6 +17,10 @@ public class Teleporte : MonoBehaviour
     public          Transform[]                 transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
     public RectTransform objHud;
 
+    //responsaveis por mudar a posicao do hud conforme para passando entre as partes da fase
+    public float[] posHudParte ;//para definir essas medidas foi utilizado metodos manuais
+    
+
     [Header("Configuração de Limite de blocos")]
     public          int                         blocosDisponiveis;
     [DllImport("__Internal")]
@@ -38,15 +42,28 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
-       
-        SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
-        _controllerFase.fases[1].SetActive(true);//habilita a próxima parte da fase
+        int parteFaseAtual = 0;
+        //SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
+        for(int i=0; i<= _controllerFase.fases.Length; i++)
+        {
+            parteFaseAtual = i;
+            if (!_controllerFase.fases[i].activeSelf && _playerController.parteFase == parteFaseAtual)
+            {
+                _controllerFase.fases[i].SetActive(true);
+                break;
+            }
+            else
+            {
+                _controllerFase.fases[i].SetActive(false);
+            }
+        }
         _playerController.zerarVelocidadeP();//zera a velocidade do player
         _playerController.transform.position = destino.position;//muda a posição do player para o inicio da proxima parte da fase
         cam.transform.position = new Vector3( transicaoCamera[0].position.x, transicaoCamera[0].position.y, 0 );//muda a posição da câmera para a proxima parte da fase
-        objHud.localPosition = new Vector4(1820, 0, 0, 0);
-        SistemaLimiteBloco(blocosDisponiveis, _gameController.idFaseEmExecucao);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
-        _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
+        objHud.localPosition = new Vector4(posHudParte[0], 0, 0, 0);
+       // SistemaLimiteBloco(blocosDisponiveis, _gameController.idFaseEmExecucao);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
+       // _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
+       
         _playerController.qtdBlocosUsados = -1;//necessário para não entrar no if que habilita o painel de fase incompleta , pois ao iniciar a próxima etapa o usuário necessitará de tempo ate dispor os blocos
     }
 }

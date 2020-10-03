@@ -6,17 +6,20 @@ using UnityEngine.UI;
 using TMPro;
 public class TelaCarregamento : MonoBehaviour
 {
+    private GameController _gameController;
+
     public string cenaACarregar;//cena que irei carregar
     public float tempoFixoSeg = 7;
-   /* public enum TipoCarregamento { Carregamento, TempoFixo};
-    public TipoCarregamento tipoDeCarregamento;
-    public Image barraDeCarregamento;
-    public TextMeshProUGUI textoProgresso;
-    private int progresso = 0;
-    private string textoOriginal;*/
-
+    /* public enum TipoCarregamento { Carregamento, TempoFixo};
+     public TipoCarregamento tipoDeCarregamento;
+     public Image barraDeCarregamento;
+     public TextMeshProUGUI textoProgresso;
+     private int progresso = 0;
+     private string textoOriginal;*/
+    private bool ativarCena = false;
     void Start()
     {
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
        
         /* switch (tipoDeCarregamento)
          {
@@ -59,6 +62,10 @@ public class TelaCarregamento : MonoBehaviour
         {
             barraDeCarregamento.fillAmount = (progresso / 100.0f);
         }*/
+        if (!ativarCena)
+        {
+            StartCoroutine(tempoFixo());
+        }
     }
 
     /*IEnumerator cenaCarregamento(string cena)
@@ -71,13 +78,11 @@ public class TelaCarregamento : MonoBehaviour
             yield return null;
         }
     }*/
-    public void chamarTelaCarregamento(string cena)
-    {
-        StartCoroutine(tempoFixo(cena));
-    }
-    IEnumerator tempoFixo(string cena)
+    
+    IEnumerator tempoFixo()
     {
         yield return new WaitForSeconds(tempoFixoSeg);
-        SceneManager.LoadScene(cena);
+        SceneManager.LoadScene(_gameController.descricaoFase);
+        ativarCena = true;
     }
 }

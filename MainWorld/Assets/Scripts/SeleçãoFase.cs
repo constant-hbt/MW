@@ -15,7 +15,6 @@ public class SeleçãoFase : MonoBehaviour
     private         ControleDeFases         _controleDeFases;
     private         GameController          _gameController;
     private PainelEntrarFase _painelEntrarFase;
-    private TelaCarregamento _telaCarregamento;
     public GameObject painelEntrarFase;
 
     [Header("Controle HUD")]
@@ -50,7 +49,6 @@ public class SeleçãoFase : MonoBehaviour
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _painelEntrarFase = FindObjectOfType(typeof(PainelEntrarFase)) as PainelEntrarFase;
-        _telaCarregamento = FindObjectOfType(typeof(TelaCarregamento)) as TelaCarregamento;
         //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
         _gameController.descricaoFase = "";
         _gameController.idFaseEmExecucao = 0;
@@ -93,26 +91,27 @@ public class SeleçãoFase : MonoBehaviour
                 // SceneManager.LoadScene("Fase1");
                 //rectCanvasEntrarFase.localPosition = new Vector4(-309f, -111, 3, 4);//posX = 1, posY = 2, Height = 3 , Width = 4;
                 //_painelEntrarFase.idBotaoFaseSelecionado = id;
-                _telaCarregamento.chamarTelaCarregamento("Fase1");
+                
                    _gameController.idFaseEmExecucao = id;
                    _gameController.descricaoFase = "Fase1";
-
+                SceneManager.LoadScene("TelaCarregamento");
                 //_painelEntrarFase.chamar();
                     break;
                 case 2:
                 // SceneManager.LoadScene("Fase2");
                 //rectCanvasEntrarFase.localPosition = new Vector4(-289, 19, 3, 4);
                 //_painelEntrarFase.idBotaoFaseSelecionado = id;
-                _telaCarregamento.chamarTelaCarregamento("Fase2");
                 _gameController.idFaseEmExecucao = id;
                     _gameController.descricaoFase = "Fase2";
+                SceneManager.LoadScene("TelaCarregamento");
                 //_painelEntrarFase.chamar();
                 break;
                 case 3:
                 //rectCanvasEntrarFase.localPosition = new Vector4(-178, -47, 3, 4);
                 //_painelEntrarFase.idBotaoFaseSelecionado = id;
-                //    _gameController.idFaseEmExecucao = id;
-                 //   _gameController.descricaoFase = "Fase3";
+                _gameController.idFaseEmExecucao = id;
+                _gameController.descricaoFase = "Fase3";
+                SceneManager.LoadScene("TelaCarregamento");
                 //_painelEntrarFase.chamar();
                 break;
                 case 4:
@@ -158,7 +157,7 @@ public class SeleçãoFase : MonoBehaviour
                 _painelEntrarFase.chamar();
                 break;
             }
-        AlterarToolboxFases(id);
+       // AlterarToolboxFases(id);
     }
 
     public void ativarPainelEntrarFase(int idFase)

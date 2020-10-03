@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     private         bool            passeiFase ;// verifica se o usuário concluiu a de fase
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
     private         bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
-    private         int             parteFase;//denomina em que parte da fase o personagem está
+    public         int             parteFase;//denomina em que parte da fase o personagem está
 
     [Header("Sistema de KnockBack")]
     public GameObject knockForcePrefab; //força de repulsão
@@ -213,8 +213,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
-                col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 parteFase += 1;
+                col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+                
                 break;
             case "Win":
                 this.passeiFase = true;
@@ -337,13 +338,13 @@ public class PlayerController : MonoBehaviour
             // Teste(rayCast_ColidindoInimigo);
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-            CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+           // CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 

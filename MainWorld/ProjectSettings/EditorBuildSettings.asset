@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/SelecaoFase.unity
     guid: df82f414b5388f243b9b6ee083271d1f
   - enabled: 1
+    path: Assets/Scenes/TelaCarregamento.unity
+    guid: 1c94a118b88159a4596fbae28a88b9af
+  - enabled: 1
     path: Assets/Scenes/Fase1.unity
     guid: 3683ecbde7db1d444989e1276eb31248
   - enabled: 1
     path: Assets/Scenes/Fase2.unity
     guid: ecdc654c44be8434f86f3291ef7a46da
+  - enabled: 1
+    path: Assets/Scenes/Fase3.unity
+    guid: 7fa5d6803ddf8d346af874c737286526
   m_configObjects: {}
