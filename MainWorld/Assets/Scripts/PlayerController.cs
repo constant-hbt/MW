@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     
     public          bool            lookLeft;//indica se o personagem esta olhando para a esquerda
     private         float           x;//pega o scale.x do player
-
+    private float posX; //pega a posicao no eixo x do personagem
 
     public GameObject[] tileChao; //utilizado somente para mudar a tag do chao enquanto o personagem estiver andando
     
@@ -215,6 +215,8 @@ public class PlayerController : MonoBehaviour
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 parteFase += 1;
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+
+                Debug.Log("Aqui");
                 
                 break;
             case "Win":
@@ -251,6 +253,7 @@ public class PlayerController : MonoBehaviour
            
         }
     }
+    
 
 
     void Flip()//será utilizado futuramente
@@ -258,6 +261,7 @@ public class PlayerController : MonoBehaviour
         lookLeft = !lookLeft; // inverte o valor da var bool
         x *= -1; // inverte o sinal do scale x
         moveX *= -1;
+        jumpForceX_pularFrente *= -1;
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 
         cabecaScan.x = cabecaScan.x * -1;

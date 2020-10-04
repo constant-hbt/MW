@@ -36,7 +36,7 @@ TagManager:
   - teleporte
   - arma
   - Player
-  - 
+  - PlayerPlataforma
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
   m_SortingLayers:
   - name: BackGround
     uniqueID: 769608549
+    locked: 0
+  - name: PlataformaTangivel
+    uniqueID: 2424831099
     locked: 0
   - name: DecoracaoSegundoPlano
     uniqueID: 1476575053
