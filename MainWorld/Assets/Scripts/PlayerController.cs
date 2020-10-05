@@ -99,6 +99,8 @@ public class PlayerController : MonoBehaviour
     private bool colidiComInimigo = false;
     private bool rayCast_ColidindoInimigo = false;
     private bool rayCast_NaoColidindoInimigo = true;
+
+    private bool habilitarMov = false;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -126,6 +128,15 @@ public class PlayerController : MonoBehaviour
 
         Grounded = Physics2D.OverlapCircle(groundCheck.position, 0.02f, oqueEhChao);//esse teste so deve acontecer se houver uma colisao com a layer Ground
 
+        if (Grounded && !habilitarMov)
+        {
+            marcarFreezyX();
+            habilitarMov = false; ////TESTAR COMPLETAMENTE DEPOIS
+        }
+        else
+        {
+            desmarcarFreezyX();
+        }
 
         if (validarConclusaoFase)
         {
@@ -231,7 +242,6 @@ public class PlayerController : MonoBehaviour
             case "loot":
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
                 break;
-
         }
     }
 
@@ -240,8 +250,9 @@ public class PlayerController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "chao":
-                playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;//marca o freeze position x e o rotation z como true
-                break;
+                    playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;//marca o freeze position x e o rotation z como true
+                
+                break; 
             case "inimigo":
               //  Debug.Log("Levei dano do inimigo");
                 playerAnimator.SetTrigger("hit");
@@ -250,7 +261,6 @@ public class PlayerController : MonoBehaviour
                //Destroy(knockTemp, 0.03f);//EXCLUI PREFAB KNOCKBACK //APAGAR DEPOIS
                 collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
                 break;
-           
         }
     }
     
@@ -417,7 +427,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator Avancar()
     {//configurações da movimentação de avanço do player 
      
-        playerRB.velocity = new Vector2(playerRB.velocity.x + ( moveX * speed), playerRB.velocity.y);
+        playerRB.velocity = new Vector2((moveX * speed), playerRB.velocity.y);
         playerAnimator.SetInteger("idAnimation", 1);
         passeiFase = false;
         StartCoroutine("diminuirQTDBlocosU");
@@ -593,6 +603,7 @@ public class PlayerController : MonoBehaviour
     //BOTOÕES UTILIZADOS PARA TESTE
     public void startPuloFrente()//somente para testes , apagar depois
     {
+        habilitarMov = true;
         desmarcarFreezyX();
         
         StartCoroutine("PuloLateral");
@@ -600,16 +611,19 @@ public class PlayerController : MonoBehaviour
     }
     public void StartPuloSimples()//somente para testes , apagar depois
     {
+        habilitarMov = true;
         desmarcarFreezyX();
         StartCoroutine("PuloSimples");
 
     }
     public void StartDefender()
     {
+        habilitarMov = true;
         StartCoroutine("Defender");
     }
     public void StartAvancar()
     {
+        habilitarMov = true;
         if (!tomeiHit)
         {
             StartCoroutine("TESTEAvancar");
@@ -618,15 +632,19 @@ public class PlayerController : MonoBehaviour
     }
     public void StartAtaque()
     {
+        habilitarMov = true;
         StartCoroutine(Ataque(forcaDano));
     }
     IEnumerator TESTEAvancar()
+
     {//configurações da movimentação de avanço do player 
+        habilitarMov = true;
         desmarcarFreezyX();
         mudarTagChao("semTagChao", parteFase);
         StartCoroutine("Avancar");
         yield return new WaitForSeconds(0.6f);
         pararMovimentacao();
+        habilitarMov = false; ///TESTAR COMPLETAMENTE DEPOIS
 
     } 
     public void StartVirar()
