@@ -20,8 +20,7 @@ TagManager:
   - armaInimigo
   - explosaoInimigo
   - loot
-  - PeEsq
-  - PeDir
+  - objetosQueDaoDano
   layers:
   - Default
   - TransparentFX
@@ -39,7 +38,7 @@ TagManager:
   - arma
   - Player
   - PlayerPlataforma
-  - 
+  - ObjetosQueDaoDano
   - 
   - 
   - 
