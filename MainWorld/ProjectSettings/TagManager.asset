@@ -73,6 +73,9 @@ TagManager:
   - name: Plataformas
     uniqueID: 4103197675
     locked: 0
+  - name: Decoracao
+    uniqueID: 2441984733
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

@@ -101,6 +101,7 @@ public class PlayerController : MonoBehaviour
     private bool rayCast_NaoColidindoInimigo = true;
 
     private int groundedTravado = 0;
+    public CircleCollider2D colliderPernas;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -567,9 +568,14 @@ public class PlayerController : MonoBehaviour
     //Funcao responsavel por destravar o player no momento em que este se encontra travado nas quinas das plataformas
     IEnumerator DestravarPlayer()
     {
+        
         desmarcarFreezyX();
+        Debug.Log("Desativando o circle collider");
         yield return new WaitForFixedUpdate();
         groundedTravado = 0;
+        this.GetComponent<CircleCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<CircleCollider2D>().enabled = true;
     }
     public void zerarVelocidadeP()
     {
