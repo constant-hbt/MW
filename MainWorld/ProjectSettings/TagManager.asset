@@ -21,6 +21,9 @@ TagManager:
   - explosaoInimigo
   - loot
   - objetosQueDaoDano
+  - placaAviso
+  - flecha
+  - invencivel
   layers:
   - Default
   - TransparentFX
@@ -39,7 +42,7 @@ TagManager:
   - Player
   - PlayerPlataforma
   - ObjetosQueDaoDano
-  - 
+  - Invencivel
   - 
   - 
   - 

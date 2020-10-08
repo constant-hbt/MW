@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private         GameController  _gameController;
     private         ControllerFase  _controllerFase;
     private Inimigo _inimigo;
+    private InimigoArqueiro _inimigoArqueiro;
 
     [Header("Sistema de vida")]
     public int vidaPlayer ;//vida do player dentro da fase
@@ -101,7 +102,7 @@ public class PlayerController : MonoBehaviour
     private bool rayCast_NaoColidindoInimigo = true;
 
     private int groundedTravado = 0;
-    public CircleCollider2D colliderPernas;
+
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -110,6 +111,7 @@ public class PlayerController : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _inimigo = FindObjectOfType(typeof(Inimigo)) as Inimigo;
+        _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro))as InimigoArqueiro;
 
         x = transform.localScale.x;
 
@@ -229,9 +231,6 @@ public class PlayerController : MonoBehaviour
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 parteFase += 1;
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
-
-                Debug.Log("Aqui");
-                
                 break;
             case "Win":
                 this.passeiFase = true;
@@ -245,6 +244,15 @@ public class PlayerController : MonoBehaviour
             case "loot":
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
                 break;
+            case "placaAviso":
+                if(_inimigoArqueiro == null)
+                {
+                    _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
+                }
+                _inimigoArqueiro.comecarAtacar = true;
+                Debug.Log("Colidi com a placa de aviso");
+                break;
+                
         }
     }
 
@@ -544,10 +552,14 @@ public class PlayerController : MonoBehaviour
     private void habilitaColisorAbaixado()//usado no bloco defender
     {
         collisorAbaixado.enabled = true;
+        this.gameObject.tag = "invencivel";
+        this.gameObject.layer =17;
         collisorEmPé.enabled = false;
     }
     private void habilitaColisorEmPe()//usado no bloco defender
     {
+        this.gameObject.tag = "Player";
+        this.gameObject.layer = 14;
         collisorAbaixado.enabled = false;
         collisorEmPé.enabled = true;
     }
