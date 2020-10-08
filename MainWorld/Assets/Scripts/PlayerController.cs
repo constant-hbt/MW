@@ -245,13 +245,14 @@ public class PlayerController : MonoBehaviour
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
                 break;
             case "placaAviso":
-                if(_inimigoArqueiro == null)
-                {
-                    _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
-                }
-                _inimigoArqueiro.comecarAtacar = true;
+                
+                _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
+
+                    _inimigoArqueiro.comecarAtacar = true;
+                
                 Debug.Log("Colidi com a placa de aviso");
                 break;
+
                 
         }
     }
