@@ -5,7 +5,7 @@ using TMPro;
 
 public class InimigoArqueiro : MonoBehaviour
 {
-   
+    
 
     public float velocidadeFlecha;
     public GameObject posicaoFlecha;
@@ -16,10 +16,9 @@ public class InimigoArqueiro : MonoBehaviour
 
     public Animator arqueiroAnimator;
 
-    
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -42,6 +41,7 @@ public class InimigoArqueiro : MonoBehaviour
         StartCoroutine(validarNovoAtaque());
     }
 
+
     public void instanciarFlecha()
     {
         GameObject fxTemp = Instantiate(prefabFlecha, posicaoFlecha.gameObject.transform.position, posicaoFlecha.gameObject.transform.localRotation);
@@ -63,6 +63,15 @@ public class InimigoArqueiro : MonoBehaviour
         novoAtaque = true;
     }
 
+    public void AtivarDesativarCollider(int situacao)
+    {
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+       
+            this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        
+        
+    }
+    
     
     
 }
