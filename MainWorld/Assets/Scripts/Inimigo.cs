@@ -21,9 +21,10 @@ public class Inimigo : MonoBehaviour
     public GameObject barrasVida;
     public Transform vidaCheia;
     public TextMeshProUGUI tmpVida;
+    public GameObject objTmpVida;
     private bool died = false;
     public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
-    public Transform pontoSaidaLoot; //ponto de referencia da origem dos loots
+    //public Transform pontoSaidaLoot; //ponto de referencia da origem dos loots
     //mostrar o dano
     public GameObject danoTxtPrefab;
 
@@ -161,7 +162,7 @@ public class Inimigo : MonoBehaviour
     {//USADO PRIMEIRAMENTE NO KNOCKBACK
         olhandoEsquerda = !olhandoEsquerda; // inverte o valor da var bool
         float x = transform.localScale.x;
-
+        objTmpVida.transform.localScale = new Vector3(objTmpVida.transform.localScale.x * -1, objTmpVida.transform.localScale.y, objTmpVida.transform.localScale.z);
         x *= -1; // inverte o sinal do scale x
 
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
@@ -212,7 +213,7 @@ public class Inimigo : MonoBehaviour
         sRender.enabled = false;
 
         //Controle de loot
-        int qtdMoedas = Random.Range(1, 3);
+       /* int qtdMoedas = Random.Range(1, 3);
         
         for (int l = 0; l < qtdMoedas; l++)
         {
@@ -226,7 +227,7 @@ public class Inimigo : MonoBehaviour
            //lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0,35), 100)); APAGAR DEPOIS
             yield return new WaitForSeconds(0.1f);
 
-        }
+        }*/
 
 
         yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
