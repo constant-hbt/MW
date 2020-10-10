@@ -162,7 +162,11 @@ public class Inimigo : MonoBehaviour
     {//USADO PRIMEIRAMENTE NO KNOCKBACK
         olhandoEsquerda = !olhandoEsquerda; // inverte o valor da var bool
         float x = transform.localScale.x;
-        objTmpVida.transform.localScale = new Vector3(objTmpVida.transform.localScale.x * -1, objTmpVida.transform.localScale.y, objTmpVida.transform.localScale.z);
+
+        
+            objTmpVida.transform.localScale = new Vector3(objTmpVida.transform.localScale.x * -1, objTmpVida.transform.localScale.y, objTmpVida.transform.localScale.z);
+        
+        
         x *= -1; // inverte o sinal do scale x
 
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);

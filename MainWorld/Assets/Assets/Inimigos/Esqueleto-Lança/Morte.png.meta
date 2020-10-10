@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: -6051570625377990457
     second: Morte_3
+  - first:
+      213: 202366359989320500
+    second: Morte_0
+  - first:
+      213: 6266582200577905561
+    second: Morte_1
+  - first:
+      213: 3754232302749182946
+    second: Morte_2
+  - first:
+      213: 6613773579228455351
+    second: Morte_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -114,10 +126,10 @@ TextureImporter:
       name: Morte_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 20
         y: 0
-        width: 128
-        height: 96
+        width: 76
+        height: 58
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b5270d414885296a0800000000000000
-      internalID: -6443990792505626021
+      spriteID: 43bf6a9d123fec200800000000000000
+      internalID: 202366359989320500
       vertices: []
       indices: 
       edges: []
@@ -135,10 +147,10 @@ TextureImporter:
       name: Morte_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 148
         y: 0
-        width: 128
-        height: 96
+        width: 76
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a40c247d8396d0310800000000000000
-      internalID: 1372869154268430410
+      spriteID: 9935b354f4f57f650800000000000000
+      internalID: 6266582200577905561
       vertices: []
       indices: 
       edges: []
@@ -156,10 +168,10 @@ TextureImporter:
       name: Morte_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 274
         y: 0
-        width: 128
-        height: 96
+        width: 78
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b00b3b6928bbe7040800000000000000
-      internalID: 4647358035041431563
+      spriteID: 2eb69a97366b91430800000000000000
+      internalID: 3754232302749182946
       vertices: []
       indices: 
       edges: []
@@ -177,10 +189,10 @@ TextureImporter:
       name: Morte_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 402
         y: 0
-        width: 128
-        height: 96
+        width: 78
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c8082d2490840ca0800000000000000
-      internalID: -6051570625377990457
+      spriteID: 7b1a6ce6708d8cb50800000000000000
+      internalID: 6613773579228455351
       vertices: []
       indices: 
       edges: []

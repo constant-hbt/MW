@@ -51,7 +51,15 @@ public class InimigoArqueiro : MonoBehaviour
     }
     IEnumerator movimentoFlecha(GameObject flecha)
     {
-        flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * -100, 0));
+        if(this.gameObject.transform.position.x > 0)
+        {
+            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * 100, 0));
+        }
+        else
+        {
+            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * -100, 0));
+        }
+        
 
         yield return new WaitForSeconds(2f);
         Destroy(flecha, 0.5f);
