@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lava
+  m_Name: LavaDescendo
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,11 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: a10298fe84bd0bc4e89a9c54d9644c83, type: 3}
+      value: {fileID: 21300000, guid: ac1b3b6b41d918e4e9e03a60ff1403de, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: e3b63f0b3863a01439e7267e7bcec2af, type: 3}
+      value: {fileID: 21300000, guid: 63f9bbb673af57b4aabac3956e4891c4, type: 3}
     - time: 0.6666667
-      value: {fileID: 21300000, guid: 156e87a21466f0942b71e9976aa178b2, type: 3}
+      value: {fileID: 21300000, guid: 1681afa1e1411dc46a85fe5e1abe71bf, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,9 +44,9 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: a10298fe84bd0bc4e89a9c54d9644c83, type: 3}
-    - {fileID: 21300000, guid: e3b63f0b3863a01439e7267e7bcec2af, type: 3}
-    - {fileID: 21300000, guid: 156e87a21466f0942b71e9976aa178b2, type: 3}
+    - {fileID: 21300000, guid: ac1b3b6b41d918e4e9e03a60ff1403de, type: 3}
+    - {fileID: 21300000, guid: 63f9bbb673af57b4aabac3956e4891c4, type: 3}
+    - {fileID: 21300000, guid: 1681afa1e1411dc46a85fe5e1abe71bf, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
