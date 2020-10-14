@@ -24,6 +24,7 @@ TagManager:
   - placaAviso
   - flecha
   - invencivel
+  - moveInimigo
   layers:
   - Default
   - TransparentFX

@@ -261,6 +261,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Colidi com a placa de aviso");
                 break;
 
+            case "moveInimigo":
+                InimigoTeleporte ini = FindObjectOfType(typeof(InimigoTeleporte)) as InimigoTeleporte;
+                ini.mudarPosicao();
+                break;
                 
         }
     }
@@ -660,12 +664,17 @@ public class PlayerController : MonoBehaviour
     public void StartAvancar()
     {
        
+
+       
+
+
         if (!tomeiHit)
         {
             StartCoroutine("TESTEAvancar");
         }
-        
+
     }
+    
     public void StartAtaque()
     {
         StartCoroutine(Ataque(forcaDano));
