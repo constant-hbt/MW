@@ -4,6 +4,14 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 public class PlayerController : MonoBehaviour
 {
+
+    /// <summary>
+    /// TEM UM ERRO NA LINHA 513 - TEM HAVER COM A INSTANCIACAO DO INIMIGO
+    /// </summary>
+
+
+
+
     private SpriteRenderer sRender;
     private         Animator        playerAnimator;
     private         Rigidbody2D     playerRB;
@@ -215,7 +223,7 @@ public class PlayerController : MonoBehaviour
                 if (!tomeiHit)
                 {
                     tomeiHit = true;
-                    print("Tomei um dano no inimigo com força igual a = " + _inimigo.forcaDanoInim);//somente utilizado para testes
+                   // print("Tomei um dano no inimigo com força igual a = " + _inimigo.forcaDanoInim);//somente utilizado para testes
                     playerAnimator.SetTrigger("hit");
 
                     //EFEITO HIT
