@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InimigoTeleporte : MonoBehaviour
 {
+    private PlayerController _playerController;
 
     public GameObject[] posicoes;
     public GameObject[] inimigos;
-
     public List<int> posicaoJaOcupada = new List<int>();
 
     void Start()
     {
-        
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
     }
 
     // Update is called once per frame
@@ -54,5 +54,19 @@ public class InimigoTeleporte : MonoBehaviour
         }
         
        
+    }
+    public void jaPassou(GameObject pilarAtual)
+    {//modifica o pilar de mudar o inimigo de posicao para ja passou
+
+        pilarAtual.transform.GetChild(0).gameObject.SetActive(false);
+        pilarAtual.transform.GetChild(1).gameObject.SetActive(true);
+        StartCoroutine(habilitarColisaoPilar());
+        
+    }
+
+    IEnumerator habilitarColisaoPilar()
+    {
+        yield return new WaitForSeconds(3f);
+        _playerController.colidiMoveInimigo = false;
     }
 }

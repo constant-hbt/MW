@@ -111,6 +111,8 @@ public class PlayerController : MonoBehaviour
 
     private int groundedTravado = 0;
 
+    //teleporteInimigo
+    public bool colidiMoveInimigo = false;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -262,10 +264,18 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case "moveInimigo":
-                InimigoTeleporte ini = FindObjectOfType(typeof(InimigoTeleporte)) as InimigoTeleporte;
-                ini.mudarPosicao();
+
+                if (!colidiMoveInimigo)//garante que a colisao so acontecerá uma unica vez
+                {
+                    colidiMoveInimigo = true;
+                    InimigoTeleporte ini = FindObjectOfType(typeof(InimigoTeleporte)) as InimigoTeleporte;
+                    Debug.Log("Colidi com o moveInimigo");
+                    ini.mudarPosicao();
+                    ini.jaPassou(col.gameObject);
+                    
+                }
+
                 break;
-                
         }
     }
 

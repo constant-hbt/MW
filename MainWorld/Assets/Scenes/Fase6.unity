@@ -871,7 +871,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4984735839002111551, guid: 9a0bca4db45312c4c96446ec279b0c89,
+  m_Sprite: {fileID: -9093181875152858020, guid: 9a0bca4db45312c4c96446ec279b0c89,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12472,7 +12472,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8320370864325541224, guid: 9a0bca4db45312c4c96446ec279b0c89,
+  m_Sprite: {fileID: -1039038422869228511, guid: 9a0bca4db45312c4c96446ec279b0c89,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12854,7 +12854,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 709985767948143870, guid: 9a0bca4db45312c4c96446ec279b0c89, type: 3}
+  m_Sprite: {fileID: 4857984522629846230, guid: 9a0bca4db45312c4c96446ec279b0c89,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14978,7 +14979,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 709985767948143870, guid: 9a0bca4db45312c4c96446ec279b0c89, type: 3}
+  m_Sprite: {fileID: 4857984522629846230, guid: 9a0bca4db45312c4c96446ec279b0c89,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -17012,7 +17014,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4984735839002111551, guid: 9a0bca4db45312c4c96446ec279b0c89,
+  m_Sprite: {fileID: -9093181875152858020, guid: 9a0bca4db45312c4c96446ec279b0c89,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20373,7 +20375,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8320370864325541224, guid: 9a0bca4db45312c4c96446ec279b0c89,
+  m_Sprite: {fileID: -1039038422869228511, guid: 9a0bca4db45312c4c96446ec279b0c89,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -44037,6 +44039,7 @@ MonoBehaviour:
   fxDano:
   - {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff, type: 3}
   fxMorte: {fileID: 6013767642282379391, guid: 86a9465af2e28fe4995ed4cab406da2d, type: 3}
+  colidiMoveInimigo: 0
 --- !u!1 &3589834207767080519
 GameObject:
   m_ObjectHideFlags: 0
