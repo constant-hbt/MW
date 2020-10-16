@@ -47,6 +47,7 @@ public class Inimigo : MonoBehaviour
     public GameObject fxMorte; //guarda o prefab com a animacao de morte  
     public GameObject fxHitPlayer;//guarda o prefab da animação de quando ele explode e da um hit no player
 
+    private DestroyInimigo _destroyInimigo;
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -54,6 +55,7 @@ public class Inimigo : MonoBehaviour
         sRender = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
 
+        _destroyInimigo = FindObjectOfType(typeof(DestroyInimigo)) as DestroyInimigo;
        
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
         vidaAtual = vida;
@@ -109,7 +111,10 @@ public class Inimigo : MonoBehaviour
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
-                        StartCoroutine("loot");
+                    Debug.Log("SpawnScript and object is active " + gameObject.activeInHierarchy);
+                    this.StartCoroutine("loot");
+
+                   
 
                     }
                     else if(vidaAtual < 0)
@@ -235,10 +240,13 @@ public class Inimigo : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
+        Debug.Log("Vou destruir o fxMorte");
         Destroy(fxMorte, 0.5f);
+        
         yield return new WaitForSeconds(0.5f);
+        Debug.Log("Vou destruir o objeto inimigo");
         Destroy(this.gameObject);
-
+        
     }
 
     IEnumerator contraAtaque()
