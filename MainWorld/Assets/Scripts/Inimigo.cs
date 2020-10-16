@@ -236,6 +236,7 @@ public class Inimigo : MonoBehaviour
 
         yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
         Destroy(fxMorte, 0.5f);
+        yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
 
     }
