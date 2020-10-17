@@ -132,13 +132,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 8517479359887830551}
-    characterCount: 3
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 2
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -581,7 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 5
   vidaAtual: -3
-  barrasVida: {fileID: 8101578577212103928}
+  barrasVida: {fileID: 8101578577345218898}
   vidaCheia: {fileID: 8101578576662766781}
   tmpVida: {fileID: 8517479359887830551}
   objTmpVida: {fileID: 177535307325954133}
@@ -689,7 +689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8101578578156860756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.029, y: 0.063, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8101578577661278459}

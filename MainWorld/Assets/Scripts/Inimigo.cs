@@ -47,15 +47,12 @@ public class Inimigo : MonoBehaviour
     public GameObject fxMorte; //guarda o prefab com a animacao de morte  
     public GameObject fxHitPlayer;//guarda o prefab da animação de quando ele explode e da um hit no player
 
-    private DestroyInimigo _destroyInimigo;
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         sRender = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-
-        _destroyInimigo = FindObjectOfType(typeof(DestroyInimigo)) as DestroyInimigo;
        
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
         vidaAtual = vida;
@@ -168,16 +165,25 @@ public class Inimigo : MonoBehaviour
         olhandoEsquerda = !olhandoEsquerda; // inverte o valor da var bool
         float x = transform.localScale.x;
 
-        
+        if (olhandoEsquerda && playerEsquerda == true && objTmpVida.transform.localScale.x > -1) //garante que o tmpVida vai estar sempre virado corretamente para frente
+        {
             objTmpVida.transform.localScale = new Vector3(objTmpVida.transform.localScale.x * -1, objTmpVida.transform.localScale.y, objTmpVida.transform.localScale.z);
-        
-        
+
+        }
+        if (!olhandoEsquerda && playerEsquerda == false && objTmpVida.transform.localScale.x < 1)
+        {
+            objTmpVida.transform.localScale = new Vector3(objTmpVida.transform.localScale.x * -1, objTmpVida.transform.localScale.y, objTmpVida.transform.localScale.z);
+
+        }
+
+
+
         x *= -1; // inverte o sinal do scale x
 
         transform.localScale = new Vector3(x, transform.localScale.y, transform.localScale.z);
 
         //faz com que a barra de vida altere o lado conforme personagem se vira
-        barrasVida.transform.localScale = new Vector3(barrasVida.transform.localScale.x * -1 , barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
+        //barrasVida.transform.localScale = new Vector3(barrasVida.transform.localScale.x * -1 , barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
        }
 
     void atualizarTMPVida(TextMeshProUGUI tmpVida, int vidaAtual, int vida)
@@ -205,20 +211,25 @@ public class Inimigo : MonoBehaviour
         {
             flip();
         }
-         if (olhandoEsquerda == true && playerEsquerda == false)
+        
+        if (olhandoEsquerda == true && playerEsquerda == false)
         {
             flip();
-        }
+           }
         
     }
 
     IEnumerator loot()
     {
-        yield return new WaitForSeconds(1.5f);
-       
-        GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
-        yield return new WaitForSeconds(0.3f);//depois de meio segundo desabilita a imagem do inimigo
+        
+        yield return new WaitForSeconds(1f);
+
         barrasVida.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
+        GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
+
+        yield return new WaitForSeconds(0.25f);//depois de meio segundo desabilita a imagem do inimigo
+        
         sRender.enabled = false;
 
         //Controle de loot
@@ -239,7 +250,7 @@ public class Inimigo : MonoBehaviour
         }*/
 
 
-        yield return new WaitForSeconds(0.2f);//depois de um segundo destroi a animacao de morte e o inimigo
+        yield return new WaitForSeconds(0.4f);//depois de um segundo destroi a animacao de morte e o inimigo
         Debug.Log("Vou destruir o fxMorte");
         Destroy(fxMorte, 0.5f);
         
