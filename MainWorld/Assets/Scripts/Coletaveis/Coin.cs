@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
     private GameController _gameController;
     private ControllerFase _controllerFase;
     public int valorCoin;
+    private bool jaColidiu = false;
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -24,7 +25,12 @@ public class Coin : MonoBehaviour
         switch (tipoMoeda)
         {
             case "coletavel":
-                _controllerFase.qtdMoedasColetadas += valorCoin;
+                if (!jaColidiu)
+                {
+                    _controllerFase.qtdMoedasColetadas += valorCoin;
+                    jaColidiu = true;
+                }
+               
                 Destroy(this.gameObject);
                 break;
             case "loot":
