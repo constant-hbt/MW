@@ -25,6 +25,7 @@ TagManager:
   - flecha
   - invencivel
   - moveInimigo
+  - alavanca
   layers:
   - Default
   - TransparentFX
