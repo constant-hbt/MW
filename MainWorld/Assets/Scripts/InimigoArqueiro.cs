@@ -16,6 +16,7 @@ public class InimigoArqueiro : MonoBehaviour
 
     public Animator arqueiroAnimator;
 
+    public Transform posicaoPlayer;
     void Start()
     {
        
@@ -51,7 +52,7 @@ public class InimigoArqueiro : MonoBehaviour
     }
     IEnumerator movimentoFlecha(GameObject flecha)
     {
-        if(this.gameObject.transform.position.x > 0)
+        if(this.gameObject.transform.position.x < posicaoPlayer.position.x)
         {
             flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * 100, 0));
         }
