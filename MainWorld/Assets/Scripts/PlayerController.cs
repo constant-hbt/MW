@@ -531,6 +531,11 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator hitInimigo(int forcaAtaqueInimigo)//funcao responsavel por dar o hit no player caso o ataque dele seja maior doque a vida do inimigo
     {
+        if(_inimigo == null)
+        {
+            _inimigo = FindObjectOfType(typeof(Inimigo)) as Inimigo;
+        }
+
         yield return new WaitForSeconds(1.5f);
         GameObject hitTemp = Instantiate(_inimigo.fxHitPlayer, transform.position, transform.localRotation);//instancia a animacao de hit no player
         Destroy(hitTemp, 0.7f);//destroi o prefab de hit
