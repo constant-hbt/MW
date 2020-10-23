@@ -79,8 +79,8 @@ public class ControllerFase : MonoBehaviour
 
         //NAO DESCOMENTAR --->  SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
        
-         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+        // SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+        // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         

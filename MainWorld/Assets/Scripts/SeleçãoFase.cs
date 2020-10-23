@@ -44,7 +44,7 @@ public class SeleçãoFase : MonoBehaviour
 
     void Start()
     {
-      SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+      //SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -157,7 +157,7 @@ public class SeleçãoFase : MonoBehaviour
                 _painelEntrarFase.chamar();
                 break;
             }
-        AlterarToolboxFases(id);
+       // AlterarToolboxFases(id);
     }
 
     public void ativarPainelEntrarFase(int idFase)

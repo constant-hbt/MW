@@ -16,6 +16,9 @@ public class PainelSugestão : MonoBehaviour
 
     private int idPainelAtivo;
     private string subTitulo;
+
+    public GameObject scrollVertical;
+    public ScrollRect scrollRect;
     void Start()
     {
         idPainelAtivo = 1;
@@ -66,17 +69,20 @@ public class PainelSugestão : MonoBehaviour
             case 1:
                 btnAnterior.SetActive(false);
                 btnProximo.SetActive(true);
-                tmpSubTitulo.text = "Sugestão1";
+                tmpSubTitulo.text = "Descrição";
+                DesativarAtivarBarraRolagem("ativar");
                 break;
             case 2:
                 btnAnterior.SetActive(true);
                 btnProximo.SetActive(true);
-                tmpSubTitulo.text = "Sugestao2";
+                tmpSubTitulo.text = "Objetivos";
+                DesativarAtivarBarraRolagem("desativar");
                 break;
             case 3:
                 btnAnterior.SetActive(true);
                 btnProximo.SetActive(false);
-                tmpSubTitulo.text = "Sugestao3";
+                tmpSubTitulo.text = "Vídeo";
+                DesativarAtivarBarraRolagem("desativar");
                 break;
 
 
@@ -101,5 +107,20 @@ public class PainelSugestão : MonoBehaviour
     public void btnClose()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void DesativarAtivarBarraRolagem(string acao)
+    {
+        if(acao == "ativar")
+        {
+            scrollRect.enabled = true;
+            scrollVertical.SetActive(true);
+        }
+        else
+        {
+            scrollRect.enabled = false;
+            scrollVertical.SetActive(false);
+        }
+        
     }
 }
