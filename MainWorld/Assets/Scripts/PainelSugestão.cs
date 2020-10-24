@@ -19,6 +19,8 @@ public class PainelSugestão : MonoBehaviour
 
     public GameObject scrollVertical;
     public ScrollRect scrollRect;
+
+    public int qtdPaineisComScroll;
     void Start()
     {
         idPainelAtivo = 1;
@@ -70,19 +72,48 @@ public class PainelSugestão : MonoBehaviour
                 btnAnterior.SetActive(false);
                 btnProximo.SetActive(true);
                 tmpSubTitulo.text = "Descrição";
-                DesativarAtivarBarraRolagem("ativar");
+                if(qtdPaineisComScroll >= 1)
+                {
+                    DesativarAtivarBarraRolagem("ativar");
+                }
+                else
+                {
+                    DesativarAtivarBarraRolagem("desativar");
+
+                }
+
+
                 break;
             case 2:
                 btnAnterior.SetActive(true);
                 btnProximo.SetActive(true);
                 tmpSubTitulo.text = "Objetivos";
-                DesativarAtivarBarraRolagem("desativar");
+                
+
+                if (qtdPaineisComScroll >= 2)
+                {
+                    DesativarAtivarBarraRolagem("ativar");
+                }
+                else
+                {
+                    DesativarAtivarBarraRolagem("desativar");
+
+                }
                 break;
             case 3:
                 btnAnterior.SetActive(true);
                 btnProximo.SetActive(false);
                 tmpSubTitulo.text = "Vídeo";
-                DesativarAtivarBarraRolagem("desativar");
+
+                if (qtdPaineisComScroll >= 3)
+                {
+                    DesativarAtivarBarraRolagem("ativar");
+                }
+                else
+                {
+                    DesativarAtivarBarraRolagem("desativar");
+
+                }
                 break;
 
 
