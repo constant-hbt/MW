@@ -241,8 +241,7 @@ zoom:
                             console.log("Se der erro depois disso aqui é por causa do teste");
                             //let tmp = Blockly.mainWorkspace.blockDB_(event.blockId);
                             //tmp.update.call(tmp);
-                            console.log(Blockly.mainWorkspace.getAllBlocks().length);
-                            console.log(Blockly.mainWorkspace.getAllBlocks()[0].inputList[0].fieldRow[1].max_);
+                         
                             /*
                             var limitForcaAtaque = document.getElementById('limiteForcaAtaque');
                             var blocos_temp = Blockly.mainWorkspace.getAllBlocks();

@@ -1892,8 +1892,8 @@ PrefabInstance:
         na ordem que foi declarada.\r\n\tPara apimentar ainda mais sua aventura a
         partir deste momento, Arthur al\xE9m de lidar com os mais diversos terrenos
         e plataformas ter\xE1 de enfrentar tamb\xE9m tem\xEDveis inimigos que podem
-        vir a aparecer em seu caminho. Fique atento e o ajude a se proteger.\r\n
-        \tA adi\xE7\xE3o de um novo bloco \xE9 um fator de suma import\xE2ncia nesta
+        vir a aparecer em seu caminho. Fique atento e o ajude a se proteger.\r\n\tA
+        adi\xE7\xE3o de um novo bloco \xE9 um fator de suma import\xE2ncia nesta
         nova etapa e que deve ser levado em considera\xE7\xE3o para superar os novos
         desafios que vir\xE3o. Agora, al\xE9m dos blocos j\xE1 dispon\xEDveis anteriormente
         voc\xEA conta tamb\xE9m com o bloco defender, que possibilita ao cavaleiro
@@ -23582,7 +23582,7 @@ PrefabInstance:
     - target: {fileID: 8072821741976607275, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a2ffad1b904204f8f57ff679b09054, type: 3}

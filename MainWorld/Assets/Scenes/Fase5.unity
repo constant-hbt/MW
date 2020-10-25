@@ -1279,7 +1279,7 @@ MonoBehaviour:
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 9
   qtdBlocosDisponiveis: 10
-  qtdManaDisponivelFase: 0
+  qtdManaDisponivelFase: 10
 --- !u!1 &235728606
 GameObject:
   m_ObjectHideFlags: 0
@@ -6030,6 +6030,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1786702722}
     m_Modifications:
+    - target: {fileID: 667721508680830203, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796983883903435, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6326796984154707558, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -6049,6 +6059,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796984154707576, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796984305568961, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6326796984499226057, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
@@ -6163,7 +6183,17 @@ PrefabInstance:
     - target: {fileID: 6326796984499226058, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796984499226058, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796984698497348, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6326796985759961034, guid: 0fc4118a0c1c62743846c62b89298472,
         type: 3}
@@ -6189,6 +6219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6326796985759961036, guid: 0fc4118a0c1c62743846c62b89298472,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fc4118a0c1c62743846c62b89298472, type: 3}
@@ -8864,7 +8899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1796999969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35460,7 +35495,7 @@ Transform:
   m_GameObject: {fileID: 3589834207755137614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -435, y: 206, z: 0}
-  m_LocalScale: {x: 187.50002, y: 187.50002, z: 0}
+  m_LocalScale: {x: 187.5, y: 187.50002, z: 0}
   m_Children:
   - {fileID: 3589834207998513237}
   - {fileID: 3589834207058498963}

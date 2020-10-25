@@ -43,7 +43,7 @@ public class Teleporte : MonoBehaviour
     void interagindo()
     {
         int parteFaseAtual = 0;
-        //SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
+       // SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
         for(int i=0; i<= _controllerFase.fases.Length; i++)
         {
             parteFaseAtual = i;

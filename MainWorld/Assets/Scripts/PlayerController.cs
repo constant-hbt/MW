@@ -397,7 +397,7 @@ public class PlayerController : MonoBehaviour
         {
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-           // CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+          //  CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
@@ -444,7 +444,7 @@ public class PlayerController : MonoBehaviour
                 desmarcarFreezyX();
                 mudarTagChao("semTagChao", parteFase);
                 StartCoroutine("Avancar");
-                yield return new WaitForSeconds(0.6f * Time.deltaTime);
+                yield return new WaitForSeconds(0.6f );
                 pararMovimentacao();
                 break;
             case "puloSimples":

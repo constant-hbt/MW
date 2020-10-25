@@ -41,31 +41,31 @@ function mudarToolbox(idToolbox){
             category = toolboxFase2e3(idToolbox);
             console.log("Alterei a toolbox para 2");
             break;
-        case '3':
+        case 3:
             category = toolboxFase2e3(idToolbox);
             console.log("Alterei a toolbox para 3");
             break;
-        case '4':
+        case 4:
             category = toolboxFase4(idToolbox);
             console.log("Alterei a toolbox para 4");
             break;
-        case '5':
+        case 5:
             category = toolboxFase5(idToolbox);
             console.log("Alterei a toolbox para 5");
             break;
-        case '6':
+        case 6:
             category = toolboxFase6e7(idToolbox);
             console.log("Alterei a toolbox para 6");
             break;
-        case '7':
+        case 7:
             category = toolboxFase6e7(idToolbox);
             console.log("Alterei a toolbox para 7");
             break;
-        case '8':
+        case 8:
             category = toolboxFase8e9(idToolbox);
             console.log("Alterei a toolbox para 8");
             break;
-        case '9':
+        case 9:
             category = toolboxFase8e9(idToolbox);
             console.log("Alterei a toolbox para 9");
             break;
