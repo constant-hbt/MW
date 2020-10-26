@@ -9,7 +9,7 @@ public class TelaCarregamento : MonoBehaviour
     private GameController _gameController;
 
     public string cenaACarregar;//cena que irei carregar
-    public float tempoFixoSeg = 7;
+    public float tempoFixoSeg = 4;
     /* public enum TipoCarregamento { Carregamento, TempoFixo};
      public TipoCarregamento tipoDeCarregamento;
      public Image barraDeCarregamento;
