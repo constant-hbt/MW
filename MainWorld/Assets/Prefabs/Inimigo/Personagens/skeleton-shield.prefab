@@ -304,8 +304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643c57b830ac18b4bb6fc5aa936334c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vida: 6
-  vidaAtual: 6
+  vida: 5
+  vidaAtual: 5
   barrasVida: {fileID: 8162119768995803535}
   vidaCheia: {fileID: 8162119767476922855}
   tmpVida: {fileID: 8271960453398595686}

@@ -29,12 +29,15 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void DisponibilizarToobox();
+
+    [DllImport("__Internal")]
+    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
-        Debug.Log("Ativei o painel fase incompleta");
+        SistemaDeEnableDisableBlocos(true);
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
-
+       
         btnClose.Select();
         
 
@@ -46,9 +49,9 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-       // DisponibilizarToobox();
-        //ReiniciarVarCodeCompleto();
-        //ReiniciarVarBlocosTotais();
+        DisponibilizarToobox();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         _gameController.idFaseEmExecucao = idFase;
         _gameController.descricaoFase = "Fase" + idFase;
@@ -67,11 +70,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-        //CentralizarWebGl();
+        CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-        //SistemaReiniciarWorkspaceBlockly();
-        //ReiniciarVarCodeCompleto();
-        //ReiniciarVarBlocosTotais();
+        SistemaReiniciarWorkspaceBlockly();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("SelecaoFase");
 
     }
