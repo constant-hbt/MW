@@ -96,17 +96,12 @@ Blockly.Blocks['virar'] = {
 Blockly.Blocks['valor_ataque'] = {
   
   init: function() {
-    var valid = document.getElementById('valorInicialCampoForca');
-    var limit = document.getElementById('limiteForcaAtaque');
-
-    function verifValidar(valid,limit){
-      return new Blockly.FieldNumber(valid, 0, limit, 1);
-    }
+    
     
 
     this.appendDummyInput()
       .appendField("Força")
-        .appendField(verifValidar(valid.value, limit.value), "valor_ataque");
+        .appendField(new Blockly.FieldNumber(0), "valor_ataque");
     this.setOutput(true, "valor_forca");
     this.setColour(230);
  this.setTooltip("");

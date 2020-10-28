@@ -38,14 +38,6 @@ mergeInto(LibraryManager.library, {
     Teste: function(condInim){
         console.log("Valor de retorno da funcao CondicaoInimigo: "+ condInim);
     },
-    AlterarLimiteBlocoForcaAtaque:function(limitForcaAtaque){
-        var limit = document.getElementById('limiteForcaAtaque');
-        limit.value =limitForcaAtaque;
-        console.log("Valor do limite do bloco força ataque = " + limiteForcaAtaque.value);
-        console.log("Valor passado para variavel limit = " + limit.value);
-
-        alterarLimiteBlocoForca(limitForcaAtaque);
-    },
     AlterarToolboxFases:function(idToolbox){
         mudarToolbox(idToolbox);
         console.log('Mudei o toolbox da fase'+idToolbox);

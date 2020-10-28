@@ -35,7 +35,6 @@ public class GameController : MonoBehaviour
 
     [Header("Banco de Dados do Player")]
     public      int         vidaMax = 3;
-    public int manaPlayer = 1;
 
 
     void Start()

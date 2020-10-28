@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     public          int             qtdBlocosUsados = -1; // quantidade de blocos usados na fase
     private         int             qtdBlocosCadaParteFase = 0;// quantidade de blocos usados em cada parte da fase(necessario para fases com mais de uma etapa)
     private         bool            passeiFase ;// verifica se o usuário concluiu a de fase
+    public bool passeiParteFase = false; //verifica se o usuario passou de terreno na fase caso haja
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
     private         bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
     public         int             parteFase;//denomina em que parte da fase o personagem está
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
-        if (interpreteAcabou /*&& qtdBlocosUsados == 0*/ && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase || ativPainelPosMorte)
+        if (interpreteAcabou  && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase && !passeiParteFase || ativPainelPosMorte)
         {
             //
             painelFaseIncompleta.SetActive(true);
@@ -240,6 +241,7 @@ public class PlayerController : MonoBehaviour
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 parteFase += 1;
+                passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
                 col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 break;
             case "Win":
@@ -391,13 +393,13 @@ public class PlayerController : MonoBehaviour
             // Teste(rayCast_ColidindoInimigo);
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-            CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+           // CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 

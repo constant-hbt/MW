@@ -39,7 +39,7 @@ public class RunaWin : MonoBehaviour
     IEnumerator reiniciarWorkspace()
     {
         yield return new WaitForSeconds(0.5f);
-       SistemaReiniciarWorkspaceBlockly();
+       //SistemaReiniciarWorkspaceBlockly();
     }
 
 

@@ -55,8 +55,6 @@ public class ControllerFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void                       EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
 
-    [DllImport("__Internal")]
-    public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
 
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
@@ -65,11 +63,7 @@ public class ControllerFase : MonoBehaviour
     public static extern void AlterarToolboxFases(int idFase);
 
 
-    private void Awake()
-    {
-       // Debug.Log("VALOR DO IDFASEEMEXECUCAO = " + _gameController.idFaseEmExecucao);
-         //AlterarToolboxFases(_gameController.idFaseEmExecucao); NAO DESCOMENTAR
-    }
+   
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -77,10 +71,8 @@ public class ControllerFase : MonoBehaviour
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-        //NAO DESCOMENTAR --->  SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       
-         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       //  SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+       //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
         
@@ -94,13 +86,6 @@ public class ControllerFase : MonoBehaviour
             fases[0].SetActive(true);
         }
 
-        if(_gameController.manaPlayer < qtdManaDisponivelFase)//a cada fase que passar a mana vai aumentar proporcionalmente, caso ja tenha passado a fase e volte a joga-la a mana vai estar no valor do adquirido na ultima fase que habilitou
-        {
-            _gameController.manaPlayer = qtdManaDisponivelFase;//alimento gameController com a quantidade de mana que o player tem no inicio daquela fase que ainda não jogou
-        }
-
-        //altero o limite do poder de ataque de acordo com a quantidade de mana que o playerKnight tem
-          AlterarLimiteBlocoForcaAtaque(_gameController.manaPlayer);
          
 
         
@@ -166,39 +151,6 @@ public class ControllerFase : MonoBehaviour
         
         return estrelas;
     }
-
-    public void alteracaoDisponibilidadeManaAdicao( int valorMana)//altera dinamicamente a mana a partir da utilizacao pelo player atraves do bloco valor_ataque
-    {
-       
-        Debug.Log("Entrei dentro do adicaoMana");
-        int manaAtual =qtdManaDisponivelFase;
-        int novoValMana = manaAtual + valorMana;
-
-        qtdManaDisponivelFase = novoValMana;
-        _hud.manaText.text = novoValMana.ToString();
-            AlterarLimiteBlocoForcaAtaque(novoValMana);
-
-        
-    }
-    public void alteracaoDisponibilidadeManaRemocao(string valorAntigoNovoMana)
-
-    {
-        string []novoVal = valorAntigoNovoMana.Split(',');
-
-        Debug.Log("Entrei dentro do retiradaMana");
-        Debug.Log("novoVal pos 0 = " + novoVal[0] + " novoVal pos1 = " + novoVal[1]);
-        int valorAntesAtt = Int32.Parse(novoVal[0]);
-        int valorDepoisAtt = Int32.Parse(novoVal[1]);
-
-        int manaAtual = qtdManaDisponivelFase + valorAntesAtt;
-        int novoValMana = manaAtual - valorDepoisAtt;
-
-        qtdManaDisponivelFase = novoValMana;
-        _hud.manaText.text = novoValMana.ToString();
-        AlterarLimiteBlocoForcaAtaque(novoValMana);
-        Debug.Log("Dentro do alteracaoDisp , valor do novoValMan = " + novoValMana);
-    }
-
 
     public void alterarEstado(GameState novoEstado)
     {
