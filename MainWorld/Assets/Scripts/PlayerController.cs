@@ -307,7 +307,7 @@ public class PlayerController : MonoBehaviour
     
 
 
-    void Flip()//será utilizado futuramente
+    public void Flip()//será utilizado futuramente
     {
         lookLeft = !lookLeft; // inverte o valor da var bool
         x *= -1; // inverte o sinal do scale x

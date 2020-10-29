@@ -1237,6 +1237,7 @@ MonoBehaviour:
   objHud: {fileID: 4883312563964788511}
   posHudParte:
   - 1820
+  virarPlayer: 0
   blocosDisponiveis: 15
 --- !u!1 &344618803
 GameObject:
@@ -1669,9 +1670,9 @@ PrefabInstance:
     - target: {fileID: 4705374129635167047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_text
-      value: "Fa\xE7a com que Arthur avance sobre os tr\xEAs terrenos dispon\xEDveis
+      value: "Fa\xE7a com que Arthur avance sobre os dois terrenos dispon\xEDveis
         e chegue \xE0 runa no final da fase, pulando sobre os obst\xE1culos e sobrevivendo
-        de poss\xEDveis ataques inimigos."
+        perante a poss\xEDveis ataques inimigos."
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129635167047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1726,12 +1727,12 @@ PrefabInstance:
     - target: {fileID: 4705374129735826209, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -279.5
+      value: -215.85
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129735826209, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 25.8
+      value: 70.3
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129788828373, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1781,12 +1782,12 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1169
+      value: 1170
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 192
+      value: 191
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1819,10 +1820,10 @@ PrefabInstance:
         adi\xE7\xE3o de um novo bloco \xE9 um fator de suma import\xE2ncia nesta
         nova etapa e que deve ser levado em considera\xE7\xE3o para superar os novos
         desafios que vir\xE3o. Agora, al\xE9m dos blocos j\xE1 dispon\xEDveis anteriormente
-        voc\xEA conta tamb\xE9m com o bloco defender, que possibilita ao cavaleiro
-        utilizar seu escudo para se proteger de seus inimigos. \n\tArthur no atualmente
-        ainda n\xE3o possui conhecimento sobre espadas, portanto, o seu escudo se
-        mostrar\xE1 uma importante ferramenta, use-o com sabedoria! \r\n"
+        voc\xEA conta tamb\xE9m com o bloco \"defender\", que possibilita ao cavaleiro
+        utilizar seu escudo para se proteger de seus inimigos. \n\tArthur no presente
+        momento n\xE3o possui conhecimento sobre espadas, portanto, o seu escudo
+        se mostrar\xE1 uma importante ferramenta, use-o com sabedoria! \r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1857,7 +1858,7 @@ PrefabInstance:
     - target: {fileID: 4705374130496527535, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 292.4
+      value: 251
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130501043160, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1898,7 +1899,7 @@ PrefabInstance:
     - target: {fileID: 4705374130501043166, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130501043167, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -6258,6 +6259,7 @@ MonoBehaviour:
   objHud: {fileID: 4883312563964788511}
   posHudParte:
   - 3805
+  virarPlayer: 0
   blocosDisponiveis: 15
 --- !u!61 &1847906134
 BoxCollider2D:

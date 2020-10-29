@@ -392,7 +392,6 @@ Transform:
   m_Children:
   - {fileID: 397982393}
   - {fileID: 588863080}
-  - {fileID: 1539811079}
   m_Father: {fileID: 475935444}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1432,12 +1431,95 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2066777269}
-  - {fileID: 901845776}
   - {fileID: 1262299933}
   - {fileID: 1293600507}
   m_Father: {fileID: 475935444}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &291381841
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 357195768}
+    m_Modifications:
+    - target: {fileID: 5845169079398697954, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941912, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Moeda (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941913, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bb1648f112be1149bbfca6f8b94d9ea, type: 3}
 --- !u!1 &301079372
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1792,7 @@ MonoBehaviour:
   objHud: {fileID: 4883312563964788511}
   posHudParte:
   - 1820
+  virarPlayer: 1
   blocosDisponiveis: 35
 --- !u!1 &344618803
 GameObject:
@@ -1779,6 +1862,7 @@ Transform:
   - {fileID: 967181643}
   - {fileID: 1411952734}
   - {fileID: 366896499}
+  - {fileID: 1445086557}
   m_Father: {fileID: 344618804}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2710,12 +2794,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.57
+      value: -4.28
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.72022706
+      value: -0.12
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -3926,7 +4010,7 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -4644,12 +4728,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bb1648f112be1149bbfca6f8b94d9ea, type: 3}
---- !u!4 &901845776 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 1989720113}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &907469817
 GameObject:
   m_ObjectHideFlags: 0
@@ -5191,12 +5269,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.976
+      value: -1.61
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.244
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -5460,8 +5538,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026701667}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.481, y: 0.39260563, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.47, y: 0.39260563, z: 0}
+  m_LocalScale: {x: 0.8627, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 310292605}
   m_RootOrder: 0
@@ -7170,6 +7248,12 @@ Transform:
   m_Father: {fileID: 1786702722}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1445086557 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 291381841}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1452988478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7214,7 +7298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452988478}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -7405,7 +7489,7 @@ PrefabInstance:
     - target: {fileID: 4705374129229031401, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129229031402, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7550,7 +7634,7 @@ PrefabInstance:
     - target: {fileID: 4705374129304015626, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_text
-      value: Colete as moedas ao longo dos caminhos.
+      value: Colete as moedas ao longo do caminho.
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129304015626, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7590,17 +7674,17 @@ PrefabInstance:
     - target: {fileID: 4705374129511407072, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129511407072, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129511407072, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -17
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129511407072, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7742,7 +7826,7 @@ PrefabInstance:
     - target: {fileID: 4705374129795284704, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1803.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129795284711, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7782,47 +7866,47 @@ PrefabInstance:
     - target: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 261.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -901.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1803.5
+      value: 1448.9
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 3662
+      value: 2781
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 591
+      value: 448
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 581
+      value: 436
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 78
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7837,7 +7921,7 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 3619
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7858,48 +7942,36 @@ PrefabInstance:
         valores para os ataques de Arthur.\n\tA partir daqui, diante da possibilidade
         de enfrentar poderosos inimigos, Arthur estar\xE1 equipado com a sua espada,
         mas para que ele consiga us\xE1-la voc\xEA dever\xE1 instrui-lo, para isso
-        voc\xEA ter\xE1 a sua disposi\xE7\xE3o um sistema de mana utilizado para
-        determinar a for\xE7a dos ataques de Arthur, uma nova categoria de blocos
-        denominada como vari\xE1veis, juntamente de mais tr\xEAs blocos de comando,
-        denominados como \u201Cataque\u201D, \u201Cfor\xE7a\u201D, e \u201Cadaptador\u201D,
-        que quando usados da maneira correta possibilitam que Arthur derrote seus
-        inimigos. \n\tMas fique atento com eles, pois esses fazem uso de magias poderosas.
-        \n\tPara que os derrote sem ser afetado por sua magia \xE9 necess\xE1rio
-        que os ataques possuam o n\xEDvel de for\xE7a exato a quantidade de vida
-        que cada inimigo possui. Caso o ataque possua menos for\xE7a que a vida do
-        inimigo, um contra-ataque ser\xE1 lan\xE7ado, fazendo com que Arthur n\xE3o
-        seja capaz de se defender. Por\xE9m, se os ataques possu\xEDrem for\xE7a
-        superior \xE0 quantidade de vida que eles possuem, Arthur sofrer\xE1 um dano
-        m\xE1gico e n\xE3o sobreviver\xE1. \xC9 imprescind\xEDvel ent\xE3o, que voc\xEA
-        planeje seus movimentos corretamente e distribua a for\xE7a exata para que
-        cada inimigo seja derrotado. \n\tA mec\xE2nica de ataque \xE9 constitu\xEDda
-        tamb\xE9m pela mana, que condiz com a energia dispon\xEDvel para que Arthur
-        possa realizar seus ataques. Dentro de cada terreno da fase existe um limite
-        de for\xE7a que pode ser utilizado, portanto, para obter sucesso e conseguir
-        assim derrotar todos os inimigos sem que sua for\xE7a acabe \xE9 de suma
-        import\xE2ncia utilizar sabiamente a sua energia, n\xE3o gastando mais que
-        o necess\xE1rio, e assim, possuir a for\xE7a para derrotar todos os inimigos
-        que se apresentem como uma amea\xE7a.\n\tJuntamente com os novos blocos,
-        foi adicionada uma nova categoria, as vari\xE1veis. Essa categoria possibilita
+        voc\xEA ter\xE1 a sua disposi\xE7\xE3o uma nova categoria de blocos denominada
+        como vari\xE1veis, juntamente de mais tr\xEAs blocos de comando, denominados
+        como \u201Cataque\u201D, \u201Cfor\xE7a\u201D, e \u201Cadaptador\u201D, que
+        quando usados da maneira correta possibilitam que Arthur derrote seus inimigos.
+        \n\tAtaque: personagem lan\xE7a um ataque.\r\n\tAdaptador: necess\xE1rio
+        para conectar o bloco \u201Cfor\xE7a\u201D ao ataque, possibilitando assim
+        que o ataque de Arthur possua for\xE7a.\r\n\tFor\xE7a: define a for\xE7a
+        em que o ataque de Arthur ter\xE1.\n\tJuntamente com os novos blocos, foi
+        adicionada uma nova categoria, as vari\xE1veis. Essa categoria possibilita
         a cria\xE7\xE3o, altera\xE7\xE3o e utiliza\xE7\xE3o de vari\xE1veis. Sua
-        utiliza\xE7\xE3o \xE9 bem simples, basta voc\xEA acionar a categoria, em
-        seguida clicar em criar vari\xE1vel, e voc\xEA obter\xE1 tr\xEAs blocos dentro
-        da sua categoria vari\xE1veis, sendo eles o definir, alterar e a inst\xE2ncia
-        da vari\xE1vel. Para utiliz\xE1-los dentro da fase, basta primeiramente arrastar
-        o bloco definir e solt\xE1-lo na \xE1rea de trabalho, em seguida conecte
-        o bloco for\xE7a e atribua um valor, ap\xF3s isso voc\xEA j\xE1 teria uma
-        vari\xE1vel definida dentro do contexto da fase. Para utiliz\xE1-la, basta
-        arrastar a inst\xE2ncia da vari\xE1vel e conect\xE1-la ao bloco de ataque.
-        Caso seja necess\xE1rio alterar o valor da vari\xE1vel definida anteriormente,
-        basta arrastar o bloco alterar e conect\xE1-lo a sequ\xEAncia de blocos em
-        cria\xE7\xE3o, e em seguida executar os mesmos passos utilizados para definir
-        a vari\xE1vel.\n\tUtilize sabiamente cada nova funcionalidade disponibilizada,
-        monte a melhor estrat\xE9gia e ajude Arthur a continuar a trilhar o seu caminho."
+        utiliza\xE7\xE3o \xE9 bem simples e proporcionar\xE1 a voc\xEA a possibilidade
+        de se criar uma vari\xE1vel com o valor da for\xE7a de ataque de Arthur para
+        usar em diferentes pontos ta fase, possibilitando assim que use o ataque
+        com a utiliza\xE7\xE3o de menos blocos.  \r\n\tFique atento aos inimigos,
+        pois esses fazem uso de magias poderosas. Para que os derrote sem ser afetado
+        por sua magia \xE9 necess\xE1rio que os ataques possuam o n\xEDvel de for\xE7a
+        exato a quantidade de vida que cada inimigo possui. Caso o ataque possua
+        menos for\xE7a que a vida do inimigo, um contra-ataque ser\xE1 lan\xE7ado,
+        fazendo com que Arthur n\xE3o seja capaz de se defender. Por\xE9m, se os
+        ataques possu\xEDrem for\xE7a superior \xE0 quantidade de vida que eles possuem,
+        Arthur sofrer\xE1 um dano m\xE1gico e n\xE3o sobreviver\xE1. \xC9 imprescind\xEDvel
+        ent\xE3o, que voc\xEA planeje seus movimentos corretamente e distribua a
+        for\xE7a exata para que cada inimigo seja derrotado. \n\tUtilize sabiamente
+        cada nova funcionalidade disponibilizada, monte a melhor estrat\xE9gia e
+        ajude Arthur a continuar a trilhar o seu caminho."
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.materialCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7934,17 +8006,17 @@ PrefabInstance:
     - target: {fileID: 4705374130262686047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.8354864
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130262686047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130262686047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.99999994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130391395899, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -8133,81 +8205,6 @@ Transform:
   m_Father: {fileID: 1036517084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1539811078
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 39991247}
-    m_Modifications:
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.303
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.299
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3594933790425477993, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-        type: 3}
-      propertyPath: m_Name
-      value: skeletonBranco
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c, type: 3}
---- !u!4 &1539811079 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3594933790425477992, guid: 0f56a4849d4bfd14c8fe19359a1ebf9c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1539811078}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1544450147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
@@ -9846,6 +9843,7 @@ MonoBehaviour:
   objHud: {fileID: 4883312563964788511}
   posHudParte:
   - 3805
+  virarPlayer: 1
   blocosDisponiveis: 18
 --- !u!61 &1847906134
 BoxCollider2D:
@@ -10609,85 +10607,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1989720113
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 235728607}
-    m_Modifications:
-    - target: {fileID: 5845169080400941912, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Moeda (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941913, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bb1648f112be1149bbfca6f8b94d9ea, type: 3}
 --- !u!1001 &2024063951
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10708,7 +10627,7 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.02
+      value: -2.67
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -10743,7 +10662,7 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -48519,6 +48438,15 @@ Tilemap:
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       m_AllTileFlags: 1073741825
+  - first: {x: 18, y: 7, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 27
+      m_TileSpriteIndex: 27
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      m_AllTileFlags: 1073741825
   - first: {x: 19, y: 7, z: 0}
     second:
       serializedVersion: 2
@@ -48620,7 +48548,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 633065f3ecb70764f8d50b0a7f46a2a8, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: d24a59aeaa100e342aa6e81ca43bb373, type: 2}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 11400000, guid: 73a2780a879775940896231dc25313b9, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
@@ -48683,11 +48611,11 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 3783185813965868832, guid: 7625f65ab79671941bc63e47cb9d3093,
       type: 3}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 2527752996140692817, guid: 7625f65ab79671941bc63e47cb9d3093,
       type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 11
+  - m_RefCount: 12
     m_Data:
       e00: 1
       e01: 0
@@ -48706,7 +48634,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 11
+  - m_RefCount: 12
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1

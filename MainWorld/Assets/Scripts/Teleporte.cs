@@ -19,7 +19,7 @@ public class Teleporte : MonoBehaviour
 
     //responsaveis por mudar a posicao do hud conforme para passando entre as partes da fase
     public float[] posHudParte ;//para definir essas medidas foi utilizado metodos manuais
-    
+    public bool virarPlayer = false; // caso o player for iniciar a fase olhando para o lado contrario , isso possibilita virá-lo para lado certo
 
     [Header("Configuração de Limite de blocos")]
     public          int                         blocosDisponiveis;
@@ -63,8 +63,13 @@ public class Teleporte : MonoBehaviour
         objHud.localPosition = new Vector4(posHudParte[0], 0, 0, 0);
        // SistemaLimiteBloco(blocosDisponiveis, _gameController.idFaseEmExecucao);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
        // _controllerFase.fases[0].SetActive(false);//desabilita a parte anterior da fase
-       
+        
+
         _playerController.qtdBlocosUsados = -1;//necessário para não entrar no if que habilita o painel de fase incompleta , pois ao iniciar a próxima etapa o usuário necessitará de tempo ate dispor os blocos
+        if (virarPlayer)
+        {
+            _playerController.Flip();   
+        }
     }
 
     IEnumerator resetarVarPasseiParteFase()
