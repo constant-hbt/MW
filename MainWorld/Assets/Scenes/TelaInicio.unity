@@ -2415,7 +2415,7 @@ MonoBehaviour:
   id_Desempenho: 0
   gameControllers: []
   idFaseEmExecucao: 0
-  fasesConcluidas: 9
+  fasesConcluidas: 0
   progressoAtual: 0
   numGold: 0
   numVida: 10
@@ -2423,7 +2423,6 @@ MonoBehaviour:
   errosFase: 
   EstrelasFases: 000000000000000000000000000000000000000000000000000000000000000000000000
   vidaMax: 3
-  manaPlayer: 1
 --- !u!4 &87958072
 Transform:
   m_ObjectHideFlags: 0

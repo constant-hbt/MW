@@ -1121,11 +1121,11 @@ MonoBehaviour:
   - {fileID: 344618803}
   data_InicioFase: 
   data_FimFase: 
-  qtdBlocosDisponiveisEmTodaFase: 33
-  qtdMinimaDeBlocosParaConclusao: 33
+  qtdBlocosDisponiveisEmTodaFase: 38
+  qtdMinimaDeBlocosParaConclusao: 35
   qtdBlocosUsados: 0
-  qtdMoedasDisponiveis: 9
-  qtdBlocosDisponiveis: 12
+  qtdMoedasDisponiveis: 10
+  qtdBlocosDisponiveis: 13
   qtdManaDisponivelFase: 10
 --- !u!1 &218778200
 GameObject:
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   posHudParte:
   - 1820
   virarPlayer: 0
-  blocosDisponiveis: 11
+  blocosDisponiveis: 12
 --- !u!1 &314491362
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,7 +7754,7 @@ MonoBehaviour:
   posHudParte:
   - 3805
   virarPlayer: 0
-  blocosDisponiveis: 12
+  blocosDisponiveis: 13
 --- !u!61 &1847906134
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28178,7 +28178,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2868376303124622560}
   m_Direction: 2
   m_Value: 0.99999994
-  m_Size: 0.39470533
+  m_Size: 0.28230256
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -28821,7 +28821,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Fa\xE7a com que Arthur supere seus desafios, inimigos e medos, passando
-    pelos tr\xEAs terrenos e alcan\xE7ando a runa no final."
+    pelos tr\xEAs terrenos e alcan\xE7ando \xE0 runa no final."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29975,7 +29975,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 522.1, y: 751.7}
+  m_SizeDelta: {x: 522.1, y: 1051}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2868376302896057493
 GameObject:
@@ -30021,27 +30021,37 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tNessa fase, voc\xEA ir\xE1 praticar seu conhecimento quanto \xE0s estruturas
+  m_text: "\tNessa fase, voc\xEA praticar\xE1 seu conhecimento quanto \xE0s estruturas
     sequenciais, vari\xE1veis e estruturas de repeti\xE7\xE3o, al\xE9m de exercitar
     um pouco sobre as estruturas de decis\xE3o, estrutura essa capaz de fazer com
     que seja poss\xEDvel testar uma condi\xE7\xE3o, e com base no resultado obtido
     (verdadeiro ou falso), o fluxo de instru\xE7\xF5es mudar\xE1, assim, executando
-    um bloco de comandos ou n\xE3o. \n\tNesta etapa Arthur conseguir\xE1 identificar
+    um bloco de comando ou n\xE3o. \n\tNesta etapa Arthur conseguir\xE1 identificar
     se h\xE1 inimigos em sua frente, sem a necessidade de voc\xEA instru\xED-lo especificamente
     em cada lugar que seu advers\xE1rio estar\xE1. Isso se tornar\xE1 poss\xEDvel
     a partir da utiliza\xE7\xE3o dos blocos \u201Ch\xE1 inimigos\u201D e \u201Cn\xE3o
-    h\xE1 inimigos\u201D, juntamente com o bloco \u201Cse\u201D, que passar\xE3o
-    a ser disponibilizados a partir desse momento.\n\tPara verificar se h\xE1 inimigo
-    basta arrastar o bloco \u201Cse\u201D em cena, e em seguida conectar o bloco
-    \u201Ch\xE1 inimigo\u201D. Logo ap\xF3s, conecte \xE0 instru\xE7\xE3o \u201Cse\u201D
-    os blocos que voc\xEA deseja executar caso exista um inimigo na frente de Arthur,
-    fazendo com que no momento do teste do bloco, ele ser\xE1 capaz de distinguir
-    se h\xE1 um inimigo em sua frente ou n\xE3o. Caso haja, ele executar\xE1 os blocos
-    conectados \xE0 instru\xE7\xE3o \u201Cse\u201D, e caso n\xE3o houver, ele continuar\xE1
-    a executar a sequ\xEAncia dos blocos definidos, pulando assim os blocos contidos
-    dentro do comando \u201Cse\u201D. \n\tPortanto, \xE9 de suma import\xE2ncia que
-    pense com calma e monte uma estrat\xE9gia. Desafios e inimigos estar\xE3o no
-    seu caminho, ent\xE3o aja com sabedoria e l\xF3gica. \n\t"
+    h\xE1 inimigos\u201D, acompanhado dos blocos \u201Cse\u201D e \u201Cse-sen\xE3o\u201D,
+    que passar\xE3o a ser disponibilizados a partir desse momento.\r\n\tO bloco \u201Cse\u201D,
+    testa se a condi\xE7\xE3o lhe passada \xE9 verdeira ou falsa, caso o resultado
+    for verdadeiro, os blocos vinculados ao \u201Cse\u201D ser\xE3o executados. Caso
+    contr\xE1rio, os blocos s\xE3o ignorados e continua-se a executar os blocos contidos
+    na sequencia ap\xF3s o \u201Cse\u201D. \r\n\tO bloco \u201Cse-sen\xE3o\u201D,
+    testa se a condi\xE7\xE3o lhe passada \xE9 verdadeira ou falsa, caso o resultado
+    for verdadeiro, os blocos vinculados ao \u201Cse\u201D ser\xE3o executados. Caso
+    contr\xE1rio, os blocos vinculados ao \u201Csen\xE3o\u201D ser\xE3o executados.\n\tJuntamente
+    com as estruturas de decis\xE3o outra importante mec\xE2nica passar\xE1 a ser
+    presente no contexto das fases, agora a posi\xE7\xE3o dos inimigos j\xE1 n\xE3o
+    ser\xE3o mais fixas. A mec\xE2nica \xE9 simples, haver\xE1 um totem azul no inicio
+    de cada etapa da fase que se vir presente essa nova din\xE2mica, no momento em
+    que Arthur colidir o totem os inimigos presentes ter\xE3o suas posi\xE7\xF5es
+    alteradas de forma aleat\xF3ria, podendo assim mudar para qualquer um dos pontos
+    em destaque (blocos azuis). Para que consiga passar por mais essa adversidade
+    \xE9 necess\xE1rio ent\xE3o que se verifique cada ponto poss\xEDvel em que o
+    inimigo possa estar situado, garantido assim que caso algum apare\xE7a na frente
+    de Arthur o mesmo esteja preparado para derrot\xE1-lo. \r\n\tPortanto, \xE9 de
+    suma import\xE2ncia que pense com calma e monte uma estrat\xE9gia, para superar
+    os obst\xE1culos. Desafios e inimigos estar\xE3o no seu caminho, ent\xE3o aja
+    com sabedoria e l\xF3gica. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -30110,12 +30120,12 @@ MonoBehaviour:
   m_margin: {x: 11.655371, y: 0, z: 12.772591, w: 4.057071}
   m_textInfo:
     textComponent: {fileID: 2868376302896057579}
-    characterCount: 1431
+    characterCount: 2127
     spriteCount: 0
-    spaceCount: 244
-    wordCount: 237
+    spaceCount: 350
+    wordCount: 342
     linkCount: 0
-    lineCount: 31
+    lineCount: 44
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0

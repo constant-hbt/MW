@@ -2086,10 +2086,10 @@ MonoBehaviour:
   - {fileID: 344618803}
   data_InicioFase: 
   data_FimFase: 
-  qtdBlocosDisponiveisEmTodaFase: 65
-  qtdMinimaDeBlocosParaConclusao: 61
+  qtdBlocosDisponiveisEmTodaFase: 59
+  qtdMinimaDeBlocosParaConclusao: 53
   qtdBlocosUsados: 0
-  qtdMoedasDisponiveis: 13
+  qtdMoedasDisponiveis: 10
   qtdBlocosDisponiveis: 15
   qtdManaDisponivelFase: 10
 --- !u!1 &225667309
@@ -3029,7 +3029,7 @@ MonoBehaviour:
   posHudParte:
   - 1820
   virarPlayer: 0
-  blocosDisponiveis: 20
+  blocosDisponiveis: 21
 --- !u!1001 &320070274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16948,6 +16948,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 96.8
       objectReference: {fileID: 0}
+    - target: {fileID: 4705374130530188778, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
+      propertyPath: videoClipName
+      value: Fase6.mp4
+      objectReference: {fileID: 0}
     - target: {fileID: 4705374130657603049, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -21741,7 +21746,7 @@ MonoBehaviour:
   posHudParte:
   - 3805
   virarPlayer: 0
-  blocosDisponiveis: 30
+  blocosDisponiveis: 23
 --- !u!61 &1847906134
 BoxCollider2D:
   m_ObjectHideFlags: 0

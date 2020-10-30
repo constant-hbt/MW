@@ -1232,7 +1232,7 @@ MonoBehaviour:
   qtdBlocosDisponiveisEmTodaFase: 40
   qtdMinimaDeBlocosParaConclusao: 40
   qtdBlocosUsados: 0
-  qtdMoedasDisponiveis: 9
+  qtdMoedasDisponiveis: 10
   qtdBlocosDisponiveis: 12
   qtdManaDisponivelFase: 10
 --- !u!1 &218778200
@@ -5102,6 +5102,161 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bb1648f112be1149bbfca6f8b94d9ea, type: 3}
+--- !u!1 &1082434901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1082434902}
+  - component: {fileID: 1082434904}
+  - component: {fileID: 1082434903}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1082434902
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082434901}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99937516, y: 0.99937516, z: 0.99937516}
+  m_Children: []
+  m_Father: {fileID: 4705374130771138253}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 22.5, y: -33.9}
+  m_SizeDelta: {x: 31, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1082434903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082434901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: '*'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278716664
+  m_fontColor: {r: 0.9716981, g: 0.03208439, b: 0.03208439, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_textAlignment: 514
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: 0
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -0.000027980617, y: 9.724773, z: 0, w: 4.862398}
+  m_textInfo:
+    textComponent: {fileID: 1082434903}
+    characterCount: 1
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1082434904
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082434901}
+  m_CullTransparentMesh: 0
 --- !u!1 &1099327335
 GameObject:
   m_ObjectHideFlags: 0
@@ -51611,8 +51766,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4705374130531232842}
   m_HandleRect: {fileID: 4705374130531232845}
   m_Direction: 2
-  m_Value: 0.99999994
-  m_Size: 0.39470533
+  m_Value: 0.9999998
+  m_Size: 0.7582418
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -52349,10 +52504,10 @@ RectTransform:
   m_Father: {fileID: 4705374130767137213}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -43.2}
-  m_SizeDelta: {x: 522.1, y: 86.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 261.05, y: -63.999992}
+  m_SizeDelta: {x: 522.1, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4705374129363705429
 MonoBehaviour:
@@ -52372,8 +52527,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fa\xE7a com que Arthur supere seus desafios, inimigos e medos, passando
-    pelos tr\xEAs terrenos e alcan\xE7ando a runa no final."
+  m_text: "Fa\xE7a com que Arthur ultrapasse os obst\xE1culos, avance sobre os tr\xEAs
+    terrenos dispon\xEDveis, se necess\xE1rio derrote os inimigos que surgirem em
+    sua frente e chegue \xE0 runa no final da fase."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52418,7 +52574,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 51
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -52442,12 +52598,12 @@ MonoBehaviour:
   m_margin: {x: 37.683556, y: 7.2935967, z: 7.2935524, w: 0}
   m_textInfo:
     textComponent: {fileID: 4705374129363705429}
-    characterCount: 118
+    characterCount: 183
     spriteCount: 0
-    spaceCount: 19
-    wordCount: 20
+    spaceCount: 30
+    wordCount: 31
     linkCount: 0
-    lineCount: 3
+    lineCount: 4
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -52824,9 +52980,9 @@ RectTransform:
   m_Father: {fileID: 4705374130767137213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -110.450005}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 261.05, y: -152.05}
   m_SizeDelta: {x: 522.1, y: 28.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &4705374129700581432
@@ -53235,7 +53391,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 522.1, y: 751.7}
+  m_SizeDelta: {x: 522.1, y: 391.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4705374129900014662
 MonoBehaviour:
@@ -53255,27 +53411,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tNessa fase, voc\xEA ir\xE1 praticar seu conhecimento quanto \xE0s estruturas
-    sequenciais, vari\xE1veis e estruturas de repeti\xE7\xE3o, al\xE9m de exercitar
-    um pouco sobre as estruturas de decis\xE3o, estrutura essa capaz de fazer com
-    que seja poss\xEDvel testar uma condi\xE7\xE3o, e com base no resultado obtido
-    (verdadeiro ou falso), o fluxo de instru\xE7\xF5es mudar\xE1, assim, executando
-    um bloco de comandos ou n\xE3o. \n\tNesta etapa Arthur conseguir\xE1 identificar
-    se h\xE1 inimigos em sua frente, sem a necessidade de voc\xEA instru\xED-lo especificamente
-    em cada lugar que seu advers\xE1rio estar\xE1. Isso se tornar\xE1 poss\xEDvel
-    a partir da utiliza\xE7\xE3o dos blocos \u201Ch\xE1 inimigos\u201D e \u201Cn\xE3o
-    h\xE1 inimigos\u201D, juntamente com o bloco \u201Cse\u201D, que passar\xE3o
-    a ser disponibilizados a partir desse momento.\n\tPara verificar se h\xE1 inimigo
-    basta arrastar o bloco \u201Cse\u201D em cena, e em seguida conectar o bloco
-    \u201Ch\xE1 inimigo\u201D. Logo ap\xF3s, conecte \xE0 instru\xE7\xE3o \u201Cse\u201D
-    os blocos que voc\xEA deseja executar caso exista um inimigo na frente de Arthur,
-    fazendo com que no momento do teste do bloco, ele ser\xE1 capaz de distinguir
-    se h\xE1 um inimigo em sua frente ou n\xE3o. Caso haja, ele executar\xE1 os blocos
-    conectados \xE0 instru\xE7\xE3o \u201Cse\u201D, e caso n\xE3o houver, ele continuar\xE1
-    a executar a sequ\xEAncia dos blocos definidos, pulando assim os blocos contidos
-    dentro do comando \u201Cse\u201D. \n\tPortanto, \xE9 de suma import\xE2ncia que
-    pense com calma e monte uma estrat\xE9gia. Desafios e inimigos estar\xE3o no
-    seu caminho, ent\xE3o aja com sabedoria e l\xF3gica. \n\t"
+  m_text: "\tParab\xE9ns pelo seu progresso guerreiro (a), a cada passo e nova batalha
+    voc\xEA adquire mais conhecimento e experi\xEAncia, seus resultados est\xE3o
+    sendo cada vez melhores, continue assim!\r\n\tNessa fase, voc\xEA ir\xE1 praticar
+    um pouco mais sobre seus conhecimentos quanto aos conceitos vistos anteriormente
+    em cada fase. Fa\xE7a uso de suas experi\xEAncias adquiridas durante a sua jornada
+    e procure assim montar a melhor estrat\xE9gia para superar os novos obst\xE1culos.\r\n\tArthur
+    est\xE1 cada vez mais perto de concluir a sua miss\xE3o e trazer a paz de volta
+    ao reino, portanto, ajude-o a superar mais esse desafio. Guie-o com perspic\xE1cia,
+    siga com coragem, e prevale\xE7am sobre todos os perigos, juntos voc\xEAs conseguir\xE3o!\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -53341,15 +53485,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 11.655371, y: 0, z: 12.772591, w: 4.057071}
+  m_margin: {x: 11.655371, y: 0, z: 12.772591, w: 13.797668}
   m_textInfo:
     textComponent: {fileID: 4705374129900014662}
-    characterCount: 1431
+    characterCount: 693
     spriteCount: 0
-    spaceCount: 244
-    wordCount: 237
+    spaceCount: 111
+    wordCount: 110
     linkCount: 0
-    lineCount: 31
+    lineCount: 15
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -53636,9 +53780,9 @@ RectTransform:
   m_Father: {fileID: 4705374130767137213}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -278}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 261.05, y: -268.5}
   m_SizeDelta: {x: 522.1, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4705374130041466706
@@ -55143,7 +55287,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 303}
+  m_SizeDelta: {x: 0, y: 293.5}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4705374130771138250
 MonoBehaviour:
@@ -55163,9 +55307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tGuie Arthur por meio dos blocos de comando, fa\xE7a uso das estruturas
-    de decis\xE3o para aperfei\xE7oar cada vez mais sua estrat\xE9gia e obter melhores
-    resultados."
+  m_text: 'Destrave a alavanca e libere a entrada para o castelo. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -55210,7 +55352,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 46
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -55231,15 +55373,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 9.724779, y: 7.293619, z: 7.293687, w: 6.077985}
+  m_margin: {x: 36.410095, y: 7.293619, z: 7.293687, w: 6.077985}
   m_textInfo:
     textComponent: {fileID: 4705374130771138250}
-    characterCount: 154
+    characterCount: 55
     spriteCount: 0
-    spaceCount: 25
-    wordCount: 26
+    spaceCount: 10
+    wordCount: 10
     linkCount: 0
-    lineCount: 4
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -55293,14 +55435,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1082434902}
   m_Father: {fileID: 4705374130767137213}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -188.75}
-  m_SizeDelta: {x: 522.1, y: 108.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 261.05, y: -204.8}
+  m_SizeDelta: {x: 522.1, y: 57.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &4883312563964788510
 PrefabInstance:

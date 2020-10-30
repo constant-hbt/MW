@@ -130,7 +130,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     IEnumerator voltarSelecaoFase()
     {
-        //CentralizarWebGl();
+        CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
         SceneManager.LoadScene("SelecaoFase");
 

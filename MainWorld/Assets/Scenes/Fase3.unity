@@ -2637,11 +2637,11 @@ MonoBehaviour:
   - {fileID: 475935443}
   data_InicioFase: 
   data_FimFase: 
-  qtdBlocosDisponiveisEmTodaFase: 80
-  qtdMinimaDeBlocosParaConclusao: 59
+  qtdBlocosDisponiveisEmTodaFase: 24
+  qtdMinimaDeBlocosParaConclusao: 16
   qtdBlocosUsados: 0
-  qtdMoedasDisponiveis: 11
-  qtdBlocosDisponiveis: 25
+  qtdMoedasDisponiveis: 5
+  qtdBlocosDisponiveis: 12
   qtdManaDisponivelFase: 0
 --- !u!1 &223537743
 GameObject:
@@ -3016,7 +3016,7 @@ MonoBehaviour:
   posHudParte:
   - 1820
   virarPlayer: 0
-  blocosDisponiveis: 25
+  blocosDisponiveis: 12
 --- !u!1 &331238379
 GameObject:
   m_ObjectHideFlags: 0

@@ -2427,11 +2427,11 @@ MonoBehaviour:
   - {fileID: 475935443}
   data_InicioFase: 
   data_FimFase: 
-  qtdBlocosDisponiveisEmTodaFase: 20
-  qtdMinimaDeBlocosParaConclusao: 12
+  qtdBlocosDisponiveisEmTodaFase: 30
+  qtdMinimaDeBlocosParaConclusao: 16
   qtdBlocosUsados: 0
-  qtdMoedasDisponiveis: 9
-  qtdBlocosDisponiveis: 10
+  qtdMoedasDisponiveis: 5
+  qtdBlocosDisponiveis: 15
   qtdManaDisponivelFase: 0
 --- !u!1001 &217067791
 PrefabInstance:
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   posHudParte:
   - 1820
   virarPlayer: 0
-  blocosDisponiveis: 10
+  blocosDisponiveis: 15
 --- !u!1 &399416410
 GameObject:
   m_ObjectHideFlags: 0
@@ -13914,7 +13914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoPlay: {fileID: 4705374130320830235}
-  videoClipName: Fase2.mp4
+  videoClipName: Fase1.mp4
 --- !u!1 &4705374130330525204
 GameObject:
   m_ObjectHideFlags: 0
