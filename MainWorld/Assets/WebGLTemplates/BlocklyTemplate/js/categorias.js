@@ -58,7 +58,7 @@ function mudarToolbox(idToolbox){
             console.log("Alterei a toolbox para 6");
             break;
         case 7:
-            category = toolboxFase6e7(idToolbox);
+            category = toolboxFase8e9(idToolbox);
             console.log("Alterei a toolbox para 7");
             break;
         case 8:

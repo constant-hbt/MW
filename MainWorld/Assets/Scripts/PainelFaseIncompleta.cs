@@ -49,7 +49,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-       // DisponibilizarToobox();
+        //DisponibilizarToobox();
         //ReiniciarVarCodeCompleto();
         //ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
@@ -70,10 +70,10 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-       // CentralizarWebGl();
+        //CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-      //  SistemaReiniciarWorkspaceBlockly();
-       // ReiniciarVarCodeCompleto();
+        //SistemaReiniciarWorkspaceBlockly();
+        //ReiniciarVarCodeCompleto();
        // ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("SelecaoFase");
 

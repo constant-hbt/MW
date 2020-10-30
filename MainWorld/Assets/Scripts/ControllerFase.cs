@@ -71,7 +71,7 @@ public class ControllerFase : MonoBehaviour
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-       //  SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+        // SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
        //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
 
