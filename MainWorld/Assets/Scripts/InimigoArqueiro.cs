@@ -68,7 +68,7 @@ public class InimigoArqueiro : MonoBehaviour
     }
     IEnumerator validarNovoAtaque()
     {
-        yield return new WaitForSeconds(2.5f);//era 3.5 e a velocidade da flecha era 1
+        yield return new WaitForSeconds(3.2f);//era 3.5 e a velocidade da flecha era 1
         novoAtaque = true;
     }
 

@@ -460,7 +460,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "defender":
                 StartCoroutine("Defender");
-                yield return new WaitForSeconds(0.65f); // era 0.9f
+                yield return new WaitForSeconds(0.75f); // era 0.9f
                 break;
             
         }

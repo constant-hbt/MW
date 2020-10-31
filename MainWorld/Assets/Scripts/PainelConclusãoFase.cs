@@ -38,6 +38,7 @@ public class PainelConclusãoFase : MonoBehaviour
     public static extern void CentralizarWebGl();
 
     private             bool                    habilitarAlertCodigo = false;
+    private bool habilitarContabilDesemp = false;
 
     void Start()
     {
@@ -112,19 +113,24 @@ public class PainelConclusãoFase : MonoBehaviour
 
    public void contabilizarDesempenho(int idFase)
     {
-        if (_gameController.fasesConcluidas < idFase)
-        {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
-         //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
-         //ao idFase como concluida
-            _gameController.fasesConcluidas = idFase;
+
+        if (!habilitarContabilDesemp)
+        {
+            if (_gameController.fasesConcluidas < idFase)
+            {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
+             //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
+             //ao idFase como concluida
+                _gameController.fasesConcluidas = idFase;
+
+            }
+            //if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
+            //{
+            _gameController.numEstrelas += qtdEstrelasAdquiridas;//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
+            _gameController.EstrelasFases[idFase - 1] += qtdEstrelasAdquiridas;
+            _gameController.numGold += _controllerFase.qtdMoedasColetadas;
 
         }
-        //if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
-        //{
-        _gameController.numEstrelas += qtdEstrelasAdquiridas;//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
-        _gameController.EstrelasFases[idFase - 1] += qtdEstrelasAdquiridas;
-        _gameController.numGold += _controllerFase.qtdMoedasColetadas;
-
+        habilitarContabilDesemp = true;
         // }
     }
 
