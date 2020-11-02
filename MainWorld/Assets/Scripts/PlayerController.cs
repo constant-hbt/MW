@@ -714,5 +714,19 @@ public class PlayerController : MonoBehaviour
     {
         Flip();
     }
-    
+
+    //TESTANDO PARA VER O PAINELFaseIncompleta
+
+    void chamarResetarStatusParaPainelFaseInc()
+    {
+        StartCoroutine(resetarStatusParaPainelFaseInc());
+    }
+    IEnumerator resetarStatusParaPainelFaseInc()
+    {
+        //yield return new WaitForSeconds(1.6f);
+        yield return null;
+        interpreteAcabou = false;
+        passeiParteFase = false;
+    }
+
 }

@@ -70,15 +70,7 @@ public class Teleporte : MonoBehaviour
         {
             _playerController.Flip();   
         }
-
-        //StartCoroutine(resetarStatusParaPainelFaseInc());
     }
 
-    IEnumerator resetarStatusParaPainelFaseInc()
-    {
-        //yield return new WaitForSeconds(1.6f);
-        yield return null;
-        _playerController.interpreteAcabou = false;
-        _playerController.passeiParteFase = false;
-    }
+    
 }

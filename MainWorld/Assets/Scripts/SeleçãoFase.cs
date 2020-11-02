@@ -127,7 +127,7 @@ public class SeleçãoFase : MonoBehaviour
                 //_painelEntrarFase.idBotaoFaseSelecionado = id;
                     _gameController.idFaseEmExecucao = id;
                     _gameController.descricaoFase = "Fase5";
-                SceneManager.LoadScene("TelaCarregamento");
+               SceneManager.LoadScene("TelaCarregamento");
                 //_painelEntrarFase.chamar();
                 break;
                 case 6:
@@ -143,7 +143,7 @@ public class SeleçãoFase : MonoBehaviour
                 //_painelEntrarFase.idBotaoFaseSelecionado = id;
                     _gameController.idFaseEmExecucao = id;
                     _gameController.descricaoFase = "Fase7";
-                SceneManager.LoadScene("TelaCarregamento");
+               SceneManager.LoadScene("TelaCarregamento");
                 //_painelEntrarFase.chamar();
                 break;
                 case 8:
@@ -166,7 +166,7 @@ public class SeleçãoFase : MonoBehaviour
         AlterarToolboxFases(id);
     }
 
-    public void ativarPainelEntrarFase(int idFase)
+   /* public void ativarPainelEntrarFase(int idFase)
     {
         
 
@@ -188,7 +188,7 @@ public class SeleçãoFase : MonoBehaviour
         painelEntrarFase.SetActive(true);
         nomeFase(idFase);
     }
-
+    */ //APAGAR DEPOISS
 
     public float pegarTamanhoBarra(float minValor , float maxValor)
     {

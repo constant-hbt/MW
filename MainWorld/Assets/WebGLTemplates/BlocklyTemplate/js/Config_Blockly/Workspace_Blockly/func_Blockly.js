@@ -26,7 +26,7 @@
             qtdBlocosTotais += qtdBlocosUsados;
             enviarQtdBlocosUsados(qtdBlocosUsados);
             unityInstance.SendMessage('playerKnight', 'mudarValidar');
-
+            unityInstance.SendMessage('playerKnight', 'chamarResetarStatusParaPainelFaseInc');
             if(!myInterpreter){
                 //primeira declaração deste código
                 //limpe a saída do programa

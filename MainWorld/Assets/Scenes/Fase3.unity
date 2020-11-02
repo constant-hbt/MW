@@ -10933,6 +10933,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129596124013, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
+      propertyPath: paineis.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705374129596124013, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
       propertyPath: qtdPaineisComScroll
       value: 0
       objectReference: {fileID: 0}
@@ -10991,6 +10996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.lineCount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705374129735826208, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129735826209, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -23153,7 +23163,9 @@ MonoBehaviour:
   painelFaseIncompleta: {fileID: 1403440150}
   qtdBlocosUsados: -1
   passeiParteFase: 0
+  interpreteAcabou: 0
   parteFase: 0
+  parteFaseAtual: 0
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
     type: 3}
   knockPosition: {fileID: 3589834208636044487}

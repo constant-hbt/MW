@@ -51392,7 +51392,9 @@ MonoBehaviour:
   painelFaseIncompleta: {fileID: 1403440150}
   qtdBlocosUsados: -1
   passeiParteFase: 0
+  interpreteAcabou: 0
   parteFase: 0
+  parteFaseAtual: 0
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
     type: 3}
   knockPosition: {fileID: 3589834208636044487}
@@ -52471,7 +52473,6 @@ MonoBehaviour:
   paineis:
   - {fileID: 4705374130067500021}
   - {fileID: 4705374130767137212}
-  - {fileID: 4705374129096865309}
   botoesPaineis:
   - {fileID: 4705374130277186739}
   - {fileID: 4705374130660712592}
@@ -53765,7 +53766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4705374130001260083
 RectTransform:
   m_ObjectHideFlags: 0

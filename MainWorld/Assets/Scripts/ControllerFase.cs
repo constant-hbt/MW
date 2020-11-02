@@ -105,11 +105,6 @@ public class ControllerFase : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(_playerController.parteFase != _playerController.parteFaseAtual)
-        {
-            _playerController.passeiParteFase = false;
-            _playerController.parteFaseAtual = _playerController.parteFase;
-        }
     }
     public void quantidadeBlocoUsadosNaFase(int qtdBlocos)//passo por parametro os blocos usados de uma variavel que esta na pagina web
     {

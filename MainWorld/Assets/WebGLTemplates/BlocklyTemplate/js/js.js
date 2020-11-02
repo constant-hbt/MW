@@ -28,7 +28,7 @@ function HabilitarEDesabilitarBlocos(situacao){
 }
 
 //Capta o event beforeunload e envia uma req sendMessage ao unity para salvar o Historico do jogo no momento que o usuario tentar atualizar ou fechar a pagina
-
+/*
  window.addEventListener('beforeunload', function (e) {
     // Cancel the event
     e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
@@ -38,6 +38,9 @@ function HabilitarEDesabilitarBlocos(situacao){
     unityInstance.SendMessage("GameControllerEntreFases","EnviarRegistroHistorico");
     return ;
   }); 
+
+*/ //DESCOMENTAR QUANDO FOR VER A QUESTÃO DE SALVAR NO BANCO
+
 
 
   //Funcoes resposanveis por colocar e retirar a trasparencia da div do toolbox
