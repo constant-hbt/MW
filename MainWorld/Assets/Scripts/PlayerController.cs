@@ -81,8 +81,9 @@ public class PlayerController : MonoBehaviour
     private         bool            passeiFase ;// verifica se o usuário concluiu a de fase
     public bool passeiParteFase = false; //verifica se o usuario passou de terreno na fase caso haja
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
-    private         bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
-    public         int             parteFase;//denomina em que parte da fase o personagem está
+    public        bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
+    public         int             parteFase = 0;//denomina em que parte da fase o personagem está
+    public int parteFaseAtual = 0;
 
     [Header("Sistema de KnockBack")]
     public GameObject knockForcePrefab; //força de repulsão
@@ -171,6 +172,7 @@ public class PlayerController : MonoBehaviour
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
         if (interpreteAcabou  && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase && !passeiParteFase || ativPainelPosMorte)
         {
+            Debug.Log("Valor de interpreteAcabou = " + interpreteAcabou + " Valor de passeiParteFase = " + passeiParteFase);
             //
             painelFaseIncompleta.SetActive(true);
             _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
@@ -178,6 +180,10 @@ public class PlayerController : MonoBehaviour
             qtdBlocosUsados = -1;
             interpreteAcabou = false;
             ativPainelPosMorte = false;
+            passeiParteFase = false;
+
+            Debug.Log("Entrei dentro da funcao de ativar o painelFaseIncompleta");
+           
         }
         if(vidaPlayer <= 0 && !estaMorto)
         {
@@ -238,12 +244,7 @@ public class PlayerController : MonoBehaviour
 
                 }
                 break;
-            case "teleporte":
-                zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
-                parteFase += 1;
-                passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
-                col.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
-                break;
+            
             case "Win":
                 this.passeiFase = true;
                 qtdBlocosUsados = -1;//resetar a var e nao deixar entrar no if que ativa o painel de fase incompleta
@@ -252,6 +253,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "coletavel":
                 col.gameObject.SendMessage("coletar","coletavel", SendMessageOptions.DontRequireReceiver);
+                Debug.Log("Colidi com uma moeda");
                 break;
             case "loot":
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
@@ -261,8 +263,6 @@ public class PlayerController : MonoBehaviour
                 _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
 
                     _inimigoArqueiro.comecarAtacar = true;
-                
-                Debug.Log("Colidi com a placa de aviso");
                 break;
 
             case "moveInimigo":
@@ -271,7 +271,6 @@ public class PlayerController : MonoBehaviour
                 {
                     colidiMoveInimigo = true;
                     InimigoTeleporte ini = FindObjectOfType(typeof(InimigoTeleporte)) as InimigoTeleporte;
-                    Debug.Log("Colidi com o moveInimigo");
                     ini.mudarPosicao();
                     ini.jaPassou(col.gameObject);
                     
@@ -290,17 +289,20 @@ public class PlayerController : MonoBehaviour
                 
                 break; 
             case "inimigo":
-              //  Debug.Log("Levei dano do inimigo");
                 playerAnimator.SetTrigger("hit");
-                //USADO NO KNOCKBACK
-              // GameObject knockTemp = Instantiate(knockForcePrefab, knockPosition.position, knockPosition.localRotation); APAGAR DEPOIS
-               //Destroy(knockTemp, 0.03f);//EXCLUI PREFAB KNOCKBACK //APAGAR DEPOIS
                 collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
                 break;
             case "objetosQueDaoDano":
                 
                 playerAnimator.SetTrigger("hit");
                 collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
+                break;
+            case "teleporte":
+                zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
+                parteFase += 1;
+                passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
+                collision.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
+                Debug.Log("Colidi com o teleporte");
                 break;
         }
     }
@@ -649,7 +651,7 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator respostaInterprete()
     {
-        yield return new WaitForSeconds(1.5f);
+         yield return new WaitForSeconds(1.5f);
         interpreteAcabou = true;
     }
 

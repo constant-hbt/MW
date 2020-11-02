@@ -2993,7 +2993,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.47035414}
@@ -21745,7 +21745,7 @@ MonoBehaviour:
   objHud: {fileID: 4883312563964788511}
   posHudParte:
   - 3805
-  virarPlayer: 0
+  virarPlayer: 1
   blocosDisponiveis: 23
 --- !u!61 &1847906134
 BoxCollider2D:
@@ -21757,7 +21757,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 3.413302, y: 0.22274975}

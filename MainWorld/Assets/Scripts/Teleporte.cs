@@ -20,6 +20,7 @@ public class Teleporte : MonoBehaviour
     //responsaveis por mudar a posicao do hud conforme para passando entre as partes da fase
     public float[] posHudParte ;//para definir essas medidas foi utilizado metodos manuais
     public bool virarPlayer = false; // caso o player for iniciar a fase olhando para o lado contrario , isso possibilita virá-lo para lado certo
+    int parteFase= 0;
 
     [Header("Configuração de Limite de blocos")]
     public          int                         blocosDisponiveis;
@@ -37,7 +38,7 @@ public class Teleporte : MonoBehaviour
     }
     void Update()
     {
-        
+       
     }
 
     void interagindo()
@@ -69,11 +70,15 @@ public class Teleporte : MonoBehaviour
         {
             _playerController.Flip();   
         }
+
+        //StartCoroutine(resetarStatusParaPainelFaseInc());
     }
 
-    IEnumerator resetarVarPasseiParteFase()
+    IEnumerator resetarStatusParaPainelFaseInc()
     {
-        yield return new WaitForSeconds(1.6f);
+        //yield return new WaitForSeconds(1.6f);
+        yield return null;
+        _playerController.interpreteAcabou = false;
         _playerController.passeiParteFase = false;
     }
 }

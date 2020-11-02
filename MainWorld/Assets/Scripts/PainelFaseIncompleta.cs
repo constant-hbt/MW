@@ -49,6 +49,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
+        SistemaReiniciarWorkspaceBlockly();
         DisponibilizarToobox();
         ReiniciarVarCodeCompleto();
         ReiniciarVarBlocosTotais();

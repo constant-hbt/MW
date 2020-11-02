@@ -2051,6 +2051,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moeda (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941912, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941913, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_Constraints
@@ -6276,7 +6281,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 3.413302, y: 0.22274975}
@@ -6561,6 +6566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Moeda
+      objectReference: {fileID: 0}
+    - target: {fileID: 5845169080400941912, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941913, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}

@@ -23,7 +23,6 @@ public class ControllerFase : MonoBehaviour
 
     [Header("Controle da fase")]
     public GameState estadoAtual;
-
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
     public int qtdMoedasLootColetadas; //moedas coletadas por loot adquiridos apartir dos inimigos
@@ -71,6 +70,7 @@ public class ControllerFase : MonoBehaviour
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
+         SistemaDeEnableDisableBlocos(true);
          SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
          EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
@@ -101,6 +101,14 @@ public class ControllerFase : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+        }
+    }
+    private void FixedUpdate()
+    {
+        if(_playerController.parteFase != _playerController.parteFaseAtual)
+        {
+            _playerController.passeiParteFase = false;
+            _playerController.parteFaseAtual = _playerController.parteFase;
         }
     }
     public void quantidadeBlocoUsadosNaFase(int qtdBlocos)//passo por parametro os blocos usados de uma variavel que esta na pagina web
@@ -173,4 +181,6 @@ public class ControllerFase : MonoBehaviour
                 break;
         }
     }
+
+
 }
