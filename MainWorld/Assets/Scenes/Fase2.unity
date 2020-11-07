@@ -11263,7 +11263,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 4705374130589608875}
   m_Direction: 2
   m_Value: 0.99999994
-  m_Size: 0.36747584
+  m_Size: 0.36747587
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12945,22 +12945,22 @@ MonoBehaviour:
     ser\xE1 executada de forma sequencial, na ordem que foi declarada.\r\n\tA partir
     dessa etapa, os terrenos que Arthur dever\xE1 percorrer ser\xE3o maiores. Agora,
     ao inv\xE9s de conter apenas um tipo de terreno, assim como na primeira fase,
-    poder\xE1 haver dois, tr\xEAs ou mais terrenos, e no final de cada um estar\xE1
-    contido um teletransporte, capaz de levar Arthur \xE0 etapa seguinte, at\xE9
-    que o mesmo consiga chegar \xE0 runa localizada no final do ultimo est\xE1gio.\r\n\tAs
+    poder\xE1 haver dois, tr\xEAs ou mais terrenos. No final de cada um estar\xE1
+    presente um teletransporte, capaz de levar Arthur \xE0 etapa seguinte, at\xE9
+    que o mesmo consiga chegar \xE0 runa localizada no final do \xFAltimo est\xE1gio.\r\n\tAs
     estrat\xE9gias utilizando os blocos de comando dever\xE3o ser desenvolvidas para
     cada terreno, sendo que ao iniciar uma nova etapa da fase, a caixa de blocos
     ser\xE1 reiniciada e a quantidade de blocos utilizados para a conclus\xE3o do
     terreno anterior ser\xE1 contabilizada. Ao alcan\xE7ar o objetivo final, todos
     os blocos utilizados ao longo do percurso ser\xE3o calculados e utilizados como
     um dos fatores para medir o desempenho do jogador.\r\n \tA adi\xE7\xE3o de novos
-    blocos de comando na sua \xE1rea de trabalho \xE9 outra novidade existente na
-    fase atual, agora al\xE9m dos j\xE1 contidos na fase anterior, voc\xEA passa
-    a contar com os blocos \u201Cpular\u201D e \u201Cpular frente\u201D.\r \r\n \tNovos
-    blocos permitem que sua gama de possibilidades aumente, podendo assim desenvolver
-    diferentes estrat\xE9gias e alcan\xE7ar melhores resultados, al\xE9m de tornar
-    a saga um pouco mais interessante! \r\n\tForme ent\xE3o, uma sequ\xEAncia com
-    os blocos dispon\xEDveis, e ajude Arthur a alcan\xE7ar seus objetivos. \r\n"
+    blocos de comando na sua \xE1rea de trabalho \xE9 outra novidade na fase atual,
+    agora, al\xE9m dos j\xE1 presentes na fase anterior, voc\xEA passa a contar com
+    os blocos \u201Cpular\u201D e \u201Cpular frente\u201D.\r \r\n \tNovos blocos
+    permitem que sua gama de possibilidades aumente, podendo assim, desenvolver diferentes
+    estrat\xE9gias e alcan\xE7ar melhores resultados, al\xE9m de tornar a saga um
+    pouco mais interessante! \r\n\tForme ent\xE3o, uma sequ\xEAncia com os blocos
+    dispon\xEDveis, e ajude Arthur alcan\xE7ar seus objetivos. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -13029,12 +13029,12 @@ MonoBehaviour:
   m_margin: {x: 11.655371, y: 0, z: 12.772591, w: 10.934975}
   m_textInfo:
     textComponent: {fileID: 4705374129845144480}
-    characterCount: 1521
+    characterCount: 1511
     spriteCount: 0
-    spaceCount: 257
-    wordCount: 247
+    spaceCount: 254
+    wordCount: 244
     linkCount: 0
-    lineCount: 33
+    lineCount: 32
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

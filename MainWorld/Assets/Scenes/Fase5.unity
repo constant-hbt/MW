@@ -7892,7 +7892,7 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 2781
+      value: 2784
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7907,7 +7907,7 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 61
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -7927,39 +7927,39 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_text
-      value: "\tFique atento as novidades e continue a auxiliar Arthur em sua jornada,
-        voc\xEA fez um excelente trabalho at\xE9 aqui.\n\tNesta fase, al\xE9m dos
-        conceitos abordados anteriormente, voc\xEA praticar\xE1 seu conhecimento
+      value: "\tFique atento \xE0s novidades e continue a auxiliar Arthur em sua
+        jornada, voc\xEA fez um excelente trabalho at\xE9 aqui.\n\tNesta fase, al\xE9m
+        dos conceitos abordados anteriormente, voc\xEA praticar\xE1 seu conhecimento
         quanto \xE0s vari\xE1veis, que dentro da programa\xE7\xE3o s\xE3o definidas
         como elementos b\xE1sicos que possibilitam o armazenamento de dados. Cada
-        dado pode possuir um tipo diferente, que podem ser classificados em dois
-        grandes grupos, os dados primitivos e n\xE3o primitivos.\n\tOs tipos primitivos
-        de dados s\xE3o os tipos b\xE1sicos que s\xE3o definidos como n\xFAmeros
-        reais, n\xFAmeros inteiros, booleanos, caracteres e strings. J\xE1 os dados
-        n\xE3o primitivos, normalmente s\xE3o vetores, matrizes, classes, enumera\xE7\xF5es
+        dado pode possuir um tipo diferente, que pode ser classificado em dois grandes
+        grupos, os dados primitivos e n\xE3o primitivos.\n\tOs tipos primitivos de
+        dados s\xE3o os tipos b\xE1sicos que s\xE3o definidos como n\xFAmeros reais,
+        n\xFAmeros inteiros, booleanos, caracteres e strings. J\xE1 os dados n\xE3o
+        primitivos, normalmente s\xE3o vetores, matrizes, classes, enumera\xE7\xF5es
         etc. que costumam ser estruturas de dados mais complexas em compara\xE7\xE3o
-        aos tipos de dados primitivos. No contexto da fase ser\xE3o usadas as vari\xE1veis
+        aos tipos de dados primitivos. No contexto da fase, ser\xE3o usadas as vari\xE1veis
         somente de tipo inteiro, onde ser\xE1 necess\xE1rio que se armazene respectivos
         valores para os ataques de Arthur.\n\tA partir daqui, diante da possibilidade
         de enfrentar poderosos inimigos, Arthur estar\xE1 equipado com a sua espada,
-        mas para que ele consiga us\xE1-la voc\xEA dever\xE1 instrui-lo, para isso
+        mas para que ele consiga us\xE1-la, voc\xEA dever\xE1 instrui-lo, para isso
         voc\xEA ter\xE1 a sua disposi\xE7\xE3o uma nova categoria de blocos denominada
         como vari\xE1veis, juntamente de mais tr\xEAs blocos de comando, denominados
         como \u201Cataque\u201D, \u201Cfor\xE7a\u201D, e \u201Cadaptador\u201D, que
-        quando usados da maneira correta possibilitam que Arthur derrote seus inimigos.
+        quando usados da maneira correta, possibilitam que Arthur derrote seus inimigos.
         \n\tAtaque: personagem lan\xE7a um ataque.\r\n\tAdaptador: necess\xE1rio
-        para conectar o bloco \u201Cfor\xE7a\u201D ao ataque, possibilitando assim
+        para conectar o bloco \u201Cfor\xE7a\u201D ao ataque, possibilitando assim,
         que o ataque de Arthur possua for\xE7a.\r\n\tFor\xE7a: define a for\xE7a
         em que o ataque de Arthur ter\xE1.\n\tJuntamente com os novos blocos, foi
         adicionada uma nova categoria, as vari\xE1veis. Essa categoria possibilita
         a cria\xE7\xE3o, altera\xE7\xE3o e utiliza\xE7\xE3o de vari\xE1veis. Sua
         utiliza\xE7\xE3o \xE9 bem simples e proporcionar\xE1 a voc\xEA a possibilidade
         de se criar uma vari\xE1vel com o valor da for\xE7a de ataque de Arthur para
-        usar em diferentes pontos ta fase, possibilitando assim que use o ataque
+        usar em diferentes pontos da fase, possibilitando assim, que use o ataque
         com a utiliza\xE7\xE3o de menos blocos.  \r\n\tFique atento aos inimigos,
         pois esses fazem uso de magias poderosas. Para que os derrote sem ser afetado
         por sua magia \xE9 necess\xE1rio que os ataques possuam o n\xEDvel de for\xE7a
-        exato a quantidade de vida que cada inimigo possui. Caso o ataque possua
+        exato \xE0 quantidade de vida que cada inimigo possui. Caso o ataque possua
         menos for\xE7a que a vida do inimigo, um contra-ataque ser\xE1 lan\xE7ado,
         fazendo com que Arthur n\xE3o seja capaz de se defender. Por\xE9m, se os
         ataques possu\xEDrem for\xE7a superior \xE0 quantidade de vida que eles possuem,
@@ -36174,7 +36174,9 @@ MonoBehaviour:
   painelFaseIncompleta: {fileID: 1403440150}
   qtdBlocosUsados: -1
   passeiParteFase: 0
+  interpreteAcabou: 0
   parteFase: 0
+  parteFaseAtual: 0
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
     type: 3}
   knockPosition: {fileID: 3589834208636044487}

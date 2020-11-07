@@ -1782,17 +1782,17 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 1170
+      value: 1194
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 191
+      value: 195
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 185
+      value: 188
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1807,23 +1807,23 @@ PrefabInstance:
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_text
-      value: "\tParab\xE9ns, voc\xEA conseguiu completar o primeiro territ\xF3rio,
-        Arthur est\xE1 muito feliz e determinado a conquistar feitos ainda maiores
-        juntos a voc\xEA, continue se esfor\xE7ando e o ajude a continuar trilhando
-        seu caminho.\r\n\tNesta fase voc\xEA ainda praticar\xE1 seu conhecimento
+      value: "\tParab\xE9ns, voc\xEA conseguiu completar o primeiro territ\xF3rio!
+        Arthur est\xE1 muito feliz, e ainda mais determinado a conquistar feitos
+        cada vez maiores junto a voc\xEA. Continue se esfor\xE7ando e o ajude a continuar
+        trilhando seu caminho.\r\n\tNesta fase voc\xEA ainda praticar\xE1 seu conhecimento
         quanto \xE0s estruturas sequenciais, que s\xE3o um conjunto predeterminado
         de instru\xE7\xF5es, na qual, cada uma ser\xE1 executada de forma sequencial,
         na ordem que foi declarada.\r\n\tPara apimentar ainda mais sua aventura a
         partir deste momento, Arthur al\xE9m de lidar com os mais diversos terrenos
-        e plataformas ter\xE1 de enfrentar tamb\xE9m tem\xEDveis inimigos que podem
+        e plataformas, tamb\xE9m ter\xE1 de enfrentar  tem\xEDveis inimigos que podem
         vir a aparecer em seu caminho. Fique atento e o ajude a se proteger.\r\n\tA
         adi\xE7\xE3o de um novo bloco \xE9 um fator de suma import\xE2ncia nesta
-        nova etapa e que deve ser levado em considera\xE7\xE3o para superar os novos
-        desafios que vir\xE3o. Agora, al\xE9m dos blocos j\xE1 dispon\xEDveis anteriormente
+        nova etapa, e que deve ser levado em considera\xE7\xE3o para superar os novos
+        desafios que vir\xE3o. Agora, al\xE9m dos blocos j\xE1 dispon\xEDveis anteriormente,
         voc\xEA conta tamb\xE9m com o bloco \"defender\", que possibilita ao cavaleiro
-        utilizar seu escudo para se proteger de seus inimigos. \n\tArthur no presente
-        momento n\xE3o possui conhecimento sobre espadas, portanto, o seu escudo
-        se mostrar\xE1 uma importante ferramenta, use-o com sabedoria! \r\n"
+        utilizar seu escudo para se proteger dos ataques inimigos. \n\tArthur, neste
+        momento, ainda n\xE3o possui conhecimento sobre espadas, portanto, o seu
+        escudo se mostrar\xE1 uma importante ferramenta, use-o com sabedoria! \r\n"
       objectReference: {fileID: 0}
     - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
@@ -1835,6 +1835,16 @@ PrefabInstance:
       propertyPath: m_margin.w
       value: 15.788986
       objectReference: {fileID: 0}
+    - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
+      propertyPath: m_textInfo.materialCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
+      propertyPath: m_subTextObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1067126128}
     - target: {fileID: 4705374130262686047, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1958,6 +1968,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01ad68882e3aa834d9fa669308de15ce, type: 3}
+--- !u!224 &422338113 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4705374130172467499, guid: 01ad68882e3aa834d9fa669308de15ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 422338112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &422338114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4705374130172467540, guid: 01ad68882e3aa834d9fa669308de15ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 422338112}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &469272673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4413,6 +4441,78 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051813018}
+  m_CullTransparentMesh: 0
+--- !u!1 &1067126126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1067126127}
+  - component: {fileID: 1067126129}
+  - component: {fileID: 1067126128}
+  m_Layer: 5
+  m_Name: TMP SubMeshUI [LiberationSans SDF Material + LiberationSans SDF Atlas]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1067126127
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067126126}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422338113}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1067126128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067126126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_spriteAsset: {fileID: 0}
+  m_material: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
+  m_isDefaultMaterial: 0
+  m_padding: 1.25
+  m_canvasRenderer: {fileID: 1067126129}
+  m_TextComponent: {fileID: 422338114}
+  m_materialReferenceIndex: 1
+--- !u!222 &1067126129
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067126126}
   m_CullTransparentMesh: 0
 --- !u!1001 &1071360398
 PrefabInstance:

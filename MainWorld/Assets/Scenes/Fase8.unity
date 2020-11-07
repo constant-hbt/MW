@@ -51768,8 +51768,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4705374130531232842}
   m_HandleRect: {fileID: 4705374130531232845}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.7582418
+  m_Value: 1
+  m_Size: 0.75824183
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -53412,12 +53412,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\tParab\xE9ns pelo seu progresso guerreiro (a), a cada passo e nova batalha
-    voc\xEA adquire mais conhecimento e experi\xEAncia, seus resultados est\xE3o
+  m_text: "\tParab\xE9ns pelo seu progresso guerreiro (a)! A cada passo e nova batalha
+    voc\xEA adquire mais conhecimento e experi\xEAncia. Seus resultados est\xE3o
     sendo cada vez melhores, continue assim!\r\n\tNessa fase, voc\xEA ir\xE1 praticar
     um pouco mais sobre seus conhecimentos quanto aos conceitos vistos anteriormente
-    em cada fase. Fa\xE7a uso de suas experi\xEAncias adquiridas durante a sua jornada
-    e procure assim montar a melhor estrat\xE9gia para superar os novos obst\xE1culos.\r\n\tArthur
+    em cada fase. Fa\xE7a uso de suas experi\xEAncias adquiridas durante a sua jornada,
+    e procure assim, montar a melhor estrat\xE9gia para superar os novos obst\xE1culos.\r\n\tArthur
     est\xE1 cada vez mais perto de concluir a sua miss\xE3o e trazer a paz de volta
     ao reino, portanto, ajude-o a superar mais esse desafio. Guie-o com perspic\xE1cia,
     siga com coragem, e prevale\xE7am sobre todos os perigos, juntos voc\xEAs conseguir\xE3o!\r"
@@ -53489,7 +53489,7 @@ MonoBehaviour:
   m_margin: {x: 11.655371, y: 0, z: 12.772591, w: 13.797668}
   m_textInfo:
     textComponent: {fileID: 4705374129900014662}
-    characterCount: 693
+    characterCount: 695
     spriteCount: 0
     spaceCount: 111
     wordCount: 110
