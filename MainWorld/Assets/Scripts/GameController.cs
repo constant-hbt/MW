@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
     public int[] errosFase;//contém a quantidade de erros que o usuario teve ate a conclusao da fase --> será acrescentado um de erro a posicao da respectiva fase assim que o painel de fase incompleta for acionado --> assim que a fase em questao for concluida ao ativar o painel de conclusao de fase os erros respectivos aquela fase serao excluidos
     public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
 
+    //a variavel idFaseEmExecucao pega o id da fase atual
+    public int parteFaseAtual; // pega a parte atual da fase em que o player esta
 
     [Header("Banco de Dados do Player")]
     public      int         vidaMax = 3;

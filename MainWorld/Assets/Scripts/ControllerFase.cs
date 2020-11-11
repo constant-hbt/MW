@@ -6,12 +6,7 @@ using System.Runtime.InteropServices;
 using System;
 
 
-public enum GameState
-{
-    GAMEPLAY,
-    PAUSE,
 
-}
 public class ControllerFase : MonoBehaviour
 {
     /// <summary>
@@ -20,9 +15,7 @@ public class ControllerFase : MonoBehaviour
     private                 GameController          _gameController;
     private PlayerController _playerController;
     private HUD _hud;
-
-    [Header("Controle da fase")]
-    public GameState estadoAtual;
+   
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
     public int qtdMoedasLootColetadas; //moedas coletadas por loot adquiridos apartir dos inimigos
@@ -44,8 +37,12 @@ public class ControllerFase : MonoBehaviour
     [Header("Quantidade disponivel para a primeira parte da fase")]
     public                  int                   qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
     public int qtdManaDisponivelFase;
-        
 
+    [Header("Configuração de posições iniciais")]
+    public GameObject[] posicoesIniciasPlayer;
+    public GameObject[] posicoesCamera;
+    public Camera camera;
+    public float[] posicaoHud;
     //Integração com o js da página
     [DllImport("__Internal")]
     public static extern void                    SistemaLimiteBloco(int qtdBlocoFase, int toolbox);
@@ -62,46 +59,53 @@ public class ControllerFase : MonoBehaviour
     public static extern void AlterarToolboxFases(int idFase);
 
 
-   
-    void Start()
+
+    private void Awake()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
-        data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-         SistemaDeEnableDisableBlocos(true);
-         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
-
-
-        
-
+        //ativa a parte da fase
         if (fases.Length != 0)
         {
             foreach (GameObject o in fases)
             {
                 o.SetActive(false);
             }//desabilita todas as partes da fase , e em seguida habilita somente a primeira parte
-            fases[0].SetActive(true);
+            fases[_gameController.parteFaseAtual].SetActive(true);
         }
 
-         
 
+        //inicia o player na parte da fase que ele estava anteriormente, se a fase estiver iniciando ele sera iniciado na parte 0
+        _playerController.gameObject.transform.position = new Vector3(posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.x, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.y, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.z);
+        camera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, posicoesCamera[_gameController.parteFaseAtual].transform.position.z);
+        _hud.gameObject.transform.localPosition = new Vector4(0, 0, 0, 0);
+    }
+    void Start()
+    {
+        
+        data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
+
+       //  SistemaDeEnableDisableBlocos(true);
+       //  SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+       //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+
+
+        
+
+        
+
+        //inicia a variavel parteFase em gameController
+        _gameController.parteFaseAtual = 0;
         
     }
 
    
     void Update()
     {
-        if(this.estadoAtual != GameState.GAMEPLAY)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        
+      
     }
     private void FixedUpdate()
     {
@@ -159,23 +163,8 @@ public class ControllerFase : MonoBehaviour
         return estrelas;
     }
 
-    public void alterarEstado(GameState novoEstado)
-    {
-        estadoAtual = novoEstado;
-    }
 
-    public void pausarGame(bool pauseState) {
 
-        switch (pauseState)
-        {
-            case true:
-                Time.timeScale = 0;
-                break;
-            case false:
-                Time.timeScale = 1;
-                break;
-        }
-    }
 
 
 }

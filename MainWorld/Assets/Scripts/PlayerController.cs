@@ -83,8 +83,7 @@ public class PlayerController : MonoBehaviour
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
     public        bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
     public         int             parteFase = 0;//denomina em que parte da fase o personagem está
-    public int parteFaseAtual = 0;
-
+    
     [Header("Sistema de KnockBack")]
     public GameObject knockForcePrefab; //força de repulsão
     public Transform knockPosition;
@@ -300,6 +299,7 @@ public class PlayerController : MonoBehaviour
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 parteFase += 1;
+                _gameController.parteFaseAtual += 1;
                 passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
                 collision.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
                 Debug.Log("Colidi com o teleporte");
@@ -395,13 +395,13 @@ public class PlayerController : MonoBehaviour
             // Teste(rayCast_ColidindoInimigo);
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-            CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+          //  CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
