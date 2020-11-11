@@ -2439,6 +2439,9 @@ MonoBehaviour:
   - {fileID: 2144691935}
   - {fileID: 577290054}
   camera: {fileID: 2144691937}
+  posicaoHud:
+  - 0
+  - 1820
 --- !u!1001 &217067791
 PrefabInstance:
   m_ObjectHideFlags: 0
