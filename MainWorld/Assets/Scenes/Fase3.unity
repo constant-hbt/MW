@@ -7100,9 +7100,10 @@ GameObject:
   - component: {fileID: 931265827}
   - component: {fileID: 931265829}
   - component: {fileID: 931265828}
-  m_Layer: 16
+  - component: {fileID: 931265830}
+  m_Layer: 8
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: objetosQueDaoDano
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7249,6 +7250,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &931265830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931265826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687b62d8aeb31d943b4dd38be870b024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
+    type: 3}
+  valorDano: 1
 --- !u!1 &934396151
 GameObject:
   m_ObjectHideFlags: 0
@@ -10170,6 +10186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClose: {fileID: 677599097}
+  btnJogarNovamente: {fileID: 0}
   painelFaseIncompleta: {fileID: 1403440150}
   rectPainelDerrotaFase: {fileID: 1403440153}
   rectHud: {fileID: 4883312563964788511}
@@ -23841,10 +23858,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7787703642935275969, guid: 22a2ffad1b904204f8f57ff679b09054,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ace1869616b61ad4fa9d3187ff3a0645,
+        type: 3}
     - target: {fileID: 8072821741976607275, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a2ffad1b904204f8f57ff679b09054, type: 3}

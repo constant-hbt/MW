@@ -18,6 +18,7 @@ public class HUD : MonoBehaviour
     [Header("Controle HUD")]
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI vidaText;
+    public TextMeshProUGUI tentativasText;
 
     [DllImport("__Internal")]
     public static extern void AlterarLimiteBlocoForcaAtaque(int limitForcaAtaque);
@@ -32,8 +33,8 @@ public class HUD : MonoBehaviour
     void Update()
     {
         goldText.text = _controllerFase.qtdMoedasColetadas.ToString();
-       // vidaText.text = _gameController.numVida.ToString();
-        
+         vidaText.text = _gameController.numVida.ToString();
+        tentativasText.text = _gameController.numTentativasFase.ToString();
     }
 
   

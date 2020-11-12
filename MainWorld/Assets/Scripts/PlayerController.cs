@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private         ControllerFase  _controllerFase;
     private Inimigo _inimigo;
     private InimigoArqueiro _inimigoArqueiro;
+    private PainelFaseIncompleta _painelFaseIncompleta;
 
     [Header("Sistema de vida")]
     public int vidaPlayer ;//vida do player dentro da fase
@@ -123,6 +124,7 @@ public class PlayerController : MonoBehaviour
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _inimigo = FindObjectOfType(typeof(Inimigo)) as Inimigo;
         _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro))as InimigoArqueiro;
+        _painelFaseIncompleta = FindObjectOfType(typeof(PainelFaseIncompleta)) as PainelFaseIncompleta;
 
         x = transform.localScale.x;
 
@@ -170,12 +172,26 @@ public class PlayerController : MonoBehaviour
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
         if (interpreteAcabou  && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase && !passeiParteFase || ativPainelPosMorte)
         {
-            Debug.Log("Valor de interpreteAcabou = " + interpreteAcabou + " Valor de passeiParteFase = " + passeiParteFase);
-            //
-            painelFaseIncompleta.SetActive(true);
-            _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
-            this.retirarVida();
-            qtdBlocosUsados = -1;
+            _gameController.numTentativasFase--;
+            if (_gameController.numTentativasFase < 1)
+            {
+                painelFaseIncompleta.SetActive(true);
+                _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
+                this.retirarVida();
+                qtdBlocosUsados = -1;
+                
+            }
+            else
+            {
+                if(_painelFaseIncompleta == null)
+                {
+                    _painelFaseIncompleta = FindObjectOfType(typeof(PainelFaseIncompleta)) as PainelFaseIncompleta;
+                }
+
+                _painelFaseIncompleta.jogarNovamente(_gameController.idFaseEmExecucao);
+            }
+
+            
             interpreteAcabou = false;
             ativPainelPosMorte = false;
             passeiParteFase = false;

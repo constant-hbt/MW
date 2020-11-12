@@ -72,7 +72,7 @@ public class PainelFaseIncompleta : MonoBehaviour
             _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         }
         _controllerFase.DadosFaseMemoria(); //salva os dados ja coletados na fase atual dentro de GameController
-        _gameController.numTentativasFase--;
+       
     }
     public void voltarSelecaoFase()
     {

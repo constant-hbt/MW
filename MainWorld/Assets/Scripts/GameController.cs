@@ -101,5 +101,6 @@ public class GameController : MonoBehaviour
         qtdBlocosUsados = 0;
         qtdMoedasColetadas = 0;
         parteFaseAtual = 0;
+        numTentativasFase = 3;
     }
 }
