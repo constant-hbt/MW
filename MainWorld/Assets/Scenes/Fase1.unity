@@ -14533,8 +14533,19 @@ PrefabInstance:
       propertyPath: rectHud
       value: 
       objectReference: {fileID: 46099641}
+    - target: {fileID: 8393676362234281727, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+        type: 3}
+      propertyPath: btnJogarNovamente
+      value: 
+      objectReference: {fileID: 2188460464082699822}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bafb5e3929b7c5b4190db23eb7d9ff07, type: 3}
+--- !u!1 &2188460464082699822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2188460462685665949, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+    type: 3}
+  m_PrefabInstance: {fileID: 2188460464082699821}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3589834208476974805
 PrefabInstance:
   m_ObjectHideFlags: 0

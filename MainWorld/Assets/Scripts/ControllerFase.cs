@@ -74,6 +74,7 @@ public class ControllerFase : MonoBehaviour
                 o.SetActive(false);
             }//desabilita todas as partes da fase , e em seguida habilita somente a primeira parte
             fases[_gameController.parteFaseAtual].SetActive(true);
+
         }
 
 
@@ -81,14 +82,19 @@ public class ControllerFase : MonoBehaviour
         _playerController.gameObject.transform.position = new Vector3(posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.x, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.y, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.z);
         camera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, 0);
        
-        if(_gameController.parteFaseAtual > 0)
+        if(_gameController.numTentativasFase < 3)
         {
             _hud.gameObject.transform.localPosition = new Vector4(posicaoHud[_gameController.parteFaseAtual], 0, 0, 0);
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
         }
-        
+
+        //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
+        qtdMoedasColetadas = _gameController.qtdMoedasColetadas;
+        qtdBlocosUsados = _gameController.qtdBlocosUsados;
+        _playerController.parteFase = _gameController.parteFaseAtual;
+
     }
     void Start()
     {
@@ -99,13 +105,6 @@ public class ControllerFase : MonoBehaviour
        //  SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
        //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
-
-        
-
-        
-
-        //inicia a variavel parteFase em gameController
-        _gameController.parteFaseAtual = 0;
         
     }
 
@@ -171,7 +170,12 @@ public class ControllerFase : MonoBehaviour
         return estrelas;
     }
 
-
+    //grava os dados obtidos pelo player naquela fase em execucao dentro do GameController, para caso o mesmo ainda possuir alguma tentativa na fase ao reinicia-la o seu desempenho seria mantido
+    public void DadosFaseMemoria()
+    {
+        _gameController.qtdBlocosUsados = qtdBlocosUsados;
+        _gameController.qtdMoedasColetadas = qtdMoedasColetadas;
+    }
 
 
 

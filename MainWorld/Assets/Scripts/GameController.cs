@@ -28,17 +28,21 @@ public class GameController : MonoBehaviour
     public int progressoAtual;
     public int numGold;//numero total de moedas coletadas dentro do jogo
     public int numVida = 10;//numero de vidas dentro do jogo
+    public int numTentativasFase = 3;
     public int numEstrelas;//numero total de estrelas coletadas dentro do jogo
     public int[] errosFase;//contém a quantidade de erros que o usuario teve ate a conclusao da fase --> será acrescentado um de erro a posicao da respectiva fase assim que o painel de fase incompleta for acionado --> assim que a fase em questao for concluida ao ativar o painel de conclusao de fase os erros respectivos aquela fase serao excluidos
     public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
 
-    //a variavel idFaseEmExecucao pega o id da fase atual
-    public int parteFaseAtual; // pega a parte atual da fase em que o player esta
+    
 
     [Header("Banco de Dados do Player")]
     public      int         vidaMax = 3;
 
-
+    [Header("Banco de dados fase em execução")]
+    public int qtdBlocosUsados;
+    public int qtdMoedasColetadas;
+    //a variavel idFaseEmExecucao pega o id da fase atual
+    public int parteFaseAtual; // pega a parte atual da fase em que o player esta
     void Start()
     {
         gameControllers = GameObject.FindGameObjectsWithTag("GameController");
@@ -91,5 +95,11 @@ public class GameController : MonoBehaviour
         descricaoFase = "";
     }
 
-
+    //Zera as variaveis que guardam os dados para armazenar as informações da fase em execucao para possibilitar a mecanica de tentativas da fase
+    public void ZerarVarBancoTentativasFase()
+    {
+        qtdBlocosUsados = 0;
+        qtdMoedasColetadas = 0;
+        parteFaseAtual = 0;
+    }
 }

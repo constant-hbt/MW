@@ -8,8 +8,10 @@ using System.Runtime.InteropServices;
 public class PainelFaseIncompleta : MonoBehaviour
 {
     private         GameController      _gameController;
+    private ControllerFase _controllerFase;
 
     public          Button              btnClose;
+    public GameObject btnJogarNovamente;
     public          GameObject          painelFaseIncompleta;
 
     public RectTransform rectPainelDerrotaFase;
@@ -36,11 +38,15 @@ public class PainelFaseIncompleta : MonoBehaviour
     {
        // SistemaDeEnableDisableBlocos(true);
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
        
         btnClose.Select();
         
-
+       if(_gameController.numTentativasFase < 1)
+        {
+            btnJogarNovamente.SetActive(false);
+        }
     }
     void Update()
     {
@@ -60,6 +66,13 @@ public class PainelFaseIncompleta : MonoBehaviour
         }
         _gameController.idFaseEmExecucao = idFase;
         _gameController.descricaoFase = "Fase" + idFase;
+
+        if(_controllerFase == null)
+        {
+            _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        }
+        _controllerFase.DadosFaseMemoria(); //salva os dados ja coletados na fase atual dentro de GameController
+        _gameController.numTentativasFase--;
     }
     public void voltarSelecaoFase()
     {

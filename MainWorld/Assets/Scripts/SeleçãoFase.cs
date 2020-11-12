@@ -52,6 +52,8 @@ public class SeleçãoFase : MonoBehaviour
         //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
         _gameController.descricaoFase = "";
         _gameController.idFaseEmExecucao = 0;
+
+        _gameController.ZerarVarBancoTentativasFase();
     }
 
     

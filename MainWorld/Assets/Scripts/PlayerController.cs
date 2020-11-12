@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     public bool passeiParteFase = false; //verifica se o usuario passou de terreno na fase caso haja
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
     public        bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
-    public         int             parteFase = 0;//denomina em que parte da fase o personagem está
+    public int parteFase;//denomina em que parte da fase o personagem está
     
     [Header("Sistema de KnockBack")]
     public GameObject knockForcePrefab; //força de repulsão
@@ -127,7 +127,6 @@ public class PlayerController : MonoBehaviour
         x = transform.localScale.x;
 
         passeiFase = false;
-        parteFase = 0;
 
         estaMorto = false;
         ativPainelPosMorte = false;
