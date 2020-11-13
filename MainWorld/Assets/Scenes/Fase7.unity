@@ -3293,6 +3293,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 730603998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &730604000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2188460462685665949, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+    type: 3}
+  m_PrefabInstance: {fileID: 730603998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &745972256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
@@ -5934,7 +5940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClose: {fileID: 677599097}
-  btnJogarNovamente: {fileID: 0}
+  btnJogarNovamente: {fileID: 730604000}
   painelFaseIncompleta: {fileID: 1403440150}
   rectPainelDerrotaFase: {fileID: 1403440153}
   rectHud: {fileID: 4883312563964788511}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
 
@@ -175,9 +176,18 @@ public class PlayerController : MonoBehaviour
             _gameController.numTentativasFase--;
             if (_gameController.numTentativasFase < 1)
             {
-                painelFaseIncompleta.SetActive(true);
-                _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
                 this.retirarVida();
+                if(_gameController.numVida > 0)
+                {
+                    painelFaseIncompleta.SetActive(true);
+                    _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
+
+                }
+                else
+                {
+                    SceneManager.LoadScene("TelaGameOver");
+                }
+
                 qtdBlocosUsados = -1;
                 
             }

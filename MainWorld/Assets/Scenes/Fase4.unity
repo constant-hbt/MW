@@ -1038,7 +1038,7 @@ MonoBehaviour:
   - {fileID: 140935846}
   camera: {fileID: 2144691937}
   posicaoHud:
-  - 1820
+  - 1800
   - 3805
 --- !u!1 &301079372
 GameObject:
@@ -1678,6 +1678,11 @@ PrefabInstance:
     - target: {fileID: 4705374129511407072, guid: 01ad68882e3aa834d9fa669308de15ce,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705374129596124000, guid: 01ad68882e3aa834d9fa669308de15ce,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4705374129596124013, guid: 01ad68882e3aa834d9fa669308de15ce,
@@ -3409,6 +3414,12 @@ PrefabInstance:
 --- !u!224 &730603999 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2188460462799838994, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
+    type: 3}
+  m_PrefabInstance: {fileID: 730603998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &730604000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2188460462685665949, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
     type: 3}
   m_PrefabInstance: {fileID: 730603998}
   m_PrefabAsset: {fileID: 0}
@@ -5216,7 +5227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnClose: {fileID: 677599097}
-  btnJogarNovamente: {fileID: 0}
+  btnJogarNovamente: {fileID: 730604000}
   painelFaseIncompleta: {fileID: 1403440150}
   rectPainelDerrotaFase: {fileID: 1403440153}
   rectHud: {fileID: 4883312563964788511}

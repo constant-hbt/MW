@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     public int fasesConcluidas;// numero de fases concluidas 
     public int progressoAtual;
     public int numGold;//numero total de moedas coletadas dentro do jogo
-    public int numVida = 10;//numero de vidas dentro do jogo
+    public int numVida = 1;//numero de vidas dentro do jogo
     public int numTentativasFase = 3;
     public int numEstrelas;//numero total de estrelas coletadas dentro do jogo
     public int[] errosFase;//contém a quantidade de erros que o usuario teve ate a conclusao da fase --> será acrescentado um de erro a posicao da respectiva fase assim que o painel de fase incompleta for acionado --> assim que a fase em questao for concluida ao ativar o painel de conclusao de fase os erros respectivos aquela fase serao excluidos
