@@ -118,7 +118,7 @@
 
             function chamandoAlertDesempenho(){//Função criada por mim
                 setTimeout(function(){
-                    alert( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
+                    console.log( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
                                         "Código utilizado para concluir a fase: \n"+
                                         mostrarCodigo(codeCompleto) );
                 codeCompleto = '';

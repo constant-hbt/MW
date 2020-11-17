@@ -36,17 +36,14 @@ public class PainelFaseIncompleta : MonoBehaviour
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
-       // SistemaDeEnableDisableBlocos(true);
+        
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
        
         btnClose.Select();
-        
-       if(_gameController.numTentativasFase < 1)
-        {
-            btnJogarNovamente.SetActive(false);
-        }
+
+        Debug.Log("Quantidade de blocos usados =" + _controllerFase.qtdBlocosUsados);
     }
     void Update()
     {
@@ -55,10 +52,10 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-       // SistemaReiniciarWorkspaceBlockly();
-       // DisponibilizarToobox();
-       // ReiniciarVarCodeCompleto();
-       // ReiniciarVarBlocosTotais();
+        SistemaReiniciarWorkspaceBlockly();
+        DisponibilizarToobox();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         if(_gameController == null)
         {
@@ -88,11 +85,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-       // CentralizarWebGl();
+        CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-       // SistemaReiniciarWorkspaceBlockly();
-       // ReiniciarVarCodeCompleto();
-       // ReiniciarVarBlocosTotais();
+        SistemaReiniciarWorkspaceBlockly();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("SelecaoFase");
 
     }

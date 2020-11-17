@@ -82,7 +82,7 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         if (habilitarAlertCodigo)
         {
-            //ChamandoAlertFinalFase();
+            ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -136,7 +136,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     IEnumerator voltarSelecaoFase()
     {
-       // CentralizarWebGl();
+       CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
         SceneManager.LoadScene("SelecaoFase");
 
