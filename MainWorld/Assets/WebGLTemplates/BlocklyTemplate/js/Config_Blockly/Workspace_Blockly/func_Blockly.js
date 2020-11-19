@@ -22,11 +22,13 @@
         function stepCode(){
 
             codeCompleto += Blockly.JavaScript.workspaceToCode(workspace);
+            unityInstance.SendMessage('ControllerFase','PegarBlocosUtilizados',codeCompleto);//enviado a sequencia de blocos utilizados na parte da fase
             qtdBlocosUsados = workspace.getAllBlocks().length;
             qtdBlocosTotais += qtdBlocosUsados;
             enviarQtdBlocosUsados(qtdBlocosUsados);
             unityInstance.SendMessage('playerKnight', 'mudarValidar');
             unityInstance.SendMessage('playerKnight', 'chamarResetarStatusParaPainelFaseInc');
+            unityInstance.SendMessage('ControllerFase','EnviarHistorico');//envia a solicitacao para o envio do registro de historico no banco
             if(!myInterpreter){
                 //primeira declaração deste código
                 //limpe a saída do programa

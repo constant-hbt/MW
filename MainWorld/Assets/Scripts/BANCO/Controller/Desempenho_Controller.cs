@@ -74,8 +74,8 @@ public class Desempenho_Controller : MonoBehaviour
 
     IEnumerator RegistrarDesempenho(string url, string rota, Desempenho p_desempenho)
     {
-        string urlNew = string.Format("{0}{1}", url, rota);//concatena a rota com a url
-        Debug.Log("Nova url "+urlNew); 
+        string urlNew = string.Format("{0}{1}", url, rota);//concatena a rota com a 
+       // Debug.Log("Nova url "+urlNew); 
         string jsonData = JsonUtility.ToJson(p_desempenho);
         Debug.Log("Mandei este jsonData =" + jsonData);
 

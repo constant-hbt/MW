@@ -1,27 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 [System.Serializable]
 public class Historico
 {
     public int id_historico;
+    public string descricao;
     public int moedas;
     public int estrelas;
     public int vidas;
     public int ultima_fase_concluida;
-    public string data_hora;
+    public DateTime data_hora;
+    public string blocos_utilizados;
     public int id_usuario_ativ_turma;
 
     public Historico() { }
 
-    public Historico(int p_moedas, int p_estrelas, int p_vidas, int p_ultima_fase_concluida, string p_data_hora, int p_id_usuario_ativ_turma)
+    public Historico(string p_descricao, int p_moedas, int p_estrelas, int p_vidas, int p_ultima_fase_concluida, DateTime p_data_hora,string p_blocos_utilizados, int p_id_usuario_ativ_turma)
     {
+        this.descricao = p_descricao;
         this.moedas = p_moedas;
         this.estrelas = p_estrelas;
         this.vidas = p_vidas;
         this.ultima_fase_concluida = p_ultima_fase_concluida;
         this.data_hora = p_data_hora;
+        this.blocos_utilizados = p_blocos_utilizados;
         this.id_usuario_ativ_turma = p_id_usuario_ativ_turma;
     }
 
@@ -29,6 +33,11 @@ public class Historico
     {
         get { return id_historico; }
         set { id_historico = value; }
+    }
+    public string Descricao
+    {
+        get { return descricao; }
+        set { descricao = value; }
     }
     public int Moedas
     {
@@ -50,10 +59,15 @@ public class Historico
         get { return ultima_fase_concluida; }
         set { ultima_fase_concluida = value; }
     }
-    public string Data_hora
+    public DateTime Data_hora
     {
         get { return data_hora; }
         set { data_hora = value; }
+    }
+    public string Blocos_utilizados
+    {
+        get { return blocos_utilizados; }
+        set { blocos_utilizados = value; }
     }
     public int Id_usuario_ativ_turma
     {

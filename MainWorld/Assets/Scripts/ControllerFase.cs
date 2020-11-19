@@ -15,6 +15,7 @@ public class ControllerFase : MonoBehaviour
     private                 GameController          _gameController;
     private PlayerController _playerController;
     private HUD _hud;
+    private Historico_Controller _historico_Controller;
    
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
@@ -23,7 +24,7 @@ public class ControllerFase : MonoBehaviour
     public GameObject[] fases;
     public string data_InicioFase;//computado ao iniciar a fase
     public string data_FimFase;//vai ser computado ao colidir com o runaWin
-
+    public string seqBlocos; //contém a sequência de blocos utilizados para passar a parte da fase
     //Configuração do Limite de blocos por fase
     //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
     //maximos que pode ser utilizado durante aquela fase
@@ -65,7 +66,7 @@ public class ControllerFase : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
-
+        _historico_Controller = FindObjectOfType(typeof(Historico_Controller)) as Historico_Controller;
         //ativa a parte da fase
         if (fases.Length != 0)
         {
@@ -178,6 +179,35 @@ public class ControllerFase : MonoBehaviour
         _gameController.qtdMoedasColetadas = qtdMoedasColetadas;
     }
 
+    public void EnviarHistorico()
+    {
+        string descricao = "Fase " + _gameController.idFaseEmExecucao + " - Parte " + _gameController.parteFaseAtual;
+        int moedas = _gameController.numGold;
+        int estrelas = _gameController.numEstrelas;
+        int vidas = _gameController.numVida;
+        int ultima_fase_concluida = _gameController.fasesConcluidas;
+        DateTime data_hora = DateTime.Now.ToLocalTime();
+        int id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
+        string seq_BlocosUtilizados = seqBlocos;
+       // Debug.Log("Data hora = " + data_hora);
 
+        Historico objHistorico = new Historico();
 
+        objHistorico.Descricao = descricao;
+        objHistorico.Moedas = moedas;
+        objHistorico.Estrelas = estrelas;
+        objHistorico.Vidas = vidas ;
+        objHistorico.Ultima_fase_concluida = ultima_fase_concluida;
+        objHistorico.Data_hora = data_hora;
+        objHistorico.Blocos_utilizados = seq_BlocosUtilizados;
+        objHistorico.Id_usuario_ativ_turma = id_usuario_ativ_turma;
+
+        //Debug.Log("Estou enviando o registro de historico para o banco = " + objHistorico);
+        _historico_Controller.RegistrarHistorico(objHistorico);
+    }
+
+    public void PegarBlocosUtilizados(string p_SeqBlocos)
+    {
+        seqBlocos = p_SeqBlocos;
+    }
 }

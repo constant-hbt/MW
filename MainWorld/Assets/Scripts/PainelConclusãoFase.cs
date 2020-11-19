@@ -93,7 +93,7 @@ public class PainelConclusãoFase : MonoBehaviour
             Debug.Log("Vou enviar os registros ao banco");
 
             Debug.Log("Estou enviando os dados para o banco");
-           // _desempenhoController.EnviarRegistroDesempenho();
+            _desempenhoController.EnviarRegistroDesempenho();
 
             jaEnvieiRegistro = true;
         }

@@ -2388,7 +2388,6 @@ GameObject:
   m_Component:
   - component: {fileID: 87958072}
   - component: {fileID: 87958071}
-  - component: {fileID: 87958074}
   - component: {fileID: 87958073}
   m_Layer: 0
   m_Name: GameControllerEntreFases
@@ -2450,19 +2449,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 87958070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87879392af901d74e9bc6bdbfdd94d09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &87958074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87958070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80fb50c99089d5f4ab83a08e2bc2a47a, type: 3}
+  m_Script: {fileID: 11500000, guid: 751e929eec361cc4d8783da195dc1fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &109984709
