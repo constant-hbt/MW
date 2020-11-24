@@ -22,7 +22,7 @@
         function stepCode(){
 
             codeCompleto += Blockly.JavaScript.workspaceToCode(workspace);
-            unityInstance.SendMessage('ControllerFase','PegarBlocosUtilizados',codeCompleto);//enviado a sequencia de blocos utilizados na parte da fase
+            unityInstance.SendMessage('ControllerFase','PegarBlocosUtilizados',mostrarCodigo(codeCompleto));//enviado a sequencia de blocos utilizados na parte da fase
             qtdBlocosUsados = workspace.getAllBlocks().length;
             qtdBlocosTotais += qtdBlocosUsados;
             enviarQtdBlocosUsados(qtdBlocosUsados);
@@ -103,7 +103,7 @@
 
                 for(var i=0; i< arrayCode.length; i++){
                     if(arrayCode[i].indexOf("highlightBlock") == -1){
-                        novoCode += arrayCode[i]+"\n";
+                        novoCode += arrayCode[i];
                     }
                 }
 

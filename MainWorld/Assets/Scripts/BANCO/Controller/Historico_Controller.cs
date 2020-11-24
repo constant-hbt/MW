@@ -55,19 +55,20 @@ public class Historico_Controller : MonoBehaviour
     }
     IEnumerator RegistrarHistorico(Historico p_historico)
     {
+        
         string caminho = "http://localhost/games/salvarhistorico.php?";
-        string p_Descricao ="descricao="+p_historico.Descricao+"&";
+        string p_Descricao ="descricao="+p_historico.Descricao+"&";//se der certo preciso alterar o valor desta variavel
         string p_Moedas = "moedas=" + p_historico.Moedas + "&";
         string p_Vidas = "vidas=" + p_historico.Vidas + "&";
         string p_Estrelas = "estrelas=" + p_historico.Estrelas + "&";
         string p_UltimaFaseConcluida = "ultimafaseconcluida=" + p_historico.Ultima_fase_concluida + "&";
-        string p_Blocos = "blocos=" + p_historico.Blocos_utilizados + "&";
+        string p_Blocos = "blocos="+p_historico.Blocos_utilizados+"&"; //se der certo preciso alterar o valor desta variavel
         string p_IdAtividade = "idatividade=" + p_historico.Id_usuario_ativ_turma + "&";
         string p_IdUsuario = "idusuario=" + p_historico.Id_usuario_ativ_turma + "&";
         string p_Tempo = "tempo=" + 10;
 
 
-        string url = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}", caminho,p_Descricao,p_Moedas,p_Vidas,p_Estrelas,p_UltimaFaseConcluida,p_Blocos,p_IdAtividade,p_IdUsuario,p_Tempo);
+        string url = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}", caminho,p_Descricao,p_Moedas,p_Vidas,p_Estrelas,p_UltimaFaseConcluida,p_Blocos,p_IdAtividade,p_IdUsuario,p_Tempo);
         Debug.Log("Url montada =" + url);
 
         using (UnityWebRequest www = UnityWebRequest.Get(url))

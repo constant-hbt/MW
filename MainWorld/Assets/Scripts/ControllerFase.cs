@@ -181,7 +181,8 @@ public class ControllerFase : MonoBehaviour
 
     public void EnviarHistorico()
     {
-        string descricao = "Fase " + _gameController.idFaseEmExecucao + " - Parte " + _gameController.parteFaseAtual;
+        
+        string descricao = "Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual;
         int moedas = _gameController.numGold;
         int estrelas = _gameController.numEstrelas;
         int vidas = _gameController.numVida;
@@ -189,7 +190,6 @@ public class ControllerFase : MonoBehaviour
         DateTime data_hora = DateTime.Now.ToLocalTime();
         int id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
         string seq_BlocosUtilizados = seqBlocos;
-       // Debug.Log("Data hora = " + data_hora);
 
         Historico objHistorico = new Historico();
 
@@ -202,8 +202,9 @@ public class ControllerFase : MonoBehaviour
         objHistorico.Blocos_utilizados = seq_BlocosUtilizados;
         objHistorico.Id_usuario_ativ_turma = id_usuario_ativ_turma;
 
-        //Debug.Log("Estou enviando o registro de historico para o banco = " + objHistorico);
+        
         _historico_Controller.ChamarRegistrarHistorico(objHistorico);
+        
     }
 
     public void PegarBlocosUtilizados(string p_SeqBlocos)
