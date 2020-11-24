@@ -203,7 +203,7 @@ public class ControllerFase : MonoBehaviour
         objHistorico.Id_usuario_ativ_turma = id_usuario_ativ_turma;
 
         //Debug.Log("Estou enviando o registro de historico para o banco = " + objHistorico);
-        _historico_Controller.RegistrarHistorico(objHistorico);
+        _historico_Controller.ChamarRegistrarHistorico(objHistorico);
     }
 
     public void PegarBlocosUtilizados(string p_SeqBlocos)
