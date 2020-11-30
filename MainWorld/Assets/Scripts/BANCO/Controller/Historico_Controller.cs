@@ -55,14 +55,14 @@ public class Historico_Controller : MonoBehaviour
     }
     IEnumerator RegistrarHistorico(Historico p_historico)
     {
-        
-        string caminho = "http://localhost/games/salvarhistorico.php?";
-        string p_Descricao ="descricao="+p_historico.Descricao+"&";//se der certo preciso alterar o valor desta variavel
+
+        string caminho ="http://localhost/games/salvarhistorico.php?";/* "http://jogos.plataformaceos.com.br/mainworld/salvarhistorico.php?";*/
+        string p_Descricao ="descricao="+p_historico.Descricao+"&";
         string p_Moedas = "moedas=" + p_historico.Moedas + "&";
         string p_Vidas = "vidas=" + p_historico.Vidas + "&";
         string p_Estrelas = "estrelas=" + p_historico.Estrelas + "&";
         string p_UltimaFaseConcluida = "ultimafaseconcluida=" + p_historico.Ultima_fase_concluida + "&";
-        string p_Blocos = "blocos="+p_historico.Blocos_utilizados+"&"; //se der certo preciso alterar o valor desta variavel
+        string p_Blocos = "blocos="+p_historico.Blocos_utilizados+"&"; 
         string p_IdAtividade = "idatividade=" + p_historico.Id_usuario_ativ_turma + "&";
         string p_IdUsuario = "idusuario=" + p_historico.Id_usuario_ativ_turma + "&";
         string p_Tempo = "tempo=" + 10;
@@ -82,6 +82,38 @@ public class Historico_Controller : MonoBehaviour
             else
             {
                 Debug.Log("Histórico salvo com sucesso");
+            }
+        }
+    }
+
+    //TESTANDO RECEBER DADOS NO PHP
+    public void ChamarReceberHistoricoId(int idHist)
+    {
+        StartCoroutine(ReceberHistoricoId(idHist));
+    }
+    IEnumerator ReceberHistoricoId(int idHistorico)
+    {
+        string caminho = "http://localhost/games/receber.php?";
+        string idHist = "id=" + idHistorico;
+
+        string url = string.Format("{0}{1}", caminho, idHist);
+        Debug.Log("Url montada = " + url);
+
+        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                if (www.isDone)
+                {
+                    string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
+                    Debug.Log("Historico recebido = " + jsonResult);
+                }
             }
         }
     }

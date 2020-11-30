@@ -29,7 +29,11 @@ public class Teleporte : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void            SistemaReiniciarWorkspaceBlockly();
-    
+
+
+    [DllImport("__Internal")]
+    public static extern void ReiniciarVarCodeCompleto();
+
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -43,6 +47,8 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
+        
+
         int parteFaseAtual = 0;
         SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
         for(int i=0; i<= _controllerFase.fases.Length; i++)
@@ -70,6 +76,8 @@ public class Teleporte : MonoBehaviour
         {
             _playerController.Flip();   
         }
+        ReiniciarVarCodeCompleto();
+        
     }
 
     

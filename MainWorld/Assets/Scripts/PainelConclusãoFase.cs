@@ -51,7 +51,7 @@ public class PainelConclusãoFase : MonoBehaviour
         Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
         tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
-
+        _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
         
         pConclusaoFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y,0 ,0) ;
         
@@ -77,6 +77,10 @@ public class PainelConclusãoFase : MonoBehaviour
 
         habilitarAlertCodigo = true;
         jaEnvieiRegistro = false;
+
+        Debug.Log("Passei a fase e estou salvando o historico");
+        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
     }
     void Update()
     {
@@ -88,7 +92,7 @@ public class PainelConclusãoFase : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (painelConclusaFase.activeSelf && !jaEnvieiRegistro)
+       /* if (painelConclusaFase.activeSelf && !jaEnvieiRegistro)
         {
             Debug.Log("Vou enviar os registros ao banco");
 
@@ -96,7 +100,7 @@ public class PainelConclusãoFase : MonoBehaviour
             _desempenhoController.EnviarRegistroDesempenho();
 
             jaEnvieiRegistro = true;
-        }
+        }*/
     }
 
     public void BtnReiniciar(int numeroFase)

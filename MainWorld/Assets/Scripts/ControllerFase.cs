@@ -61,6 +61,8 @@ public class ControllerFase : MonoBehaviour
 
 
 
+
+
     private void Awake()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
@@ -179,17 +181,17 @@ public class ControllerFase : MonoBehaviour
         _gameController.qtdMoedasColetadas = qtdMoedasColetadas;
     }
 
-    public void EnviarHistorico()
+    public void EnviarHistorico(string descricao, int moedas, int estrelas, int vidas, int ultima_fase, int id_usuario_ativ_turma)
     {
         
-        string descricao = "Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual;
-        int moedas = _gameController.numGold;
-        int estrelas = _gameController.numEstrelas;
-        int vidas = _gameController.numVida;
-        int ultima_fase_concluida = _gameController.fasesConcluidas;
-        DateTime data_hora = DateTime.Now.ToLocalTime();
-        int id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
-        string seq_BlocosUtilizados = seqBlocos;
+        //string descricao = "Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1;
+        //int moedas = qtdMoedasColetadas; //_gameController.numGold;
+       // int estrelas = this.estrelas;//_gameController.numEstrelas;
+      //  int vidas = _gameController.numVida;
+       // int ultima_fase_concluida = ultima_fase;
+       // DateTime data_hora = DateTime.Now.ToLocalTime();
+       // int id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
+       // string seq_BlocosUtilizados = seqBlocos;
 
         Historico objHistorico = new Historico();
 
@@ -197,18 +199,25 @@ public class ControllerFase : MonoBehaviour
         objHistorico.Moedas = moedas;
         objHistorico.Estrelas = estrelas;
         objHistorico.Vidas = vidas ;
-        objHistorico.Ultima_fase_concluida = ultima_fase_concluida;
-        objHistorico.Data_hora = data_hora;
-        objHistorico.Blocos_utilizados = seq_BlocosUtilizados;
+        objHistorico.Ultima_fase_concluida = ultima_fase;
+        objHistorico.Data_hora = DateTime.Now.ToLocalTime();
+        objHistorico.Blocos_utilizados = seqBlocos;
         objHistorico.Id_usuario_ativ_turma = id_usuario_ativ_turma;
 
         
         _historico_Controller.ChamarRegistrarHistorico(objHistorico);
+        _historico_Controller.ChamarReceberHistoricoId(38);
         
+        seqBlocos = "";
     }
 
     public void PegarBlocosUtilizados(string p_SeqBlocos)
     {
         seqBlocos = p_SeqBlocos;
+    }
+
+    public void ResetarHistorico()
+    {
+        
     }
 }

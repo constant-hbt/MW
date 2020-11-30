@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void CondicaoNaoHaInimigo(bool temp_situacaoInimigo);
 
+
     [DllImport("__Internal")]
     public static extern void Teste(bool condInim);
 
@@ -206,7 +207,10 @@ public class PlayerController : MonoBehaviour
             ativPainelPosMorte = false;
             passeiParteFase = false;
 
-            Debug.Log("Entrei dentro da funcao de ativar o painelFaseIncompleta");
+            //salvar no banco 
+            Debug.Log("Perdi a fase e estou salvando no banco");
+            _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1,_controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
            
         }
         if(vidaPlayer <= 0 && !estaMorto)
@@ -323,6 +327,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
+                _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
                 parteFase += 1;
                 _gameController.parteFaseAtual += 1;
                 passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
