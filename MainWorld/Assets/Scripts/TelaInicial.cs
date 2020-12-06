@@ -47,7 +47,7 @@ public class TelaInicial : MonoBehaviour
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
-        SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        //SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         
     }
 

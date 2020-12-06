@@ -79,14 +79,14 @@ public class PainelConclusãoFase : MonoBehaviour
         jaEnvieiRegistro = false;
 
         Debug.Log("Passei a fase e estou salvando o historico");
-        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
-                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
+       // _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+                            //                 _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
     }
     void Update()
     {
         if (habilitarAlertCodigo)
         {
-            ChamandoAlertFinalFase();
+           // ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -112,7 +112,8 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void btnPlay()
     {
-        StartCoroutine(voltarSelecaoFase());
+        // StartCoroutine(voltarSelecaoFase());
+        SceneManager.LoadScene("Perguntas");
     }
 
    public void contabilizarDesempenho(int idFase)
@@ -140,7 +141,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     IEnumerator voltarSelecaoFase()
     {
-       CentralizarWebGl();
+     //  CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
         SceneManager.LoadScene("SelecaoFase");
 

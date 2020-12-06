@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using System;
 public class PainelPerguntas : MonoBehaviour
 {
-
+    private Pergunta_Controller _pergunta_Controller;
+    private GameController _gameController;
 
     //PERGUNTA 1
     [Header("PERGUNTA 1")]
@@ -54,12 +56,16 @@ public class PainelPerguntas : MonoBehaviour
     public string respostaPerg1;
     public string respostaPerg2;
     public string respostaPerg3;
-
+    public int id_pergunta;
 
     void Awake()
     {
+        _pergunta_Controller = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         btnSalvar.enabled = false;
 
+        CaptarPerguntas(_gameController.idFaseEmExecucao);
     }
 
     void Start()
@@ -143,12 +149,42 @@ public class PainelPerguntas : MonoBehaviour
         }
     }
 
+    //preenche os campos referentes a pergunta no painel
+    void GetPerguntas(Pergunta p_pergunta)
+    {
+       /* tmpPergunta1.text = p_pergunta.pergunta1;
+        tmpPergunta2.text = p_pergunta.pergunta2;
+        tmpPergunta3.text = p_pergunta.pergunta3;
+        id_pergunta = p_pergunta.id;*/
+
+     /*   if(p_pergunta.Pergunta1 != "" && p_pergunta.Pergunta2 != "" && p_pergunta.Pergunta3 != "")
+         {
+             tmpPergunta1.text = p_pergunta.Pergunta1;
+             tmpPergunta2.text = p_pergunta.Pergunta2;
+             tmpPergunta3.text = p_pergunta.Pergunta3;
+             id_pergunta = p_pergunta.Id;
+
+         } */
+    }
+
+    //Chama a função para pegar as perguntas no banco
+    public void CaptarPerguntas(int id_fase)
+    {
+        _pergunta_Controller.ChamarPegarPergunta(id_fase, GetPerguntas);
+    }
+
     public void botaoSalvar()
     {
-        Debug.Log("Resposta da pergunta 1 = " + respostaPerg1);
-        Debug.Log("Resposta da pergunta 2 = " + respostaPerg2);
-        Debug.Log("Resposta da pergunta 3 = " + respostaPerg3);
+       
 
+        Resposta resposta = new Resposta();
+        resposta.Resposta_pergunta1 = respostaPerg1;
+        resposta.Resposta_pergunta2 = respostaPerg2;
+        resposta.Resposta_pergunta3 = respostaPerg3;
+        resposta.Id_pergunta = id_pergunta;
 
+        _pergunta_Controller.ChamarRegistrarResposta(resposta);
+        
+        SceneManager.LoadScene("SelecaoFase");
     }
 }

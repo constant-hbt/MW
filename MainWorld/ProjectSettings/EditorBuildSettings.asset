@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TelaGameOver.unity
     guid: 936b270024f0cc74e99fc03f580df714
+  - enabled: 1
+    path: Assets/Scenes/Perguntas.unity
+    guid: 39ed24deca33f5449a2d6272e1d61689
   m_configObjects: {}
