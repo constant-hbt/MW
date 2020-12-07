@@ -10,40 +10,29 @@ public class PainelPerguntas : MonoBehaviour
     private Pergunta_Controller _pergunta_Controller;
     private GameController _gameController;
 
-    //PERGUNTA 1
-    [Header("PERGUNTA 1")]
+    [Header("Perguntas")]
 
-    public TextMeshProUGUI tmpPergunta1;
+    public GameObject[] pergunta;
 
-    public Toggle opcaoA1;
-    public Toggle opcaoB1;
-    public Toggle opcaoC1;
+    public TextMeshProUGUI[] tmpDescricao;
 
-    public TextMeshProUGUI tmpOpcaoA1;
-    public TextMeshProUGUI tmpOpcaoB1;
-    public TextMeshProUGUI tmpOpcaoC1;
+    public GameObject[] alternativaPergunta1;
+    public GameObject[] alternativaPergunta2;
+    public GameObject[] alternativaPergunta3;
 
-    //PERGUNTA 2
+    public TextMeshProUGUI[] tmpAlternativaPergunta1;
+    public TextMeshProUGUI[] tmpAlternativaPergunta2;
+    public TextMeshProUGUI[] tmpAlternativaPergunta3;
+
+    public Toggle[] opcao1;
+    public Toggle[] opcao2;
+    public Toggle[] opcao3;
+    public Toggle[] opcao4;
+    public Toggle[] opcao5;
+    public Toggle[] opcao6;
+
+    public GameObject[] inpRespDescritiva;
     
-    [Header("PERGUNTA 2")]
-    public TextMeshProUGUI tmpPergunta2;
-
-    public TMP_InputField respDescritiva;
-
-    //PERGUNTA 3
-
-    [Header("PERGUNTA 3")]
-
-    public TextMeshProUGUI tmpPergunta3;
-
-    public Toggle opcaoA3;
-    public Toggle opcaoB3;
-    public Toggle opcaoC3;
-
-    public TextMeshProUGUI tmpOpcaoA3;
-    public TextMeshProUGUI tmpOpcaoB3;
-    public TextMeshProUGUI tmpOpcaoC3;
-
     //Verifica se as respostas foram preenchidas
     public bool validarResp1;
     public bool validarResp2;
@@ -79,7 +68,7 @@ public class PainelPerguntas : MonoBehaviour
     void Update()
     {
         //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 1
-        if(opcaoA1.isOn)
+      /*  if(opcaoA1.isOn)
         {
             validarResp1 = true;
             respostaPerg1 = tmpOpcaoA1.text;
@@ -137,7 +126,7 @@ public class PainelPerguntas : MonoBehaviour
                     validarResp3 = false;
                     respostaPerg3 = "";
                 }
-
+                */
 
         if (validarResp1 && validarResp2 && validarResp3)
         {
@@ -150,21 +139,27 @@ public class PainelPerguntas : MonoBehaviour
     }
 
     //preenche os campos referentes a pergunta no painel
-    void GetPerguntas(Perguntas p_pergunta)
+    void GetPerguntas(Perguntas objPerguntas)
     {
-       /* tmpPergunta1.text = p_pergunta.pergunta1;
-        tmpPergunta2.text = p_pergunta.pergunta2;
-        tmpPergunta3.text = p_pergunta.pergunta3;
-        id_pergunta = p_pergunta.id;*/
+        /* tmpPergunta1.text = p_pergunta.pergunta1;
+         tmpPergunta2.text = p_pergunta.pergunta2;
+         tmpPergunta3.text = p_pergunta.pergunta3;
+         id_pergunta = p_pergunta.id;*/
 
-     /*   if(p_pergunta.Pergunta1 != "" && p_pergunta.Pergunta2 != "" && p_pergunta.Pergunta3 != "")
-         {
-             tmpPergunta1.text = p_pergunta.Pergunta1;
-             tmpPergunta2.text = p_pergunta.Pergunta2;
-             tmpPergunta3.text = p_pergunta.Pergunta3;
-             id_pergunta = p_pergunta.Id;
+        /*   if(p_pergunta.Pergunta1 != "" && p_pergunta.Pergunta2 != "" && p_pergunta.Pergunta3 != "")
+            {
+                tmpPergunta1.text = p_pergunta.Pergunta1;
+                tmpPergunta2.text = p_pergunta.Pergunta2;
+                tmpPergunta3.text = p_pergunta.Pergunta3;
+                id_pergunta = p_pergunta.Id;
 
-         } */
+            } */
+
+        int tamanhoPerguntas = objPerguntas.perguntas.Length;
+        ativarComponentes(tamanhoPerguntas, objPerguntas);
+        
+
+        
     }
 
     //Chama a função para pegar as perguntas no banco
@@ -186,5 +181,104 @@ public class PainelPerguntas : MonoBehaviour
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
         
         SceneManager.LoadScene("SelecaoFase");
+    }
+
+    void ativarComponentes(int qtdPerguntas,Perguntas objPerguntas)
+    {
+        
+        //habilitando os gameObjects das perguntas
+        for(int i=0; i<qtdPerguntas; i++)
+        {
+            pergunta[i].SetActive(true);
+        }
+            //Preenchendo as descricoes das perguntas e suas respectivas alternativas
+            if(qtdPerguntas == 1)
+            {
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');//preenche o array a partir do recorte das strings contidas dentro de perguntas[0].alternativas
+                
+                
+                tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;//preenche o tmpDescricao com a descricao da pergunta vinda do banco
+
+                    for(int i = 0; i < alternativas1.Length; i++)//percorre o vetor de contendo a descricao das alternativas , habilitando os tmp de cada alternativa e as preenchendo com o conteudo
+                    {
+                        alternativaPergunta1[i].SetActive(true);
+                        
+                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    }
+            }else if(qtdPerguntas == 2)
+            {
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');
+                string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
+                
+                
+                tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
+                tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
+                
+                
+                for (int i = 0; i < alternativas1.Length; i++)
+                    {
+                        alternativaPergunta1[i].SetActive(true);
+                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    }
+                    for (int x = 0; x < alternativas2.Length; x++)
+                    {
+                        alternativaPergunta2[x].SetActive(true);
+                        tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
+                    }
+            }
+            else if(qtdPerguntas == 3)
+            {
+                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');
+                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
+                 string[] alternativas3 = objPerguntas.perguntas[2].alternativas.Split('-');
+
+                tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
+                tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
+                tmpDescricao[2].text = objPerguntas.perguntas[2].descricao;
+
+                if(alternativas1.Length > 0 && alternativas1[0] != "")
+                {
+                    for (int i = 0; i < alternativas1.Length; i++)
+                    {
+                        alternativaPergunta1[i].SetActive(true);
+                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    }
+                }
+                else
+                {
+                    inpRespDescritiva[0].SetActive(true);
+                }
+                    if(alternativas2.Length > 0 && alternativas2[0] != "")
+                    {
+                        for (int x = 0; x < alternativas2.Length; x++)
+                        {
+                            alternativaPergunta2[x].SetActive(true);
+                            tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
+                        }
+                    }
+                    else
+                    {
+                        inpRespDescritiva[1].SetActive(true);
+                    }
+                    
+
+                        if(alternativas3.Length > 0 && alternativas3[0] != "")
+                        {
+                            
+                            for (int y = 0; y < alternativas3.Length; y++)
+                            {
+                                alternativaPergunta3[y].SetActive(true);
+                                tmpAlternativaPergunta3[y].text = alternativas3[y].ToString();
+                            }
+                        }
+                        else
+                        {
+                            
+                            inpRespDescritiva[2].SetActive(true);
+                        }
+                    
+            }
+                
+                
     }
 }
