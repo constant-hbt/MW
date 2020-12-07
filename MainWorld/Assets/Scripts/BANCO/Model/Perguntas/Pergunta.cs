@@ -6,11 +6,11 @@ using System;
 [System.Serializable]
 public class Pergunta
 {
-    public int id;
+    public int id_pergunta; //EDITAR NO BANCO A TABELA PERGUNTA E COLOCAR ID_PERGUNTA
     public string descricao;
     //public string pergunta2;
     //public string pergunta3;
-    public List<string> alternativas;
+    public string alternativas;
     public string descritiva;
     public int id_fase;
 
@@ -18,7 +18,7 @@ public class Pergunta
 
     public Pergunta(int id, string pergunta1, string pergunta2, string pergunta3, int id_fase)
     {
-        this.id = id;
+        this.id_pergunta = id;
        // this.pergunta1 = pergunta1;
        // this.pergunta2 = pergunta2;
        // this.pergunta3 = pergunta3;
@@ -28,7 +28,7 @@ public class Pergunta
     public Pergunta(string retornoPHP)
     {
         string[] arrayRetornoPHP = retornoPHP.Split(';');
-        this.id = Convert.ToInt32(arrayRetornoPHP[1]);
+       // this.id = Convert.ToInt32(arrayRetornoPHP[1]);
       //  this.pergunta1 = arrayRetornoPHP[2];
        // this.pergunta2 = arrayRetornoPHP[3];
        // this.pergunta3 = arrayRetornoPHP[4];

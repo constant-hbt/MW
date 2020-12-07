@@ -150,7 +150,7 @@ public class PainelPerguntas : MonoBehaviour
     }
 
     //preenche os campos referentes a pergunta no painel
-    void GetPerguntas(Pergunta p_pergunta)
+    void GetPerguntas(Perguntas p_pergunta)
     {
        /* tmpPergunta1.text = p_pergunta.pergunta1;
         tmpPergunta2.text = p_pergunta.pergunta2;

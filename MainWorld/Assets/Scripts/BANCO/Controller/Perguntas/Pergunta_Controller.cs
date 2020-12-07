@@ -51,13 +51,13 @@ public class Pergunta_Controller : MonoBehaviour
     }
 
     //chama a coroutine que faz a requisição no banco
-    public void ChamarPegarPergunta(int id_fase, System.Action<Pergunta> callback)
+    public void ChamarPegarPergunta(int id_fase, System.Action<Perguntas> callback)
     {
         StartCoroutine(PegarPergunta(id_fase, callback));
     }
 
     //faz a requisição ao banco e traz o retorno
-    IEnumerator PegarPergunta(int id_fase, System.Action<Pergunta> callback)
+    IEnumerator PegarPergunta(int id_fase, System.Action<Perguntas> callback)
     {
         string caminho = "http://localhost/games/captarperguntas.php?";/* "http://jogos.plataformaceos.com.br/mainworld/captarperguntas.php?";*/
         string p_id_fase = "idfase=" + id_fase;
@@ -80,18 +80,22 @@ public class Pergunta_Controller : MonoBehaviour
                 {
                   string jsonResult =  System.Text.Encoding.UTF8.GetString(www.downloadHandler.data,3,www.downloadHandler.data.Length - 3);
                     Debug.Log("JsonResult = " + jsonResult);
-                    // Pergunta objPergunta = new Pergunta(jsonResult);
-                    //Debug.Log("Id = " + objPergunta.id);
+
                     string[] resultado = jsonResult.Split(';');
                     Debug.Log("Resultado[1] = " + resultado[1].Trim());
-                    Pergunta objPergunta = JsonUtility.FromJson<Pergunta>(resultado[1].Trim());
-                    Debug.Log("Descricao = " + objPergunta.descricao);
-                    Debug.Log("Alternativas POS 0 = " + objPergunta.alternativas[0]);
-                    Debug.Log("Alternativas POS 1 = " + objPergunta.alternativas[1]);
-                    Debug.Log("Alternativas POS 2 = " + objPergunta.alternativas[2]);
-                    Debug.Log("Alternativas POS 3 = " + objPergunta.alternativas[3]);
-                    Debug.Log("Alternativas POS 4 = " + objPergunta.alternativas[4]);
-                    callback(objPergunta);
+                    Perguntas objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
+                    
+                    Debug.Log(objPerguntas.perguntas.Length);
+                    Debug.Log("Id_pergunta[0] = " + objPerguntas.perguntas[0].id_pergunta);
+                    Debug.Log("Descricao[0] = " + objPerguntas.perguntas[0].descricao);
+                    Debug.Log("Alternativas[0]= " + objPerguntas.perguntas[0].alternativas);
+                    Debug.Log("Id_pergunta[1] = " + objPerguntas.perguntas[1].id_pergunta);
+                    Debug.Log("Descricao[1] = " + objPerguntas.perguntas[1].descricao);
+                    Debug.Log("Alternativas[1]= " + objPerguntas.perguntas[1].alternativas);
+                    Debug.Log("Id_pergunta[2] = " + objPerguntas.perguntas[2].id_pergunta);
+                    Debug.Log("Descricao[2] = " + objPerguntas.perguntas[2].descricao);
+                    Debug.Log("Alternativas[2]= " + objPerguntas.perguntas[2].alternativas);
+                    callback(objPerguntas);
                 }
             }
         }
