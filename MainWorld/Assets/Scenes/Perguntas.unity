@@ -5048,7 +5048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -341.25003, y: 237.7334}
+  m_AnchoredPosition: {x: -341.25003, y: 237.73364}
   m_SizeDelta: {x: 682, y: 1425}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &872896953
@@ -11814,8 +11814,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575411518}
   m_HandleRect: {fileID: 575411517}
   m_Direction: 2
-  m_Value: 1.0000002
-  m_Size: 0.30150563
+  m_Value: 1
+  m_Size: 0.33366013
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -12150,34 +12150,35 @@ MonoBehaviour:
   - {fileID: 1885470718}
   - {fileID: 425371429}
   - {fileID: 1280118901}
-  opcao1:
+  togglePergunta1:
   - {fileID: 307420503}
-  - {fileID: 873339153}
-  - {fileID: 476570432}
-  opcao2:
   - {fileID: 290264542}
-  - {fileID: 94741291}
-  - {fileID: 2021563491}
-  opcao3:
   - {fileID: 1565349320}
-  - {fileID: 1453305974}
-  - {fileID: 155921883}
-  opcao4:
   - {fileID: 2067494383}
-  - {fileID: 258504889}
-  - {fileID: 659078840}
-  opcao5:
   - {fileID: 1400064402}
-  - {fileID: 611677727}
-  - {fileID: 1214095}
-  opcao6:
   - {fileID: 1002368685}
+  togglePergunta2:
+  - {fileID: 873339153}
+  - {fileID: 94741291}
+  - {fileID: 1453305974}
+  - {fileID: 258504889}
+  - {fileID: 611677727}
   - {fileID: 1451852543}
+  togglePergunta3:
+  - {fileID: 476570432}
+  - {fileID: 2021563491}
+  - {fileID: 155921883}
+  - {fileID: 659078840}
+  - {fileID: 1214095}
   - {fileID: 158376110}
-  inpRespDescritiva:
+  objRespDescritiva:
   - {fileID: 1138057668}
   - {fileID: 1023113182}
   - {fileID: 523542812}
+  inpRespDescritiva:
+  - {fileID: 1138057670}
+  - {fileID: 1023113184}
+  - {fileID: 523542814}
   validarResp1: 0
   validarResp2: 0
   validarResp3: 0
@@ -12185,7 +12186,18 @@ MonoBehaviour:
   respostaPerg1: 
   respostaPerg2: 
   respostaPerg3: 
-  id_pergunta: 0
+  id_pergunta1: 0
+  id_pergunta2: 0
+  id_pergunta3: 0
+  flagPergunta1: 0
+  qtdAlternativasPergunta1: 0
+  qtdToggle1Vazio: 0
+  flagPergunta2: 0
+  qtdAlternativasPergunta2: 0
+  qtdToggle2Vazio: 0
+  flagPergunta3: 0
+  qtdAlternativasPergunta3: 0
+  qtdToggle3Vazio: 0
 --- !u!114 &2131790608
 MonoBehaviour:
   m_ObjectHideFlags: 0

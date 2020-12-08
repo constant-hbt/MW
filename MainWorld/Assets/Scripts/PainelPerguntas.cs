@@ -24,14 +24,12 @@ public class PainelPerguntas : MonoBehaviour
     public TextMeshProUGUI[] tmpAlternativaPergunta2;
     public TextMeshProUGUI[] tmpAlternativaPergunta3;
 
-    public Toggle[] opcao1;
-    public Toggle[] opcao2;
-    public Toggle[] opcao3;
-    public Toggle[] opcao4;
-    public Toggle[] opcao5;
-    public Toggle[] opcao6;
+    public Toggle[] togglePergunta1;
+    public Toggle[] togglePergunta2;
+    public Toggle[] togglePergunta3;
 
-    public GameObject[] inpRespDescritiva;
+    public GameObject[] objRespDescritiva;
+    public TMP_InputField[] inpRespDescritiva;
     
     //Verifica se as respostas foram preenchidas
     public bool validarResp1;
@@ -45,7 +43,20 @@ public class PainelPerguntas : MonoBehaviour
     public string respostaPerg1;
     public string respostaPerg2;
     public string respostaPerg3;
-    public int id_pergunta;
+    public int id_pergunta1;
+    public int id_pergunta2;
+    public int id_pergunta3;
+
+    //valida os toggle de cada pergunta para captar as respostas
+    public bool flagPergunta1;
+    public int qtdAlternativasPergunta1;
+    public int qtdToggle1Vazio;
+    public bool flagPergunta2;
+    public int qtdAlternativasPergunta2;
+    public int qtdToggle2Vazio;
+    public bool flagPergunta3;
+    public int qtdAlternativasPergunta3;
+    public int qtdToggle3Vazio;
 
     void Awake()
     {
@@ -68,65 +79,118 @@ public class PainelPerguntas : MonoBehaviour
     void Update()
     {
         //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 1
-      /*  if(opcaoA1.isOn)
+        if(flagPergunta1 && qtdAlternativasPergunta1 > 0)
         {
-            validarResp1 = true;
-            respostaPerg1 = tmpOpcaoA1.text;
+            qtdToggle1Vazio = 0;
+            for(int i=0; i< qtdAlternativasPergunta1; i++)
+            {
+                if (togglePergunta1[i].isOn)
+                {
+                    validarResp1 = true;
+                    respostaPerg1 = tmpAlternativaPergunta1[i].text;
+                }
+                else
+                {
+                    qtdToggle1Vazio += 1;
+                }
+            }
 
-        }else if (opcaoB1.isOn)
+            if(qtdToggle1Vazio == qtdAlternativasPergunta1)
+            {
+                validarResp1 = false;
+                respostaPerg1 = "";
+            }
+
+        }else if(flagPergunta1 && qtdAlternativasPergunta1 <= 0)
         {
-            validarResp1 = true;
-            respostaPerg1 = tmpOpcaoB1.text;
-
-        }else if (opcaoC1.isOn)
-        {
-            validarResp1 = true;
-            respostaPerg1 = tmpOpcaoC1.text;
-
+            if (inpRespDescritiva[0].text != "")
+            {
+                validarResp1 = true;
+                respostaPerg1 = inpRespDescritiva[0].text;
+            }
+            else
+            {
+                validarResp1 = false;
+                respostaPerg1 = "";
+            }
         }
-        else
-        {
-            validarResp1 = false;
-            respostaPerg1 = "";
-        }
+     
 
-            //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 2
-            if(respDescritiva.text != "")
+        //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 2
+        if(flagPergunta2 && qtdAlternativasPergunta2 > 0)
+        {
+            qtdToggle2Vazio = 0;
+            for(int y=0; y< qtdAlternativasPergunta2; y++)
+            {
+                if (togglePergunta2[y].isOn)
+                {
+                    validarResp2 = true;
+                    respostaPerg2 = tmpAlternativaPergunta2[y].text;
+                }
+                else
+                {
+                    qtdToggle2Vazio += 1;
+                }
+            }
+
+            if(qtdToggle2Vazio == qtdAlternativasPergunta2)
+            {
+                validarResp2 = false;
+                respostaPerg2 = "";
+            }
+        }else if(flagPergunta2 &&  qtdAlternativasPergunta2 <= 0)
+        {
+            if (inpRespDescritiva[1].text != "")
             {
                 validarResp2 = true;
-                respostaPerg2 = respDescritiva.text;
+                respostaPerg2 = inpRespDescritiva[1].text;
             }
             else
             {
                 validarResp2 = false;
                 respostaPerg2 = "";
             }
+        }
+        
 
-                 //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 3
-                 if (opcaoA3.isOn)
+
+        //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 3
+        if (flagPergunta3 && qtdAlternativasPergunta3 > 0)
+        {
+            qtdToggle3Vazio = 0;
+            for (int z = 0; z < qtdAlternativasPergunta3; z++)
+            {
+                if (togglePergunta3[z].isOn)
                 {
                     validarResp3 = true;
-                    respostaPerg3 = tmpOpcaoA3.text;
-
-                }
-                else if (opcaoB3.isOn)
-                {
-                    validarResp3 = true;
-                    respostaPerg3 = tmpOpcaoB3.text;
-
-                }
-                else if (opcaoC3.isOn)
-                {
-                    validarResp3 = true;
-                    respostaPerg3 = tmpOpcaoC3.text;
-
+                    respostaPerg3 = tmpAlternativaPergunta3[z].text;
                 }
                 else
                 {
-                    validarResp3 = false;
-                    respostaPerg3 = "";
+                    qtdToggle3Vazio += 1;
                 }
-                */
+            }
+
+            if(qtdToggle3Vazio == qtdAlternativasPergunta3)
+            {
+                validarResp3 = false;
+                respostaPerg3 = "";
+            }
+        }
+        else if (flagPergunta3 && qtdAlternativasPergunta3 <= 0)
+        {
+            
+            if (inpRespDescritiva[2].text != "")
+            {
+                validarResp3 = true;
+                respostaPerg3 = inpRespDescritiva[2].text;
+            }
+            else
+            {
+                validarResp3 = false;
+                respostaPerg3 = "";
+            }
+        }
 
         if (validarResp1 && validarResp2 && validarResp3)
         {
@@ -141,24 +205,8 @@ public class PainelPerguntas : MonoBehaviour
     //preenche os campos referentes a pergunta no painel
     void GetPerguntas(Perguntas objPerguntas)
     {
-        /* tmpPergunta1.text = p_pergunta.pergunta1;
-         tmpPergunta2.text = p_pergunta.pergunta2;
-         tmpPergunta3.text = p_pergunta.pergunta3;
-         id_pergunta = p_pergunta.id;*/
-
-        /*   if(p_pergunta.Pergunta1 != "" && p_pergunta.Pergunta2 != "" && p_pergunta.Pergunta3 != "")
-            {
-                tmpPergunta1.text = p_pergunta.Pergunta1;
-                tmpPergunta2.text = p_pergunta.Pergunta2;
-                tmpPergunta3.text = p_pergunta.Pergunta3;
-                id_pergunta = p_pergunta.Id;
-
-            } */
-
         int tamanhoPerguntas = objPerguntas.perguntas.Length;
         ativarComponentes(tamanhoPerguntas, objPerguntas);
-        
-
         
     }
 
@@ -176,7 +224,7 @@ public class PainelPerguntas : MonoBehaviour
         resposta.Resposta_pergunta1 = respostaPerg1;
         resposta.Resposta_pergunta2 = respostaPerg2;
         resposta.Resposta_pergunta3 = respostaPerg3;
-        resposta.Id_pergunta = id_pergunta;
+        resposta.Id_pergunta = id_pergunta1;
 
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
         
@@ -195,36 +243,66 @@ public class PainelPerguntas : MonoBehaviour
             if(qtdPerguntas == 1)
             {
                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');//preenche o array a partir do recorte das strings contidas dentro de perguntas[0].alternativas
-                
-                
+
+                flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;//preenche o tmpDescricao com a descricao da pergunta vinda do banco
 
-                    for(int i = 0; i < alternativas1.Length; i++)//percorre o vetor de contendo a descricao das alternativas , habilitando os tmp de cada alternativa e as preenchendo com o conteudo
+                if (alternativas1.Length > 0 && alternativas1[0] != "")
+                {
+                    qtdAlternativasPergunta1 = alternativas1.Length;
+                    for (int i = 0; i < alternativas1.Length; i++)//percorre o vetor de contendo a descricao das alternativas , habilitando os tmp de cada alternativa e as preenchendo com o conteudo
                     {
                         alternativaPergunta1[i].SetActive(true);
                         
                         tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
                     }
-            }else if(qtdPerguntas == 2)
+                }
+                else
+                {
+                    qtdAlternativasPergunta1 = 0;
+                    objRespDescritiva[0].SetActive(true);
+                }
+            }
+            else if(qtdPerguntas == 2)
             {
                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');
                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
-                
-                
+
+                flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
+                
+                flagPergunta2 = true;
                 tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
-                
-                
+
+            if (alternativas1.Length > 0 && alternativas1[0] != "")
+            {
+                qtdAlternativasPergunta1 = alternativas1.Length;
                 for (int i = 0; i < alternativas1.Length; i++)
-                    {
-                        alternativaPergunta1[i].SetActive(true);
-                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
-                    }
+                {
+                    alternativaPergunta1[i].SetActive(true);
+                    tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                }
+            }
+            else
+            {
+                qtdAlternativasPergunta1 = 0;
+                objRespDescritiva[0].SetActive(true);
+            }
+
+                if (alternativas2.Length > 0 && alternativas2[0] != "")
+                {
+                    qtdAlternativasPergunta2 = alternativas2.Length;
                     for (int x = 0; x < alternativas2.Length; x++)
                     {
                         alternativaPergunta2[x].SetActive(true);
                         tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
                     }
+                }
+                else
+                {
+                    qtdAlternativasPergunta2 = 0;
+                    objRespDescritiva[1].SetActive(true);
+                }
             }
             else if(qtdPerguntas == 3)
             {
@@ -232,12 +310,18 @@ public class PainelPerguntas : MonoBehaviour
                  string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
                  string[] alternativas3 = objPerguntas.perguntas[2].alternativas.Split('-');
 
+                flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
+                
+                flagPergunta2 = true;
                 tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
+
+                flagPergunta3 = true;
                 tmpDescricao[2].text = objPerguntas.perguntas[2].descricao;
 
                 if(alternativas1.Length > 0 && alternativas1[0] != "")
                 {
+                     qtdAlternativasPergunta1 = alternativas1.Length;
                     for (int i = 0; i < alternativas1.Length; i++)
                     {
                         alternativaPergunta1[i].SetActive(true);
@@ -246,10 +330,12 @@ public class PainelPerguntas : MonoBehaviour
                 }
                 else
                 {
-                    inpRespDescritiva[0].SetActive(true);
+                    qtdAlternativasPergunta1 = 0;
+                    objRespDescritiva[0].SetActive(true);
                 }
                     if(alternativas2.Length > 0 && alternativas2[0] != "")
                     {
+                        qtdAlternativasPergunta2 = alternativas2.Length;
                         for (int x = 0; x < alternativas2.Length; x++)
                         {
                             alternativaPergunta2[x].SetActive(true);
@@ -258,13 +344,14 @@ public class PainelPerguntas : MonoBehaviour
                     }
                     else
                     {
-                        inpRespDescritiva[1].SetActive(true);
+                        qtdAlternativasPergunta2 = 0;
+                        objRespDescritiva[1].SetActive(true);
                     }
                     
 
                         if(alternativas3.Length > 0 && alternativas3[0] != "")
                         {
-                            
+                            qtdAlternativasPergunta3 = alternativas3.Length;
                             for (int y = 0; y < alternativas3.Length; y++)
                             {
                                 alternativaPergunta3[y].SetActive(true);
@@ -273,8 +360,8 @@ public class PainelPerguntas : MonoBehaviour
                         }
                         else
                         {
-                            
-                            inpRespDescritiva[2].SetActive(true);
+                            qtdAlternativasPergunta3 = 0;
+                            objRespDescritiva[2].SetActive(true);
                         }
                     
             }
