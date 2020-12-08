@@ -35,6 +35,7 @@ public class PainelPerguntas : MonoBehaviour
     public bool validarResp1;
     public bool validarResp2;
     public bool validarResp3;
+    public int qtdPerguntas;
 
     public Button btnSalvar;
 
@@ -192,7 +193,7 @@ public class PainelPerguntas : MonoBehaviour
             }
         }
 
-        if (validarResp1 && validarResp2 && validarResp3)
+        if (qtdPerguntas == 1 && validarResp1 || qtdPerguntas == 2 && validarResp1 && validarResp2 || qtdPerguntas == 3 && validarResp1 && validarResp2 && validarResp3)
         {
             btnSalvar.enabled = true;
         }
@@ -205,8 +206,24 @@ public class PainelPerguntas : MonoBehaviour
     //preenche os campos referentes a pergunta no painel
     void GetPerguntas(Perguntas objPerguntas)
     {
-        int tamanhoPerguntas = objPerguntas.perguntas.Length;
-        ativarComponentes(tamanhoPerguntas, objPerguntas);
+        //preenchendo o id de cada pergunta
+        for(int i=0; i<objPerguntas.perguntas.Length; i++)
+        {
+            switch (i){
+                case 0:
+                    id_pergunta1 = objPerguntas.perguntas[i].id_pergunta;
+                    break;
+                case 1:
+                    id_pergunta2 = objPerguntas.perguntas[i].id_pergunta;
+                    break;
+                case 2:
+                    id_pergunta3 = objPerguntas.perguntas[i].id_pergunta;
+                    break;
+            }
+        }
+        
+        qtdPerguntas = objPerguntas.perguntas.Length;
+        ativarComponentes(qtdPerguntas, objPerguntas);
         
     }
 
@@ -219,7 +236,7 @@ public class PainelPerguntas : MonoBehaviour
     public void botaoSalvar()
     {
        
-
+        /*
         Resposta resposta = new Resposta();
         resposta.Resposta_pergunta1 = respostaPerg1;
         resposta.Resposta_pergunta2 = respostaPerg2;
@@ -227,7 +244,7 @@ public class PainelPerguntas : MonoBehaviour
         resposta.Id_pergunta = id_pergunta1;
 
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
-        
+        */
         SceneManager.LoadScene("SelecaoFase");
     }
 

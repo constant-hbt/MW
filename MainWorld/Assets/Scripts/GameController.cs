@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     [Header("Configurações do GAME")]
     public GameObject[] gameControllers;
     private int numeroFasesGAME = 9; //contém o numero específico de fases que o jogo possui no momento
+    public bool[] perguntasRespondidas;//array contendo as perguntas de que fase foram respondidas
 
     [Header("Banco de Dados Seleção de Fase")]
     public int idFaseEmExecucao; //contem o id da fase que esta sendo executada no momento ---> ao clicar para abrir a fase essa variavel sera alimentada

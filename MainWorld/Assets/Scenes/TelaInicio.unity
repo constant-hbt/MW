@@ -2414,6 +2414,7 @@ MonoBehaviour:
   descricaoFase: 
   id_Desempenho: 0
   gameControllers: []
+  perguntasRespondidas: 000000000000000000
   idFaseEmExecucao: 0
   fasesConcluidas: 0
   progressoAtual: 0
@@ -2423,6 +2424,7 @@ MonoBehaviour:
   numEstrelas: 0
   errosFase: 
   EstrelasFases: 000000000000000000000000000000000000000000000000000000000000000000000000
+  ultima_fase_concluida: 0
   vidaMax: 3
   qtdBlocosUsados: 0
   qtdMoedasColetadas: 0

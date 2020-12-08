@@ -112,8 +112,19 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void btnPlay()
     {
-        // StartCoroutine(voltarSelecaoFase());
-        SceneManager.LoadScene("Perguntas");
+        
+
+        if(!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+        {
+
+            SceneManager.LoadScene("Perguntas");
+            _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
+        }
+        else
+        {
+            StartCoroutine(voltarSelecaoFase());
+        }
+
     }
 
    public void contabilizarDesempenho(int idFase)
