@@ -66,7 +66,7 @@ public class PainelPerguntas : MonoBehaviour
 
         btnSalvar.enabled = false;
 
-        CaptarPerguntas(_gameController.idFaseEmExecucao);
+       // CaptarPerguntas(_gameController.idFaseEmExecucao);
     }
 
     void Start()
@@ -290,6 +290,7 @@ public class PainelPerguntas : MonoBehaviour
                 
                 flagPergunta2 = true;
                 tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
+                
 
             if (alternativas1.Length > 0 && alternativas1[0] != "")
             {
