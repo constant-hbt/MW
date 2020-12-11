@@ -79,22 +79,11 @@ public class Pergunta_Controller : MonoBehaviour
                 if (www.isDone)
                 {
                   string jsonResult =  System.Text.Encoding.UTF8.GetString(www.downloadHandler.data,3,www.downloadHandler.data.Length - 3);
-                   // Debug.Log("JsonResult = " + jsonResult);
 
-                    string[] resultado = jsonResult.Split(';');
-                    //Debug.Log("Resultado[1] = " + resultado[1].Trim());
+                  string[] resultado = jsonResult.Split(';');
+
                     Perguntas objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
-                    
-                 /*   Debug.Log(objPerguntas.perguntas.Length);
-                    Debug.Log("Id_pergunta[0] = " + objPerguntas.perguntas[0].id_pergunta);
-                    Debug.Log("Descricao[0] = " + objPerguntas.perguntas[0].descricao);
-                    Debug.Log("Alternativas[0]= " + objPerguntas.perguntas[0].alternativas);
-                    Debug.Log("Id_pergunta[1] = " + objPerguntas.perguntas[1].id_pergunta);
-                    Debug.Log("Descricao[1] = " + objPerguntas.perguntas[1].descricao);
-                    Debug.Log("Alternativas[1]= " + objPerguntas.perguntas[1].alternativas);
-                    Debug.Log("Id_pergunta[2] = " + objPerguntas.perguntas[2].id_pergunta);
-                    Debug.Log("Descricao[2] = " + objPerguntas.perguntas[2].descricao);
-                    Debug.Log("Alternativas[2]= " + objPerguntas.perguntas[2].alternativas);*/
+
                     callback(objPerguntas);
                 }
             }

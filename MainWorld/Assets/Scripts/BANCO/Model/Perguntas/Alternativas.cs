@@ -6,6 +6,7 @@ public class Alternativas : MonoBehaviour
 {
 
 
-    public List<string> alternativas;
-    
+    //public int id;
+    // public string descricao;
+    public string descricao;
 }

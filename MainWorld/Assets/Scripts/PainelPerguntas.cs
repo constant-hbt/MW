@@ -66,7 +66,7 @@ public class PainelPerguntas : MonoBehaviour
 
         btnSalvar.enabled = false;
 
-       // CaptarPerguntas(_gameController.idFaseEmExecucao);
+        CaptarPerguntas(_gameController.idFaseEmExecucao);
     }
 
     void Start()
@@ -259,7 +259,7 @@ public class PainelPerguntas : MonoBehaviour
             //Preenchendo as descricoes das perguntas e suas respectivas alternativas
             if(qtdPerguntas == 1)
             {
-                string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');//preenche o array a partir do recorte das strings contidas dentro de perguntas[0].alternativas
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
 
                 flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;//preenche o tmpDescricao com a descricao da pergunta vinda do banco
@@ -282,8 +282,8 @@ public class PainelPerguntas : MonoBehaviour
             }
             else if(qtdPerguntas == 2)
             {
-                string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');
-                string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
+                string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
 
                 flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
@@ -324,9 +324,9 @@ public class PainelPerguntas : MonoBehaviour
             }
             else if(qtdPerguntas == 3)
             {
-                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas.Split('-');
-                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas.Split('-');
-                 string[] alternativas3 = objPerguntas.perguntas[2].alternativas.Split('-');
+                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
+                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
+                 string[] alternativas3 = objPerguntas.perguntas[2].alternativas;
 
                 flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;

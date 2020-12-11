@@ -8,20 +8,16 @@ public class Pergunta
 {
     public int id_pergunta; //EDITAR NO BANCO A TABELA PERGUNTA E COLOCAR ID_PERGUNTA
     public string descricao;
-    //public string pergunta2;
-    //public string pergunta3;
-    public string alternativas;
-    public string descritiva;
+    public string[] alternativas; //vai trocar para public Alternativas[] alternativas;
     public int id_fase;
 
     public Pergunta() { }
 
-    public Pergunta(int id, string pergunta1, string pergunta2, string pergunta3, int id_fase)
+    public Pergunta(int id, string descricao, string[] alternativas, int id_fase)
     {
         this.id_pergunta = id;
-       // this.pergunta1 = pergunta1;
-       // this.pergunta2 = pergunta2;
-       // this.pergunta3 = pergunta3;
+        this.descricao = descricao;
+        this.alternativas = alternativas;
         this.id_fase = id_fase;
     }
 
