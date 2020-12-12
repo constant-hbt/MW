@@ -233,21 +233,6 @@ public class PainelPerguntas : MonoBehaviour
         _pergunta_Controller.ChamarPegarPergunta(id_fase, GetPerguntas);
     }
 
-    public void botaoSalvar()
-    {
-       
-        /*
-        Resposta resposta = new Resposta();
-        resposta.Resposta_pergunta1 = respostaPerg1;
-        resposta.Resposta_pergunta2 = respostaPerg2;
-        resposta.Resposta_pergunta3 = respostaPerg3;
-        resposta.Id_pergunta = id_pergunta1;
-
-        _pergunta_Controller.ChamarRegistrarResposta(resposta);
-        */
-        SceneManager.LoadScene("SelecaoFase");
-    }
-
     void ativarComponentes(int qtdPerguntas,Perguntas objPerguntas)
     {
         
@@ -385,5 +370,20 @@ public class PainelPerguntas : MonoBehaviour
             }
                 
                 
+    }
+
+    public void botaoSalvar()
+    {
+        Resposta resposta = new Resposta();
+        resposta.Id_pergunta1 = id_pergunta1;
+        resposta.Resposta1 = respostaPerg1;
+        resposta.Id_pergunta2 = id_pergunta2;
+        resposta.Resposta2 = respostaPerg2;
+        resposta.Id_pergunta3 = id_pergunta3;
+        resposta.Resposta3 = respostaPerg3;
+        
+        _pergunta_Controller.ChamarRegistrarResposta(resposta);
+        
+        SceneManager.LoadScene("SelecaoFase");
     }
 }

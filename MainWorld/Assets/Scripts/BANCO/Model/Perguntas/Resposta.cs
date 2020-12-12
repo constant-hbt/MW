@@ -5,50 +5,58 @@ using UnityEngine;
 [System.Serializable]
 public class Resposta 
 {
-    public int id;
-    public string resposta_pergunta1;
-    public string resposta_pergunta2;
-    public string resposta_pergunta3;
-    public int id_pergunta;
+    public int id_pergunta1;
+    public int id_pergunta2;
+    public int id_pergunta3;
+    public string resposta1;
+    public string resposta2;
+    public string resposta3;
 
     public Resposta() { }
 
-    public Resposta(int p_id, string p_resposta_pergunta1, string p_resposta_pergunta2, string p_resposta_pergunta3, int p_id_pergunta)
+    public Resposta(int p_id_pergunta1, int p_id_pergunta2, int p_id_pergunta3, string p_resposta1, string p_resposta2, string p_resposta3)
     {
-        this.id = p_id;
-        this.resposta_pergunta1 = p_resposta_pergunta1;
-        this.resposta_pergunta2 = p_resposta_pergunta2;
-        this.resposta_pergunta3 = p_resposta_pergunta3;
-        this.id_pergunta = p_id_pergunta;
+        this.id_pergunta1 = p_id_pergunta1;
+        this.id_pergunta2 = p_id_pergunta2;
+        this.id_pergunta3 = p_id_pergunta3;
+        this.resposta1 = p_resposta1;
+        this.resposta2 = p_resposta2;
+        this.resposta3 = p_resposta3;
     }
 
-    public int Id
+    public int Id_pergunta1
     {
-        get { return id; }
-        set { id = value; }
+        get { return id_pergunta1; }
+        set { id_pergunta1 = value; }
     }
 
-    public string Resposta_pergunta1
+    public int Id_pergunta2
     {
-        get { return resposta_pergunta1; }
-        set { resposta_pergunta1 = value; }
+        get { return id_pergunta2; }
+        set { id_pergunta2 = value; }
+    }
+
+    public int Id_pergunta3
+    {
+        get { return id_pergunta3; }
+        set { id_pergunta3 = value; }
+    }
+    public string Resposta1
+    {
+        get { return resposta1; }
+        set { resposta1 = value; }
+    }
+
+    public string Resposta2
+    {
+        get { return resposta2; }
+        set { resposta2 = value; }
+    }
+
+    public string Resposta3
+    {
+        get { return resposta3; }
+        set { resposta3 = value; }
     }
     
-    public string Resposta_pergunta2
-    {
-        get { return resposta_pergunta2; }
-        set { resposta_pergunta2 = value; }
-    }
-
-    public string Resposta_pergunta3
-    {
-        get { return resposta_pergunta3; }
-        set { resposta_pergunta3 = value; }
-    }
-
-    public int Id_pergunta
-    {
-        get { return id_pergunta; }
-        set { id_pergunta = value; }
-    }
 }

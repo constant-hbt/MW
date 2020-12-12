@@ -18,13 +18,32 @@ public class Pergunta_Controller : MonoBehaviour
     IEnumerator RegistrarResposta(Resposta resposta)
     {
         string caminho = "http://localhost/games/salvarresposta.php?";// "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";
-        string p_Resposta1 = "resposta1=" + resposta.Resposta_pergunta1 + "&";
-        string p_Resposta2 = "resposta2=" + resposta.Resposta_pergunta2 + "&";
-        string p_Resposta3 = "resposta3=" + resposta.Resposta_pergunta3 + "&";
-        string p_Pergunta_id = "id_pergunta=" + resposta.Id_pergunta;
+        string p_IdPergunta1 = "id_pergunta1=" + resposta.Id_pergunta1 + "&";
+        string p_Resposta1 = "resposta1=" + resposta.Resposta1 + "&";
+        string p_IdPergunta2 = "id_pergunta2=" + resposta.Id_pergunta2 + "&";
+        string p_Resposta2 = "resposta2=" + resposta.Resposta2 + "&";
+        string p_IdPergunta3 = "id_pergunta3=" + resposta.Id_pergunta3 + "&";
+        string p_Resposta3 = "resposta3=" + resposta.Resposta3;
 
-        Debug.Log(p_Pergunta_id);
-        string url = string.Format("{0}{1}{2}{3}{4}", caminho, p_Resposta1, p_Resposta2, p_Resposta3, p_Pergunta_id);
+        string url = "";
+
+        if (p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 == "" && p_Resposta2 == "" && p_IdPergunta3 == "" && p_Resposta3 == "")
+        {
+
+           url = string.Format("{0}{1}{2}", caminho, p_IdPergunta1, p_Resposta1);
+
+        }else if(p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 == "" && p_Resposta3 == "")
+        {
+
+            url = string.Format("{0}{1}{2}{3}{4}", caminho, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2);
+
+        }else if(p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 != "" && p_Resposta3 != "")
+        {
+
+            url = string.Format("{0}{1}{2}{3}{4}{5}{6}", caminho, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2, p_IdPergunta3, p_Resposta3);
+
+        }
+
         Debug.Log("Url montada = "+url);
 
         using (UnityWebRequest www = UnityWebRequest.Get(url))
@@ -83,7 +102,7 @@ public class Pergunta_Controller : MonoBehaviour
                   string[] resultado = jsonResult.Split(';');
 
                     Perguntas objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
-
+                    Debug.Log("Tamanho = "+objPerguntas.perguntas.Length);
                     callback(objPerguntas);
                 }
             }
