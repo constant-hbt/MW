@@ -37,7 +37,14 @@ public class PainelPerguntas : MonoBehaviour
     public bool validarResp3;
     public int qtdPerguntas;
 
+    //Configurações do botão salvar
     public Button btnSalvar;
+    public Color colorDesabilitado;
+    public Color colorHabilitado;
+    public Color colorTmpSalvarDesabilitado;
+    public Color colorTmpSalvarHabilitado;
+    public Image objBtnSalvar;
+    public TextMeshProUGUI tmpSalvar;
 
     //Captura as respostas
 
@@ -59,13 +66,14 @@ public class PainelPerguntas : MonoBehaviour
     public int qtdAlternativasPergunta3;
     public int qtdToggle3Vazio;
 
+
+    
     void Awake()
     {
         _pergunta_Controller = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
 
-        btnSalvar.enabled = false;
-
+        DesabilitarBotaoSalvar();
         CaptarPerguntas(_gameController.idFaseEmExecucao);
     }
 
@@ -195,11 +203,11 @@ public class PainelPerguntas : MonoBehaviour
 
         if (qtdPerguntas == 1 && validarResp1 || qtdPerguntas == 2 && validarResp1 && validarResp2 || qtdPerguntas == 3 && validarResp1 && validarResp2 && validarResp3)
         {
-            btnSalvar.enabled = true;
+            HabilitarBotaoSalvar();
         }
         else
         {
-            btnSalvar.enabled = false;
+            DesabilitarBotaoSalvar();
         }
     }
 
@@ -372,7 +380,7 @@ public class PainelPerguntas : MonoBehaviour
                 
     }
 
-    public void botaoSalvar()
+    public void SalvarResposta()
     {
         Resposta resposta = new Resposta();
         resposta.Id_pergunta1 = id_pergunta1;
@@ -385,5 +393,18 @@ public class PainelPerguntas : MonoBehaviour
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
         
         SceneManager.LoadScene("SelecaoFase");
+    }
+
+    public void DesabilitarBotaoSalvar()
+    {
+        btnSalvar.enabled = false;
+        objBtnSalvar.color = colorDesabilitado;
+        tmpSalvar.color = colorTmpSalvarDesabilitado;
+    }
+    public void HabilitarBotaoSalvar()
+    {
+        btnSalvar.enabled = true;
+        objBtnSalvar.color = colorHabilitado;
+        tmpSalvar.color = colorTmpSalvarHabilitado;
     }
 }
