@@ -426,13 +426,13 @@ public class PlayerController : MonoBehaviour
             // Teste(rayCast_ColidindoInimigo);
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_ColidindoInimigo = " + rayCast_ColidindoInimigo);
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-            //CondicaoHaInimigo(rayCast_ColidindoInimigo);
+            CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
            // Debug.Log("Entrei dentro do interagirInimigo, estou dentro do if, e estou enviado rayCast_NaoColidindoInimigo = " + rayCast_NaoColidindoInimigo);
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-           //CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+           CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
@@ -500,11 +500,9 @@ public class PlayerController : MonoBehaviour
     }
     IEnumerator Avancar()
     {//configurações da movimentação de avanço do player 
-     
+        habilitaColisorEmPe();
         playerRB.velocity = new Vector2((moveX * speed), playerRB.velocity.y);
 
-        Debug.Log("Valor da velocidade de movimento no eixo X = " + moveX * speed);
-        Debug.Log("Valor do playerRB.velocity.x = " + playerRB.velocity.x);
         playerAnimator.SetInteger("idAnimation", 1);
         passeiFase = false;
         StartCoroutine("diminuirQTDBlocosU");
@@ -537,7 +535,7 @@ public class PlayerController : MonoBehaviour
             habilitaColisorAbaixado();
             playerAnimator.SetInteger("idAnimation", 2);
         }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.8f);
         playerAnimator.SetInteger("idAnimation", 0);
        
         habilitaColisorEmPe();

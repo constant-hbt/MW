@@ -102,7 +102,6 @@ public class Pergunta_Controller : MonoBehaviour
                   string[] resultado = jsonResult.Split(';');
 
                     Perguntas objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
-                    Debug.Log("Tamanho = "+objPerguntas.perguntas.Length);
                     callback(objPerguntas);
                 }
             }

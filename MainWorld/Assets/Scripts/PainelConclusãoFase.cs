@@ -79,14 +79,14 @@ public class PainelConclusãoFase : MonoBehaviour
         jaEnvieiRegistro = false;
 
         Debug.Log("Passei a fase e estou salvando o historico");
-       // _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
-                            //                 _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
+        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
     }
     void Update()
     {
         if (habilitarAlertCodigo)
         {
-           // ChamandoAlertFinalFase();
+            ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -116,13 +116,12 @@ public class PainelConclusãoFase : MonoBehaviour
 
         if(!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
         {
-
-            SceneManager.LoadScene("Perguntas");
-            _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
+            StartCoroutine(voltarSelecaoFase("IrAoPainelPergunta"));
+            
         }
         else
         {
-            StartCoroutine(voltarSelecaoFase());
+            StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
         }
 
     }
@@ -150,12 +149,24 @@ public class PainelConclusãoFase : MonoBehaviour
         // }
     }
 
-    IEnumerator voltarSelecaoFase()
+    IEnumerator voltarSelecaoFase(string acao)
     {
-     //  CentralizarWebGl();
-        yield return new WaitForSeconds(1.7f);
-        SceneManager.LoadScene("SelecaoFase");
+        switch (acao)
+        {
+            case "voltarSelecaoFase":
+                CentralizarWebGl();
+                yield return new WaitForSeconds(1.7f);
+                SceneManager.LoadScene("SelecaoFase");
+                break;
+            case "IrAoPainelPergunta":
+                CentralizarWebGl();
+                yield return new WaitForSeconds(1.7f);
+                SceneManager.LoadScene("Perguntas");
+                _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
+                break;
+        }
 
+       
     }
 
 }

@@ -54,11 +54,11 @@ public class InimigoArqueiro : MonoBehaviour
     {
         if(this.gameObject.transform.position.x < posicaoPlayer.position.x)
         {
-            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * 100, 0));
+            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * 110, 0));
         }
         else
         {
-            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * -100, 0));
+            flecha.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidadeFlecha * -110, 0));
         }
         
 
@@ -68,7 +68,7 @@ public class InimigoArqueiro : MonoBehaviour
     }
     IEnumerator validarNovoAtaque()
     {
-        yield return new WaitForSeconds(2.75f);//era 3.5 e a velocidade da flecha era 1
+        yield return new WaitForSeconds(2.65f);//era 2.75 e a velocidade da flecha era 1
         novoAtaque = true;
     }
 

@@ -69,6 +69,9 @@ public class ControllerFase : MonoBehaviour
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         _historico_Controller = FindObjectOfType(typeof(Historico_Controller)) as Historico_Controller;
+
+        _gameController.parteFaseAtual = 0;
+
         //ativa a parte da fase
         if (fases.Length != 0)
         {
@@ -80,7 +83,7 @@ public class ControllerFase : MonoBehaviour
 
         }
 
-
+        
         //inicia o player na parte da fase que ele estava anteriormente, se a fase estiver iniciando ele sera iniciado na parte 0
         _playerController.gameObject.transform.position = new Vector3(posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.x, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.y, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.z);
         camera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, 0);
@@ -91,7 +94,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-          //  SistemaDeEnableDisableBlocos(false); //VER ISSO AQUI
+            SistemaDeEnableDisableBlocos(false); //VER ISSO AQUI
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -106,8 +109,8 @@ public class ControllerFase : MonoBehaviour
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
       
-       //  SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-       //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
