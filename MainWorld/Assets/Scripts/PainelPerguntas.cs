@@ -85,7 +85,7 @@ public class PainelPerguntas : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
         //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 1
         if(flagPergunta1 && qtdAlternativasPergunta1 > 0)
@@ -211,46 +211,56 @@ public class PainelPerguntas : MonoBehaviour
         }
     }
 
-    //preenche os campos referentes a pergunta no painel
-    void GetPerguntas(Perguntas objPerguntas)
-    {
-        //preenchendo o id de cada pergunta
-        for(int i=0; i<objPerguntas.perguntas.Length; i++)
-        {
-            switch (i){
-                case 0:
-                    id_pergunta1 = objPerguntas.perguntas[i].id_pergunta;
-                    break;
-                case 1:
-                    id_pergunta2 = objPerguntas.perguntas[i].id_pergunta;
-                    break;
-                case 2:
-                    id_pergunta3 = objPerguntas.perguntas[i].id_pergunta;
-                    break;
-            }
-        }
-        
-        qtdPerguntas = objPerguntas.perguntas.Length;
-        ativarComponentes(qtdPerguntas, objPerguntas);
-        
-    }
-
     //Chama a função para pegar as perguntas no banco
     public void CaptarPerguntas(int id_fase)
     {
         _pergunta_Controller.ChamarPegarPergunta(id_fase, GetPerguntas);
     }
 
+
+    //preenche os campos referentes a pergunta no painel
+    void GetPerguntas(Perguntas objPerguntas)
+    {
+        if (objPerguntas.perguntas.Length > 0)
+        {
+            //preenchendo o id de cada pergunta
+            for (int i = 0; i < objPerguntas.perguntas.Length; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        id_pergunta1 = objPerguntas.perguntas[i].id_pergunta;
+                        break;
+                    case 1:
+                        id_pergunta2 = objPerguntas.perguntas[i].id_pergunta;
+                        break;
+                    case 2:
+                        id_pergunta3 = objPerguntas.perguntas[i].id_pergunta;
+                        break;
+                }
+            }
+
+            qtdPerguntas = objPerguntas.perguntas.Length;
+            ativarComponentes(qtdPerguntas, objPerguntas);
+        }
+        else
+        {
+            Debug.Log("Tamanho do objPerguntas = " + objPerguntas.perguntas.Length);
+        }
+    }
+
+
     void ativarComponentes(int qtdPerguntas,Perguntas objPerguntas)
     {
-        
-        //habilitando os gameObjects das perguntas
-        for(int i=0; i<qtdPerguntas; i++)
+        if (objPerguntas.perguntas.Length > 0)
         {
-            pergunta[i].SetActive(true);
-        }
+            //habilitando os gameObjects das perguntas
+            for (int i = 0; i < qtdPerguntas; i++)
+            {
+                pergunta[i].SetActive(true);
+            }
             //Preenchendo as descricoes das perguntas e suas respectivas alternativas
-            if(qtdPerguntas == 1)
+            if (qtdPerguntas == 1)
             {
                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
 
@@ -263,7 +273,7 @@ public class PainelPerguntas : MonoBehaviour
                     for (int i = 0; i < alternativas1.Length; i++)//percorre o vetor de contendo a descricao das alternativas , habilitando os tmp de cada alternativa e as preenchendo com o conteudo
                     {
                         alternativaPergunta1[i].SetActive(true);
-                        
+
                         tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
                     }
                 }
@@ -273,32 +283,32 @@ public class PainelPerguntas : MonoBehaviour
                     objRespDescritiva[0].SetActive(true);
                 }
             }
-            else if(qtdPerguntas == 2)
+            else if (qtdPerguntas == 2)
             {
                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
 
                 flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
-                
+
                 flagPergunta2 = true;
                 tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
-                
 
-            if (alternativas1.Length > 0 && alternativas1[0] != "")
-            {
-                qtdAlternativasPergunta1 = alternativas1.Length;
-                for (int i = 0; i < alternativas1.Length; i++)
+
+                if (alternativas1.Length > 0 && alternativas1[0] != "")
                 {
-                    alternativaPergunta1[i].SetActive(true);
-                    tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    qtdAlternativasPergunta1 = alternativas1.Length;
+                    for (int i = 0; i < alternativas1.Length; i++)
+                    {
+                        alternativaPergunta1[i].SetActive(true);
+                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    }
                 }
-            }
-            else
-            {
-                qtdAlternativasPergunta1 = 0;
-                objRespDescritiva[0].SetActive(true);
-            }
+                else
+                {
+                    qtdAlternativasPergunta1 = 0;
+                    objRespDescritiva[0].SetActive(true);
+                }
 
                 if (alternativas2.Length > 0 && alternativas2[0] != "")
                 {
@@ -315,24 +325,24 @@ public class PainelPerguntas : MonoBehaviour
                     objRespDescritiva[1].SetActive(true);
                 }
             }
-            else if(qtdPerguntas == 3)
+            else if (qtdPerguntas == 3)
             {
-                 string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
-                 string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
-                 string[] alternativas3 = objPerguntas.perguntas[2].alternativas;
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
+                string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
+                string[] alternativas3 = objPerguntas.perguntas[2].alternativas;
 
                 flagPergunta1 = true;
                 tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
-                
+
                 flagPergunta2 = true;
                 tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
 
                 flagPergunta3 = true;
                 tmpDescricao[2].text = objPerguntas.perguntas[2].descricao;
 
-                if(alternativas1.Length > 0 && alternativas1[0] != "")
+                if (alternativas1.Length > 0 && alternativas1[0] != "")
                 {
-                     qtdAlternativasPergunta1 = alternativas1.Length;
+                    qtdAlternativasPergunta1 = alternativas1.Length;
                     for (int i = 0; i < alternativas1.Length; i++)
                     {
                         alternativaPergunta1[i].SetActive(true);
@@ -344,45 +354,46 @@ public class PainelPerguntas : MonoBehaviour
                     qtdAlternativasPergunta1 = 0;
                     objRespDescritiva[0].SetActive(true);
                 }
-                    if(alternativas2.Length > 0 && alternativas2[0] != "")
+                if (alternativas2.Length > 0 && alternativas2[0] != "")
+                {
+                    qtdAlternativasPergunta2 = alternativas2.Length;
+                    for (int x = 0; x < alternativas2.Length; x++)
                     {
-                        qtdAlternativasPergunta2 = alternativas2.Length;
-                        for (int x = 0; x < alternativas2.Length; x++)
-                        {
-                            alternativaPergunta2[x].SetActive(true);
-                            tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
-                        }
+                        alternativaPergunta2[x].SetActive(true);
+                        tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
                     }
-                    else
-                    {
-                        qtdAlternativasPergunta2 = 0;
-                        objRespDescritiva[1].SetActive(true);
-                    }
-                    
+                }
+                else
+                {
+                    qtdAlternativasPergunta2 = 0;
+                    objRespDescritiva[1].SetActive(true);
+                }
 
-                        if(alternativas3.Length > 0 && alternativas3[0] != "")
-                        {
-                            qtdAlternativasPergunta3 = alternativas3.Length;
-                            for (int y = 0; y < alternativas3.Length; y++)
-                            {
-                                alternativaPergunta3[y].SetActive(true);
-                                tmpAlternativaPergunta3[y].text = alternativas3[y].ToString();
-                            }
-                        }
-                        else
-                        {
-                            qtdAlternativasPergunta3 = 0;
-                            objRespDescritiva[2].SetActive(true);
-                        }
-                    
+
+                if (alternativas3.Length > 0 && alternativas3[0] != "")
+                {
+                    qtdAlternativasPergunta3 = alternativas3.Length;
+                    for (int y = 0; y < alternativas3.Length; y++)
+                    {
+                        alternativaPergunta3[y].SetActive(true);
+                        tmpAlternativaPergunta3[y].text = alternativas3[y].ToString();
+                    }
+                }
+                else
+                {
+                    qtdAlternativasPergunta3 = 0;
+                    objRespDescritiva[2].SetActive(true);
+                }
+
             }
-                
-                
+
+        }        
     }
 
     public void SalvarResposta()
     {
         Resposta resposta = new Resposta();
+        resposta.Id_usuario = _gameController.id_usuario;
         resposta.Id_pergunta1 = id_pergunta1;
         resposta.Resposta1 = respostaPerg1;
         resposta.Id_pergunta2 = id_pergunta2;

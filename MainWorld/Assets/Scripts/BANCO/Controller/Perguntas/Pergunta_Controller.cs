@@ -18,6 +18,8 @@ public class Pergunta_Controller : MonoBehaviour
     IEnumerator RegistrarResposta(Resposta resposta)
     {
         string caminho = "http://localhost/games/salvarresposta.php?";// "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";
+
+        string p_id_usuario = "id_usuario=" + resposta.Id_usuario + "&";
         string p_IdPergunta1 = "id_pergunta1=" + resposta.Id_pergunta1 + "&";
         string p_Resposta1 = "resposta1=" + resposta.Resposta1 + "&";
         string p_IdPergunta2 = "id_pergunta2=" + resposta.Id_pergunta2 + "&";
@@ -27,20 +29,20 @@ public class Pergunta_Controller : MonoBehaviour
 
         string url = "";
 
-        if (p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 == "" && p_Resposta2 == "" && p_IdPergunta3 == "" && p_Resposta3 == "")
+        if (p_id_usuario!= "" && p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 == "" && p_Resposta2 == "" && p_IdPergunta3 == "" && p_Resposta3 == "")
         {
 
-           url = string.Format("{0}{1}{2}", caminho, p_IdPergunta1, p_Resposta1);
+           url = string.Format("{0}{1}{2}{3}", caminho,p_id_usuario, p_IdPergunta1, p_Resposta1);
 
-        }else if(p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 == "" && p_Resposta3 == "")
+        }else if(p_id_usuario != "" && p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 == "" && p_Resposta3 == "")
         {
 
-            url = string.Format("{0}{1}{2}{3}{4}", caminho, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2);
+            url = string.Format("{0}{1}{2}{3}{4}{5}", caminho, p_id_usuario, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2);
 
-        }else if(p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 != "" && p_Resposta3 != "")
+        }else if(p_id_usuario != "" && p_IdPergunta1 != "" && p_Resposta1 != "" && p_IdPergunta2 != "" && p_Resposta2 != "" && p_IdPergunta3 != "" && p_Resposta3 != "")
         {
 
-            url = string.Format("{0}{1}{2}{3}{4}{5}{6}", caminho, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2, p_IdPergunta3, p_Resposta3);
+            url = string.Format("{0}{1}{2}{3}{4}{5}{6}{7}", caminho, p_id_usuario, p_IdPergunta1, p_Resposta1, p_IdPergunta2, p_Resposta2, p_IdPergunta3, p_Resposta3);
 
         }
 
@@ -101,7 +103,13 @@ public class Pergunta_Controller : MonoBehaviour
 
                   string[] resultado = jsonResult.Split(';');
 
-                    Perguntas objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
+                    Perguntas objPerguntas = new Perguntas();
+
+                    if (resultado[1] != null)
+                    {
+                        objPerguntas = JsonUtility.FromJson<Perguntas>(resultado[1].Trim());
+                    }
+
                     callback(objPerguntas);
                 }
             }

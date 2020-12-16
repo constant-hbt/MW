@@ -11,6 +11,7 @@ public class PainelConclusãoFase : MonoBehaviour
     private             ControllerFase          _controllerFase;
     private Desempenho_Controller _desempenhoController;
     private Teleporte _teleporte;
+    private Pergunta_Controller _perguntaController;
 
     public              TextMeshProUGUI         tmpEstrelas;
     public              TextMeshProUGUI         tmpMoedas;
@@ -46,6 +47,8 @@ public class PainelConclusãoFase : MonoBehaviour
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _desempenhoController = FindObjectOfType(typeof(Desempenho_Controller)) as Desempenho_Controller;
         _teleporte = FindObjectOfType(typeof(Teleporte)) as Teleporte;
+        _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
+
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
         Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
@@ -79,14 +82,14 @@ public class PainelConclusãoFase : MonoBehaviour
         jaEnvieiRegistro = false;
 
         Debug.Log("Passei a fase e estou salvando o historico");
-        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
     }
     void Update()
     {
         if (habilitarAlertCodigo)
         {
-            ChamandoAlertFinalFase();
+           // ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -154,19 +157,31 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-                CentralizarWebGl();
+               // CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
-                CentralizarWebGl();
+                //CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
-                SceneManager.LoadScene("Perguntas");
+                _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                 _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
                 break;
         }
 
        
+    }
+
+    public void GetVerifPergunta(Perguntas objPerguntas)
+    {
+        if (objPerguntas == null)
+        {
+            SceneManager.LoadScene("SelecaoFase");
+        }
+        else
+        {
+            SceneManager.LoadScene("Perguntas");
+        }
     }
 
 }

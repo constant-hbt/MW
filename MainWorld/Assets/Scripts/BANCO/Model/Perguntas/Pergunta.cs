@@ -21,45 +21,24 @@ public class Pergunta
         this.id_fase = id_fase;
     }
 
-    public Pergunta(string retornoPHP)
+    
+   public int Id_pergunta
     {
-        string[] arrayRetornoPHP = retornoPHP.Split(';');
-       // this.id = Convert.ToInt32(arrayRetornoPHP[1]);
-      //  this.pergunta1 = arrayRetornoPHP[2];
-       // this.pergunta2 = arrayRetornoPHP[3];
-       // this.pergunta3 = arrayRetornoPHP[4];
-        this.id_fase = Convert.ToInt32(arrayRetornoPHP[5]);
-
-        
-    }
-   /*public int Id
-    {
-        get { return id; }
-        set { id = value; }
+        get { return id_pergunta; }
+        set { id_pergunta = value; }
     }
 
     
-   public string Pergunta1
+   public string Descricao
     {
-        get { return pergunta1; }
-        set { pergunta1 = value; }
+        get { return descricao; }
+        set { descricao = value; }
     }
 
-    public string Pergunta2
-    {
-        get { return pergunta2; }
-        set { pergunta2 = value; }
-    }
-
-    public string Pergunta3
-    {
-        get { return pergunta3; }
-        set { pergunta3 = value; }
-    }
 
     public int Id_fase
     {
         get { return id_fase; }
         set { id_fase = value; }
-    }*/
+    }
 }

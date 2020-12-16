@@ -19,6 +19,7 @@ public class ControllerFase : MonoBehaviour
    
     [Header("Coletáveis durante a fase")]
     public int qtdMoedasColetadas;//quantidade de moedas coletadas durante a fase
+    public int qtdMoedasColetadasCadaParte; //quantidade de moedas coletadas durante cada parte da fase
     public int qtdMoedasLootColetadas; //moedas coletadas por loot adquiridos apartir dos inimigos
     public int estrelas = 0;//estrelas adquiras com o desempenho na fase
     public GameObject[] fases;
@@ -94,7 +95,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-            SistemaDeEnableDisableBlocos(false); //VER ISSO AQUI
+           // SistemaDeEnableDisableBlocos(false); //VER ISSO AQUI
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -109,8 +110,8 @@ public class ControllerFase : MonoBehaviour
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
       
-         SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-         EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+        // SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
+        // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
@@ -153,25 +154,21 @@ public class ControllerFase : MonoBehaviour
             qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
-            Debug.Log("Consegui somente três estrelas porque usei " + qtdBlocosUsados + " essa qtd de blocos");
         }
         else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
                  qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
-            Debug.Log("Consegui somente duas estrelas porque usei " + qtdBlocosUsados + " essa qtd de blocos");
         }
         else if(qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda ||
                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas == 0 && naoTemMoeda ||
                 qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
-            Debug.Log("Consegui somente uma estrelas porque usei " + qtdBlocosUsados + " essa qtd de blocos");
         }
         else
         {
-            Debug.Log("Erro aqui no distribuicao Estrelas"); //SE ENTRAR AQUI É QUE TEM ALGO ERRADO NA FUNCAO
-            estrelas = 100;
+            estrelas = -1;
         }
         
         return estrelas;
@@ -181,20 +178,14 @@ public class ControllerFase : MonoBehaviour
     public void DadosFaseMemoria()
     {
         _gameController.qtdBlocosUsados = qtdBlocosUsados;
-        _gameController.qtdMoedasColetadas = qtdMoedasColetadas;
+        _gameController.qtdMoedasColetadas += qtdMoedasColetadas;
+        qtdMoedasColetadasCadaParte = 0;
+
     }
 
     public void EnviarHistorico(string descricao, int moedas, int estrelas, int vidas, int ultima_fase, int id_usuario_ativ_turma)
     {
         
-        //string descricao = "Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1;
-        //int moedas = qtdMoedasColetadas; //_gameController.numGold;
-       // int estrelas = this.estrelas;//_gameController.numEstrelas;
-      //  int vidas = _gameController.numVida;
-       // int ultima_fase_concluida = ultima_fase;
-       // DateTime data_hora = DateTime.Now.ToLocalTime();
-       // int id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
-       // string seq_BlocosUtilizados = seqBlocos;
 
         Historico objHistorico = new Historico();
 
@@ -209,7 +200,6 @@ public class ControllerFase : MonoBehaviour
 
         
         _historico_Controller.ChamarRegistrarHistorico(objHistorico);
-        _historico_Controller.ChamarReceberHistoricoId(38);
         
         seqBlocos = "";
     }

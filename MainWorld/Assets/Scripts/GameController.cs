@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
 
     [Header("Variaveis vinda da pagina anterior")]
     public int id_usuario_ativ_turma;
+    public int id_usuario;
     public int idGame;
     public string descricaoFase;//ao clicar para abrir a fase essa variavel sera alimentada
     public int id_Desempenho; //caso estiver com valor 0 representa que ainda nao possui nenhum registro de desempenho, caso contrario ja possui registro
@@ -60,6 +61,7 @@ public class GameController : MonoBehaviour
         }
 
         id_usuario_ativ_turma = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
+        id_usuario = 1;
         idGame = 1;//vai ser alimentado com dados vindo do js -------> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR 
     }
 

@@ -47,7 +47,7 @@ public class Desempenho_Controller : MonoBehaviour
         objDesempenho.Estrelas = _gameController.numEstrelas + _controllerFase.estrelas;
         objDesempenho.Vidas = _gameController.numVida;
         objDesempenho.Ultima_fase_concluida = _gameController.idFaseEmExecucao;
-        objDesempenho.Id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
+   //objDesempenho.Id_usuario_ativ_turma = _gameController.id_usuario_ativ_turma;
         objDesempenho.Fase_concluida = objFaseConcluida;
 
 

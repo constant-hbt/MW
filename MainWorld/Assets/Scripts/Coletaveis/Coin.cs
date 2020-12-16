@@ -27,6 +27,7 @@ public class Coin : MonoBehaviour
             case "coletavel":
                 if (!jaColidiu)
                 {
+                    _controllerFase.qtdMoedasColetadasCadaParte += valorCoin;
                     _controllerFase.qtdMoedasColetadas += valorCoin;
                     jaColidiu = true;
                 }

@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Resposta 
 {
+    public int id_usuario;
     public int id_pergunta1;
     public int id_pergunta2;
     public int id_pergunta3;
@@ -14,8 +15,9 @@ public class Resposta
 
     public Resposta() { }
 
-    public Resposta(int p_id_pergunta1, int p_id_pergunta2, int p_id_pergunta3, string p_resposta1, string p_resposta2, string p_resposta3)
+    public Resposta(int p_id_usuario, int p_id_pergunta1, int p_id_pergunta2, int p_id_pergunta3, string p_resposta1, string p_resposta2, string p_resposta3)
     {
+        this.id_usuario = p_id_usuario;
         this.id_pergunta1 = p_id_pergunta1;
         this.id_pergunta2 = p_id_pergunta2;
         this.id_pergunta3 = p_id_pergunta3;
@@ -24,6 +26,11 @@ public class Resposta
         this.resposta3 = p_resposta3;
     }
 
+    public int Id_usuario
+    {
+        get { return id_usuario; }
+        set { id_usuario = value; }
+    }
     public int Id_pergunta1
     {
         get { return id_pergunta1; }
