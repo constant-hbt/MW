@@ -19,14 +19,17 @@ public class PainelPerguntas : MonoBehaviour
     public GameObject[] alternativaPergunta1;
     public GameObject[] alternativaPergunta2;
     public GameObject[] alternativaPergunta3;
+    public GameObject[] alternativaPergunta4;
 
     public TextMeshProUGUI[] tmpAlternativaPergunta1;
     public TextMeshProUGUI[] tmpAlternativaPergunta2;
     public TextMeshProUGUI[] tmpAlternativaPergunta3;
+    public TextMeshProUGUI[] tmpAlternativaPergunta4;
 
     public Toggle[] togglePergunta1;
     public Toggle[] togglePergunta2;
     public Toggle[] togglePergunta3;
+    public Toggle[] togglePergunta4;
 
     public GameObject[] objRespDescritiva;
     public TMP_InputField[] inpRespDescritiva;
@@ -35,6 +38,7 @@ public class PainelPerguntas : MonoBehaviour
     public bool validarResp1;
     public bool validarResp2;
     public bool validarResp3;
+    public bool validarResp4;
     public int qtdPerguntas;
 
     //Configurações do botão salvar
@@ -51,9 +55,11 @@ public class PainelPerguntas : MonoBehaviour
     public string respostaPerg1;
     public string respostaPerg2;
     public string respostaPerg3;
+    public string respostaPerg4;
     public int id_pergunta1;
     public int id_pergunta2;
     public int id_pergunta3;
+    public int id_pergunta4;
 
     //valida os toggle de cada pergunta para captar as respostas
     public bool flagPergunta1;
@@ -65,9 +71,12 @@ public class PainelPerguntas : MonoBehaviour
     public bool flagPergunta3;
     public int qtdAlternativasPergunta3;
     public int qtdToggle3Vazio;
+    public bool flagPergunta4;
+    public int qtdAlternativasPergunta4;
+    public int qtdToggle4Vazio;
 
 
-    
+
     void Awake()
     {
         _pergunta_Controller = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
@@ -82,6 +91,7 @@ public class PainelPerguntas : MonoBehaviour
         validarResp1 = false;
         validarResp2 = false;
         validarResp3 = false;
+        validarResp4 = false;
     }
 
     
@@ -201,7 +211,46 @@ public class PainelPerguntas : MonoBehaviour
             }
         }
 
-        if (qtdPerguntas == 1 && validarResp1 || qtdPerguntas == 2 && validarResp1 && validarResp2 || qtdPerguntas == 3 && validarResp1 && validarResp2 && validarResp3)
+        //CAPTA E VALIDA AS RESPOSTAS DA PERGUNTA 4
+        if (flagPergunta4 && qtdAlternativasPergunta4 > 0) // no caso da pergunta 4 estar ativada e for de alternativas ele capta a alternativa que foi selecionada
+        {
+            qtdToggle4Vazio = 0;
+            for (int z = 0; z < qtdAlternativasPergunta4; z++)
+            {
+                if (togglePergunta4[z].isOn)
+                {
+                    validarResp4 = true;
+                    respostaPerg4 = tmpAlternativaPergunta4[z].text;
+                }
+                else
+                {
+                    qtdToggle4Vazio += 1;
+                }
+            }
+
+            if (qtdToggle4Vazio == qtdAlternativasPergunta4)
+            {
+                validarResp4 = false;
+                respostaPerg4 = "";
+            }
+        }
+        else if (flagPergunta4 && qtdAlternativasPergunta4 <= 0) // no caso da pergunta 4 estar ativada e for descritiva, ele capta e guarda a resposta descritiva
+        {
+
+            if (inpRespDescritiva[2].text != "")
+            {
+                validarResp4 = true;
+                respostaPerg4 = inpRespDescritiva[2].text;
+            }
+            else
+            {
+                validarResp4 = false;
+                respostaPerg4 = "";
+            }
+        }
+
+        if (qtdPerguntas == 1 && validarResp1 || qtdPerguntas == 2 && validarResp1 && validarResp2 || qtdPerguntas == 3 && validarResp1 && validarResp2 && validarResp3
+            || qtdPerguntas == 4 && validarResp1 && validarResp2 && validarResp3 && validarResp4)
         {
             HabilitarBotaoSalvar();
         }
@@ -229,13 +278,16 @@ public class PainelPerguntas : MonoBehaviour
                 switch (i)
                 {
                     case 0:
-                        id_pergunta1 = objPerguntas.perguntas[i].id_pergunta;
+                        id_pergunta1 = objPerguntas.perguntas[i].Id_pergunta;
                         break;
                     case 1:
-                        id_pergunta2 = objPerguntas.perguntas[i].id_pergunta;
+                        id_pergunta2 = objPerguntas.perguntas[i].Id_pergunta;
                         break;
                     case 2:
-                        id_pergunta3 = objPerguntas.perguntas[i].id_pergunta;
+                        id_pergunta3 = objPerguntas.perguntas[i].Id_pergunta;
+                        break;
+                    case 3:
+                        id_pergunta4 = objPerguntas.perguntas[i].Id_pergunta;
                         break;
                 }
             }
@@ -386,6 +438,86 @@ public class PainelPerguntas : MonoBehaviour
                 }
 
             }
+            else if (qtdPerguntas == 4)
+            {
+                string[] alternativas1 = objPerguntas.perguntas[0].alternativas;
+                string[] alternativas2 = objPerguntas.perguntas[1].alternativas;
+                string[] alternativas3 = objPerguntas.perguntas[2].alternativas;
+                string[] alternativas4 = objPerguntas.perguntas[3].alternativas;
+
+                flagPergunta1 = true;
+                tmpDescricao[0].text = objPerguntas.perguntas[0].descricao;
+
+                flagPergunta2 = true;
+                tmpDescricao[1].text = objPerguntas.perguntas[1].descricao;
+
+                flagPergunta3 = true;
+                tmpDescricao[2].text = objPerguntas.perguntas[2].descricao;
+
+                flagPergunta4 = true;
+                tmpDescricao[3].text = objPerguntas.perguntas[3].descricao;
+
+                if (alternativas1.Length > 0 && alternativas1[0] != "")
+                {
+                    qtdAlternativasPergunta1 = alternativas1.Length;
+                    for (int i = 0; i < alternativas1.Length; i++)
+                    {
+                        alternativaPergunta1[i].SetActive(true);
+                        tmpAlternativaPergunta1[i].text = alternativas1[i].ToString();
+                    }
+                }
+                else
+                {
+                    qtdAlternativasPergunta1 = 0;
+                    objRespDescritiva[0].SetActive(true);
+                }
+
+                if (alternativas2.Length > 0 && alternativas2[0] != "")
+                {
+                    qtdAlternativasPergunta2 = alternativas2.Length;
+                    for (int x = 0; x < alternativas2.Length; x++)
+                    {
+                        alternativaPergunta2[x].SetActive(true);
+                        tmpAlternativaPergunta2[x].text = alternativas2[x].ToString();
+                    }
+                }
+                else
+                {
+                    qtdAlternativasPergunta2 = 0;
+                    objRespDescritiva[1].SetActive(true);
+                }
+
+
+                if (alternativas3.Length > 0 && alternativas3[0] != "")
+                {
+                    qtdAlternativasPergunta3 = alternativas3.Length;
+                    for (int y = 0; y < alternativas3.Length; y++)
+                    {
+                        alternativaPergunta3[y].SetActive(true);
+                        tmpAlternativaPergunta3[y].text = alternativas3[y].ToString();
+                    }
+                }
+                else
+                {
+                    qtdAlternativasPergunta3 = 0;
+                    objRespDescritiva[2].SetActive(true);
+                }
+
+                if (alternativas4.Length > 0 && alternativas4[0] != "")
+                {
+                    qtdAlternativasPergunta4 = alternativas4.Length;
+                    for (int z = 0; z < alternativas4.Length; z++)
+                    {
+                        alternativaPergunta4[z].SetActive(true);
+                        tmpAlternativaPergunta4[z].text = alternativas4[z].ToString();
+                    }
+                }
+                else
+                {
+                    qtdAlternativasPergunta4 = 0;
+                    objRespDescritiva[3].SetActive(true);
+                }
+            }
 
         }        
     }
@@ -400,6 +532,8 @@ public class PainelPerguntas : MonoBehaviour
         resposta.Resposta2 = respostaPerg2;
         resposta.Id_pergunta3 = id_pergunta3;
         resposta.Resposta3 = respostaPerg3;
+        resposta.Id_pergunta4 = id_pergunta4;
+        resposta.Resposta4 = respostaPerg4;
         
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
         

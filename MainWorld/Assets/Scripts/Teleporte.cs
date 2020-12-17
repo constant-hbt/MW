@@ -50,7 +50,7 @@ public class Teleporte : MonoBehaviour
         
 
         int parteFaseAtual = 0;
-       // SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
+      //  SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
         for(int i=0; i<= _controllerFase.fases.Length; i++)
         {
             parteFaseAtual = i;
@@ -68,7 +68,7 @@ public class Teleporte : MonoBehaviour
         _playerController.transform.position = destino.position;//muda a posição do player para o inicio da proxima parte da fase
         cam.transform.position = new Vector3( transicaoCamera[0].position.x, transicaoCamera[0].position.y, 0 );//muda a posição da câmera para a proxima parte da fase
         objHud.localPosition = new Vector4(posHudParte[0], 0, 0, 0);
-      //   SistemaLimiteBloco(blocosDisponiveis, _gameController.idFaseEmExecucao);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
+        // SistemaLimiteBloco(blocosDisponiveis, _gameController.idFaseEmExecucao);//Ao teleportar para outra etapa da fase modifica o limite de blocos para aquela parte da fase
 
         _controllerFase.DadosFaseMemoria(); //salva os dados ja coletados na fase atual dentro de GameController
         _playerController.qtdBlocosUsados = -1;//necessário para não entrar no if que habilita o painel de fase incompleta , pois ao iniciar a próxima etapa o usuário necessitará de tempo ate dispor os blocos
