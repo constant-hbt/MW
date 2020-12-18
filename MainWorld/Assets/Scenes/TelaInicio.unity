@@ -2410,6 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id_usuario_ativ_turma: 1
+  id_usuario: 0
   idGame: 1
   descricaoFase: 
   id_Desempenho: 0
@@ -2564,6 +2565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 175047480}
   - component: {fileID: 175047479}
+  - component: {fileID: 175047481}
   m_Layer: 0
   m_Name: ControllerTelaInicial
   m_TagString: Untagged
@@ -2627,6 +2629,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &175047481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175047478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158ac9bd0163cac489cdccbe414ebc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &232750165 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 106534779065449294, guid: 25f49b3166a358d4bae0558881893dcd,
@@ -5038,7 +5052,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 175047479}
-        m_MethodName: startCoroutines
+        m_MethodName: ControladorDeCoroutine
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6000,7 +6014,7 @@ PrefabInstance:
     - target: {fileID: 8904236317389701938, guid: 26793637889fa6e4486f741c889ff082,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: startCoroutines
+      value: ControladorDeCoroutine
       objectReference: {fileID: 0}
     - target: {fileID: 8904236317389701939, guid: 26793637889fa6e4486f741c889ff082,
         type: 3}

@@ -7,8 +7,9 @@ using TMPro;
 using System.Runtime.InteropServices;
 
 public class TelaInicial : MonoBehaviour
-{   
-   
+{
+    private Pergunta_Controller _perguntaController;
+    private GameController _gameController;
 
     private bool statusBotao = false; //true -> botão ja foi pressionado, false -> nao foi pressionado --- CONFIGURAÇÃO DO BOTAO CONFIG
     
@@ -41,12 +42,14 @@ public class TelaInicial : MonoBehaviour
     public              Button              btnControle;
     public              Button              btnConfig;
 
-
+    public bool botaoIniciarClicado = false;
     //Integração com js da página
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
     void Start()
     {
+        _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
+        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
        // SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         
     }
@@ -58,12 +61,18 @@ public class TelaInicial : MonoBehaviour
 
     
 
-    public void startCoroutines(int id)
+    public void ControladorDeCoroutine(int id)
     {
         switch (id)
         {
             case 1:
-                StartCoroutine("MudarCena");
+                if (!botaoIniciarClicado)
+                {
+                    StartCoroutine("IniciarJogo");
+                    botaoIniciarClicado = true;
+                    HabilitarCliqueBtnIniciar();
+                }
+                
                 break;
             case 2:
                 StartCoroutine("mostrarConfig");
@@ -104,10 +113,16 @@ public class TelaInicial : MonoBehaviour
 
     }
 
-    IEnumerator MudarCena()
+    IEnumerator IniciarJogo()
     {
+        _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
         yield return new WaitForSeconds(0.42f);
         SceneManager.LoadScene("SelecaoFase");
+    }
+    void PreencherIdUsuario(int id_usuario)
+    {
+        _gameController.id_usuario = id_usuario;
+        Debug.Log("Valor do id_usuario preenchido =" + _gameController.id_usuario);
     }
     
     //ativar e desativar botão de configurações de som
@@ -241,5 +256,10 @@ public class TelaInicial : MonoBehaviour
         }
     }
 
-   
+   IEnumerator HabilitarCliqueBtnIniciar()
+    {   
+        
+        yield return new WaitForSeconds(0.5f);
+        botaoIniciarClicado = false;
+    }
 }
