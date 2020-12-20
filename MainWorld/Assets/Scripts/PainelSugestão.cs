@@ -53,14 +53,19 @@ public class PainelSugestão : MonoBehaviour
 
     public void botaoProximo()
     {
-        if(idPainelAtivo == 3)
-        {
-            idPainelAtivo = 3;
-        }else if(idPainelAtivo < 3)
-        {
-            idPainelAtivo++;
-        }
-        alterarPainelAtivo(idPainelAtivo);
+        
+            if (idPainelAtivo == 3)
+            {
+                idPainelAtivo = 3;
+            }
+            else if (idPainelAtivo < 3)
+            {
+                idPainelAtivo++;
+            }
+            alterarPainelAtivo(idPainelAtivo);
+        
+        
+        
     }
 
     public void alterarPainelAtivo(int numPainelAtivo)
@@ -69,8 +74,16 @@ public class PainelSugestão : MonoBehaviour
         switch (numPainelAtivo)
         {
             case 1:
-                btnAnterior.SetActive(false);
-                btnProximo.SetActive(true);
+                if(paineis.Length == 1)
+                {
+                    btnAnterior.SetActive(false);
+                    btnProximo.SetActive(false);
+                }else 
+                {
+                    btnAnterior.SetActive(false);
+                    btnProximo.SetActive(true);
+                }
+                
                 tmpSubTitulo.text = "Descrição";
                 if(qtdPaineisComScroll >= 1)
                 {
@@ -85,8 +98,17 @@ public class PainelSugestão : MonoBehaviour
 
                 break;
             case 2:
-                btnAnterior.SetActive(true);
-                btnProximo.SetActive(true);
+                if(paineis.Length == 2)
+                {
+                    btnAnterior.SetActive(true);
+                    btnProximo.SetActive(false);
+                }
+                else
+                {
+                    btnAnterior.SetActive(true);
+                    btnProximo.SetActive(true);
+
+                }
                 tmpSubTitulo.text = "Objetivos";
                 
 
@@ -101,8 +123,17 @@ public class PainelSugestão : MonoBehaviour
                 }
                 break;
             case 3:
-                btnAnterior.SetActive(true);
-                btnProximo.SetActive(false);
+                if(paineis.Length == 3)
+                {
+                    btnAnterior.SetActive(true);
+                    btnProximo.SetActive(false);
+                }
+                else
+                {
+                    btnAnterior.SetActive(true);
+                    btnProximo.SetActive(true);
+                }
+                
                 tmpSubTitulo.text = "Vídeo";
 
                 if (qtdPaineisComScroll >= 3)

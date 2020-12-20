@@ -2390,6 +2390,7 @@ GameObject:
   - component: {fileID: 87958071}
   - component: {fileID: 87958073}
   - component: {fileID: 87958074}
+  - component: {fileID: 87958075}
   m_Layer: 0
   m_Name: GameControllerEntreFases
   m_TagString: Untagged
@@ -2409,7 +2410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a1c991e55afef46bddb88d2195c5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id_usuario_ativ_turma: 1
+  id_atividade: 0
   id_usuario: 0
   idGame: 1
   descricaoFase: 
@@ -2417,7 +2418,7 @@ MonoBehaviour:
   gameControllers: []
   perguntasRespondidas: 000000000000000000
   idFaseEmExecucao: 0
-  fasesConcluidas: 5
+  fasesConcluidas: 0
   progressoAtual: 0
   numGold: 0
   numVida: 10
@@ -2466,6 +2467,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87879392af901d74e9bc6bdbfdd94d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &87958075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87958070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158ac9bd0163cac489cdccbe414ebc84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &109984709
@@ -2615,6 +2628,7 @@ MonoBehaviour:
   btnSom: {fileID: 1990154914}
   btnControle: {fileID: 1990154909}
   btnConfig: {fileID: 1990154906}
+  botaoIniciarClicado: 0
 --- !u!4 &175047480
 Transform:
   m_ObjectHideFlags: 0

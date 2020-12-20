@@ -83,13 +83,13 @@ public class PainelConclusãoFase : MonoBehaviour
 
         Debug.Log("Passei a fase e estou salvando o historico");
         _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
-                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario_ativ_turma);
+                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
     }
     void Update()
     {
         if (habilitarAlertCodigo)
         {
-           // ChamandoAlertFinalFase();
+         //   ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -157,16 +157,15 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-                //CentralizarWebGl();
+             //   CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
-                //CentralizarWebGl();
+              //  CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
-                _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
-                break;
+               break;
         }
 
        
@@ -177,11 +176,14 @@ public class PainelConclusãoFase : MonoBehaviour
         if (objPerguntas == null)
         {
             SceneManager.LoadScene("SelecaoFase");
+            Debug.Log("Id fase em execucao = " + _gameController.idFaseEmExecucao);
         }
-        else
+        else if (!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
         {
             SceneManager.LoadScene("Perguntas");
+            _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao-1] = true;
         }
     }
+
 
 }

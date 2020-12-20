@@ -1223,6 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qtdMoedasColetadas: 0
+  qtdMoedasColetadasCadaParte: 0
   qtdMoedasLootColetadas: 0
   estrelas: 0
   fases:
@@ -1231,11 +1232,12 @@ MonoBehaviour:
   - {fileID: 344618803}
   data_InicioFase: 
   data_FimFase: 
+  seqBlocos: 
   qtdBlocosDisponiveisEmTodaFase: 40
   qtdMinimaDeBlocosParaConclusao: 40
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 10
-  qtdBlocosDisponiveis: 12
+  qtdBlocosDisponiveis: 0c0000000c00000010000000
   qtdManaDisponivelFase: 10
   posicoesIniciasPlayer:
   - {fileID: 2117383118}

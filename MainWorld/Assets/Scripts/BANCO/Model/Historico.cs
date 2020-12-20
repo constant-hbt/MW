@@ -13,11 +13,12 @@ public class Historico
     public int ultima_fase_concluida;
     public DateTime data_hora;
     public string blocos_utilizados;
-    public int id_usuario_ativ_turma;
+    public int id_usuario;
+    public int id_atividade;
 
     public Historico() { }
 
-    public Historico(string p_descricao, int p_moedas, int p_estrelas, int p_vidas, int p_ultima_fase_concluida, DateTime p_data_hora,string p_blocos_utilizados, int p_id_usuario_ativ_turma)
+    public Historico(string p_descricao, int p_moedas, int p_estrelas, int p_vidas, int p_ultima_fase_concluida, DateTime p_data_hora,string p_blocos_utilizados, int p_id_usuario, int p_id_atividade)
     {
         this.descricao = p_descricao;
         this.moedas = p_moedas;
@@ -26,7 +27,8 @@ public class Historico
         this.ultima_fase_concluida = p_ultima_fase_concluida;
         this.data_hora = p_data_hora;
         this.blocos_utilizados = p_blocos_utilizados;
-        this.id_usuario_ativ_turma = p_id_usuario_ativ_turma;
+        this.id_usuario = p_id_usuario;
+        this.id_atividade = p_id_atividade;
     }
 
     public int Id_historico
@@ -69,9 +71,14 @@ public class Historico
         get { return blocos_utilizados; }
         set { blocos_utilizados = value; }
     }
-    public int Id_usuario_ativ_turma
+    public int Id_usuario
     {
-        get { return id_usuario_ativ_turma; }
-        set { id_usuario_ativ_turma = value; }
+        get { return id_usuario; }
+        set { id_usuario = value; }
+    }
+    public int Id_atividade
+    {
+        get { return id_atividade; }
+        set { id_atividade = value; }
     }
 }

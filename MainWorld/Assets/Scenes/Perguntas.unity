@@ -5678,7 +5678,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279308782
-  m_fontColor: {r: 0.9529412, g: 0.1764706, b: 0.1764706, a: 1}
+  m_fontColor: {r: 0.02745098, g: 0.02745098, b: 0.02745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6156,7 +6156,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279308782
-  m_fontColor: {r: 0.9529412, g: 0.1764706, b: 0.1764706, a: 1}
+  m_fontColor: {r: 0.02745098, g: 0.02745098, b: 0.02745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8388,7 +8388,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279308782
-  m_fontColor: {r: 0.9529412, g: 0.1764706, b: 0.1764706, a: 1}
+  m_fontColor: {r: 0.02745098, g: 0.02745098, b: 0.02745098, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8825,9 +8825,9 @@ RectTransform:
   m_Father: {fileID: 869734713}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.0000305, y: -3}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 350, y: -237.5}
   m_SizeDelta: {x: 700, y: 475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1265857336
@@ -11629,8 +11629,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279835123
-  m_fontColor: {r: 0.9529412, g: 0.09803922, b: 0.09803922, a: 1}
+    rgba: 4293783029
+  m_fontColor: {r: 0.9622642, g: 0.9304913, b: 0.9304913, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14928,14 +14928,14 @@ MonoBehaviour:
   m_text: Qual seu nome?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281150963
-  m_fontColor: {r: 0.9528302, g: 0.17528482, b: 0.17528482, a: 1}
+    rgba: 4278650631
+  m_fontColor: {r: 0.028301895, g: 0.025498405, b: 0.025498405, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15817,8 +15817,8 @@ MonoBehaviour:
   btnSalvar: {fileID: 278450531}
   colorDesabilitado: {r: 1, g: 1, b: 1, a: 0.5882353}
   colorHabilitado: {r: 1, g: 1, b: 1, a: 1}
-  colorTmpSalvarDesabilitado: {r: 0.9529412, g: 0.09803922, b: 0.09803922, a: 0.5882353}
-  colorTmpSalvarHabilitado: {r: 0.9529412, g: 0.09803922, b: 0.09803922, a: 1}
+  colorTmpSalvarDesabilitado: {r: 0.990566, g: 0.9672036, b: 0.9672036, a: 0.5882353}
+  colorTmpSalvarHabilitado: {r: 0.9921569, g: 0.9686275, b: 0.9686275, a: 1}
   objBtnSalvar: {fileID: 278450532}
   tmpSalvar: {fileID: 1605391052}
   respostaPerg1: 

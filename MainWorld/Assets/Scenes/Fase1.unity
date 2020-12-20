@@ -1864,16 +1864,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   qtdMoedasColetadas: 0
+  qtdMoedasColetadasCadaParte: 0
   qtdMoedasLootColetadas: 0
   estrelas: 0
   fases: []
   data_InicioFase: 
   data_FimFase: 
+  seqBlocos: 
   qtdBlocosDisponiveisEmTodaFase: 10
   qtdMinimaDeBlocosParaConclusao: 7
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 3
-  qtdBlocosDisponiveis: 15
+  qtdBlocosDisponiveis: 0a000000
   qtdManaDisponivelFase: 10
   posicoesIniciasPlayer:
   - {fileID: 1482646152}

@@ -37,7 +37,7 @@ public class ControllerFase : MonoBehaviour
 
 
     [Header("Quantidade disponivel para a primeira parte da fase")]
-    public                  int                   qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
+    public                  int[]                   qtdBlocosDisponiveis;//para as fases que tem mais de uma parte o valor depositado aqui valerá para a primeira parte, nas partes subsequentes o valor deverá ser colocado no script que esta contido nos objetos de teleporte
     public int qtdManaDisponivelFase;
 
     [Header("Configuração de posições iniciais")]
@@ -71,7 +71,7 @@ public class ControllerFase : MonoBehaviour
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         _historico_Controller = FindObjectOfType(typeof(Historico_Controller)) as Historico_Controller;
 
-        _gameController.parteFaseAtual = 0;
+       // _gameController.parteFaseAtual = 0;
 
         //ativa a parte da fase
         if (fases.Length != 0)
@@ -95,7 +95,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-           // SistemaDeEnableDisableBlocos(false); //VER ISSO AQUI
+         //   SistemaDeEnableDisableBlocos(false); 
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -110,8 +110,8 @@ public class ControllerFase : MonoBehaviour
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
       
-         //SistemaLimiteBloco(qtdBlocosDisponiveis,_gameController.idFaseEmExecucao );
-        // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       //  SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual],_gameController.idFaseEmExecucao );
+       //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
@@ -183,7 +183,7 @@ public class ControllerFase : MonoBehaviour
 
     }
 
-    public void EnviarHistorico(string descricao, int moedas, int estrelas, int vidas, int ultima_fase, int id_usuario_ativ_turma)
+    public void EnviarHistorico(string descricao, int moedas, int estrelas, int vidas, int ultima_fase, int id_usuario, int id_atividade)
     {
         
 
@@ -196,7 +196,8 @@ public class ControllerFase : MonoBehaviour
         objHistorico.Ultima_fase_concluida = ultima_fase;
         objHistorico.Data_hora = DateTime.Now.ToLocalTime();
         objHistorico.Blocos_utilizados = seqBlocos;
-        objHistorico.Id_usuario_ativ_turma = id_usuario_ativ_turma;
+        objHistorico.Id_usuario = id_usuario;
+        objHistorico.Id_atividade = id_atividade;
 
         
         _historico_Controller.ChamarRegistrarHistorico(objHistorico);
@@ -209,8 +210,5 @@ public class ControllerFase : MonoBehaviour
         seqBlocos = p_SeqBlocos;
     }
 
-    public void ResetarHistorico()
-    {
-        
-    }
+   
 }

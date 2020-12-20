@@ -165,7 +165,7 @@ public class SeleçãoFase : MonoBehaviour
                 //_painelEntrarFase.chamar();
                 break;
             }
-      //  AlterarToolboxFases(id);
+       // AlterarToolboxFases(id);
     }
 
    /* public void ativarPainelEntrarFase(int idFase)

@@ -9,6 +9,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 {
     private         GameController      _gameController;
     private ControllerFase _controllerFase;
+    private Pergunta_Controller _perguntaController;
 
     public          Button              btnClose;
     public GameObject btnJogarNovamente;
@@ -39,11 +40,10 @@ public class PainelFaseIncompleta : MonoBehaviour
         
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
+        _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         rectPainelDerrotaFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
        
         btnClose.Select();
-
-        Debug.Log("Quantidade de blocos usados =" + _controllerFase.qtdBlocosUsados);
     }
     void Update()
     {
@@ -52,10 +52,10 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-       // SistemaReiniciarWorkspaceBlockly();
-       // DisponibilizarToobox();
-       // ReiniciarVarCodeCompleto();
-       // ReiniciarVarBlocosTotais();
+     //   SistemaReiniciarWorkspaceBlockly();
+      //  DisponibilizarToobox();
+      //  ReiniciarVarCodeCompleto();
+      //  ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         if(_gameController == null)
         {
@@ -91,18 +91,33 @@ public class PainelFaseIncompleta : MonoBehaviour
        // ReiniciarVarCodeCompleto();
        // ReiniciarVarBlocosTotais();
 
-        if (!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+      
+        if(_perguntaController == null)
         {
-            SceneManager.LoadScene("Perguntas");
-            _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
+           
+            _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
+
         }
-        else
+        if(_gameController == null)
         {
-            SceneManager.LoadScene("SelecaoFase");
+            _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         }
+        _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
+
             
 
     }
 
-    
+    public void GetVerifPergunta(Perguntas objPerguntas)
+    {
+        if (objPerguntas == null || objPerguntas.perguntas[0].descricao == "" || _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+        {
+            SceneManager.LoadScene("SelecaoFase");
+        }
+        else if (!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+        {
+            SceneManager.LoadScene("Perguntas");
+            _gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1] = true;
+        }
+    }
 }

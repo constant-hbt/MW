@@ -27,11 +27,9 @@ public class PainelIniciarLevel : MonoBehaviour
 
     public void btnIniciarLevel()
     {
-        //Teste com estado do game
-        //estadoAtual = GameState.GAMEPLAY; APAGAR DEPOIS
-
-       // DisponibilizarToobox();
-       // SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        
+      //  DisponibilizarToobox();
+      //  SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         this.gameObject.SetActive(false);
     }
 
