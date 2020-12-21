@@ -17,7 +17,7 @@ public class Pergunta_Controller : MonoBehaviour
     }
     IEnumerator RegistrarResposta(Resposta resposta)
     {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";/*"http://localhost/games/salvarresposta.php?";*/
+        string caminho = "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";//"http://localhost/games/salvarresposta.php?";
 
         string p_id_usuario = "id_usuario=" + resposta.Id_usuario + "&";
         string p_IdPergunta1 = "id_pergunta1=" + resposta.Id_pergunta1 + "&";
@@ -90,7 +90,7 @@ public class Pergunta_Controller : MonoBehaviour
     //faz a requisição ao banco e traz o retorno
     IEnumerator PegarPergunta(int id_fase, System.Action<Perguntas> callback)
     {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarperguntas.php?";/*"http://localhost/games/captarperguntas.php?";*/
+        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarperguntas.php?";//"http://localhost/games/captarperguntas.php?";
         string p_id_fase = "idfase=" + id_fase;
 
         string url = string.Format("{0}{1}", caminho, p_id_fase);
@@ -134,7 +134,7 @@ public class Pergunta_Controller : MonoBehaviour
     }
     IEnumerator pegarUltimoId(System.Action<int> callback)
     {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarultimoid.php";/*"http://localhost/games/captarultimoid.php";*/
+        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarultimoid.php";//"http://localhost/games/captarultimoid.php";
 
         using (UnityWebRequest www = UnityWebRequest.Get(caminho))
         {

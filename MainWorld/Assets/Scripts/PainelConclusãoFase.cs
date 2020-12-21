@@ -89,7 +89,7 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         if (habilitarAlertCodigo)
         {
-         //   ChamandoAlertFinalFase();
+            ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
     }
@@ -157,12 +157,12 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-             //   CentralizarWebGl();
+                CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
-              //  CentralizarWebGl();
+                CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;

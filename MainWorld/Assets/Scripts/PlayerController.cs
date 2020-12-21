@@ -424,12 +424,12 @@ public class PlayerController : MonoBehaviour
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-         //  CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-          //  CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
