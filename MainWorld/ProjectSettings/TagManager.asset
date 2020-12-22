@@ -26,6 +26,7 @@ TagManager:
   - invencivel
   - moveInimigo
   - alavanca
+  - espinhoLateral
   layers:
   - Default
   - TransparentFX

@@ -3047,7 +3047,6 @@ MonoBehaviour:
   posHudParte:
   - 1820
   virarPlayer: 0
-  blocosDisponiveis: 21
 --- !u!1001 &320070274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11271,7 +11270,7 @@ GameObject:
   - component: {fileID: 648715764}
   m_Layer: 8
   m_Name: Espinhos
-  m_TagString: objetosQueDaoDano
+  m_TagString: espinhoLateral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21779,7 +21778,6 @@ MonoBehaviour:
   posHudParte:
   - 3805
   virarPlayer: 1
-  blocosDisponiveis: 23
 --- !u!61 &1847906134
 BoxCollider2D:
   m_ObjectHideFlags: 0

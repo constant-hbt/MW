@@ -325,6 +325,12 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetTrigger("hit");
                 collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
                 break;
+            case "espinhoLateral":
+                playerAnimator.SetTrigger("hit");
+                
+                collision.gameObject.SendMessage("retirarVidaPlayer", SendMessageOptions.DontRequireReceiver);
+                StartCoroutine(desabilitarHitEspinhoLateral());
+                break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
@@ -591,6 +597,13 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);//depois de 5 segundos habilita novamente a possibilidade de se tomar hit's
         tomeiHit = false;
+    }
+    IEnumerator desabilitarHitEspinhoLateral()
+    {
+        this.gameObject.layer = 16;
+        playerRB.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;//marca o freeze position x e o rotation z como true
+        yield return new WaitForSeconds(10f);
+        this.gameObject.layer = 14;
     }
     private void pararMovimentacao()
     {
