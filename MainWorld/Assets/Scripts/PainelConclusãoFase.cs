@@ -9,8 +9,6 @@ public class PainelConclusãoFase : MonoBehaviour
 {
     private             GameController          _gameController;
     private             ControllerFase          _controllerFase;
-    private Desempenho_Controller _desempenhoController;
-    private Teleporte _teleporte;
     private Pergunta_Controller _perguntaController;
 
     public              TextMeshProUGUI         tmpEstrelas;
@@ -45,13 +43,10 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
-        _desempenhoController = FindObjectOfType(typeof(Desempenho_Controller)) as Desempenho_Controller;
-        _teleporte = FindObjectOfType(typeof(Teleporte)) as Teleporte;
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
 
 
-        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
-        Debug.Log("Conclui a fase e consegui "+qtdEstrelasAdquiridas+" estrelas");
+        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();;
         tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
         _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
@@ -81,29 +76,16 @@ public class PainelConclusãoFase : MonoBehaviour
         habilitarAlertCodigo = true;
         jaEnvieiRegistro = false;
 
-        Debug.Log("Passei a fase e estou salvando o historico");
         _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
     }
-    void Update()
+    private void FixedUpdate()
     {
         if (habilitarAlertCodigo)
         {
             ChamandoAlertFinalFase();
             habilitarAlertCodigo = false;
         }
-    }
-    private void FixedUpdate()
-    {
-       /* if (painelConclusaFase.activeSelf && !jaEnvieiRegistro)
-        {
-            Debug.Log("Vou enviar os registros ao banco");
-
-            Debug.Log("Estou enviando os dados para o banco");
-            _desempenhoController.EnviarRegistroDesempenho();
-
-            jaEnvieiRegistro = true;
-        }*/
     }
 
     public void BtnReiniciar(int numeroFase)
@@ -176,7 +158,6 @@ public class PainelConclusãoFase : MonoBehaviour
         if (objPerguntas == null)
         {
             SceneManager.LoadScene("SelecaoFase");
-            Debug.Log("Id fase em execucao = " + _gameController.idFaseEmExecucao);
         }
         else if (!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
         {

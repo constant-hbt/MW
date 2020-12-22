@@ -4,9 +4,6 @@ function mudarToolbox(idToolbox){
     
     //criando tag div
     var divBlockly = document.getElementById('blocklyDiv');
-    /*var div = document.createElement('div');
-    div.id = "divBlockly";
-    div.style = " height : 480px ; width : 350px ;"; APAGAR DEPOIS*/
    
     let toolboxAtivas = document.getElementsByName("toolbox");
     let toolboxJaExiste = false;
@@ -15,9 +12,7 @@ function mudarToolbox(idToolbox){
             divBlockly.removeChild(toolboxAtivas[i]);
         }else if(toolboxAtivas[i].id == 'toolbox'+idToolbox && !toolboxJaExiste){
             toolboxJaExiste = true;
-        }/*else if(toolboxAtivas[i].id == 'toolbox'+idToolbox && toolboxJaExiste){
-            divBlockly.removeChild(toolboxAtivas[i]);
-        }*/
+        }
     }
 
 
@@ -35,43 +30,33 @@ function mudarToolbox(idToolbox){
          
         case 1:
             category = toolboxFase1(idToolbox);
-            console.log("Alterei a toolbox para 1");
-            break;
+           break;
         case 2:
             category = toolboxFase2e3(idToolbox);
-            console.log("Alterei a toolbox para 2");
             break;
         case 3:
             category = toolboxFase2e3(idToolbox);
-            console.log("Alterei a toolbox para 3");
             break;
         case 4:
             category = toolboxFase4(idToolbox);
-            console.log("Alterei a toolbox para 4");
             break;
         case 5:
             category = toolboxFase5(idToolbox);
-            console.log("Alterei a toolbox para 5");
             break;
         case 6:
             category = toolboxFase6e7(idToolbox);
-            console.log("Alterei a toolbox para 6");
             break;
         case 7:
             category = toolboxFase8e9(idToolbox);
-            console.log("Alterei a toolbox para 7");
             break;
         case 8:
             category = toolboxFase8e9(idToolbox);
-            console.log("Alterei a toolbox para 8");
             break;
         case 9:
             category = toolboxFase8e9(idToolbox);
-            console.log("Alterei a toolbox para 9");
             break;
     }
 
-    console.log("Tamanho do array category = "+category.length);
 
              if(category.length == 1){
                 var categoryTemp = category[0];
@@ -85,8 +70,7 @@ function mudarToolbox(idToolbox){
 
     
      divBlockly.appendChild(xml);
-     //body.appendChild(div);   APAGAR DEPOIS
-    }else{
+     }else{
         console.log("Ja existe esse toolbox");
     }
      
@@ -124,9 +108,7 @@ function toolboxFase1(idToolbox){
 }
 
 function toolboxFase2e3(idToolbox){
-    console.log("Estou dentro da func toolbox2e3");
     var arrayCategory = toolboxFase1(idToolbox) ;
-    console.log("Passei o arrayCategory da funcao toolbox2e3");
     //criando tag dos blocos
     //bloco avancar
     var blocoPular = document.createElement('block');
@@ -142,7 +124,6 @@ function toolboxFase2e3(idToolbox){
     //criando a estrutura html da div
     arrayCategory[0].appendChild(blocoPular);
     arrayCategory[0].appendChild(blocoPularFrente);
-    console.log("Array category na fase2 = "+arrayCategory[0]);
     return arrayCategory;
 }
 
@@ -157,8 +138,6 @@ function toolboxFase4(idToolbox){
     blocoDefender.setAttribute('class','bloco');
 
     arrayCategory[0].appendChild(blocoDefender);
-    console.log(arrayCategory[0]);
-
     return arrayCategory;
 }
 

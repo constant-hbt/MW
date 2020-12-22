@@ -56,8 +56,6 @@ public class Pergunta_Controller : MonoBehaviour
 
         }
 
-        Debug.Log("Url montada = "+url);
-
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             yield return www.SendWebRequest();//faz o envio da requisição
@@ -95,9 +93,7 @@ public class Pergunta_Controller : MonoBehaviour
         string p_id_fase = "idfase=" + id_fase;
 
         string url = string.Format("{0}{1}", caminho, p_id_fase);
-        Debug.Log("Url montada = " + url);
-
-
+        
         using (UnityWebRequest www = UnityWebRequest.Get(url))
         {
             yield return www.SendWebRequest();//faz o envio da requisição

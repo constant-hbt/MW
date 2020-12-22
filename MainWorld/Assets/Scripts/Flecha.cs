@@ -29,7 +29,6 @@ public class Flecha : MonoBehaviour
                 Destroy(this.gameObject);
                 break;
             case "invencivel":
-                Debug.Log("Colidi com a Layer Invencivel");
                 GameObject efeitoTemp = Instantiate(efeitoExplosaoPrefab,this.gameObject.transform.position, this.gameObject.transform.localRotation);
                 Destroy(efeitoTemp, 0.2f);
                 Destroy(this.gameObject);
@@ -40,8 +39,7 @@ public class Flecha : MonoBehaviour
     void retirarVidaPlayer()
     {
         _playerController.vidaPlayer -= this.valorDano;
-        Debug.Log("Vida do inimigo após o dano = " + _playerController.vidaPlayer);
-
+        
         GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position, _playerController.transform.localRotation);//mostrando dano tomado
         danoTemp.GetComponentInChildren<TextMeshPro>().text = this.valorDano.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
         danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";

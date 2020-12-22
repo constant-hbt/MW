@@ -34,8 +34,6 @@ public class InimigoTeleporte : MonoBehaviour
             while (contidoNoArray)
             {
                 int numPosicao = Random.Range(1, posicoes.Length+1);
-
-                Debug.Log("Valor do numPosicao = " + numPosicao);
                 if (posicaoJaOcupada.Contains(numPosicao))
                 {
                     contidoNoArray = true;

@@ -48,11 +48,9 @@ zoom:
 
                //funcao responsavel por recriar o workspace toda vez que for iniciar uma nova fase,  alterando o limite de blocos
         function recriarWorkspace(qtdMaxBlocos, toolbox){// -> função criada por mim
-            console.log("Valor do id toolbox dentro da func recriarWorkspace = "+toolbox);
             code = '';
             qtdBlocosUsados = 0;
             workspace.dispose();
-            //console.log(toolbox.value);
             let valorToolbox = toolbox;
                     if(valorToolbox == 0){
                          valorToolbox = '';//utilizado para garantir que o document.getElementById('toolbox') vá sempre pegar um valor valido
@@ -69,9 +67,7 @@ zoom:
              trashcan: true,
              maxBlocks:qtdMaxBlocos } //define o maximo de bloco que pode ser usado por fase
              );
-             console.log("Antes do updateToolbox");
              workspace.updateToolbox(document.getElementById('toolbox'+toolbox));
-             console.log("Depois do updateToolbox");
              document.getElementById('capacidade').innerHTML =  workspace.remainingCapacity();
                 //aplica a funcao ao novo espaco de trabalho
              function onchange(event){

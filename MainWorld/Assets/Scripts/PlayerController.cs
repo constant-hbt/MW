@@ -10,9 +10,6 @@ public class PlayerController : MonoBehaviour
     /// TEM UM ERRO NA LINHA 513 - TEM HAVER COM A INSTANCIACAO DO INIMIGO
     /// </summary>
 
-
-
-
     private SpriteRenderer sRender;
     private         Animator        playerAnimator;
     private         Rigidbody2D     playerRB;
@@ -67,6 +64,12 @@ public class PlayerController : MonoBehaviour
     public          Transform       scanRayJoelho;
     public          Transform       scanRayPe;
 
+    private bool rayCast_ColidindoInimigo = false;
+    private bool rayCast_NaoColidindoInimigo = true;
+    private bool colidiComInimigo = false;
+    public bool colidiMoveInimigo = false;//teleporteInimigo
+
+    private int groundedTravado = 0;
     public          LayerMask       interacao;//define a Layer em que o RayCast deve verificar para ver se há colisão com inimigo
     public          LayerMask       interacaoTeleporte;//define a Layer que o RayCast deve verificar se há colisão com algum objeto teleporte
     public          GameObject      objetoInteração;//pega o GameObject do objeto que o RayCast estiver interagindo
@@ -103,20 +106,6 @@ public class PlayerController : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void CondicaoNaoHaInimigo(bool temp_situacaoInimigo);
 
-
-    [DllImport("__Internal")]
-    public static extern void Teste(bool condInim);
-
-
-
-    private bool colidiComInimigo = false;
-    private bool rayCast_ColidindoInimigo = false;
-    private bool rayCast_NaoColidindoInimigo = true;
-
-    private int groundedTravado = 0;
-
-    //teleporteInimigo
-    public bool colidiMoveInimigo = false;
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -207,9 +196,8 @@ public class PlayerController : MonoBehaviour
             ativPainelPosMorte = false;
             passeiParteFase = false;
 
-            //salvar no banco 
-            Debug.Log("Perdi a fase e estou salvando no banco");
-            _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1,_controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
+            //salvar no banco
+                    _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1,_controllerFase.qtdMoedasColetadas, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
            
         }
@@ -339,8 +327,7 @@ public class PlayerController : MonoBehaviour
                 _gameController.parteFaseAtual += 1;
                 passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
                 collision.gameObject.SendMessage("interagindo", SendMessageOptions.DontRequireReceiver);
-                Debug.Log("Colidi com o teleporte");
-                break;
+               break;
         }
     }
     
@@ -547,7 +534,6 @@ public class PlayerController : MonoBehaviour
     IEnumerator Ataque(int valor_ataque)//ok
     {
         forcaDano = valor_ataque;
-        Debug.Log("Meu ataque tem o valor de = " + valor_ataque);
         playerAnimator.SetTrigger("attack1");
         //StartCoroutine("diminuirQTDBlocosU");
         yield return new WaitForSeconds(0.2f);
@@ -653,7 +639,6 @@ public class PlayerController : MonoBehaviour
     {
         
         desmarcarFreezyX();
-        Debug.Log("Desativando o circle collider");
         yield return new WaitForFixedUpdate();
         groundedTravado = 0;
         this.GetComponent<CircleCollider2D>().enabled = false;
@@ -721,11 +706,6 @@ public class PlayerController : MonoBehaviour
     }
     public void StartAvancar()
     {
-       
-
-       
-
-
         if (!tomeiHit)
         {
             StartCoroutine("TESTEAvancar");
@@ -753,8 +733,6 @@ public class PlayerController : MonoBehaviour
     {
         Flip();
     }
-
-    //TESTANDO PARA VER O PAINELFaseIncompleta
 
     void chamarResetarStatusParaPainelFaseInc()
     {

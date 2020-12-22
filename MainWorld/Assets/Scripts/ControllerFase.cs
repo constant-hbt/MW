@@ -71,8 +71,6 @@ public class ControllerFase : MonoBehaviour
         _hud = FindObjectOfType(typeof(HUD)) as HUD;
         _historico_Controller = FindObjectOfType(typeof(Historico_Controller)) as Historico_Controller;
 
-       // _gameController.parteFaseAtual = 0;
-
         //ativa a parte da fase
         if (fases.Length != 0)
         {

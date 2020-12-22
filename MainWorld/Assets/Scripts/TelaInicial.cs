@@ -122,7 +122,6 @@ public class TelaInicial : MonoBehaviour
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
-        Debug.Log("Valor do id_usuario preenchido =" + _gameController.id_usuario);
     }
     
     //ativar e desativar botão de configurações de som

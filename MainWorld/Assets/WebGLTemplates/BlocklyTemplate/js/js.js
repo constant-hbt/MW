@@ -27,22 +27,6 @@ function HabilitarEDesabilitarBlocos(situacao){
     capacidadeRestanteBlocos.hidden = situacao;
 }
 
-//Capta o event beforeunload e envia uma req sendMessage ao unity para salvar o Historico do jogo no momento que o usuario tentar atualizar ou fechar a pagina
-/*
- window.addEventListener('beforeunload', function (e) {
-    // Cancel the event
-    e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
-    // Chrome requires returnValue to be set
-    e.returnValue = '';
-    console.log("Chamando a funcao EnviarRegistroHistorico de dentro do unity");
-    unityInstance.SendMessage("GameControllerEntreFases","EnviarRegistroHistorico");
-    return ;
-  }); 
-
-*/ //DESCOMENTAR QUANDO FOR VER A QUESTÃO DE SALVAR NO BANCO
-
-
-
   //Funcoes resposanveis por colocar e retirar a trasparencia da div do toolbox
   //E responsavel também por centralizar de descentralizar a div do webGl
 

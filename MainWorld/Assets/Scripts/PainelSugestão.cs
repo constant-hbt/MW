@@ -70,7 +70,6 @@ public class PainelSugestão : MonoBehaviour
 
     public void alterarPainelAtivo(int numPainelAtivo)
     {
-        Debug.Log("Valor de idPainelAtivo = " + numPainelAtivo);
         switch (numPainelAtivo)
         {
             case 1:

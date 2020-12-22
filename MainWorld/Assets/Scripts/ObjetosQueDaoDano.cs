@@ -24,8 +24,7 @@ public class ObjetosQueDaoDano : MonoBehaviour
     public void retirarVidaPlayer()
     {
         _playerController.vidaPlayer -= this.valorDano;
-        Debug.Log("Vida do inimigo após o dano = " + _playerController.vidaPlayer);
-
+        
         GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position, _playerController.transform.localRotation);//mostrando dano tomado
         danoTemp.GetComponentInChildren<TextMeshPro>().text = this.valorDano.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
         danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";

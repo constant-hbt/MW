@@ -46,7 +46,6 @@
                         setTimeout(runner,80);
                     }else{
                         setTimeout(function(){
-                            console.log("INTERPRETE ACABOU, TO ATIVANDO O PAINEL");
                             unityInstance.SendMessage('playerKnight', 'respostaInterprete');
                         },1000);
                     }
@@ -94,7 +93,7 @@
             function enviarQtdBlocosUsados(qtdBloco){//-> função criada por mim
                 unityInstance.SendMessage('ControllerFase','quantidadeBlocoUsadosNaFase',qtdBloco );
                 unityInstance.SendMessage('playerKnight', 'receberBlocos', qtdBloco);
-                console.log('Enviei os blocos = '+ qtdBloco);
+                
             }
 
             function mostrarCodigo(code){//mostra o codigo utilizado contido nos blocos escolhidos || Função criada por mim
@@ -120,9 +119,9 @@
 
             function chamandoAlertDesempenho(){//Função criada por mim
                 setTimeout(function(){
-                    console.log( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
+                  /*  console.log( msgDesempenhoBloco(qtdBlocosMinimos, qtdBlocosTotais)+"\n" + 
                                         "Código utilizado para concluir a fase: \n"+
-                                        mostrarCodigo(codeCompleto) );
+                                        mostrarCodigo(codeCompleto) );*/
                 codeCompleto = '';
                 qtdBlocosTotais = 0;
                 }, 1000);
@@ -139,7 +138,6 @@
 }
    //-----
    function alterarLimiteBlocoForca(val_forca){
-    console.log("Entrei dentro da funcao alterarLimiteBlocoForca");
     var limitForcaAtaque = document.getElementById('limiteForcaAtaque');
     var blocos_temp = Blockly.mainWorkspace.getAllBlocks();
         for(var i=0; i< blocos_temp.length; i++ ){

@@ -76,16 +76,13 @@ public class Inimigo : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //if (died) { return; }
         switch (col.gameObject.tag)
         {
             case "arma":
                 //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
-                Debug.Log("Tomei dano do player, com a força de "+ _playerController.forcaDano);
-              /*  if (!getHit)
-                {*/
+                
                     getHit = true;
                     _animator.SetTrigger("hit");
 
@@ -102,14 +99,13 @@ public class Inimigo : MonoBehaviour
                     if(vidaAtual == 0)
                     {
                         //INIMIGO SOMENTE MORRE
-                        Debug.Log("INIMIGO MORREU");
+                      
                         died = true;
 
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
-                    Debug.Log("SpawnScript and object is active " + gameObject.activeInHierarchy);
-                    this.StartCoroutine("loot");
+                        this.StartCoroutine("loot");
 
                    
 
@@ -117,9 +113,7 @@ public class Inimigo : MonoBehaviour
                     else if(vidaAtual < 0)
                     {
                         //QUER DIZER QUE PLAYER DEU UM DANO MAIS FORTE QUE O NUMERO DE VIDA DO INIMIGO, PORTANTO O INIMIGO MORRE , MAIS SOLTA UMA EXPLOSAO QUE ATINGE O PLAYER
-                       
-                        Debug.Log("INIMIGO MORREU MAIS EXPLODIU E DEU DANO NO PLAYER");
-                        died = true;
+                       died = true;
 
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;
@@ -131,8 +125,6 @@ public class Inimigo : MonoBehaviour
                     }
                     else if(vidaAtual > 0)
                     {
-                        //INIMIGO SOLTA UM ATAQUE
-                        Debug.Log("INIMIGO COTRA-ATACOU COM UM HIT");
                         StartCoroutine("contraAtaque");
                         
                     }
@@ -153,9 +145,6 @@ public class Inimigo : MonoBehaviour
                     GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
                     Destroy(fxTemp, 1);
 
-               /* }*/
-
-                
                 break;
         }
     }
@@ -232,30 +221,10 @@ public class Inimigo : MonoBehaviour
         
         sRender.enabled = false;
 
-        //Controle de loot
-       /* int qtdMoedas = Random.Range(1, 3);
-        
-        for (int l = 0; l < qtdMoedas; l++)
-        {
-            
-            int lootSelect = Random.Range(0, loots.Length);
-            
-            
-            pontoSaidaLoot.position = new Vector3(pontoSaidaLoot.position.x +0.08f, pontoSaidaLoot.position.y, pontoSaidaLoot.position.z);
-
-            GameObject lootTemp = Instantiate(loots[lootSelect], pontoSaidaLoot.position, transform.localRotation);//Instanciando a coin
-           //lootTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(0,35), 100)); APAGAR DEPOIS
-            yield return new WaitForSeconds(0.1f);
-
-        }*/
-
-
         yield return new WaitForSeconds(0.4f);//depois de um segundo destroi a animacao de morte e o inimigo
-        Debug.Log("Vou destruir o fxMorte");
         Destroy(fxMorte, 0.5f);
         
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("Vou destruir o objeto inimigo");
         Destroy(this.gameObject);
         
     }
@@ -283,8 +252,6 @@ public class Inimigo : MonoBehaviour
     public void retirarVidaPlayer()
     {
         _playerController.vidaPlayer -= this.forcaDanoInim;
-        Debug.Log("Vida do inimigo após o dano = " + _playerController.vidaPlayer);
-
         GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position,_playerController.transform.localRotation);//mostrando dano tomado
         danoTemp.GetComponentInChildren<TextMeshPro>().text = this.forcaDanoInim.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
         danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
