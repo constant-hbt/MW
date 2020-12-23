@@ -66,8 +66,7 @@ function gravarDesempenhoPlayer(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,
 }
 
 function retornarDadosPlayer(){
-    if(verificarDadosPlayer()){
         let playerMW = localStorage.getItem('playerMW');
         unityInstance.SendMessage('ControllerTelaInicial','PreencherDadosPlayer', playerMW);
-    }    
+    
 }

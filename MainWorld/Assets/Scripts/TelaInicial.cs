@@ -59,11 +59,14 @@ public class TelaInicial : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Iniciei o script TelaInicial dentro do obj ControllerTelaInicial");
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
         VerificarRegistroPlayerLogado();
+
+        Debug.Log("haRegistroPlayerL = " + haRegistroPlayerL);
 
         if (haRegistroPlayerL == "haRegistro")
         {
@@ -135,6 +138,7 @@ public class TelaInicial : MonoBehaviour
     {
         if (haRegistroPlayerL == "naoHaRegistro")
         {
+            Debug.Log("Entrei dentro do iniciar jogo e dentro do if");
             _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
            }
         
@@ -144,6 +148,7 @@ public class TelaInicial : MonoBehaviour
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
+        Debug.Log("Id_usuario = " + id_usuario);
         GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
@@ -288,9 +293,11 @@ public class TelaInicial : MonoBehaviour
 
     public void PreencherDadosPlayer(string dadosPlayer)
     {
+        Debug.Log("Entrei dentro da funcao preencherDadosPlayer");
         if(dadosPlayer != "")
         {
             string playerMW = dadosPlayer;
+            Debug.Log("playerMW = " + playerMW);
             DadosPlayer objDadosP = JsonUtility.FromJson<DadosPlayer>(playerMW);
 
             _gameController.id_usuario = objDadosP.Id_usuario;
@@ -299,6 +306,8 @@ public class TelaInicial : MonoBehaviour
             _gameController.numVida = objDadosP.Vidas;
             _gameController.numEstrelas = objDadosP.Estrelas;
             _gameController.ultima_fase_concluida = objDadosP.Ultima_fase_concluida;
+
+            Debug.Log("id_usuario preenchido = " + objDadosP.Id_usuario);
 
             if(_gameController.fasesConcluidas != 0)
             {
@@ -313,6 +322,7 @@ public class TelaInicial : MonoBehaviour
 
     public void VerificarPlayerL(string situacaoDadoP)
     {
+        Debug.Log("Entrei dentro da funcao VerificarPlayerL");
         haRegistroPlayerL = situacaoDadoP;
     }
 }
