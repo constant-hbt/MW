@@ -36,6 +36,9 @@ public class PainelConclusãoFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void CentralizarWebGl();
 
+    [DllImport("__Internal")]
+    public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
+
     private             bool                    habilitarAlertCodigo = false;
     private bool habilitarContabilDesemp = false;
 
@@ -93,6 +96,8 @@ public class PainelConclusãoFase : MonoBehaviour
         SceneManager.LoadScene("Fase" + numeroFase);
         _gameController.idFaseEmExecucao = numeroFase;
         _gameController.descricaoFase = "Fase" + numeroFase;
+
+        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
     }
 
     public void btnPlay()
@@ -109,6 +114,7 @@ public class PainelConclusãoFase : MonoBehaviour
             StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
         }
 
+        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
     }
 
    public void contabilizarDesempenho(int idFase)

@@ -49,3 +49,25 @@ function HabilitarEDesabilitarBlocos(situacao){
     document.getElementById('divWebGl').classList.remove('divRightInicial');
     document.getElementById('divWebGl').classList.add('divRightAlterada');
 }
+
+//verifica se o navegador do player já possui dados gravados
+function verificarDadosPlayer(){
+    if(localStorage.getItem('playerMW') != null){
+        unityInstance.SendMessage('ControllerTelaInicial', 'VerificarPlayerL', 'haRegistro');
+    }else{
+        unityInstance.SendMessage('ControllerTelaInicial', 'VerificarPlayerL', 'naoHaRegistro');
+    }
+}
+
+function gravarDesempenhoPlayer(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,p_estrelas,p_ultima_fase_concluida){
+    
+    let playerMW = {id_usuario:p_id_usuario, fase_concluida:p_fase_concluida,moedas:p_moedas,vidas:p_vidas,estrelas:p_estrelas,ultima_fase_concluida:p_ultima_fase_concluida};
+    localStorage.setItem('playerMW',JSON.stringify(playerMW));
+}
+
+function retornarDadosPlayer(){
+    if(verificarDadosPlayer()){
+        let playerMW = localStorage.getItem('playerMW');
+        unityInstance.SendMessage('ControllerTelaInicial','PreencherDadosPlayer', playerMW);
+    }    
+}

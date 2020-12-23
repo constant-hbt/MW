@@ -3,7 +3,6 @@ mergeInto(LibraryManager.library, {
     
     SistemaLimiteBloco: function(qtdBlocoFase, toolbox){
         recriarWorkspace(qtdBlocoFase, toolbox);
-        console.log("VALOR DE TOOLBOX DENTRO DA FUNCAO SISTEMALIMITEBLOCO = "+ toolbox);
     },
     SistemaDeEnableDisableBlocos: function(situacao){
         HabilitarEDesabilitarBlocos(situacao);
@@ -35,17 +34,23 @@ mergeInto(LibraryManager.library, {
         retornoSendNaoHaInim = temp_situacaoInimigo;
     }
     ,
-    Teste: function(condInim){
-        console.log("Valor de retorno da funcao CondicaoInimigo: "+ condInim);
-    },
     AlterarToolboxFases:function(idToolbox){
         mudarToolbox(idToolbox);
-        console.log('Mudei o toolbox da fase'+idToolbox);
     },
     DisponibilizarToobox:function(){
         disponibilizarDivToolbox();
     },
     CentralizarWebGl:function(){
         centralizarWebGl();
+    },
+    ReceberDadosPlayerLogado:function(){
+        retornarDadosPlayer();
+    },
+    GravarDadosPlayerLogado:function(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,p_estrelas,p_ultima_fase_concluida){
+        gravarDesempenhoPlayer(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,p_estrelas,p_ultima_fase_concluida);
+    },
+    VerificarRegistroPlayerLogado:function(){
+        verificarDadosPlayer();
     }
+
 });

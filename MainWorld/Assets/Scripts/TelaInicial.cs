@@ -43,14 +43,32 @@ public class TelaInicial : MonoBehaviour
     public              Button              btnConfig;
 
     public bool botaoIniciarClicado = false;
+    public string haRegistroPlayerL = "";
     //Integração com js da página
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
+    [DllImport("__Internal")]
+    private static extern void ReceberDadosPlayerLogado();
+
+    [DllImport("__Internal")]
+    private static extern void VerificarRegistroPlayerLogado();
+
+    [DllImport("__Internal")]
+    public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
+
     void Start()
     {
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+
+        VerificarRegistroPlayerLogado();
+
+        if (haRegistroPlayerL == "haRegistro")
+        {
+            ReceberDadosPlayerLogado();
+        }
         
     }
 
@@ -115,15 +133,21 @@ public class TelaInicial : MonoBehaviour
 
     IEnumerator IniciarJogo()
     {
-        _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
+        if (haRegistroPlayerL == "naoHaRegistro")
+        {
+            _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
+           }
+        
         yield return new WaitForSeconds(0.42f);
         SceneManager.LoadScene("SelecaoFase");
     }
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
+        GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+
     }
-    
+
     //ativar e desativar botão de configurações de som
     public void ativarEdesativarPainel(string nomePainel)
     {//ativa e desativa os paineis de configuração
@@ -260,5 +284,35 @@ public class TelaInicial : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
         botaoIniciarClicado = false;
+    }
+
+    public void PreencherDadosPlayer(string dadosPlayer)
+    {
+        if(dadosPlayer != "")
+        {
+            string playerMW = dadosPlayer;
+            DadosPlayer objDadosP = JsonUtility.FromJson<DadosPlayer>(playerMW);
+
+            _gameController.id_usuario = objDadosP.Id_usuario;
+            _gameController.fasesConcluidas = objDadosP.Fase_concluida;
+            _gameController.numGold = objDadosP.Moedas;
+            _gameController.numVida = objDadosP.Vidas;
+            _gameController.numEstrelas = objDadosP.Estrelas;
+            _gameController.ultima_fase_concluida = objDadosP.Ultima_fase_concluida;
+
+            if(_gameController.fasesConcluidas != 0)
+            {
+                for(int i =0; i<_gameController.fasesConcluidas; i++)
+                {
+                    _gameController.perguntasRespondidas[i - 1] = true;
+                }
+            }
+
+        }
+    }
+
+    public void VerificarPlayerL(string situacaoDadoP)
+    {
+        haRegistroPlayerL = situacaoDadoP;
     }
 }
