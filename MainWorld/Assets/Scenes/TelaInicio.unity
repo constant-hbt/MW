@@ -2579,6 +2579,7 @@ GameObject:
   - component: {fileID: 175047480}
   - component: {fileID: 175047479}
   - component: {fileID: 175047481}
+  - component: {fileID: 175047482}
   m_Layer: 0
   m_Name: ControllerTelaInicial
   m_TagString: Untagged
@@ -2629,6 +2630,7 @@ MonoBehaviour:
   btnControle: {fileID: 1990154909}
   btnConfig: {fileID: 1990154906}
   botaoIniciarClicado: 0
+  haRegistroPlayerL: 
 --- !u!4 &175047480
 Transform:
   m_ObjectHideFlags: 0
@@ -2653,6 +2655,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 158ac9bd0163cac489cdccbe414ebc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &175047482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175047478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebe03f0fa6cdbc43bb697c0c88c6ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &232750165 stripped

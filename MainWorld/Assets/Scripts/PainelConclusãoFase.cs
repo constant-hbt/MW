@@ -97,8 +97,7 @@ public class PainelConclusãoFase : MonoBehaviour
         _gameController.idFaseEmExecucao = numeroFase;
         _gameController.descricaoFase = "Fase" + numeroFase;
 
-        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
-    }
+     }
 
     public void btnPlay()
     {
@@ -114,7 +113,7 @@ public class PainelConclusãoFase : MonoBehaviour
             StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
         }
 
-        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+       
     }
 
    public void contabilizarDesempenho(int idFase)
@@ -138,6 +137,8 @@ public class PainelConclusãoFase : MonoBehaviour
         }
         habilitarContabilDesemp = true;
         // }
+        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+
     }
 
     IEnumerator voltarSelecaoFase(string acao)
