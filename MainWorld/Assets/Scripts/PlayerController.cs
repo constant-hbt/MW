@@ -275,12 +275,15 @@ public class PlayerController : MonoBehaviour
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
                 break;
             case "placaAviso":
-                
                 _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
-
-                    _inimigoArqueiro.comecarAtacar = true;
+                _inimigoArqueiro.atacar();
+                col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
+                col.gameObject.tag = "Untagged";
                 break;
+            case "placaAvancar":
 
+                col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
+                break;
             case "moveInimigo":
 
                 if (!colidiMoveInimigo)//garante que a colisao so acontecerá uma unica vez
@@ -321,7 +324,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "teleporte":
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
-                _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + _gameController.parteFaseAtual + 1, _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
+                _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
                 parteFase += 1;
                 _gameController.parteFaseAtual += 1;
@@ -417,12 +420,12 @@ public class PlayerController : MonoBehaviour
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-           CondicaoHaInimigo(rayCast_ColidindoInimigo);
+       //    CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+       //     CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 

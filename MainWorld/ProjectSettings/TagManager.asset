@@ -27,6 +27,7 @@ TagManager:
   - moveInimigo
   - alavanca
   - espinhoLateral
+  - placaAvancar
   layers:
   - Default
   - TransparentFX

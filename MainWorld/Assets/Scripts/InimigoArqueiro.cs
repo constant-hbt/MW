@@ -27,19 +27,19 @@ public class InimigoArqueiro : MonoBehaviour
     {
         
 
-        if(comecarAtacar && novoAtaque)
+      /*  if(comecarAtacar && novoAtaque)
         {
 
             atacar();
-        }
+        }*/
     }
 
-    void atacar()
+    public void atacar()
     {
         
         novoAtaque = false;
         arqueiroAnimator.SetTrigger("Attack");
-        StartCoroutine(validarNovoAtaque());
+       // StartCoroutine(validarNovoAtaque());
     }
 
 
