@@ -22,7 +22,6 @@ public class Inimigo : MonoBehaviour
     public Transform vidaCheia;
     public TextMeshProUGUI tmpVida;
     public GameObject objTmpVida;
-    private bool died = false;
     public Transform pontoAnimMorte; //ponto referencia da origem da animacao de morte
     //public Transform pontoSaidaLoot; //ponto de referencia da origem dos loots
     //mostrar o dano
@@ -37,7 +36,7 @@ public class Inimigo : MonoBehaviour
     public bool playerEsquerda; //INDICA SE O PLAYER ESTÁ A ESQUERDA OU DIREITA DO PERSONAGEM
 
     [Header("Sistema de invunerabilidade")]
-    private bool getHit =false;
+   // private bool getHit =false;
 
     [Header("Configuração de loot")]
     public GameObject[] loots;
@@ -57,8 +56,6 @@ public class Inimigo : MonoBehaviour
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
         vidaAtual = vida;
         atualizarTMPVida(tmpVida, vidaAtual, vida);
-
-        died = false;
     }
 
     // Update is called once per frame
@@ -83,7 +80,7 @@ public class Inimigo : MonoBehaviour
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
                 
-                    getHit = true;
+                   // getHit = true;
                     _animator.SetTrigger("hit");
 
                     int forcaDanoPlayer = _playerController.forcaDano;
@@ -99,27 +96,20 @@ public class Inimigo : MonoBehaviour
                     if(vidaAtual == 0)
                     {
                         //INIMIGO SOMENTE MORRE
-                      
-                        died = true;
-
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
-                        this.StartCoroutine("loot");
+                        this.StartCoroutine("morteInim");
 
-                   
-
-                    }
+                }
                     else if(vidaAtual < 0)
                     {
                         //QUER DIZER QUE PLAYER DEU UM DANO MAIS FORTE QUE O NUMERO DE VIDA DO INIMIGO, PORTANTO O INIMIGO MORRE , MAIS SOLTA UMA EXPLOSAO QUE ATINGE O PLAYER
-                       died = true;
-
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
                         this.gameObject.layer = 9;
                         _animator.SetInteger("idAnimation", 1);
 
-                        StartCoroutine("loot");
+                        StartCoroutine("morteInim");
 
                         _playerController.SendMessage("explosaoInimigo", forcaDanoInim, SendMessageOptions.DontRequireReceiver);
                     }
@@ -208,9 +198,9 @@ public class Inimigo : MonoBehaviour
         
     }
 
-    IEnumerator loot()
+    IEnumerator morteInim()
     {
-        
+
         yield return new WaitForSeconds(1f);
 
         barrasVida.SetActive(false);
@@ -218,17 +208,16 @@ public class Inimigo : MonoBehaviour
         GameObject fxMorte = Instantiate(this.fxMorte, pontoAnimMorte.position, transform.localRotation);
 
         yield return new WaitForSeconds(0.25f);//depois de meio segundo desabilita a imagem do inimigo
-        
+
         sRender.enabled = false;
 
         yield return new WaitForSeconds(0.4f);//depois de um segundo destroi a animacao de morte e o inimigo
         Destroy(fxMorte, 0.5f);
-        
+
         yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
-        
-    }
 
+    }
     IEnumerator contraAtaque()
     {
         yield return new WaitForSeconds(0.5f);

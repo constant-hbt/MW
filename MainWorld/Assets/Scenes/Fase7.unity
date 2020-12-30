@@ -1265,7 +1265,7 @@ MonoBehaviour:
   - {fileID: 2144691935}
   - {fileID: 577290054}
   - {fileID: 140935846}
-  camera: {fileID: 2144691937}
+  compCamera: {fileID: 2144691937}
   posicaoHud:
   - 0
   - 1820

@@ -12,7 +12,7 @@ public class InimigoArqueiro : MonoBehaviour
     public GameObject prefabFlecha;
 
     public bool comecarAtacar = false;
-    private bool novoAtaque = true;
+    //private bool novoAtaque = true;
 
     public Animator arqueiroAnimator;
 
@@ -37,7 +37,7 @@ public class InimigoArqueiro : MonoBehaviour
     public void atacar()
     {
         
-        novoAtaque = false;
+       // novoAtaque = false;
         arqueiroAnimator.SetTrigger("Attack");
        // StartCoroutine(validarNovoAtaque());
     }
@@ -66,11 +66,11 @@ public class InimigoArqueiro : MonoBehaviour
         Destroy(flecha, 0.5f);
 
     }
-    IEnumerator validarNovoAtaque()
+    /*IEnumerator validarNovoAtaque()
     {
         yield return new WaitForSeconds(2.65f);//era 2.75 e a velocidade da flecha era 1
-        novoAtaque = true;
-    }
+       // novoAtaque = true;
+    }*/
 
     public void AtivarDesativarCollider(int situacao)
     {

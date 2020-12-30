@@ -2864,7 +2864,7 @@ MonoBehaviour:
   posicoesCamera:
   - {fileID: 2144691935}
   - {fileID: 577290054}
-  camera: {fileID: 2144691937}
+  compCamera: {fileID: 2144691937}
   posicaoHud:
   - 0
   - 1820
@@ -10136,7 +10136,7 @@ Transform:
   m_LocalScale: {x: 187.50002, y: 187.50002, z: 187.50002}
   m_Children: []
   m_Father: {fileID: 1786702722}
-  m_RootOrder: 16
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262001350
 GameObject:
@@ -12717,7 +12717,7 @@ PrefabInstance:
     - target: {fileID: 8951677412094997066, guid: 638fcb50bd3c6b44cace4e32df45275b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.033
+      value: -0.041
       objectReference: {fileID: 0}
     - target: {fileID: 8951677412094997066, guid: 638fcb50bd3c6b44cace4e32df45275b,
         type: 3}
@@ -13824,10 +13824,10 @@ RectTransform:
   - {fileID: 1847906132}
   - {fileID: 140935847}
   - {fileID: 2076621423}
+  - {fileID: 1260873585}
   - {fileID: 1566542919}
   - {fileID: 8764502753246394055}
   - {fileID: 730603999}
-  - {fileID: 1260873585}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1971,7 +1971,7 @@ MonoBehaviour:
   - {fileID: 1482646152}
   posicoesCamera:
   - {fileID: 2144691935}
-  camera: {fileID: 2144691937}
+  compCamera: {fileID: 2144691937}
   posicaoHud:
   - 180
 --- !u!1 &232391419

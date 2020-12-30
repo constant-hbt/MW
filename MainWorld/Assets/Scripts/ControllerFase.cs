@@ -43,7 +43,7 @@ public class ControllerFase : MonoBehaviour
     [Header("Configuração de posições iniciais")]
     public GameObject[] posicoesIniciasPlayer;
     public GameObject[] posicoesCamera;
-    public Camera camera;
+    public Camera compCamera;
     public float[] posicaoHud;
     //Integração com o js da página
     [DllImport("__Internal")]
@@ -85,7 +85,7 @@ public class ControllerFase : MonoBehaviour
         
         //inicia o player na parte da fase que ele estava anteriormente, se a fase estiver iniciando ele sera iniciado na parte 0
         _playerController.gameObject.transform.position = new Vector3(posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.x, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.y, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.z);
-        camera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, 0);
+        compCamera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, 0);
        
         if(_gameController.numTentativasFase < 3)
         {
@@ -93,7 +93,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-           // SistemaDeEnableDisableBlocos(false); 
+           SistemaDeEnableDisableBlocos(false); 
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -108,8 +108,8 @@ public class ControllerFase : MonoBehaviour
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
       
-       // SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual],_gameController.idFaseEmExecucao );
-       //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+        SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual],_gameController.idFaseEmExecucao );
+        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
@@ -176,7 +176,7 @@ public class ControllerFase : MonoBehaviour
     public void DadosFaseMemoria()
     {
         _gameController.qtdBlocosUsados = qtdBlocosUsados;
-        _gameController.qtdMoedasColetadas += qtdMoedasColetadas;
+        _gameController.qtdMoedasColetadas += qtdMoedasColetadasCadaParte;
         qtdMoedasColetadasCadaParte = 0;
 
     }

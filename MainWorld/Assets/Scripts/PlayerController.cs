@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private bool rayCast_ColidindoInimigo = false;
     private bool rayCast_NaoColidindoInimigo = true;
-    private bool colidiComInimigo = false;
+   // private bool colidiComInimigo = false;
     public bool colidiMoveInimigo = false;//teleporteInimigo
 
     private int groundedTravado = 0;
@@ -326,6 +326,7 @@ public class PlayerController : MonoBehaviour
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
+                Debug.Log("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1));
                 parteFase += 1;
                 _gameController.parteFaseAtual += 1;
                 passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
@@ -420,19 +421,19 @@ public class PlayerController : MonoBehaviour
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-       //    CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-       //     CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
-    public void retornoFuncHaInimigo()
+   /* public void retornoFuncHaInimigo()
     {//quando eu terminar de executar o bloco ha inimigos reinicio a var colidiInimigo para ver se a mais inimigos perto do player
         colidiComInimigo = false;
-    }
+    }*/
 
     void habilitarColliderAtak(int tipoAtaque)
     {
@@ -551,6 +552,7 @@ public class PlayerController : MonoBehaviour
 
     public void explosaoInimigo(int forcaAtaqueInimigo) //chama a coroutina com as configuracoes de hitInimigo --> É ativada pelo inimigo
     {
+        pararMovimentacao();
         StartCoroutine("hitInimigo", forcaAtaqueInimigo);
     }
 
@@ -561,7 +563,7 @@ public class PlayerController : MonoBehaviour
             _inimigo = FindObjectOfType(typeof(Inimigo)) as Inimigo;
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f); // era 1.5
         GameObject hitTemp = Instantiate(_inimigo.fxHitPlayer, transform.position, transform.localRotation);//instancia a animacao de hit no player
         Destroy(hitTemp, 0.7f);//destroi o prefab de hit
         playerAnimator.SetTrigger("hit");//inicia a animacao de hit
