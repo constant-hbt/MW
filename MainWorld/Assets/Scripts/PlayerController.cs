@@ -276,7 +276,16 @@ public class PlayerController : MonoBehaviour
                 break;
             case "placaAviso":
                 _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;
-                _inimigoArqueiro.atacar();
+                Inimigo[] inim = FindObjectsOfType<Inimigo>();
+
+                if(_inimigoArqueiro != null)
+                {
+                    _inimigoArqueiro.atacar();
+                }else if(inim.Length > 0)
+                {
+                    inim[inim.Length - 1].StartContraAtaque();
+                }
+
                 col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
                 col.gameObject.tag = "Untagged";
                 break;

@@ -115,8 +115,7 @@ public class Inimigo : MonoBehaviour
                     }
                     else if(vidaAtual > 0)
                     {
-                        StartCoroutine("contraAtaque");
-                        
+                        StartCoroutine(contraAtaqueRapido());
                     }
 
                     //INSTANCIANDO PREFABS
@@ -218,9 +217,20 @@ public class Inimigo : MonoBehaviour
         Destroy(this.gameObject);
 
     }
-    IEnumerator contraAtaque()
+
+    public void StartContraAtaque()
     {
+        StartCoroutine(contraAtaque());
+    }
+
+    IEnumerator contraAtaqueRapido()
+    {//Contra-ataque que não permite o player se defender
         yield return new WaitForSeconds(0.5f);
+        _animator.SetTrigger("attack");
+    }
+    IEnumerator contraAtaque()
+    {//Contra-ataque que da a possibilidade do player se defender
+        yield return new WaitForSeconds(0.8f);
         _animator.SetTrigger("attack");
     }
 

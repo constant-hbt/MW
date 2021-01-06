@@ -2418,7 +2418,7 @@ MonoBehaviour:
   gameControllers: []
   perguntasRespondidas: 000000000000000000
   idFaseEmExecucao: 0
-  fasesConcluidas: 0
+  fasesConcluidas: 9
   progressoAtual: 0
   numGold: 0
   numVida: 10
