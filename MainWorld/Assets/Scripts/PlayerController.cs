@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     
     public          Collider2D      collisorEmPé;// Collisor em pé 
     public          Collider2D      collisorAbaixado;//Collisor abaixado
+    public Collider2D collisorEscudo;
     
     public          bool            Grounded; //indica se o player esta no chao
     public          LayerMask       oqueEhChao; //indica o que é superficie para o teste do grounded
@@ -245,7 +246,7 @@ public class PlayerController : MonoBehaviour
                 //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
-                if (!tomeiHit)
+                if (!tomeiHit && this.gameObject.tag != "invencivel")
                 {
                     tomeiHit = true;
                    // print("Tomei um dano no inimigo com força igual a = " + _inimigo.forcaDanoInim);//somente utilizado para testes
@@ -458,6 +459,18 @@ public class PlayerController : MonoBehaviour
             
         
     }
+    public void habilitarDesabilitarColliderEscudo(int status)
+    {
+        switch (status)
+        {
+            case 0:
+                collisorEscudo.enabled = true;
+                break;
+            case 1:
+                collisorEscudo.enabled = false;
+                break;
+        }
+    }
     //JUNTAR ESTAS DUAS FUNCOES EM UMA SO DEPOIS
     void desabilitarColliderAtak(int tipoAtaque)
     {
@@ -495,6 +508,7 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 break;
             case "defender":
+                habilitarDesabilitarColliderEscudo(0);
                 StartCoroutine("Defender");
                 yield return new WaitForSeconds(0.75f); // era 0.9f
                 break;
@@ -715,7 +729,7 @@ public class PlayerController : MonoBehaviour
     }
     public void StartDefender()
     {
-      
+        habilitarDesabilitarColliderEscudo(0);
         StartCoroutine("Defender");
     }
     public void StartAvancar()

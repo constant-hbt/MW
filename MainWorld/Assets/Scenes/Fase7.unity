@@ -4543,6 +4543,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840031235}
   m_CullTransparentMesh: 0
+--- !u!1 &869159220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869159221}
+  - component: {fileID: 869159222}
+  m_Layer: 14
+  m_Name: collider
+  m_TagString: escudoPlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869159221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869159220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1829322872}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &869159222
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869159220}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.08543006, y: -0.06213084}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.073214754, y: 0.37869143}
+  m_EdgeRadius: 0
 --- !u!1 &881599737
 GameObject:
   m_ObjectHideFlags: 0
@@ -9400,6 +9457,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1813615721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1829322871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1829322872}
+  m_Layer: 14
+  m_Name: colliderEscudo
+  m_TagString: escudoPlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1829322872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829322871}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 869159221}
+  m_Father: {fileID: 3589834207755137617}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1847906131
 GameObject:
   m_ObjectHideFlags: 0
@@ -34304,6 +34392,7 @@ Transform:
   - {fileID: 3589834207125130432}
   - {fileID: 3589834208636044487}
   - {fileID: 3589834207992684089}
+  - {fileID: 1829322872}
   m_Father: {fileID: 1786702722}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -34417,6 +34506,7 @@ MonoBehaviour:
   IdAnimation: 0
   "collisorEmP\xE9": {fileID: 3589834207755137618}
   collisorAbaixado: {fileID: 3589834207755137621}
+  collisorEscudo: {fileID: 869159222}
   Grounded: 0
   oqueEhChao:
     serializedVersion: 2
@@ -50577,6 +50667,8 @@ MonoBehaviour:
   objTmpVida: {fileID: 7269575766836026060}
   pontoAnimMorte: {fileID: 8225801412622822741}
   danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
+    type: 3}
+  efeitoExplosaoPrefab: {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff,
     type: 3}
   forcaDanoInim: 1
   colliderAttack: {fileID: 8225801411082498685}

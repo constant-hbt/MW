@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -508,6 +509,8 @@ MonoBehaviour:
   objTmpVida: {fileID: 7269575766213233730}
   pontoAnimMorte: {fileID: 8225801411253451739}
   danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
+    type: 3}
+  efeitoExplosaoPrefab: {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff,
     type: 3}
   forcaDanoInim: 1
   colliderAttack: {fileID: 8225801411722192115}

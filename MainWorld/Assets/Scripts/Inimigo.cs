@@ -26,6 +26,7 @@ public class Inimigo : MonoBehaviour
     //public Transform pontoSaidaLoot; //ponto de referencia da origem dos loots
     //mostrar o dano
     public GameObject danoTxtPrefab;
+    public GameObject efeitoExplosaoPrefab;
 
     [Header("Sistema de ataque")]
     public int forcaDanoInim;
@@ -134,6 +135,12 @@ public class Inimigo : MonoBehaviour
                     GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
                     Destroy(fxTemp, 1);
 
+                break;
+
+            case "escudoPlayer":
+                GameObject efeitoTemp = Instantiate(efeitoExplosaoPrefab, new Vector3(col.gameObject.transform.position.x + 0.122f, col.gameObject.transform.position.y, col.gameObject.transform.position.y), this.gameObject.transform.localRotation);
+                Destroy(efeitoTemp, 0.2f);
+                _playerController.habilitarDesabilitarColliderEscudo(1);
                 break;
         }
     }

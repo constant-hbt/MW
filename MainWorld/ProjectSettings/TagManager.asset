@@ -28,6 +28,7 @@ TagManager:
   - alavanca
   - espinhoLateral
   - placaAvancar
+  - escudoPlayer
   layers:
   - Default
   - TransparentFX

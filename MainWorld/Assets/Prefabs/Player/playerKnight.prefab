@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1019521157003371610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1271298642763195686}
+  - component: {fileID: 8202099428903537379}
+  m_Layer: 14
+  m_Name: collider
+  m_TagString: escudoPlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1271298642763195686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019521157003371610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 330942612722658777}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &8202099428903537379
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019521157003371610}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0918051, y: -0.05296451}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.046639264, y: 0.3997358}
+  m_EdgeRadius: 0
 --- !u!1 &3589834206893731049
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,6 +480,7 @@ Transform:
   - {fileID: 3589834208182979573}
   - {fileID: 3589834207611552754}
   - {fileID: 3589834206928476428}
+  - {fileID: 330942612722658777}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -606,6 +664,7 @@ MonoBehaviour:
   IdAnimation: 0
   "collisorEmP\xE9": {fileID: 3589834208777729383}
   collisorAbaixado: {fileID: 3589834208777729376}
+  collisorEscudo: {fileID: 8202099428903537379}
   Grounded: 0
   oqueEhChao:
     serializedVersion: 2
@@ -623,6 +682,7 @@ MonoBehaviour:
   scanRayCintura: {fileID: 3589834208216408707}
   scanRayJoelho: {fileID: 3589834207020094750}
   scanRayPe: {fileID: 3589834206893731048}
+  colidiMoveInimigo: 0
   interacao:
     serializedVersion: 2
     m_Bits: 2048
@@ -635,6 +695,9 @@ MonoBehaviour:
   forcaDano: 1
   painelFaseIncompleta: {fileID: 0}
   qtdBlocosUsados: -1
+  passeiParteFase: 0
+  interpreteAcabou: 0
+  parteFase: 0
   knockForcePrefab: {fileID: 245182937094941483, guid: a8eb6164284222449a1cb8e9876b0fa6,
     type: 3}
   knockPosition: {fileID: 3589834207611552754}
@@ -739,4 +802,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3589834208114315942}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5113777453578019123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 330942612722658777}
+  m_Layer: 14
+  m_Name: colliderEscudo
+  m_TagString: escudoPlayer
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &330942612722658777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113777453578019123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1271298642763195686}
+  m_Father: {fileID: 3589834208777729380}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
