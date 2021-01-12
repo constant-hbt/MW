@@ -287,12 +287,27 @@ public class PlayerController : MonoBehaviour
                     inim[inim.Length - 1].StartContraAtaque();
                 }
 
-                col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
-                col.gameObject.tag = "Untagged";
+                if(_inimigoArqueiro != null || inim != null)
+                {
+                    col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
+                    col.gameObject.tag = "Untagged";
+                }
+                
                 break;
             case "placaAvancar":
 
                 col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
+                break;
+            case "placaAvisoChefao":
+                InimigoChefe inimigoChefe = FindObjectOfType(typeof(InimigoChefe)) as InimigoChefe;
+                if(inimigoChefe != null)
+                {
+                    inimigoChefe.StartContraAtaque();
+
+                    col.gameObject.SendMessage("MudarEstado", SendMessageOptions.DontRequireReceiver);
+                    col.gameObject.tag = "Untagged";
+                }
+
                 break;
             case "moveInimigo":
 

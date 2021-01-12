@@ -29,6 +29,7 @@ TagManager:
   - espinhoLateral
   - placaAvancar
   - escudoPlayer
+  - placaAvisoChefao
   layers:
   - Default
   - TransparentFX

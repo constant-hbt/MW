@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-public class Inimigo : MonoBehaviour
-{
-    // Start is called before the first frame update
 
-    //TESTE
+public class InimigoChefe : MonoBehaviour
+{
+    
     private PlayerController _playerController;
     private ControllerFase _controllerFase;
     private SpriteRenderer sRender;
@@ -15,6 +13,7 @@ public class Inimigo : MonoBehaviour
 
 
     [Header("Sistema de vida")]
+    public int numMortes;
     public int vida;
     public int vidaAtual;
     private float percVida;
@@ -40,37 +39,35 @@ public class Inimigo : MonoBehaviour
     [Header("Sistema de invunerabilidade")]
    // private bool getHit =false;
 
-    [Header("Configuração de loot")]
-    public GameObject[] loots;
-
     [Header("Prefabs")]
     public GameObject[] fxDano; //array responsavel por guardar as animacoes de dano
     public GameObject fxMorte; //guarda o prefab com a animacao de morte  
     public GameObject fxHitPlayer;//guarda o prefab da animação de quando ele explode e da um hit no player
 
+    [Header("Sistema de posicionamento")]
+    public GameObject[] posicaoX;
+    public GameObject[] posicaoY;
+    public int posicaoAtual;
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         sRender = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-       
+
         vidaCheia.localScale = new Vector3(0.3f, 0.7f, 1);
         vidaAtual = vida;
         atualizarTMPVida(tmpVida, vidaAtual, vida);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-
         //FAZ COM QUE O INIMIGO SEMPRE ESTEJA VIRADO NA DIRECAO DO PLAYER
         verifDirPlayer();
 
         //Personagem no chao
         _animator.SetBool("Grounded", true);
-
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -81,65 +78,79 @@ public class Inimigo : MonoBehaviour
                 //IRA FAZER UM TESTE COM A VIDA DO INIMIGO SE A FORCA DO ATAQUE FOR IGUAL A VIDA DO INIMIGO O INIMIGO MORRE E O PLAYER NAO SOFRE NADA
                 //SE O ATAQUE FOR MENOR QUE A VIDA DO INIMIGO ENTAO O INIMIGO DA UM HIT NO PLAYER E O PLAYER MORRE E TEM QUE REINICIAR A FASE
                 //E SE O DANO DO PLAYER FOR MAIOR QUE A VIDA DO INIMIGO O INIMIGO EXPLODE E MORRE , MAIS DA DANO NO PLAYER E O PLAYER TBM MORRE
-                
-                   // getHit = true;
-                    _animator.SetTrigger("hit");
 
-                    int forcaDanoPlayer = _playerController.forcaDano;
-                    vidaAtual -= Mathf.RoundToInt(forcaDanoPlayer); //diminuo a vida do inimigo apartir da forcaDano do player
-                    percVida = (float)vidaAtual / (float)vida;//recalculo o percentual de vida do inimigo
-                    
-                    if(percVida < 0) { percVida = 0; }
-                    
+                // getHit = true;
+                _animator.SetTrigger("hit");
 
-                    vidaCheia.localScale = new Vector3(percVida * 0.3f, 0.7f, 1);//modifico o tamanho da barra representativa de acordo com o dano tomado, apos o ataque do player
-                    atualizarTMPVida(tmpVida, vidaAtual, vida);
+                int forcaDanoPlayer = _playerController.forcaDano;
+                vidaAtual -= Mathf.RoundToInt(forcaDanoPlayer); //diminuo a vida do inimigo apartir da forcaDano do player
+                calcularVida();
 
-            
-                    if(vidaAtual == 0)
+                if (vidaAtual == 0)
+                {
+                    numMortes--;
+                    if(posicaoAtual < 2)
                     {
-                            this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
-                            this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
-                            _animator.SetInteger("idAnimation", 1);
-                            this.StartCoroutine("morteInim");
-                        
+                        posicaoAtual++;
                     }
-                    else if(vidaAtual < 0)
+                    else
                     {
-                        //QUER DIZER QUE PLAYER DEU UM DANO MAIS FORTE QUE O NUMERO DE VIDA DO INIMIGO, PORTANTO O INIMIGO MORRE , MAIS SOLTA UMA EXPLOSAO QUE ATINGE O PLAYER
+                        posicaoAtual = 0;
+                    }
+                    //INIMIGO SOMENTE MORRE
+                    if (numMortes <= 0)
+                    {
                         this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
-                        this.gameObject.layer = 9;
+                        this.gameObject.layer = 9;// muda a layer do inimigo para que o player Principal nao possa arrasta-lo quando o mesmo estiver morto
                         _animator.SetInteger("idAnimation", 1);
-
-                        StartCoroutine("morteInim");
-
-                        _playerController.SendMessage("explosaoInimigo", forcaDanoInim, SendMessageOptions.DontRequireReceiver);
+                        this.StartCoroutine("morteInim");
                     }
-                    else if(vidaAtual > 0)
+                    else
                     {
-                        StartCoroutine(contraAtaqueRapido());
+                        vidaAtual = vida;
+                        StartCoroutine(Reposicionar());
+                        //calcularVida();
+                        //this.gameObject.transform.position = new Vector3(posicaoX[posicaoAtual-1].transform.position.x, posicaoY[posicaoAtual-1].transform.position.y, this.gameObject.transform.position.z);
                     }
 
-                    //INSTANCIANDO PREFABS
-                    GameObject danoTemp = Instantiate(danoTxtPrefab, transform.position, transform.localRotation);//mostrando dano tomado
-                    danoTemp.GetComponentInChildren<TextMeshPro>().text = forcaDanoPlayer.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
-                    danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
-                    int forcaX = 20;//Fazer o dano sair um pouco para o lado
-                    if (playerEsquerda == false)
-                    {
-                        forcaX *= -1;
-                    }
-                    danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 150));//jogar o dano para cima
-                    Destroy(danoTemp, 0.7f);//DESTROI O DANO CRIADO
+                }
+                else if (vidaAtual < 0)
+                {
+                    //QUER DIZER QUE PLAYER DEU UM DANO MAIS FORTE QUE O NUMERO DE VIDA DO INIMIGO, PORTANTO O INIMIGO MORRE , MAIS SOLTA UMA EXPLOSAO QUE ATINGE O PLAYER
+                    this.gameObject.tag = "Untagged";//muda a tag para o player nao collider com o inimigo depois que ele estiver morto
+                    this.gameObject.layer = 9;
+                    _animator.SetInteger("idAnimation", 1);
 
-                    //EFEITO HIT
-                    GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
-                    Destroy(fxTemp, 1);
+                    StartCoroutine("morteInim");
+
+                    _playerController.SendMessage("explosaoInimigo", forcaDanoInim, SendMessageOptions.DontRequireReceiver);
+                }
+                else if (vidaAtual > 0)
+                {
+                    StartCoroutine(contraAtaqueRapido());
+                }
+
+                //INSTANCIANDO PREFABS
+                GameObject danoTemp = Instantiate(danoTxtPrefab, transform.position, transform.localRotation);//mostrando dano tomado
+                danoTemp.GetComponentInChildren<TextMeshPro>().text = forcaDanoPlayer.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
+                danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
+                int forcaX = 20;//Fazer o dano sair um pouco para o lado
+                if (playerEsquerda == false)
+                {
+                    forcaX *= -1;
+                }
+                danoTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(forcaX, 150));//jogar o dano para cima
+                Destroy(danoTemp, 0.7f);//DESTROI O DANO CRIADO
+
+                //EFEITO HIT
+                GameObject fxTemp = Instantiate(fxDano[0], transform.position, transform.localRotation);
+                Destroy(fxTemp, 1);
 
                 break;
 
             case "escudoPlayer":
-                GameObject efeitoTemp = Instantiate(efeitoExplosaoPrefab, new Vector3(col.gameObject.transform.position.x + ladoEfeitoDano, col.gameObject.transform.position.y, col.gameObject.transform.position.y), this.gameObject.transform.localRotation);
+                Debug.Log("Entrei dentro da case escudoPlayer");
+                GameObject efeitoTemp = Instantiate(efeitoExplosaoPrefab, new Vector3(col.gameObject.transform.position.x + ladoEfeitoDano, col.gameObject.transform.position.y, col.gameObject.transform.position.z), this.gameObject.transform.localRotation);
                 Destroy(efeitoTemp, 0.2f);
                 _playerController.habilitarDesabilitarColliderEscudo(1);
                 break;
@@ -170,7 +181,42 @@ public class Inimigo : MonoBehaviour
         ladoEfeitoDano *= x;
         //faz com que a barra de vida altere o lado conforme personagem se vira
         //barrasVida.transform.localScale = new Vector3(barrasVida.transform.localScale.x * -1 , barrasVida.transform.localScale.y, barrasVida.transform.localScale.z);
-       }
+    }
+
+    IEnumerator Reposicionar()
+    {
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        barrasVida.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        barrasVida.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        barrasVida.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        barrasVida.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        barrasVida.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        barrasVida.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        barrasVida.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        barrasVida.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        barrasVida.SetActive(false);
+        this.gameObject.transform.position = new Vector3(posicaoX[posicaoAtual - 1].transform.position.x, posicaoY[posicaoAtual - 1].transform.position.y, this.gameObject.transform.position.z);
+        calcularVida();
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        barrasVida.SetActive(true);
+    }
 
     void atualizarTMPVida(TextMeshProUGUI tmpVida, int vidaAtual, int vida)
     {
@@ -178,7 +224,16 @@ public class Inimigo : MonoBehaviour
 
         tmpVida.text = vidaAtual + "/" + vida;
     }
+    void calcularVida()
+    {
+        percVida = (float)vidaAtual / (float)vida;//recalculo o percentual de vida do inimigo
 
+        if (percVida < 0) { percVida = 0; }
+
+
+        vidaCheia.localScale = new Vector3(percVida * 0.3f, 0.7f, 1);//modifico o tamanho da barra representativa de acordo com o dano tomado, apos o ataque do player
+        atualizarTMPVida(tmpVida, vidaAtual, vida);
+    }
     void verifDirPlayer()
     {
         float xPlayer = _playerController.transform.position.x;
@@ -192,17 +247,17 @@ public class Inimigo : MonoBehaviour
             playerEsquerda = false;
         }
 
-        
-         if (olhandoEsquerda == false && playerEsquerda == true)
+
+        if (olhandoEsquerda == false && playerEsquerda == true)
         {
             flip();
         }
-        
+
         if (olhandoEsquerda == true && playerEsquerda == false)
         {
             flip();
-           }
-        
+        }
+
     }
 
     IEnumerator morteInim()
@@ -259,7 +314,7 @@ public class Inimigo : MonoBehaviour
     public void retirarVidaPlayer()
     {
         _playerController.vidaPlayer -= this.forcaDanoInim;
-        GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position,_playerController.transform.localRotation);//mostrando dano tomado
+        GameObject danoTemp = Instantiate(danoTxtPrefab, _playerController.transform.position, _playerController.transform.localRotation);//mostrando dano tomado
         danoTemp.GetComponentInChildren<TextMeshPro>().text = this.forcaDanoInim.ToString(); //atualizando o texto do prefab para mostrar o dano naquele momento
         danoTemp.GetComponentInChildren<MeshRenderer>().sortingLayerName = "HUD";
         int forcaX = 20;//Fazer o dano sair um pouco para o lado
