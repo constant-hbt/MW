@@ -79,6 +79,11 @@ public class Teleporte : MonoBehaviour
         }
       //  ReiniciarVarCodeCompleto();
         
+        if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
+        {
+            HUD hud = FindObjectOfType(typeof(HUD)) as HUD;
+            hud.habilitarObjVidaChefao();
+        }
     }
 
     

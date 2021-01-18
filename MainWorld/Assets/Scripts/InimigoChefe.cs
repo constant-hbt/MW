@@ -185,6 +185,8 @@ public class InimigoChefe : MonoBehaviour
 
     IEnumerator Reposicionar()
     {
+        this.gameObject.layer = 9;
+        yield return new WaitForSeconds(0.7f);
         this.GetComponent<SpriteRenderer>().enabled = false;
         barrasVida.SetActive(false);
         yield return new WaitForSeconds(0.2f);
@@ -199,7 +201,7 @@ public class InimigoChefe : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<SpriteRenderer>().enabled = false;
         barrasVida.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
+       /* yield return new WaitForSeconds(0.2f);
         this.GetComponent<SpriteRenderer>().enabled = true;
         barrasVida.SetActive(true);
         yield return new WaitForSeconds(0.2f);
@@ -210,9 +212,10 @@ public class InimigoChefe : MonoBehaviour
         barrasVida.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<SpriteRenderer>().enabled = false;
-        barrasVida.SetActive(false);
+        barrasVida.SetActive(false);*/
         this.gameObject.transform.position = new Vector3(posicaoX[posicaoAtual - 1].transform.position.x, posicaoY[posicaoAtual - 1].transform.position.y, this.gameObject.transform.position.z);
         calcularVida();
+        this.gameObject.layer = 11;
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<SpriteRenderer>().enabled = true;
         barrasVida.SetActive(true);

@@ -101,6 +101,11 @@ public class ControllerFase : MonoBehaviour
         qtdBlocosUsados = _gameController.qtdBlocosUsados;
         _playerController.parteFase = _gameController.parteFaseAtual;
 
+
+        if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
+        {
+            _hud.habilitarObjVidaChefao();
+        }
     }
     void Start()
     {

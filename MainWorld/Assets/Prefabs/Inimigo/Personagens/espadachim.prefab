@@ -320,6 +320,7 @@ MonoBehaviour:
   tmpVida: {fileID: 7664864259200584493}
   objTmpVida: {fileID: 0}
   pontoAnimMorte: {fileID: 7664864258400493198}
+  ladoEfeitoDano: 0.122
   danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
     type: 3}
   efeitoExplosaoPrefab: {fileID: 0}
@@ -401,6 +402,7 @@ MonoBehaviour:
   tmpVida: {fileID: 7664864259200584493}
   objTmpVida: {fileID: 7664864259200584491}
   pontoAnimMorte: {fileID: 7664864258400493198}
+  ladoEfeitoDano: 0.122
   danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
     type: 3}
   efeitoExplosaoPrefab: {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff,
@@ -414,6 +416,9 @@ MonoBehaviour:
   fxMorte: {fileID: 2168333012426403654, guid: d8e817979b0363b418bd6c5e2afa34ca, type: 3}
   fxHitPlayer: {fileID: 7156239594062826918, guid: 0c5374c71f163bf44a67346e385144fb,
     type: 3}
+  posicaoX: []
+  posicaoY: []
+  posicaoAtual: 0
 --- !u!1 &7664864258400493197
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7664864258400493197}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.035, y: 0.569, z: 0}
+  m_LocalPosition: {x: 0.059, y: 0.363, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7664864257704369940}
