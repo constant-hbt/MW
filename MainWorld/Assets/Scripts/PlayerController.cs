@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void CondicaoNaoHaInimigo(bool temp_situacaoInimigo);
 
+    
+    
     void Start()
     {
         playerAnimator = GetComponent<Animator>();
@@ -205,7 +207,7 @@ public class PlayerController : MonoBehaviour
         if(vidaPlayer <= 0 && !estaMorto)
         {
             
-            playerAnimator.SetInteger("idAnimation", 3);//ESSE IF PRECISA DE AJUSTES(VERIFICAR O LOCAL CORRETO QUE ELE DEVE SER INSERIDO)
+            playerAnimator.SetInteger("idAnimation", 3);
             StartCoroutine("mortePlayer");
             estaMorto = true;//vai definir que o player esta morto e portanto assim o painel de fase incompleta sera ativado
             //DEPOIS VAI PARA O INTERPRETE E CHAMAR O PAINEL DE FASE INCOMPLETA
@@ -446,12 +448,12 @@ public class PlayerController : MonoBehaviour
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-         //  CondicaoHaInimigo(rayCast_ColidindoInimigo);
+            CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-         //   CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+            CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 

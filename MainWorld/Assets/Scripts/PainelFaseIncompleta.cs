@@ -35,6 +35,10 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
+    [DllImport("__Internal")]
+    public static extern void ResetarInterprete();
+
     void Start()
     {
         
@@ -52,10 +56,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase)
     {
-      //  SistemaReiniciarWorkspaceBlockly();
-      //  DisponibilizarToobox();
-      //  ReiniciarVarCodeCompleto();
-      //  ReiniciarVarBlocosTotais();
+        // SistemaReiniciarWorkspaceBlockly();
+        ResetarInterprete();
+        DisponibilizarToobox();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         if(_gameController == null)
         {
@@ -85,11 +90,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-      //  CentralizarWebGl();
+        CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-      //  SistemaReiniciarWorkspaceBlockly();
-      //  ReiniciarVarCodeCompleto();
-      //  ReiniciarVarBlocosTotais();
+        SistemaReiniciarWorkspaceBlockly();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
 
       
         if(_perguntaController == null)

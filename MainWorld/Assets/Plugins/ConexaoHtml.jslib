@@ -26,6 +26,10 @@ mergeInto(LibraryManager.library, {
     ReiniciarVarBlocosTotais: function(){
         qtdBlocosTotais = 0;
     },
+    ResetarInterprete: function(){
+        resetInterpreter();
+    }
+    ,
     CondicaoHaInimigo: function(temp_situacaoInimigo){
         retornoSendHaInim = temp_situacaoInimigo;
     }

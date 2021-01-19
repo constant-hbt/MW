@@ -17,8 +17,8 @@ public class Pergunta_Controller : MonoBehaviour
     }
     IEnumerator RegistrarResposta(Resposta resposta)
     {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";
-       // string caminho ="http://localhost/games/salvarresposta.php?";
+       // string caminho = "http://jogos.plataformaceos.com.br/mainworld/salvarresposta.php?";
+        string caminho ="http://localhost/games/salvarresposta.php?";
         string p_id_usuario = "id_usuario=" + resposta.Id_usuario + "&";
         string p_IdPergunta1 = "id_pergunta1=" + resposta.Id_pergunta1 + "&";
         string p_Resposta1 = "resposta1=" + resposta.Resposta1 + "&";

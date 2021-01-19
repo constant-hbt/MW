@@ -139,7 +139,7 @@ public class PainelConclusãoFase : MonoBehaviour
         }
         habilitarContabilDesemp = true;
         // }
-      //  GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 
@@ -148,12 +148,12 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-             //   CentralizarWebGl();
+                CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
-             //   CentralizarWebGl();
+                CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;

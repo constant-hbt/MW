@@ -296,7 +296,7 @@ public class InimigoChefe : MonoBehaviour
     }
     IEnumerator contraAtaque()
     {//Contra-ataque que da a possibilidade do player se defender
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.9f);
         _animator.SetTrigger("attack");
     }
 
