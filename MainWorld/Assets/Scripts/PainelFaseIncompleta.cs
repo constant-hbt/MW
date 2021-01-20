@@ -78,11 +78,11 @@ public class PainelFaseIncompleta : MonoBehaviour
     public void ReiniciarFase(int idFase)//reinicia a fase caso o player tenha esgotado todas as tentativas
     {
 
-        SistemaReiniciarWorkspaceBlockly();
-        ResetarInterprete();
-        DisponibilizarToobox();
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
+       // SistemaReiniciarWorkspaceBlockly();
+       // ResetarInterprete();
+       // DisponibilizarToobox();
+       // ReiniciarVarCodeCompleto();
+       // ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase" + idFase);
         if (_gameController == null)
         {
@@ -108,11 +108,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-        CentralizarWebGl();
+        //CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-        SistemaReiniciarWorkspaceBlockly();
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
+        //SistemaReiniciarWorkspaceBlockly();
+        //ReiniciarVarCodeCompleto();
+        //ReiniciarVarBlocosTotais();
 
       
         if(_perguntaController == null)

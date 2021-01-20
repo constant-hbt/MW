@@ -99,7 +99,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-           SistemaDeEnableDisableBlocos(false); 
+         //  SistemaDeEnableDisableBlocos(false); 
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -122,9 +122,9 @@ public class ControllerFase : MonoBehaviour
         //possibilita que os blocos nao sejam excluidos caso o player ja nao esteja mas na sua primeira tentativa dentro da fase        
         if(_gameController.numTentativasFase == 3 || _gameController.numTentativasFase == 5)
         {
-            SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
+         //   SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
         }
-        EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+       // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }

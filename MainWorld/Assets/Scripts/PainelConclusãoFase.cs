@@ -12,7 +12,15 @@ public class PainelConclusãoFase : MonoBehaviour
     private Pergunta_Controller _perguntaController;
 
     public              TextMeshProUGUI         tmpEstrelas;
-    public              TextMeshProUGUI         tmpMoedas;
+    
+    public              TextMeshProUGUI         tmpQtdMoedasColetadas;
+    public              TextMeshProUGUI         tmpQtdMoedasDisponiveis;
+    public              GameObject[]            SimbolosDesempenhoMoedas;
+
+    public              TextMeshProUGUI         tmpQtdBlocosUtilizados;
+    public              TextMeshProUGUI         tmpQtdBlocosMinimosConclusao;
+    public              GameObject[]            SimbolosDesempenhoBlocos;
+
     public GameObject painelConclusaFase;
 //    private bool jaEnvieiRegistro = false; //verifica se o registro ja foi enviado ao ativar o painel ao concluir a fase
 
@@ -50,8 +58,15 @@ public class PainelConclusãoFase : MonoBehaviour
 
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();;
-        tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
-        tmpMoedas.text = _controllerFase.qtdMoedasColetadas.ToString();
+       // tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
+        tmpQtdMoedasColetadas.text = _controllerFase.qtdMoedasColetadas.ToString();
+        tmpQtdMoedasDisponiveis.text = _controllerFase.qtdMoedasDisponiveis.ToString();
+        calcularDesempenhoColetaMoeda();
+
+        tmpQtdBlocosUtilizados.text = _controllerFase.qtdBlocosUsados.ToString();
+        tmpQtdBlocosMinimosConclusao.text = _controllerFase.qtdMinimaDeBlocosParaConclusao.ToString();
+        calcularDesempenhoColetaBlocos();
+
         _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
         
         pConclusaoFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y,0 ,0) ;
@@ -142,7 +157,58 @@ public class PainelConclusãoFase : MonoBehaviour
         }
         habilitarContabilDesemp = true;
         // }
-        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+      //  GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+
+    }
+
+    public void calcularDesempenhoColetaMoeda()
+    {
+        int qtdMoedasColetadas = _controllerFase.qtdMoedasColetadas;
+        int qtdMoedasDisponiveis = _controllerFase.qtdMoedasDisponiveis;
+
+        if(qtdMoedasColetadas == qtdMoedasDisponiveis)
+        {
+            SimbolosDesempenhoMoedas[0].SetActive(true);
+            SimbolosDesempenhoMoedas[1].SetActive(false);
+            SimbolosDesempenhoMoedas[2].SetActive(false);
+        }
+        else if(qtdMoedasColetadas > 0 && qtdMoedasColetadas < qtdMoedasDisponiveis)
+        {
+            SimbolosDesempenhoMoedas[0].SetActive(false);
+            SimbolosDesempenhoMoedas[1].SetActive(false);
+            SimbolosDesempenhoMoedas[2].SetActive(true);
+        }
+        else
+        {
+            SimbolosDesempenhoMoedas[0].SetActive(false);
+            SimbolosDesempenhoMoedas[1].SetActive(true);
+            SimbolosDesempenhoMoedas[2].SetActive(false);
+        }
+    }
+
+    public void calcularDesempenhoColetaBlocos()
+    {
+        int qtdBlocosUtilizados = _controllerFase.qtdBlocosUsados;
+        int qtdBlocosMinimosConclusao = _controllerFase.qtdMinimaDeBlocosParaConclusao;
+
+        if (qtdBlocosUtilizados == qtdBlocosMinimosConclusao)
+        {
+            SimbolosDesempenhoBlocos[0].SetActive(true);
+            SimbolosDesempenhoBlocos[1].SetActive(false);
+            SimbolosDesempenhoBlocos[2].SetActive(false);
+        }
+        else if (qtdBlocosUtilizados > qtdBlocosMinimosConclusao)
+        {
+            SimbolosDesempenhoBlocos[0].SetActive(false);
+            SimbolosDesempenhoBlocos[1].SetActive(false);
+            SimbolosDesempenhoBlocos[2].SetActive(true);
+        }
+        else
+        {
+            SimbolosDesempenhoBlocos[0].SetActive(false);
+            SimbolosDesempenhoBlocos[1].SetActive(true);
+            SimbolosDesempenhoBlocos[2].SetActive(false);
+        }
 
     }
 
@@ -151,12 +217,12 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-                CentralizarWebGl();
+               // CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
-                CentralizarWebGl();
+              //  CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;
