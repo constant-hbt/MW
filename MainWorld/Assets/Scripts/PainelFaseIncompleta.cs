@@ -54,9 +54,9 @@ public class PainelFaseIncompleta : MonoBehaviour
         
     }
 
-    public void jogarNovamente(int idFase)
+    public void jogarNovamente(int idFase) // quando o player morre e ainda há tentativas para se jogar ele retorno dentro da parte da fase que estava anteriormente
     {
-        // SistemaReiniciarWorkspaceBlockly();
+        
         ResetarInterprete();
         DisponibilizarToobox();
         ReiniciarVarCodeCompleto();
@@ -73,8 +73,26 @@ public class PainelFaseIncompleta : MonoBehaviour
         {
             _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         }
-        
-       
+    }
+
+    public void ReiniciarFase(int idFase)//reinicia a fase caso o player tenha esgotado todas as tentativas
+    {
+
+        SistemaReiniciarWorkspaceBlockly();
+        ResetarInterprete();
+        DisponibilizarToobox();
+        ReiniciarVarCodeCompleto();
+        ReiniciarVarBlocosTotais();
+        SceneManager.LoadScene("Fase" + idFase);
+        if (_gameController == null)
+        {
+            _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        }
+        _gameController.idFaseEmExecucao = idFase;
+        _gameController.descricaoFase = "Fase" + idFase;
+        _gameController.tentativaFaseAlter = false;
+        _gameController.numTentativasFixo = 0;
+        _gameController.numTentativasFase = 0;
     }
     public void voltarSelecaoFase()
     {

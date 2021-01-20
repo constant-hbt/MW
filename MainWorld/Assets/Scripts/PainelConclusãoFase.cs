@@ -95,6 +95,9 @@ public class PainelConclusãoFase : MonoBehaviour
     public void BtnReiniciar(int numeroFase)
     {
         _gameController.ZerarVarBancoTentativasFase(); //zera as variaveis para reiniciar a fase do inicio
+        _gameController.tentativaFaseAlter = false; // reinicio a variavel para permitir iniciar correntamente a variavel de tentativas disponibilizadas dentro de cada fase
+        _gameController.numTentativasFixo = 0;
+        _gameController.numTentativasFase = 0;
         SceneManager.LoadScene("Fase" + numeroFase);
         _gameController.idFaseEmExecucao = numeroFase;
         _gameController.descricaoFase = "Fase" + numeroFase;

@@ -26,9 +26,8 @@ public class ControllerFase : MonoBehaviour
     public string data_InicioFase;//computado ao iniciar a fase
     public string data_FimFase;//vai ser computado ao colidir com o runaWin
     public string seqBlocos; //contém a sequência de blocos utilizados para passar a parte da fase
-    //Configuração do Limite de blocos por fase
-    //Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco
-    //maximos que pode ser utilizado durante aquela fase
+    public int numTentativasFase;
+
     [Header("Distribuição de Estrelas")]
     public                  int                     qtdBlocosDisponiveisEmTodaFase;//quantidade de blocos disponiveis para poder concluir a fase
     public                  int                     qtdMinimaDeBlocosParaConclusao;//quantidade de blocos minimos que devem ser usados para concluir a fase
@@ -47,8 +46,8 @@ public class ControllerFase : MonoBehaviour
     public float[] posicaoHud;
     //Integração com o js da página
     [DllImport("__Internal")]
-    public static extern void                    SistemaLimiteBloco(int qtdBlocoFase, int toolbox);
-    
+    public static extern void                    SistemaLimiteBloco(int qtdBlocoFase, int toolbox);//Ao iniciar a fase a funcao SistemaLimiteBloco muda o campo no html da pagina que delimita a quantidade de bloco maximos que pode ser utilizado durante aquela fase
+
 
     [DllImport("__Internal")]
     public static extern void                       EnviarQTDBlocosMinimosParaPassarFase(int qtdBlocosMinimos);//envia a quantidade de blocos minimos necessarios para passar a fase
@@ -82,12 +81,19 @@ public class ControllerFase : MonoBehaviour
 
         }
 
-        
         //inicia o player na parte da fase que ele estava anteriormente, se a fase estiver iniciando ele sera iniciado na parte 0
         _playerController.gameObject.transform.position = new Vector3(posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.x, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.y, posicoesIniciasPlayer[_gameController.parteFaseAtual].transform.position.z);
         compCamera.transform.position = new Vector3(posicoesCamera[_gameController.parteFaseAtual].transform.position.x, posicoesCamera[_gameController.parteFaseAtual].transform.position.y, 0);
-       
-        if(_gameController.numTentativasFase < 3)
+
+        if (!_gameController.tentativaFaseAlter)
+        {
+            _gameController.IniciarTentativasFase(numTentativasFase);
+        }
+
+
+        //Reinicia a fase no parte em que o player estava anteriormente
+        if(_gameController.numTentativasFixo == 3 && _gameController.numTentativasFase < 3 ||
+            _gameController.numTentativasFixo == 5 && _gameController.numTentativasFase < 5)
         {
             _hud.gameObject.transform.localPosition = new Vector4(posicaoHud[_gameController.parteFaseAtual], 0, 0, 0);
             
@@ -105,6 +111,7 @@ public class ControllerFase : MonoBehaviour
         if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
             _hud.habilitarObjVidaChefao();
+            
         }
     }
     void Start()
@@ -112,8 +119,8 @@ public class ControllerFase : MonoBehaviour
         
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
-        
-        if(_gameController.numTentativasFase == 3)
+        //possibilita que os blocos nao sejam excluidos caso o player ja nao esteja mas na sua primeira tentativa dentro da fase        
+        if(_gameController.numTentativasFase == 3 || _gameController.numTentativasFase == 5)
         {
             SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
         }

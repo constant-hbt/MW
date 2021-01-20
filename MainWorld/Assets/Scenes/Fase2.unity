@@ -2518,6 +2518,7 @@ MonoBehaviour:
   data_InicioFase: 
   data_FimFase: 
   seqBlocos: 
+  numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 30
   qtdMinimaDeBlocosParaConclusao: 16
   qtdBlocosUsados: 0

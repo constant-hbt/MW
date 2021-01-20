@@ -1251,6 +1251,7 @@ MonoBehaviour:
   data_InicioFase: 
   data_FimFase: 
   seqBlocos: 
+  numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 38
   qtdMinimaDeBlocosParaConclusao: 35
   qtdBlocosUsados: 0
@@ -3862,7 +3863,7 @@ PrefabInstance:
     - target: {fileID: 2188460462799838994, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2188460462799838994, guid: bafb5e3929b7c5b4190db23eb7d9ff07,
         type: 3}
@@ -6403,7 +6404,7 @@ Transform:
   m_LocalScale: {x: 187.50002, y: 187.50002, z: 187.50002}
   m_Children: []
   m_Father: {fileID: 1786702722}
-  m_RootOrder: 14
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1267748179
 GameObject:
@@ -9113,9 +9114,9 @@ RectTransform:
   - {fileID: 140935847}
   - {fileID: 2076621423}
   - {fileID: 2868376301959967317}
-  - {fileID: 1260873585}
   - {fileID: 8764502753246394055}
   - {fileID: 730603999}
+  - {fileID: 1260873585}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50666,6 +50667,7 @@ MonoBehaviour:
   tmpVida: {fileID: 7269575766836026062}
   objTmpVida: {fileID: 7269575766836026060}
   pontoAnimMorte: {fileID: 8225801412622822741}
+  ladoEfeitoDano: 0.122
   danoTxtPrefab: {fileID: 1598753363132366116, guid: e0e1bc45960e517408f66a2ffae0951c,
     type: 3}
   efeitoExplosaoPrefab: {fileID: 1714589265228871759, guid: c5dbafa876e519b4dad677551c90e4ff,
@@ -51191,7 +51193,7 @@ PrefabInstance:
     - target: {fileID: 8764502753579503881, guid: 1d86fec885786df499b5950b8597d6de,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8764502753579503881, guid: 1d86fec885786df499b5950b8597d6de,
         type: 3}

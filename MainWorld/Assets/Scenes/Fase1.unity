@@ -1961,6 +1961,7 @@ MonoBehaviour:
   data_InicioFase: 
   data_FimFase: 
   seqBlocos: 
+  numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 10
   qtdMinimaDeBlocosParaConclusao: 7
   qtdBlocosUsados: 0

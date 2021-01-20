@@ -30,7 +30,9 @@ public class GameController : MonoBehaviour
     public int progressoAtual;
     public int numGold;//numero total de moedas coletadas dentro do jogo
     public int numVida = 1;//numero de vidas dentro do jogo
-    public int numTentativasFase = 3;
+    public int numTentativasFixo; //contem o numero total de tentivas que cada fase pode ter
+    public int numTentativasFase; //contem o numero de tentativas que o usuario contem no momento em que esta jogando(é alterada assim que o usuario perde uma tentativa)
+    public bool tentativaFaseAlter;//permite que o numero de tentativas seja alterado uma unica vez dentro de uma fase (sempre no inicio da fase e logo ao inicia-la)
     public int numEstrelas;//numero total de estrelas coletadas dentro do jogo
     public int[] errosFase;//contém a quantidade de erros que o usuario teve ate a conclusao da fase --> será acrescentado um de erro a posicao da respectiva fase assim que o painel de fase incompleta for acionado --> assim que a fase em questao for concluida ao ativar o painel de conclusao de fase os erros respectivos aquela fase serao excluidos
     public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
@@ -60,6 +62,7 @@ public class GameController : MonoBehaviour
             errosFase[i] = 0;
         }
 
+        tentativaFaseAlter = false;
         parteFaseAtual = 0;
         id_atividade = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
         idGame = 1;//vai ser alimentado com dados vindo do js -------> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR 
@@ -105,5 +108,16 @@ public class GameController : MonoBehaviour
         qtdMoedasColetadas = 0;
         parteFaseAtual = 0;
         numTentativasFase = 3;
+    }
+
+    public void IniciarTentativasFase(int numTentativas)
+    {
+        if (!tentativaFaseAlter)
+        {
+            numTentativasFixo = numTentativas;
+            numTentativasFase = numTentativas;
+            tentativaFaseAlter = true;
+        }
+        //depois dentro da ao terminar a fase, quando voltar a selecao de fase eu volto tentativaFaseAlter para false
     }
 }
