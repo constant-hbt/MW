@@ -14,11 +14,15 @@ public class PainelConclusãoFase : MonoBehaviour
     public              TextMeshProUGUI         tmpEstrelas;
     
     public              TextMeshProUGUI         tmpQtdMoedasColetadas;
+    public              GameObject              legendaMoedasColetadas;
     public              TextMeshProUGUI         tmpQtdMoedasDisponiveis;
+    public              GameObject              legendaMoedasDisponiveis;
     public              GameObject[]            SimbolosDesempenhoMoedas;
 
     public              TextMeshProUGUI         tmpQtdBlocosUtilizados;
-    public              TextMeshProUGUI         tmpQtdBlocosMinimosConclusao;
+    public              GameObject              legendaBlocosUtilizados;
+    public              TextMeshProUGUI         tmpQtdBlocosDisponiveis;
+    public              GameObject              legendaBlocosDisponiveis;
     public              GameObject[]            SimbolosDesempenhoBlocos;
 
     public GameObject painelConclusaFase;
@@ -64,7 +68,7 @@ public class PainelConclusãoFase : MonoBehaviour
         calcularDesempenhoColetaMoeda();
 
         tmpQtdBlocosUtilizados.text = _controllerFase.qtdBlocosUsados.ToString();
-        tmpQtdBlocosMinimosConclusao.text = _controllerFase.qtdMinimaDeBlocosParaConclusao.ToString();
+        tmpQtdBlocosDisponiveis.text = _controllerFase.qtdMinimaDeBlocosParaConclusao.ToString();
         calcularDesempenhoColetaBlocos();
 
         _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
@@ -244,5 +248,41 @@ public class PainelConclusãoFase : MonoBehaviour
         }
     }
 
+    public void AtivarLegenda(string nomeCampo)
+    {
+        switch (nomeCampo)
+        {
+            case "moedasColetadas":
+                legendaMoedasColetadas.SetActive(true);
+                break;
+            case "moedasDisponiveis":
+                legendaMoedasDisponiveis.SetActive(true);
+                break;
+            case "blocosUtilizados":
+                legendaBlocosUtilizados.SetActive(true);
+                break;
+            case "blocosDisponiveis":
+                legendaBlocosDisponiveis.SetActive(true);
+                break;
+        }
+    }
 
+    public void DesativarLegenda(string nomeCampo)
+    {
+        switch (nomeCampo)
+        {
+            case "moedasColetadas":
+                legendaMoedasColetadas.SetActive(false);
+                break;
+            case "moedasDisponiveis":
+                legendaMoedasDisponiveis.SetActive(false);
+                break;
+            case "blocosUtilizados":
+                legendaBlocosUtilizados.SetActive(false);
+                break;
+            case "blocosDisponiveis":
+                legendaBlocosDisponiveis.SetActive(false);
+                break;
+        }
+    }
 }

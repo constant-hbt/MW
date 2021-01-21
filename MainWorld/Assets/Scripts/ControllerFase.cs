@@ -163,26 +163,26 @@ public class ControllerFase : MonoBehaviour
             naoTemMoeda = false;
         }
 
-        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= qtdMoedasDisponiveis ||
-            qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
+        if (qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas == qtdMoedasDisponiveis ||
+            qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
         }
-        else if(qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
-                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
+        else if(qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
+                 qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else if(qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda ||
-                qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas == 0 && naoTemMoeda ||
-                qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
+        else //if(qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda ||
+               // qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas == 0 && naoTemMoeda ||
+                //qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
         {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }
-        else
+        /*else
         {
-            estrelas = -1;
-        }
+            estrelas = 1;
+        }*/ //VERIFICAR DEPOIS SE ESTA CORRETO
         
         return estrelas;
     }

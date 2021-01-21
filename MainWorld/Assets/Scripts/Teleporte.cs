@@ -16,7 +16,7 @@ public class Teleporte : MonoBehaviour
     public          Camera                      cam;
     public          Transform[]                 transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
     public RectTransform objHud;
-
+    public GameObject painelIntroChefe;
     //responsaveis por mudar a posicao do hud conforme para passando entre as partes da fase
     public float[] posHudParte ;//para definir essas medidas foi utilizado metodos manuais
     public bool virarPlayer = false; // caso o player for iniciar a fase olhando para o lado contrario , isso possibilita virá-lo para lado certo
@@ -83,6 +83,11 @@ public class Teleporte : MonoBehaviour
         {
             HUD hud = FindObjectOfType(typeof(HUD)) as HUD;
             hud.habilitarObjVidaChefao();
+
+            if(painelIntroChefe != null)
+            {
+                painelIntroChefe.gameObject.SetActive(true);
+            }
         }
     }
 
