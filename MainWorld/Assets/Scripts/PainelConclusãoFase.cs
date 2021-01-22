@@ -10,6 +10,7 @@ public class PainelConclusãoFase : MonoBehaviour
     private             GameController          _gameController;
     private             ControllerFase          _controllerFase;
     private Pergunta_Controller _perguntaController;
+    private PlayerController _playerController;
 
     public              TextMeshProUGUI         tmpEstrelas;
     
@@ -31,13 +32,22 @@ public class PainelConclusãoFase : MonoBehaviour
     [Header("Configuração Estrelas")]
 
     public              GameObject              estrela1;
+    public GameObject x1;
     public              GameObject              estrela2;
+    public GameObject x2;
     public              GameObject              estrela3;
+    public GameObject x3;
     private             int                     qtdEstrelasAdquiridas;
+
+
 
     public Camera cam;
     public RectTransform pConclusaoFase;
     public RectTransform rectHud;
+    public GameObject botaoProximaF;
+    public GameObject botaoFaseAnterior;
+    public GameObject tituloFaseC;
+    public GameObject tituloFaseInc;
 
     [DllImport("__Internal")]
     public static extern void                   SistemaReiniciarWorkspaceBlockly();
@@ -47,6 +57,10 @@ public class PainelConclusãoFase : MonoBehaviour
 
     [DllImport("__Internal")]
     public static extern void CentralizarWebGl();
+
+    [DllImport("__Internal")]
+    public static extern void ResetarInterprete();
+
 
     [DllImport("__Internal")]
     public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
@@ -59,9 +73,9 @@ public class PainelConclusãoFase : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController; 
 
-
-        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();;
+        qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
        // tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
         tmpQtdMoedasColetadas.text = _controllerFase.qtdMoedasColetadas.ToString();
         tmpQtdMoedasDisponiveis.text = _controllerFase.qtdMoedasDisponiveis.ToString();
@@ -71,29 +85,60 @@ public class PainelConclusãoFase : MonoBehaviour
         tmpQtdBlocosDisponiveis.text = _controllerFase.qtdMinimaDeBlocosParaConclusao.ToString();
         calcularDesempenhoColetaBlocos();
 
-        _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
-        
-        pConclusaoFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y,0 ,0) ;
-        
+        pConclusaoFase.localPosition = new Vector4(rectHud.localPosition.x, rectHud.localPosition.y, 0, 0);
 
-        switch (qtdEstrelasAdquiridas)
+        if (_playerController.passeiFase)
         {
-            case 1:
-                estrela1.SetActive(true);
-                estrela2.SetActive(false);
-                estrela3.SetActive(false);
-                break;
-            case 2:
-                estrela1.SetActive(true);
-                estrela2.SetActive(true);
-                estrela3.SetActive(false);
-                break;
-            case 3:
-                estrela1.SetActive(true);
-                estrela2.SetActive(true);
-                estrela3.SetActive(true);
-                break;
+            _gameController.ultima_fase_concluida = _gameController.idFaseEmExecucao;
+
+            switch (qtdEstrelasAdquiridas)
+            {
+                case 1:
+                    estrela1.SetActive(true);
+                    estrela2.SetActive(false);
+                    estrela3.SetActive(false);
+                    break;
+                case 2:
+                    estrela1.SetActive(true);
+                    estrela2.SetActive(true);
+                    estrela3.SetActive(false);
+                    break;
+                case 3:
+                    estrela1.SetActive(true);
+                    estrela2.SetActive(true);
+                    estrela3.SetActive(true);
+                    break;
+            }
+
+            tituloFaseC.SetActive(true);
+            tituloFaseInc.SetActive(false);
+
+            if (_gameController.idFaseEmExecucao < 9)
+            {
+                botaoProximaF.SetActive(true);
+            }
+            if(_gameController.idFaseEmExecucao > 1)
+            {
+                botaoFaseAnterior.SetActive(true);
+            }
+            
         }
+        else
+        {
+            estrela1.SetActive(false);
+            estrela2.SetActive(false);
+            estrela3.SetActive(false);
+
+            x1.SetActive(true);
+            x2.SetActive(true);
+            x3.SetActive(true);
+
+            tituloFaseC.SetActive(false);
+            tituloFaseInc.SetActive(true);
+            botaoProximaF.SetActive(false);
+            botaoFaseAnterior.SetActive(false);
+        }
+        
 
         habilitarAlertCodigo = true;
        // jaEnvieiRegistro = false;
@@ -113,6 +158,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
+        ResetarInterprete();
         _gameController.ZerarVarBancoTentativasFase(); //zera as variaveis para reiniciar a fase do inicio
         _gameController.tentativaFaseAlter = false; // reinicio a variavel para permitir iniciar correntamente a variavel de tentativas disponibilizadas dentro de cada fase
         _gameController.numTentativasFixo = 0;
@@ -138,6 +184,14 @@ public class PainelConclusãoFase : MonoBehaviour
         }
 
        
+    }
+    public void btnProximaF()
+    {
+        SceneManager.LoadScene("Fase" + (_gameController.idFaseEmExecucao + 1));
+    }
+    public void btnFaseAnterior()
+    {
+        SceneManager.LoadScene("Fase" + (_gameController.idFaseEmExecucao -1));
     }
 
    public void contabilizarDesempenho(int idFase)

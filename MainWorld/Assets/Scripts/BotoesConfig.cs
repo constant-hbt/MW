@@ -4,103 +4,76 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using System.Runtime.InteropServices;
-
-public class TelaInicial : MonoBehaviour
+public class BotoesConfig : MonoBehaviour
 {
     private Pergunta_Controller _perguntaController;
     private GameController _gameController;
 
     private bool statusBotao = false; //true -> botão ja foi pressionado, false -> nao foi pressionado --- CONFIGURAÇÃO DO BOTAO CONFIG
-    
+
 
     [Header("GameObject dos Botões de Configuração")]
-    public              GameObject          botaoConfig;
-    public              GameObject          botaoSom;
-    public              GameObject          botaoControl;
+    public GameObject botaoConfig;
+    public GameObject botaoSom;
+    public GameObject botaoControl;
 
     [Header("Paineis")]
-    public              GameObject          painelSom;
-    public              GameObject          painelControles;
+    public GameObject painelSom;
+    public GameObject painelControles;
 
     [Header("Painel Controles / Botões de Controle")]
 
-    public              GameObject[]        btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
+    public GameObject[] btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
     //usado para redimensionar o tamanho de cada obj que contem os botões, para assim adequar o scrollBar
-    public              RectTransform       contentPersonagem;
-    public              RectTransform       contentEstruturas;
-    public              RectTransform       contentCond;
+    public RectTransform contentPersonagem;
+    public RectTransform contentEstruturas;
+    public RectTransform contentCond;
     //usada para ativar e ativar os objetos contendo cada grupo de botões
-    public              GameObject[]        paineisDeControles;
-    public              ScrollRect          scrollRect;
+    public GameObject[] paineisDeControles;
+    public ScrollRect scrollRect;
 
     [Header("Botões de Configuração")]
-    
-    public              Button              closePainelControle;
-    public              Button              closePainelSom;
-    public              Button              btnSom;
-    public              Button              btnControle;
-    public              Button              btnConfig;
 
-    public bool botaoIniciarClicado = false;
-    public string haRegistroPlayerL = "";
-    //Integração com js da página
-    [DllImport("__Internal")]
-    private static extern void SistemaDeEnableDisableBlocos(bool situacao);
-
-    [DllImport("__Internal")]
-    public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
+    public Button closePainelControle;
+    public Button closePainelSom;
+    public Button btnSom;
+    public Button btnControle;
+    public Button btnConfig;
 
 
     void Start()
     {
-      
+
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-       // SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    
 
     public void ControladorDeCoroutine(int id)
     {
         switch (id)
         {
-            case 1:
-                if (!botaoIniciarClicado)
-                {
-                    StartCoroutine("IniciarJogo");
-                    botaoIniciarClicado = true;
-                    HabilitarCliqueBtnIniciar();
-                }
-                
+            case 2:
+                StartCoroutine("mostrarConfig");
                 break;
-            
         }
-        
+
     }
 
-    
     IEnumerator mostrarConfig()
     {
-        if (statusBotao == false  )
+        if (statusBotao == false)
         {
 
             statusBotao = true;
 
-           // botaoConfig.transform.localScale += new Vector3(-0.2f, -0.2f, 0);
+            // botaoConfig.transform.localScale += new Vector3(-0.2f, -0.2f, 0);
             yield return new WaitForSeconds(0.2f);
 
             botaoSom.SetActive(true);
             botaoControl.SetActive(true);
-           
-            
+
+
             botaoConfig.GetComponent<Animator>().SetBool("botaoAtivado", true);//deixa impossibilitado gerar a animacao ao passar o mouse no botao config, para nao conflitar com os outros botoes que foram ativados
             btnSom.Select();//quando os botoes de Controle e som aparece o som estará com o foco de seleção
         }
@@ -111,31 +84,11 @@ public class TelaInicial : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
             botaoSom.SetActive(false);
             botaoControl.SetActive(false);
-            
+
 
             botaoConfig.GetComponent<Animator>().SetBool("botaoAtivado", false);//possibilita gerar a animacao ao passar o mouse no botao
             btnConfig.Select();
         }
-
-    }
-
-    //Script ControllerTelaInicial
-    IEnumerator IniciarJogo()
-    {
-        if (haRegistroPlayerL == "naoHaRegistro")
-        {
-            _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
-        }
-        
-        yield return new WaitForSeconds(0.42f);
-        SceneManager.LoadScene("SelecaoFase");
-    }
-
-    //Script ControllerTelaInicial
-    void PreencherIdUsuario(int id_usuario)
-    {
-        _gameController.id_usuario = id_usuario;
-       // GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 
@@ -156,17 +109,17 @@ public class TelaInicial : MonoBehaviour
                 }
                 else
                 {
-                   btnSom.Select();
+                    btnSom.Select();
                 }
 
                 break;
             case "Controle":
-               
+
                 bool painelControleStatus = painelControles.activeSelf;
                 painelControleStatus = !painelControleStatus;
 
                 painelControles.SetActive(painelControleStatus);
-                if(painelControleStatus == true)
+                if (painelControleStatus == true)
                 {
                     closePainelControle.Select();
                 }
@@ -174,10 +127,10 @@ public class TelaInicial : MonoBehaviour
                 {
                     btnControle.Select();
                 }
-               
+
                 break;
         }
-              
+
     }
 
     public void botoesControle(string nomeBotão)
@@ -185,24 +138,24 @@ public class TelaInicial : MonoBehaviour
         switch (nomeBotão)
         {
             case "Personagem":
-                                   
-                                    //somente os botões referentes a movimentação do personagem estarão ativos
-                                    foreach(GameObject i in btnsControles)
-                                    {
-                                        if(i.gameObject.tag == "UI.Control.Personagem")
-                                         {
-                                                i.SetActive(true);
-                                        }
-                                         else
-                                             {
-                                               i.SetActive(false);
-                                            }
-                                    }
 
-               scrollRect.content = contentPersonagem;//modifica o content dentro do ScrollRect para redimensionar dinamicamente a barra de rolagem
+                //somente os botões referentes a movimentação do personagem estarão ativos
+                foreach (GameObject i in btnsControles)
+                {
+                    if (i.gameObject.tag == "UI.Control.Personagem")
+                    {
+                        i.SetActive(true);
+                    }
+                    else
+                    {
+                        i.SetActive(false);
+                    }
+                }
+
+                scrollRect.content = contentPersonagem;//modifica o content dentro do ScrollRect para redimensionar dinamicamente a barra de rolagem
                 foreach (GameObject paineis in paineisDeControles)
                 {
-                    if(paineis.gameObject.tag == "UI.Painel.Personagem")
+                    if (paineis.gameObject.tag == "UI.Painel.Personagem")
                     {
                         paineis.SetActive(true);
                     }
@@ -254,7 +207,7 @@ public class TelaInicial : MonoBehaviour
                     }
                 }
 
-               scrollRect.content = contentCond;//modifica o content dentro do ScrollRect para redimensionar dinamicamente a barra de rolagem
+                scrollRect.content = contentCond;//modifica o content dentro do ScrollRect para redimensionar dinamicamente a barra de rolagem
                 foreach (GameObject paineis in paineisDeControles)
                 {
                     if (paineis.gameObject.tag == "UI.Painel.Cond")
@@ -270,42 +223,4 @@ public class TelaInicial : MonoBehaviour
         }
     }
 
-   IEnumerator HabilitarCliqueBtnIniciar()
-    {   
-        
-        yield return new WaitForSeconds(0.5f);
-        botaoIniciarClicado = false;
-    }
-    //Script ControllerTelaInicial
-    public void PreencherDadosPlayer(string dadosPlayer)
-    {
-        if(dadosPlayer != "")
-        {
-            string playerMW = dadosPlayer;
-            DadosPlayer objDadosP = JsonUtility.FromJson<DadosPlayer>(playerMW);
-
-            _gameController.id_usuario = objDadosP.Id_usuario;
-            _gameController.fasesConcluidas = objDadosP.Fase_concluida;
-            _gameController.numGold = objDadosP.Moedas;
-            _gameController.numVida = objDadosP.Vidas;
-            _gameController.numEstrelas = objDadosP.Estrelas;
-            _gameController.ultima_fase_concluida = objDadosP.Ultima_fase_concluida;
-
-            if(_gameController.fasesConcluidas != 0)
-            {
-                for(int i =0; i<_gameController.fasesConcluidas; i++)
-                {
-                
-                    _gameController.perguntasRespondidas[i] = true;
-                }
-            }
-
-        }
-    }
-
-    //Script ControllerTelaInicial
-    public void VerificarPlayerL(string situacaoDadoP)
-    {
-        haRegistroPlayerL = situacaoDadoP;
-    }
 }

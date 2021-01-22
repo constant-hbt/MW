@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8904236317389701939}
   - component: {fileID: 8904236317389701938}
   - component: {fileID: 8904236317389701941}
+  - component: {fileID: 2209196038715223729}
   m_Layer: 5
   m_Name: btnConfig
   m_TagString: Untagged
@@ -38,7 +39,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -42, y: 74}
+  m_AnchoredPosition: {x: -50, y: 48}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8904236317389701940
@@ -64,11 +65,12 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f322a335c323be9439499dc6d695362c, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d7a59c2fdc0dba046a3b16864bc4b793, type: 3}
+  m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -141,7 +143,7 @@ Animator:
   m_GameObject: {fileID: 8904236317389701936}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0b2b1753cfb2b9945a2732f59026cbdf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7705d5f03726ed04998feecbe99bbe96, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -150,6 +152,34 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2209196038715223729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904236317389701936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9881117a25c8daf478b9f12afe852a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botaoConfig: {fileID: 8904236317389701936}
+  botaoSom: {fileID: 8904236318892174516}
+  botaoControl: {fileID: 8904236318715042398}
+  painelSom: {fileID: 0}
+  painelControles: {fileID: 0}
+  btnsControles: []
+  contentPersonagem: {fileID: 0}
+  contentEstruturas: {fileID: 0}
+  contentCond: {fileID: 0}
+  paineisDeControles: []
+  scrollRect: {fileID: 0}
+  closePainelControle: {fileID: 0}
+  closePainelSom: {fileID: 0}
+  btnSom: {fileID: 8904236318892174519}
+  btnControle: {fileID: 8904236318715042336}
+  btnConfig: {fileID: 8904236317389701938}
 --- !u!1 &8904236318715042398
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +217,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -37, y: 20.5}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8904236318715042338
 CanvasRenderer:
@@ -212,10 +242,11 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9df1c3ee290b9f24eb9a23df49b85cdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2b82a10f69b9e5844aa9c422745b1900, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -289,7 +320,7 @@ Animator:
   m_GameObject: {fileID: 8904236318715042398}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e94e0948cf1e85469caff4737c68f31, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -335,7 +366,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -24, y: 70}
-  m_SizeDelta: {x: 20, y: 20}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8904236318892174521
 CanvasRenderer:
@@ -360,10 +391,11 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1a8f4403a95b6646a1669aad5056737, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd027c7a8a846d04696f65e2ca2f91f0, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -437,7 +469,7 @@ Animator:
   m_GameObject: {fileID: 8904236318892174516}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e94e0948cf1e85469caff4737c68f31, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

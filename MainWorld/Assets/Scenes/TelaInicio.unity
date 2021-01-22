@@ -2422,7 +2422,9 @@ MonoBehaviour:
   progressoAtual: 0
   numGold: 0
   numVida: 10
+  numTentativasFixo: 0
   numTentativasFase: 3
+  tentativaFaseAlter: 0
   numEstrelas: 0
   errosFase: 
   EstrelasFases: 000000000000000000000000000000000000000000000000000000000000000000000000
@@ -5909,6 +5911,126 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1442379804}
     m_Modifications:
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: paineisDeControles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: painelSom
+      value: 
+      objectReference: {fileID: 1218809046}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: painelControles
+      value: 
+      objectReference: {fileID: 61629150}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[0]
+      value: 
+      objectReference: {fileID: 61629147}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[1]
+      value: 
+      objectReference: {fileID: 61629146}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[2]
+      value: 
+      objectReference: {fileID: 61629145}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[3]
+      value: 
+      objectReference: {fileID: 61629144}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[4]
+      value: 
+      objectReference: {fileID: 61629131}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[5]
+      value: 
+      objectReference: {fileID: 61629141}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[6]
+      value: 
+      objectReference: {fileID: 61629140}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[7]
+      value: 
+      objectReference: {fileID: 61629139}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[8]
+      value: 
+      objectReference: {fileID: 61629138}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[9]
+      value: 
+      objectReference: {fileID: 61629135}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: btnsControles.Array.data[10]
+      value: 
+      objectReference: {fileID: 61629134}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: contentPersonagem
+      value: 
+      objectReference: {fileID: 61629132}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: contentEstruturas
+      value: 
+      objectReference: {fileID: 61629137}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: contentCond
+      value: 
+      objectReference: {fileID: 61629133}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: paineisDeControles.Array.data[0]
+      value: 
+      objectReference: {fileID: 61629143}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: paineisDeControles.Array.data[1]
+      value: 
+      objectReference: {fileID: 61629142}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: paineisDeControles.Array.data[2]
+      value: 
+      objectReference: {fileID: 61629136}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: scrollRect
+      value: 
+      objectReference: {fileID: 61629149}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: closePainelControle
+      value: 
+      objectReference: {fileID: 61629148}
+    - target: {fileID: 2209196038715223729, guid: 26793637889fa6e4486f741c889ff082,
+        type: 3}
+      propertyPath: closePainelSom
+      value: 
+      objectReference: {fileID: 1218809045}
     - target: {fileID: 8904236317389701936, guid: 26793637889fa6e4486f741c889ff082,
         type: 3}
       propertyPath: m_Name
@@ -6074,7 +6196,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 09df2e92762d0f74499b7f1d7c5063cf, type: 2}
+      objectReference: {fileID: 9100000, guid: 7705d5f03726ed04998feecbe99bbe96, type: 2}
     - target: {fileID: 8904236318715042336, guid: 26793637889fa6e4486f741c889ff082,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

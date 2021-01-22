@@ -25,7 +25,7 @@ public class PainelIniciarLevel : MonoBehaviour
         
     }
 
-    public void btnIniciarLevel()
+    public void btnIniciarLevel()//botaoUtilizado no painel que inicia com cada level
     {
         
        // DisponibilizarToobox();
@@ -33,6 +33,13 @@ public class PainelIniciarLevel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void btnIniciar() //botao utilizado no painelIntroChefe
+    {
+    
+        //SistemaDeEnableDisableBlocos(false);
+        this.gameObject.SetActive(false);
+       
+    }
     public void HabilitarBtnIniciarLevel()
     {
        

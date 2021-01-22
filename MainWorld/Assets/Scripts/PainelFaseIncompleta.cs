@@ -57,10 +57,10 @@ public class PainelFaseIncompleta : MonoBehaviour
     public void jogarNovamente(int idFase) // quando o player morre e ainda há tentativas para se jogar ele retorno dentro da parte da fase que estava anteriormente
     {
         
-        ResetarInterprete();
-        DisponibilizarToobox();
-        ReiniciarVarCodeCompleto();
-        ReiniciarVarBlocosTotais();
+       // ResetarInterprete();
+       // DisponibilizarToobox();
+       // ReiniciarVarCodeCompleto();
+       // ReiniciarVarBlocosTotais();
         SceneManager.LoadScene("Fase"+idFase);
         if(_gameController == null)
         {

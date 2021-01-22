@@ -3882,6 +3882,7 @@ MonoBehaviour:
   transicaoCamera:
   - {fileID: 577290055}
   objHud: {fileID: 4883312563964788511}
+  painelIntroChefe: {fileID: 0}
   posHudParte:
   - 1820
   virarPlayer: 0
@@ -25993,6 +25994,7 @@ MonoBehaviour:
   transicaoCamera:
   - {fileID: 140935847}
   objHud: {fileID: 4883312563964788511}
+  painelIntroChefe: {fileID: 0}
   posHudParte:
   - 3805
   virarPlayer: 1
@@ -49668,7 +49670,9 @@ MonoBehaviour:
   colliderAttack3: {fileID: 3589834207347979880}
   forcaDano: 5
   painelFaseIncompleta: {fileID: 1403440150}
+  painelConclusaoFase: {fileID: 1482481631}
   qtdBlocosUsados: -1
+  passeiFase: 0
   passeiParteFase: 0
   interpreteAcabou: 0
   parteFase: 0

@@ -35,6 +35,9 @@ public class Teleporte : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void ReiniciarVarCodeCompleto();
 
+    [DllImport("__Internal")]
+    public static extern void SistemaDeEnableDisableBlocos(bool situacao);
+
     void Start()
     {
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
@@ -82,6 +85,8 @@ public class Teleporte : MonoBehaviour
         if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
             HUD hud = FindObjectOfType(typeof(HUD)) as HUD;
+
+            //SistemaDeEnableDisableBlocos(true); //trava os blocos para poderem ser usados somente apos fechar o painel
             hud.habilitarObjVidaChefao();
 
             if(painelIntroChefe != null)

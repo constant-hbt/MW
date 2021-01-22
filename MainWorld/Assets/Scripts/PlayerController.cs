@@ -81,10 +81,11 @@ public class PlayerController : MonoBehaviour
     public          int             forcaDano;
     
     [Header("Sistema de Configuração de fase")]
-    public          GameObject      painelFaseIncompleta;//gameObject do obj painelFaseIncompleta
+   // public          GameObject      painelFaseIncompleta;//gameObject do obj painelFaseIncompleta
+    public GameObject painelConclusaoFase;
     public          int             qtdBlocosUsados = -1; // quantidade de blocos usados na fase
     private         int             qtdBlocosCadaParteFase = 0;// quantidade de blocos usados em cada parte da fase(necessario para fases com mais de uma etapa)
-    private         bool            passeiFase ;// verifica se o usuário concluiu a de fase
+    public         bool            passeiFase ;// verifica se o usuário concluiu a de fase
     public bool passeiParteFase = false; //verifica se o usuario passou de terreno na fase caso haja
     private         bool            validarConclusaoFase = false;//verifica se a fase foi concluida ou não
     public        bool            interpreteAcabou = false;//verifica se o interprete js do blockly terminou
@@ -172,7 +173,8 @@ public class PlayerController : MonoBehaviour
                 this.retirarVida();
                 if(_gameController.numVida > 0)
                 {
-                    painelFaseIncompleta.SetActive(true);
+                   
+                    painelConclusaoFase.SetActive(true);
                     _gameController.SendMessage("adicionarErro");//quando o painel é ativado é sinal de que falhou na fase, por isso adiciona um erro dentro do array na posicao condizente com a fase
 
                 }

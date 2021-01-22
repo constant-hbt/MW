@@ -2703,6 +2703,7 @@ MonoBehaviour:
   transicaoCamera:
   - {fileID: 577290055}
   objHud: {fileID: 4883312563964788511}
+  painelIntroChefe: {fileID: 0}
   posHudParte:
   - 1820
   virarPlayer: 0
@@ -9803,6 +9804,11 @@ PrefabInstance:
       propertyPath: painelFaseIncompleta
       value: 
       objectReference: {fileID: 1403440150}
+    - target: {fileID: 3589834208777729379, guid: d0fe4cc7a59515b49b83229140c2fe02,
+        type: 3}
+      propertyPath: painelConclusaoFase
+      value: 
+      objectReference: {fileID: 1482481631}
     - target: {fileID: 3589834208777729380, guid: d0fe4cc7a59515b49b83229140c2fe02,
         type: 3}
       propertyPath: m_LocalPosition.x
