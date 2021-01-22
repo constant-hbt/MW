@@ -1914,7 +1914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67.85721, y: 130.05965}
+  m_AnchoredPosition: {x: -67.85721, y: 146}
   m_SizeDelta: {x: 643.5817, y: 489.71588}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107448062
@@ -1931,7 +1931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.066037714, g: 0.063234225, b: 0.063234225, a: 0.84313726}
+  m_Color: {r: 0.066037714, g: 0.063234225, b: 0.063234225, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2524,7 +2524,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: ativarEdesativarPainel
         m_Mode: 5
         m_Arguments:
@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.066037714, g: 0.063234225, b: 0.063234225, a: 0.84313726}
+  m_Color: {r: 0.066037714, g: 0.063234225, b: 0.063234225, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -10942,7 +10942,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: botoesControle
         m_Mode: 5
         m_Arguments:
@@ -11225,6 +11225,7 @@ GameObject:
   - component: {fileID: 535768198}
   - component: {fileID: 535768197}
   - component: {fileID: 535768199}
+  - component: {fileID: 535768201}
   m_Layer: 5
   m_Name: btnConfig
   m_TagString: Untagged
@@ -11298,8 +11299,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
-        m_MethodName: startCoroutines
+      - m_Target: {fileID: 535768201}
+        m_MethodName: ControladorDeCoroutine
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11368,6 +11369,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535768195}
   m_CullTransparentMesh: 0
+--- !u!114 &535768201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535768195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9881117a25c8daf478b9f12afe852a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  botaoConfig: {fileID: 535768195}
+  botaoSom: {fileID: 691150267}
+  botaoControl: {fileID: 1005261550}
+  painelSom: {fileID: 107448060}
+  painelControles: {fileID: 264333611}
+  btnsControles:
+  - {fileID: 1645819742}
+  - {fileID: 778729814}
+  - {fileID: 444260252}
+  - {fileID: 1652076931}
+  - {fileID: 1989517055}
+  - {fileID: 423566799}
+  - {fileID: 773991516}
+  - {fileID: 1178944165}
+  - {fileID: 640519935}
+  - {fileID: 1722527377}
+  - {fileID: 966173862}
+  contentPersonagem: {fileID: 1324190182}
+  contentEstruturas: {fileID: 1808134375}
+  contentCond: {fileID: 324812265}
+  paineisDeControles:
+  - {fileID: 1324190181}
+  - {fileID: 1808134374}
+  - {fileID: 324812264}
+  scrollRect: {fileID: 1073793097}
+  closePainelControle: {fileID: 174949649}
+  closePainelSom: {fileID: 1948654079}
+  btnSom: {fileID: 691150270}
+  btnControle: {fileID: 1005261551}
+  btnConfig: {fileID: 535768197}
 --- !u!1 &582054195
 GameObject:
   m_ObjectHideFlags: 0
@@ -12044,7 +12087,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: ativarEdesativarPainel
         m_Mode: 5
         m_Arguments:
@@ -15062,7 +15105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: botoesControle
         m_Mode: 5
         m_Arguments:
@@ -17403,7 +17446,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: ativarEdesativarPainel
         m_Mode: 5
         m_Arguments:
@@ -24831,7 +24874,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: botoesControle
         m_Mode: 5
         m_Arguments:
@@ -29031,37 +29074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf228b08602ac5b4f9175cbaac2b3cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botaoConfig: {fileID: 535768195}
-  botaoSom: {fileID: 691150267}
-  botaoControl: {fileID: 1005261550}
-  painelSom: {fileID: 107448060}
-  painelControles: {fileID: 264333611}
-  btnsControles:
-  - {fileID: 1645819742}
-  - {fileID: 778729814}
-  - {fileID: 444260252}
-  - {fileID: 1652076931}
-  - {fileID: 1989517055}
-  - {fileID: 423566799}
-  - {fileID: 773991516}
-  - {fileID: 1178944165}
-  - {fileID: 640519935}
-  - {fileID: 1722527377}
-  - {fileID: 966173862}
-  contentPersonagem: {fileID: 1324190182}
-  contentEstruturas: {fileID: 1808134375}
-  contentCond: {fileID: 324812265}
-  paineisDeControles:
-  - {fileID: 1324190181}
-  - {fileID: 1808134374}
-  - {fileID: 324812264}
-  scrollRect: {fileID: 1073793097}
-  closePainelControle: {fileID: 174949649}
-  closePainelSom: {fileID: 1948654079}
-  btnSom: {fileID: 691150270}
-  btnControle: {fileID: 1005261551}
-  btnConfig: {fileID: 535768197}
   botaoIniciarClicado: 0
+  haRegistroPlayerL: 
 --- !u!114 &1833336798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29915,7 +29929,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833336797}
+      - m_Target: {fileID: 535768201}
         m_MethodName: ativarEdesativarPainel
         m_Mode: 5
         m_Arguments:
@@ -30615,7 +30629,9 @@ MonoBehaviour:
   progressoAtual: 0
   numGold: 0
   numVida: 5
+  numTentativasFixo: 0
   numTentativasFase: 3
+  tentativaFaseAlter: 0
   numEstrelas: 0
   errosFase: 
   EstrelasFases: 

@@ -15,32 +15,32 @@ public class TelaInicial : MonoBehaviour
     
 
     [Header("GameObject dos Botões de Configuração")]
-    public              GameObject          botaoConfig;
-    public              GameObject          botaoSom;
-    public              GameObject          botaoControl;
+   // public              GameObject          botaoConfig;
+   // public              GameObject          botaoSom;
+   // public              GameObject          botaoControl;
 
     [Header("Paineis")]
-    public              GameObject          painelSom;
-    public              GameObject          painelControles;
+   // public              GameObject          painelSom;
+   // public              GameObject          painelControles;
 
     [Header("Painel Controles / Botões de Controle")]
 
-    public              GameObject[]        btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
+   // public              GameObject[]        btnsControles;//usada para ativar e desativar os botoes que contem as descrições do s blocos
     //usado para redimensionar o tamanho de cada obj que contem os botões, para assim adequar o scrollBar
-    public              RectTransform       contentPersonagem;
-    public              RectTransform       contentEstruturas;
-    public              RectTransform       contentCond;
+   // public              RectTransform       contentPersonagem;
+   // public              RectTransform       contentEstruturas;
+   // public              RectTransform       contentCond;
     //usada para ativar e ativar os objetos contendo cada grupo de botões
-    public              GameObject[]        paineisDeControles;
-    public              ScrollRect          scrollRect;
+   // public              GameObject[]        paineisDeControles;
+   // public              ScrollRect          scrollRect;
 
     [Header("Botões de Configuração")]
     
-    public              Button              closePainelControle;
-    public              Button              closePainelSom;
-    public              Button              btnSom;
-    public              Button              btnControle;
-    public              Button              btnConfig;
+  //  public              Button              closePainelControle;
+  //  public              Button              closePainelSom;
+  //  public              Button              btnSom;
+  //  public              Button              btnControle;
+  //  public              Button              btnConfig;
 
     public bool botaoIniciarClicado = false;
     public string haRegistroPlayerL = "";
@@ -87,7 +87,7 @@ public class TelaInicial : MonoBehaviour
     }
 
     
-    IEnumerator mostrarConfig()
+  /*  IEnumerator mostrarConfig()
     {
         if (statusBotao == false  )
         {
@@ -117,7 +117,7 @@ public class TelaInicial : MonoBehaviour
             btnConfig.Select();
         }
 
-    }
+    } */
 
     //Script ControllerTelaInicial
     IEnumerator IniciarJogo()
@@ -131,7 +131,7 @@ public class TelaInicial : MonoBehaviour
         SceneManager.LoadScene("SelecaoFase");
     }
 
-    //Script ControllerTelaInicial
+    
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
@@ -140,7 +140,7 @@ public class TelaInicial : MonoBehaviour
     }
 
     //ativar e desativar botão de configurações de som
-    public void ativarEdesativarPainel(string nomePainel)
+  /*  public void ativarEdesativarPainel(string nomePainel)
     {//ativa e desativa os paineis de configuração
 
         switch (nomePainel)
@@ -178,9 +178,9 @@ public class TelaInicial : MonoBehaviour
                 break;
         }
               
-    }
+    } */
 
-    public void botoesControle(string nomeBotão)
+  /*  public void botoesControle(string nomeBotão)
     {//Painel de botões de movimentação do personagem (contentPersonagem) deve começar ativo
         switch (nomeBotão)
         {
@@ -268,7 +268,7 @@ public class TelaInicial : MonoBehaviour
                 }
                 break;
         }
-    }
+    } */
 
    IEnumerator HabilitarCliqueBtnIniciar()
     {   
