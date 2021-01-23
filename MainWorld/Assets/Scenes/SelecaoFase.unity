@@ -11392,12 +11392,15 @@ MonoBehaviour:
   - {fileID: 444260252}
   - {fileID: 1652076931}
   - {fileID: 1989517055}
-  - {fileID: 423566799}
-  - {fileID: 773991516}
-  - {fileID: 1178944165}
-  - {fileID: 640519935}
-  - {fileID: 1722527377}
-  - {fileID: 966173862}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   contentPersonagem: {fileID: 1324190182}
   contentEstruturas: {fileID: 1808134375}
   contentCond: {fileID: 324812265}
