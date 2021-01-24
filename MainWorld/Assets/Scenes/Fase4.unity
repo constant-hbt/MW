@@ -1118,7 +1118,7 @@ MonoBehaviour:
   seqBlocos: 
   numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 24
-  qtdMinimaDeBlocosParaConclusao: 18
+  qtdMinimaDeBlocosParaConclusao: 15
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 5
   qtdBlocosDisponiveis: 0c0000000c000000
@@ -2352,7 +2352,7 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.836
+      value: -2.772
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -3734,12 +3734,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.744
+      value: -2.81
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.59
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -7387,7 +7387,7 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3
+      value: -4.136
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -23834,7 +23834,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 3589834207767080519}
   colliderAttack1: {fileID: 3589834207767080520}
   colliderAttack3: {fileID: 3589834207347979880}
-  forcaDano: 1
+  forcaDano: 0
   painelConclusaoFase: {fileID: 1482481631}
   qtdBlocosUsados: -1
   passeiFase: 0

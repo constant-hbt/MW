@@ -10,6 +10,7 @@ public class TelaInicial : MonoBehaviour
 {
     private Pergunta_Controller _perguntaController;
     private GameController _gameController;
+    private AudioController _audioController;
 
     private bool statusBotao = false; //true -> botão ja foi pressionado, false -> nao foi pressionado --- CONFIGURAÇÃO DO BOTAO CONFIG
     
@@ -51,16 +52,18 @@ public class TelaInicial : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
 
-
-    void Start()
+    private void Awake()
     {
-      
+
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
-       // SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        _audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+
+        _audioController.trocarMusica(_audioController.musicaTitulo, "TelaInicio", false);
+
+        //  SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -126,16 +129,16 @@ public class TelaInicial : MonoBehaviour
         {
             _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
         }
-        
+        _gameController.descricaoFase = "SelecaoFase";
         yield return new WaitForSeconds(0.42f);
-        SceneManager.LoadScene("SelecaoFase");
+        SceneManager.LoadScene("TelaCarregamento");
     }
 
     
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
-       // GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+      //  GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 

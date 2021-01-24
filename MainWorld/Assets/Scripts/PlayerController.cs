@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool ativPainelPosMorte; //ativa o painel apos a morte do player
     public bool tomeiHit;//verifica se o player ja tomou um hit do inimigo, limita o collider de ataque do inimigo a acerta-lo somente uma vez com sua animacao de ataque
     
+
     [Header("Configuração de movimentação")] 
     public          float           speed; // velocidade de movimento do personagem
     public          float           moveX = 0.8f;
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour
         ativPainelPosMorte = false;
         tomeiHit = false;
         vidaPlayer = 1;
+       
     }
 
   
@@ -165,7 +167,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Verifica se a solução utilizado pelo usuário foi suficiente para concluir a fase, caso os blocos tenham se encerrado e mesmo assim o player nao tenha chegado ao final da fase, ou de cada parte da fase, é sinal que ele fracassou , portanto aparece o painelFaseIncompleta
-        if (interpreteAcabou  && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase && !passeiParteFase || ativPainelPosMorte)
+        if (interpreteAcabou  && Grounded && playerRB.velocity.x == 0 && playerRB.velocity.y == 0 && !passeiFase && !passeiParteFase && !_gameController.flagPerdiTentativa|| ativPainelPosMorte)
         {
             _gameController.numTentativasFase--;
             if (_gameController.numTentativasFase < 1)
@@ -194,6 +196,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 _painelFaseIncompleta.jogarNovamente(_gameController.idFaseEmExecucao);
+                _gameController.flagPerdiTentativa = true;
             }
 
             
@@ -355,7 +358,6 @@ public class PlayerController : MonoBehaviour
                 zerarVelocidadeP();//zero a velocidade do player para ele iniciar a nova etapa da fase sem estar se movimentando
                 _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
-                Debug.Log("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1));
                 parteFase += 1;
                 _gameController.parteFaseAtual += 1;
                 passeiParteFase = true; // depois de 1.6s eu reseto ela dentro da func interagindo do script teleporte
@@ -450,12 +452,12 @@ public class PlayerController : MonoBehaviour
         if (rayCast_ColidindoInimigo != testeColisaoInimigo)
         {
             rayCast_ColidindoInimigo = testeColisaoInimigo;
-          //  CondicaoHaInimigo(rayCast_ColidindoInimigo);
+           // CondicaoHaInimigo(rayCast_ColidindoInimigo);
         }
         if(rayCast_NaoColidindoInimigo != testeNaoColidindoInimigo)
         {
             rayCast_NaoColidindoInimigo = testeNaoColidindoInimigo;
-          //  CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
+           // CondicaoNaoHaInimigo(rayCast_NaoColidindoInimigo);   
         }
     }
 
@@ -719,6 +721,22 @@ public class PlayerController : MonoBehaviour
     public void mudarValidar()
     {
         validarConclusaoFase = true;
+    }
+    public void habilitarPerdaTentativa(string status)
+    {
+        switch (status)
+        {
+            case "true":
+                _gameController.flagPerdiTentativa = true;
+                
+                break;
+            case "false":
+                interpreteAcabou = false;
+                _gameController.flagPerdiTentativa=false;
+                
+                break;
+        }
+        
     }
     IEnumerator respostaInterprete()
     {

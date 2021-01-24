@@ -1325,7 +1325,7 @@ MonoBehaviour:
   seqBlocos: 
   numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 40
-  qtdMinimaDeBlocosParaConclusao: 40
+  qtdMinimaDeBlocosParaConclusao: 38
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 10
   qtdBlocosDisponiveis: 0c0000000c00000010000000
@@ -54205,7 +54205,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 3589834207767080519}
   colliderAttack1: {fileID: 3589834207767080520}
   colliderAttack3: {fileID: 3589834207347979880}
-  forcaDano: 4
+  forcaDano: 0
   painelConclusaoFase: {fileID: 1482481631}
   qtdBlocosUsados: -1
   passeiFase: 0

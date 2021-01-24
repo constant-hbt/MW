@@ -25106,7 +25106,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 3589834207767080519}
   colliderAttack1: {fileID: 3589834207767080520}
   colliderAttack3: {fileID: 3589834207347979880}
-  forcaDano: 1
+  forcaDano: 0
   painelConclusaoFase: {fileID: 1482481631}
   qtdBlocosUsados: -1
   passeiFase: 0

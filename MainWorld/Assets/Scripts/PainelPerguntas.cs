@@ -536,8 +536,9 @@ public class PainelPerguntas : MonoBehaviour
         resposta.Resposta4 = respostaPerg4;
         
         _pergunta_Controller.ChamarRegistrarResposta(resposta);
-        
-        SceneManager.LoadScene("SelecaoFase");
+
+        _gameController.descricaoFase = "SelecaoFase";
+        SceneManager.LoadScene("TelaCarregamento");
     }
 
     public void DesabilitarBotaoSalvar()

@@ -56,7 +56,7 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     public void jogarNovamente(int idFase) // quando o player morre e ainda há tentativas para se jogar ele retorno dentro da parte da fase que estava anteriormente
     {
-        
+       // SistemaDeEnableDisableBlocos(false);
        // ResetarInterprete();
        // DisponibilizarToobox();
        // ReiniciarVarCodeCompleto();
@@ -108,11 +108,11 @@ public class PainelFaseIncompleta : MonoBehaviour
 
     IEnumerator voltarSelecaoF()
     {
-        //CentralizarWebGl();
+     //   CentralizarWebGl();
         yield return new WaitForSeconds(1.7f);
-        //SistemaReiniciarWorkspaceBlockly();
-        //ReiniciarVarCodeCompleto();
-        //ReiniciarVarBlocosTotais();
+     //   SistemaReiniciarWorkspaceBlockly();
+     //   ReiniciarVarCodeCompleto();
+     //   ReiniciarVarBlocosTotais();
 
       
         if(_perguntaController == null)

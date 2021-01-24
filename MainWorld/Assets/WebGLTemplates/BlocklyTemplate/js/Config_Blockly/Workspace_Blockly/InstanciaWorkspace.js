@@ -30,11 +30,11 @@ zoom:
                     //habilita o botão de execução somente se houver blocos no espaço de trabalho
                     if(code != ''){
                     botaoExecute.disabled = false;
-                    botaoReset.disabled = false;//mexer aqui depois
+                  //  botaoReset.disabled = false;//mexer aqui depois
                     
                 }else{
                     botaoExecute.disabled = true;
-                    botaoReset.disabled = true;
+                  //  botaoReset.disabled = true;
                 }///linkar isso ao novo espaco de trabalho
 
                 }

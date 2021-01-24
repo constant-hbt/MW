@@ -99,14 +99,14 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-         //  SistemaDeEnableDisableBlocos(false); 
+         // SistemaDeEnableDisableBlocos(false); 
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
         qtdMoedasColetadas = _gameController.qtdMoedasColetadas;
         qtdBlocosUsados = _gameController.qtdBlocosUsados;
         _playerController.parteFase = _gameController.parteFaseAtual;
-
+        _playerController.interpreteAcabou = false;
 
         if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
@@ -120,11 +120,11 @@ public class ControllerFase : MonoBehaviour
         data_InicioFase = DateTime.Now.ToLocalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss");//Pega a data/hora que a fase é iniciada
 
         //possibilita que os blocos nao sejam excluidos caso o player ja nao esteja mas na sua primeira tentativa dentro da fase        
-        if(_gameController.numTentativasFase == 3 || _gameController.numTentativasFase == 5)
+        if(_gameController.numTentativasFase == 3 && _gameController.numTentativasFixo == 3 || _gameController.numTentativasFase == 5 && _gameController.numTentativasFixo == 5)
         {
-         //   SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
+           // SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
         }
-       // EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+           //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
@@ -163,13 +163,13 @@ public class ControllerFase : MonoBehaviour
             naoTemMoeda = false;
         }
 
-        if (qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas == qtdMoedasDisponiveis ||
-            qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
+        if (qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && moedasColetadas == qtdMoedasDisponiveis ||
+            qtdBlocosUsados <= qtdMinimaDeBlocosParaConclusao && naoTemMoeda)
         {//se eu utilizar o minimo de blocos ou menos e coletar todas as moedas da fase eu ganho 3 estrelas
             estrelas = 3;
         }
         else if(qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas < qtdMoedasDisponiveis && !naoTemMoeda ||
-                 qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
+                 qtdBlocosUsados >= qtdMinimaDeBlocosParaConclusao && moedasColetadas >= metadeMoedaD && moedasColetadas <= qtdMoedasDisponiveis && !naoTemMoeda)
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }

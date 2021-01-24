@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     public int id_atividade;
     public int id_usuario;
     public int idGame;
-    public string descricaoFase;//ao clicar para abrir a fase essa variavel sera alimentada
+    public string descricaoFase = "Tela Inicio";//ao clicar para abrir a fase essa variavel sera alimentada
     public int id_Desempenho; //caso estiver com valor 0 representa que ainda nao possui nenhum registro de desempenho, caso contrario ja possui registro
 
     [Header("Configurações do GAME")]
@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
 
     [Header("Banco de Dados do Player")]
     public      int         vidaMax = 3;
+    public bool flagPerdiTentativa;//valida para que o player nao perca mais de uma tentiva por vez
 
     [Header("Banco de dados fase em execução")]
     public int qtdBlocosUsados;

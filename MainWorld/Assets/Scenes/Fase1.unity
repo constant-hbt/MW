@@ -5530,12 +5530,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.03859
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -124.46404
+      value: -109
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -13860,12 +13860,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -86.983795
+      value: -183
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -121.15393
+      value: -109
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -14628,12 +14628,12 @@ PrefabInstance:
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 257.0659
+      value: 334
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -125.56232
+      value: -109
       objectReference: {fileID: 0}
     - target: {fileID: 5845169080400941924, guid: 8bb1648f112be1149bbfca6f8b94d9ea,
         type: 3}
@@ -15449,6 +15449,11 @@ PrefabInstance:
       propertyPath: painelConclusaoFase
       value: 
       objectReference: {fileID: 1077128936}
+    - target: {fileID: 3589834208777729379, guid: d0fe4cc7a59515b49b83229140c2fe02,
+        type: 3}
+      propertyPath: forcaDano
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3589834208777729380, guid: d0fe4cc7a59515b49b83229140c2fe02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16251,7 +16256,7 @@ PrefabInstance:
     - target: {fileID: 5989343719835431174, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: botoesControle
+      value: ativarEdesativarPainel
       objectReference: {fileID: 0}
     - target: {fileID: 7268945399331405638, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}

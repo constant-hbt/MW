@@ -41,10 +41,12 @@ public class SeleçãoFase : MonoBehaviour
     [DllImport("__Internal")]
     public static extern void AlterarToolboxFases(int idFase);
 
+    [DllImport("__Internal")]
+    public static extern void SistemaReiniciarWorkspaceBlockly();
     void Start()
     {
-      //  SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-
+       // SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       // SistemaReiniciarWorkspaceBlockly();
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
@@ -54,6 +56,7 @@ public class SeleçãoFase : MonoBehaviour
         _gameController.numTentativasFixo = 0;
         _gameController.numTentativasFase = 0;
         _gameController.ZerarVarBancoTentativasFase();
+        _gameController.flagPerdiTentativa = false; //reinicia a variavel permitindo entrar no if para perda de vida ou tentativa
     }
 
     
@@ -77,6 +80,7 @@ public class SeleçãoFase : MonoBehaviour
         goldText.text = s.Replace(",", ".");
         vidaText.text = _gameController.numVida.ToString();
         estrelaText.text = _gameController.numEstrelas.ToString();
+        
     }
 
     public void nomeFase(int id)

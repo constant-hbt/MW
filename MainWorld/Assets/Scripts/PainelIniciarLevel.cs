@@ -36,7 +36,7 @@ public class PainelIniciarLevel : MonoBehaviour
     public void btnIniciar() //botao utilizado no painelIntroChefe
     {
     
-        //SistemaDeEnableDisableBlocos(false);
+      //  SistemaDeEnableDisableBlocos(false);
         this.gameObject.SetActive(false);
        
     }

@@ -113,7 +113,7 @@ public class PainelConclusãoFase : MonoBehaviour
             tituloFaseC.SetActive(true);
             tituloFaseInc.SetActive(false);
 
-            if (_gameController.idFaseEmExecucao < 9)
+         /*   if (_gameController.idFaseEmExecucao < 9)
             {
                 botaoProximaF.SetActive(true);
             }
@@ -121,7 +121,7 @@ public class PainelConclusãoFase : MonoBehaviour
             {
                 botaoFaseAnterior.SetActive(true);
             }
-            
+           */ 
         }
         else
         {
@@ -135,8 +135,8 @@ public class PainelConclusãoFase : MonoBehaviour
 
             tituloFaseC.SetActive(false);
             tituloFaseInc.SetActive(true);
-            botaoProximaF.SetActive(false);
-            botaoFaseAnterior.SetActive(false);
+          //  botaoProximaF.SetActive(false);
+          //  botaoFaseAnterior.SetActive(false);
         }
         
 
@@ -158,7 +158,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
-        ResetarInterprete();
+       // ResetarInterprete();
         _gameController.ZerarVarBancoTentativasFase(); //zera as variaveis para reiniciar a fase do inicio
         _gameController.tentativaFaseAlter = false; // reinicio a variavel para permitir iniciar correntamente a variavel de tentativas disponibilizadas dentro de cada fase
         _gameController.numTentativasFixo = 0;
@@ -171,23 +171,30 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void btnPlay()
     {
-        
-
-        if(!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+        if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
-            StartCoroutine(voltarSelecaoFase("IrAoPainelPergunta"));
-            
+            SceneManager.LoadScene("TelaGameWin");
         }
         else
         {
-            StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
+            if (!_gameController.perguntasRespondidas[_gameController.idFaseEmExecucao - 1])
+            {
+                StartCoroutine(voltarSelecaoFase("IrAoPainelPergunta"));
+
+            }
+            else
+            {
+                StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
+            }
         }
+
 
        
     }
     public void btnProximaF()
     {
-        SceneManager.LoadScene("Fase" + (_gameController.idFaseEmExecucao + 1));
+            SceneManager.LoadScene("Fase" + (_gameController.idFaseEmExecucao + 1));
+        
     }
     public void btnFaseAnterior()
     {
@@ -215,7 +222,7 @@ public class PainelConclusãoFase : MonoBehaviour
         }
         habilitarContabilDesemp = true;
         // }
-      //  GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+       // GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 
@@ -249,13 +256,16 @@ public class PainelConclusãoFase : MonoBehaviour
         int qtdBlocosUtilizados = _controllerFase.qtdBlocosUsados;
         int qtdBlocosMinimosConclusao = _controllerFase.qtdMinimaDeBlocosParaConclusao;
 
+        int qtdMoedasColetadas = _controllerFase.qtdMoedasColetadas;
+        int qtdMoedasDisponiveis = _controllerFase.qtdMoedasDisponiveis;
+
         if (qtdBlocosUtilizados == qtdBlocosMinimosConclusao)
         {
             SimbolosDesempenhoBlocos[0].SetActive(true);
             SimbolosDesempenhoBlocos[1].SetActive(false);
             SimbolosDesempenhoBlocos[2].SetActive(false);
         }
-        else if (qtdBlocosUtilizados > qtdBlocosMinimosConclusao)
+        else if (qtdBlocosUtilizados > qtdBlocosMinimosConclusao || qtdBlocosUtilizados < qtdBlocosMinimosConclusao && qtdMoedasColetadas < qtdMoedasDisponiveis)
         {
             SimbolosDesempenhoBlocos[0].SetActive(false);
             SimbolosDesempenhoBlocos[1].SetActive(false);
@@ -275,13 +285,15 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-               // CentralizarWebGl();
+             //   CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
+                _gameController.descricaoFase = "SelecaoFase";
                 SceneManager.LoadScene("SelecaoFase");
                 break;
             case "IrAoPainelPergunta":
               //  CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
+                _gameController.descricaoFase = "Perguntas";
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;
         }

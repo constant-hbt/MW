@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Perguntas.unity
     guid: 39ed24deca33f5449a2d6272e1d61689
+  - enabled: 1
+    path: Assets/Scenes/TelaGameWin.unity
+    guid: ec150d3bf489eab45b134cdf798da50c
   m_configObjects: {}

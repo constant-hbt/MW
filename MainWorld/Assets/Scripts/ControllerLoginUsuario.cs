@@ -21,14 +21,14 @@ public class ControllerLoginUsuario : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _telaInicial = FindObjectOfType(typeof(TelaInicial)) as TelaInicial;
 
-        //VerificarRegistroPlayerLogado();
+       // VerificarRegistroPlayerLogado();
 
 
         Debug.Log("haRegistroPlayerL = " + _telaInicial.haRegistroPlayerL);
 
         if ( _telaInicial.haRegistroPlayerL == "haRegistro")
         {
-          //  ReceberDadosPlayerLogado();
+         //   ReceberDadosPlayerLogado();
         }
 
     }

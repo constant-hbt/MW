@@ -1253,7 +1253,7 @@ MonoBehaviour:
   seqBlocos: 
   numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 38
-  qtdMinimaDeBlocosParaConclusao: 35
+  qtdMinimaDeBlocosParaConclusao: 32
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 10
   qtdBlocosDisponiveis: 0d0000000c0000000d000000
@@ -30543,8 +30543,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2868376303124622567}
   m_HandleRect: {fileID: 2868376303124622560}
   m_Direction: 2
-  m_Value: 0.99999994
-  m_Size: 0.28230256
+  m_Value: 1
+  m_Size: 0.2677126
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -32351,7 +32351,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 522.1, y: 1051}
+  m_SizeDelta: {x: 522.1, y: 1097.477}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2868376302896057493
 GameObject:
@@ -32473,7 +32473,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 2083
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -34539,7 +34539,7 @@ MonoBehaviour:
   "objetoIntera\xE7\xE3o": {fileID: 3589834207767080519}
   colliderAttack1: {fileID: 3589834207767080520}
   colliderAttack3: {fileID: 3589834207347979880}
-  forcaDano: 4
+  forcaDano: 0
   painelConclusaoFase: {fileID: 1482481631}
   qtdBlocosUsados: -1
   passeiFase: 0

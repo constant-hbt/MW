@@ -20,13 +20,15 @@
 
         //função responsavel pelo Botão executar
         function stepCode(){
-
+            var btnExecutar = document.getElementById('execute');
+            btnExecutar.disabled = true;
             codeCompleto += Blockly.JavaScript.workspaceToCode(workspace);
             unityInstance.SendMessage('ControllerFase','PegarBlocosUtilizados',mostrarCodigo(codeCompleto));//enviado a sequencia de blocos utilizados na parte da fase
             qtdBlocosUsados = workspace.getAllBlocks().length;
             qtdBlocosTotais += qtdBlocosUsados;
             enviarQtdBlocosUsados(qtdBlocosUsados);
             unityInstance.SendMessage('playerKnight', 'mudarValidar');
+            unityInstance.SendMessage('playerKnight', 'habilitarPerdaTentativa','false');
             unityInstance.SendMessage('playerKnight', 'chamarResetarStatusParaPainelFaseInc');
            // unityInstance.SendMessage('ControllerFase','EnviarHistorico');//envia a solicitacao para o envio do registro de historico no banco
             if(!myInterpreter){
