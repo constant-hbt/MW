@@ -77,7 +77,7 @@
             <block type="ha_inimigos" class="bloco" disabled = "true"></block>
             <block type="nao_ha_inimigos" class="bloco" disabled = "true"></block>
         </category>
-        <category id="catVariables" class = "bloco" color = "330" custom = "VARIABLE" name = "Variaveis" disabled = "true">
+        <category id="catVariables" class = "bloco" color = "330" custom = "VARIABLE" name = "Variáveis" disabled = "true">
 
         </category>
       </xml>
@@ -86,17 +86,17 @@
       
   </div>
   <!--Área responsável por mostrar o código em tempo real-->
-  <div>
+  <div id="divCapacRestanteBloco">
     <input type="text" hidden=true name="validar" id="valorInicialCampoForca" value="0">
     <input type="text"  hidden=true name="validar" id="limiteForcaAtaque" value="1" > 
-    <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos !!</p>
+    <p  id="capacRestanteBloco" hidden = true>Restam <span id="capacidade">0</span> blocos disponíveis</p>
 </div>
 
     <div >
         <p>
    
             <button  id="execute" class="btn btn-danger" onclick="stepCode()" disabled = "true">
-                <img id="iconPlay" src="img/botãoPlay.png" alt="botao de play">    
+                <img id="iconPlay" src="img/play.png" alt="botao de play">    
                           Executar
             </button>
             <!-- <button onclick="resetarEspacoBlockly()" id="reset" disabled = true>Reset</button>-->

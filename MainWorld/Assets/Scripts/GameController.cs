@@ -50,11 +50,7 @@ public class GameController : MonoBehaviour
     public int parteFaseAtual; // pega a parte atual da fase em que o player esta
     void Start()
     {
-        gameControllers = GameObject.FindGameObjectsWithTag("GameController");
-        if (gameControllers.Length >= 2)
-        {//Ao mudar de cena caso tenha 2 scripts gameController ele deleta um e deixa somente o script vinculado a primeira fase que fica transitando entre as fases
-            Destroy(gameControllers[1]);
-        }
+        VerificarQtdObjGameC();
         DontDestroyOnLoad(this.gameObject);
 
         errosFase = new int[numeroFasesGAME];
@@ -120,5 +116,14 @@ public class GameController : MonoBehaviour
             tentativaFaseAlter = true;
         }
         //depois dentro da ao terminar a fase, quando voltar a selecao de fase eu volto tentativaFaseAlter para false
+    }
+
+    public void VerificarQtdObjGameC()
+    {
+        gameControllers = GameObject.FindGameObjectsWithTag("GameController");
+        if (gameControllers.Length >= 2)
+        {//Ao mudar de cena caso tenha 2 scripts gameController ele deleta um e deixa somente o script vinculado a primeira fase que fica transitando entre as fases
+            Destroy(gameControllers[1]);
+        }
     }
 }

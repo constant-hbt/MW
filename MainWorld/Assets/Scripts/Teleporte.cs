@@ -12,6 +12,8 @@ public class Teleporte : MonoBehaviour
     private         PlayerController            _playerController;// transform do player
     private         ControllerFase              _controllerFase;
     private GameController _gameController;
+    private AudioController _audioController;
+
     public          Transform                   destino;
     public          Camera                      cam;
     public          Transform[]                 transicaoCamera;//posicao que a camera deve se encontrar ao mudar de uma parte da fase para outra
@@ -43,6 +45,7 @@ public class Teleporte : MonoBehaviour
         _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
     }
     void Update()
     {
@@ -51,7 +54,20 @@ public class Teleporte : MonoBehaviour
 
     void interagindo()
     {
-        
+        if (_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
+        {
+            _audioController.trocarMusica(_audioController.musicaFase9Parte2, _gameController.descricaoFase, false);
+
+            HUD hud = FindObjectOfType(typeof(HUD)) as HUD;
+
+            //   SistemaDeEnableDisableBlocos(true); //trava os blocos para poderem ser usados somente apos fechar o painel
+            hud.habilitarObjVidaChefao();
+
+            if (painelIntroChefe != null)
+            {
+                painelIntroChefe.gameObject.SetActive(true);
+            }
+        }
 
         int parteFaseAtual = 0;
      //  SistemaReiniciarWorkspaceBlockly();//Ao teleportar para outra etapa da fase reseta o espaco blockly
@@ -82,18 +98,7 @@ public class Teleporte : MonoBehaviour
         }
      //   ReiniciarVarCodeCompleto();
         
-        if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
-        {
-            HUD hud = FindObjectOfType(typeof(HUD)) as HUD;
-
-         //   SistemaDeEnableDisableBlocos(true); //trava os blocos para poderem ser usados somente apos fechar o painel
-            hud.habilitarObjVidaChefao();
-
-            if(painelIntroChefe != null)
-            {
-                painelIntroChefe.gameObject.SetActive(true);
-            }
-        }
+        
     }
 
     

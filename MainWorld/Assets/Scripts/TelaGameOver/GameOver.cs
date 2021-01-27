@@ -22,7 +22,17 @@ public class GameOver : MonoBehaviour
     IEnumerator voltarTelaInicial()
     {
         Destroy(_gameController.gameObject);
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(120f);
+        SceneManager.LoadScene("TelaInicio");
+    }
+
+    public void btnVoltarMenuInicial()
+    {
+        StartCoroutine(VoltarMenu());
+    }
+    IEnumerator VoltarMenu()
+    {
+        yield return new WaitForSeconds(0.6f);
         SceneManager.LoadScene("TelaInicio");
     }
 }

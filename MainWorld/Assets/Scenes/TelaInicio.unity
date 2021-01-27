@@ -2508,12 +2508,11 @@ GameObject:
   m_Component:
   - component: {fileID: 87958072}
   - component: {fileID: 87958071}
-  - component: {fileID: 87958073}
   - component: {fileID: 87958074}
   - component: {fileID: 87958075}
   m_Layer: 0
   m_Name: GameControllerEntreFases
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2536,7 +2535,7 @@ MonoBehaviour:
   descricaoFase: 
   id_Desempenho: 0
   gameControllers: []
-  perguntasRespondidas: 000000000000000000
+  perguntasRespondidas: 000000000000000101
   idFaseEmExecucao: 0
   fasesConcluidas: 9
   progressoAtual: 0
@@ -2568,18 +2567,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &87958073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 87958070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 751e929eec361cc4d8783da195dc1fe3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &87958074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2982,7 +2969,7 @@ GameObject:
   - component: {fileID: 304811361}
   m_Layer: 0
   m_Name: AudioController
-  m_TagString: Untagged
+  m_TagString: AudioController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2999,11 +2986,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 263a6287eeaf7ce4bb153573ebf64e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioControllers: []
   sMusic: {fileID: 624232421}
   sFX: {fileID: 1742450860}
-  musicaTitulo: {fileID: 8300000, guid: 94a08d7ed62eda94f99402fe53813e23, type: 3}
-  musicaSelecaoFases: {fileID: 8300000, guid: 09952b7c5450c4b4eb7eece2af38e0d5, type: 3}
-  musicaFases: {fileID: 8300000, guid: 8e9c9b5b979a76c4ba77e52ddde7e1c3, type: 3}
+  musicaTitulo: {fileID: 8300000, guid: 9873988108a836944a4c11e999606504, type: 3}
+  musicaSelecaoFases: {fileID: 8300000, guid: 575b000430373bd41bce34231a304c3b, type: 3}
+  musicaFase1a3: {fileID: 8300000, guid: 291dedf438d68be4a81dcda9b04bd36a, type: 3}
+  musicaFase4a5: {fileID: 8300000, guid: 9e35a17cfad86d64a9eb245f6f4e5542, type: 3}
+  musicaFase6a7: {fileID: 8300000, guid: c8db2172b09891044a3810ff501185de, type: 3}
+  musicaFase9Parte0e1: {fileID: 8300000, guid: cecc861a54412404ba83397c9d632647, type: 3}
+  musicaFase9Parte2: {fileID: 8300000, guid: f6654392680b40b4a9e31bf97a58b445, type: 3}
+  musicaTelaGameOver: {fileID: 8300000, guid: 090f07964e1419741aa9e0b3ba35d6e6, type: 3}
+  musicaTelaGameWin: {fileID: 0}
+  volumeMaxMusica: 0
 --- !u!4 &304811362
 Transform:
   m_ObjectHideFlags: 0

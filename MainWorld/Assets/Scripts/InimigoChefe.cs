@@ -149,7 +149,6 @@ public class InimigoChefe : MonoBehaviour
                 break;
 
             case "escudoPlayer":
-                Debug.Log("Entrei dentro da case escudoPlayer");
                 GameObject efeitoTemp = Instantiate(efeitoExplosaoPrefab, new Vector3(col.gameObject.transform.position.x + ladoEfeitoDano, col.gameObject.transform.position.y, col.gameObject.transform.position.z), this.gameObject.transform.localRotation);
                 Destroy(efeitoTemp, 0.2f);
                 _playerController.habilitarDesabilitarColliderEscudo(1);

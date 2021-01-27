@@ -30,6 +30,8 @@ TagManager:
   - placaAvancar
   - escudoPlayer
   - placaAvisoChefao
+  - vida
+  - AudioController
   layers:
   - Default
   - TransparentFX

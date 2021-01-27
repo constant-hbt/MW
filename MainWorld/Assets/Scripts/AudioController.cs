@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
+    public GameObject[] audioControllers;
+
     public AudioSource sMusic; //FONTE DE MUSICA
     public AudioSource sFX; //FONTE DE EFEITOS SONOROS
 
@@ -12,14 +14,20 @@ public class AudioController : MonoBehaviour
 
     public AudioClip musicaTitulo;
     public AudioClip musicaSelecaoFases;
-    public AudioClip musicaFases;
+    public AudioClip musicaFase1a3;
+    public AudioClip musicaFase4a5;
+    public AudioClip musicaFase6a7;
+    public AudioClip musicaFase9Parte0e1;
+    public AudioClip musicaFase9Parte2;
+    public AudioClip musicaTelaGameOver;
+    public AudioClip musicaTelaGameWin;
 
     // [Header("Efeitos sonoros")]
 
 
     //CONFIGURACOES DOS AUDIOS
     public float volumeMaxMusica;
-    private float volumeMaxFX;
+  //  private float volumeMaxFX;
 
     //CONFIGURACOES DA TROCA DE MUSICA
     private AudioClip novaMusica;
@@ -30,7 +38,7 @@ public class AudioController : MonoBehaviour
     }
     private void Awake()
     {
-
+        VerificarQtdObjAudioC();
         DontDestroyOnLoad(this.gameObject);
 
         if(PlayerPrefs.GetInt("valoresIniciais") == 0)
@@ -42,7 +50,7 @@ public class AudioController : MonoBehaviour
 
         //CARREGA AS CONFIGURACOES DE AUDIO
         volumeMaxMusica = PlayerPrefs.GetFloat("valorMaxMusica");
-        volumeMaxFX = 1;
+      //  volumeMaxFX = 1;
 
        // trocarMusica(musicaTitulo, "TelaInicio", true);
     }
@@ -67,7 +75,6 @@ public class AudioController : MonoBehaviour
         sMusic.Pause();
         sMusic.clip = novaMusica;
         
-        Debug.Log("Antes de dar o erro");
         sMusic.Play();
 
         for (float volume = 0; volume < volumeMaxMusica; volume += 0.1f)
@@ -83,5 +90,12 @@ public class AudioController : MonoBehaviour
         }
     }
 
-
+    public void VerificarQtdObjAudioC()
+    {
+        audioControllers = GameObject.FindGameObjectsWithTag("AudioController");
+        if (audioControllers.Length >= 2)
+        {//Ao mudar de cena caso tenha 2 scripts audioController ele deleta um e deixa somente o script vinculado a primeira fase que fica transitando entre as fases
+            Destroy(audioControllers[1]);
+        }
+    }
 }

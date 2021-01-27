@@ -62,3 +62,26 @@
 
      transition-delay: 0.7s;
 }
+
+
+#divCapacRestanteBloco{
+    margin-top: 15pt;
+    margin-left: 50pt;
+    width:280px;
+	/* definimos a altura do box */
+	height:30px;
+	/* definimos a cor de fundo do box */
+	background-color:#dddddd;
+    border-radius: 30px 40px 30px 40px;
+    
+}
+#capacRestanteBloco{
+    padding-top: 3px;
+    margin-left: 32pt;
+    font-family: "Comic Sans MS", Comic Sans, cursive;
+    font-size: 15px;
+}
+#capacidade{
+    color: rgb(224, 28, 28);
+    
+}

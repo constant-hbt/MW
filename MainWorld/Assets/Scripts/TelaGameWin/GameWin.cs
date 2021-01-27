@@ -24,17 +24,19 @@ public class GameWin : MonoBehaviour
 
     IEnumerator voltarTelaInicial()
     {
-        btnVoltarMenu.Select();
-      //  _gameController.FocusCanvas(1);
-        yield return new WaitForSeconds(20f);
-        SceneManager.LoadScene("TelaInicio");
+        _gameController.descricaoFase = "TelaInicio";
+        yield return new WaitForSeconds(180f);
+        SceneManager.LoadScene("TelaCarregamento");
     }
 
-    public void pressionarEspaco()
+    public void btnPlay()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            SceneManager.LoadScene("TelaInicio");
-        }
+        StartCoroutine(CoroutineBtnPlay());
+    }
+    IEnumerator CoroutineBtnPlay()
+    {
+        _gameController.descricaoFase = "TelaInicio";
+        yield return new WaitForSeconds(0.6f);
+        SceneManager.LoadScene("TelaCarregamento");
     }
 }

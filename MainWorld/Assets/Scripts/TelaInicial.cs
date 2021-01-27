@@ -12,7 +12,7 @@ public class TelaInicial : MonoBehaviour
     private GameController _gameController;
     private AudioController _audioController;
 
-    private bool statusBotao = false; //true -> botão ja foi pressionado, false -> nao foi pressionado --- CONFIGURAÇÃO DO BOTAO CONFIG
+   // private bool statusBotao = false; //true -> botão ja foi pressionado, false -> nao foi pressionado --- CONFIGURAÇÃO DO BOTAO CONFIG
     
 
     [Header("GameObject dos Botões de Configuração")]
@@ -60,7 +60,8 @@ public class TelaInicial : MonoBehaviour
         _audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
 
         _audioController.trocarMusica(_audioController.musicaTitulo, "TelaInicio", false);
-
+        _gameController.VerificarQtdObjGameC();
+        _audioController.VerificarQtdObjAudioC();
         //  SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
     }

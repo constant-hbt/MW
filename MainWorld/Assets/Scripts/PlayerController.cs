@@ -182,7 +182,8 @@ public class PlayerController : MonoBehaviour
                 }
                 else
                 {
-                    SceneManager.LoadScene("TelaGameOver");
+                    _gameController.descricaoFase = "TelaGameOver";
+                    SceneManager.LoadScene("TelaCarregamento");
                 }
 
                 qtdBlocosUsados = -1;
@@ -281,6 +282,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case "loot":
                 col.gameObject.SendMessage("coletar","loot", SendMessageOptions.DontRequireReceiver);
+                break;
+            case "vida":
+                col.gameObject.SendMessage("acrescentarVida", SendMessageOptions.DontRequireReceiver);
                 break;
             case "placaAviso":
                 _inimigoArqueiro = FindObjectOfType(typeof(InimigoArqueiro)) as InimigoArqueiro;

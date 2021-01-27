@@ -23,9 +23,6 @@ public class ControllerLoginUsuario : MonoBehaviour
 
        // VerificarRegistroPlayerLogado();
 
-
-        Debug.Log("haRegistroPlayerL = " + _telaInicial.haRegistroPlayerL);
-
         if ( _telaInicial.haRegistroPlayerL == "haRegistro")
         {
          //   ReceberDadosPlayerLogado();

@@ -145,7 +145,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
         _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
                                              _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
-        Debug.Log("Parte fase = " + (_gameController.parteFaseAtual + 1));
+        
     }
     private void FixedUpdate()
     {
@@ -173,7 +173,8 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
-            SceneManager.LoadScene("TelaGameWin");
+            _gameController.descricaoFase = "TelaGameWin";
+            SceneManager.LoadScene("TelaCarregamento");
         }
         else
         {
@@ -184,6 +185,7 @@ public class PainelConclusãoFase : MonoBehaviour
             }
             else
             {
+               
                 StartCoroutine(voltarSelecaoFase("voltarSelecaoFase"));
             }
         }
@@ -288,7 +290,7 @@ public class PainelConclusãoFase : MonoBehaviour
              //   CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "SelecaoFase";
-                SceneManager.LoadScene("SelecaoFase");
+                SceneManager.LoadScene("TelaCarregamento");
                 break;
             case "IrAoPainelPergunta":
               //  CentralizarWebGl();
