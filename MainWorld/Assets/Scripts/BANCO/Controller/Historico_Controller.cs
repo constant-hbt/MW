@@ -14,8 +14,8 @@ public class Historico_Controller : MonoBehaviour
     IEnumerator RegistrarHistorico(Historico p_historico)
     {
 
-        //string caminho =  "http://jogos.plataformaceos.com.br/mainworld/salvarhistorico.php?";
-        string caminho = "http://localhost/games/salvarhistorico.php?";
+        string caminho =  "http://jogos.plataformaceos.com.br/mainworld/salvarhistorico.php?";
+        //string caminho = "http://localhost/games/salvarhistorico.php?";
         string p_Descricao ="descricao="+p_historico.Descricao+"&";
         string p_Moedas = "moedas=" + p_historico.Moedas + "&";
         string p_Vidas = "vidas=" + p_historico.Vidas + "&";

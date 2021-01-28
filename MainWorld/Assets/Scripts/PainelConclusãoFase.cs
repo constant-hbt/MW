@@ -158,7 +158,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
-       // ResetarInterprete();
+        ResetarInterprete();
         _gameController.ZerarVarBancoTentativasFase(); //zera as variaveis para reiniciar a fase do inicio
         _gameController.tentativaFaseAlter = false; // reinicio a variavel para permitir iniciar correntamente a variavel de tentativas disponibilizadas dentro de cada fase
         _gameController.numTentativasFixo = 0;
@@ -173,8 +173,8 @@ public class PainelConclusãoFase : MonoBehaviour
     {
         if(_gameController.idFaseEmExecucao == 9 && _gameController.parteFaseAtual == 2)
         {
-            _gameController.descricaoFase = "TelaGameWin";
-            SceneManager.LoadScene("TelaCarregamento");
+            StartCoroutine(voltarSelecaoFase("TelaGameWin"));
+            
         }
         else
         {
@@ -224,7 +224,7 @@ public class PainelConclusãoFase : MonoBehaviour
         }
         habilitarContabilDesemp = true;
         // }
-       // GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 
@@ -233,17 +233,26 @@ public class PainelConclusãoFase : MonoBehaviour
         int qtdMoedasColetadas = _controllerFase.qtdMoedasColetadas;
         int qtdMoedasDisponiveis = _controllerFase.qtdMoedasDisponiveis;
 
-        if(qtdMoedasColetadas == qtdMoedasDisponiveis)
+        if (_playerController.passeiFase)
         {
-            SimbolosDesempenhoMoedas[0].SetActive(true);
-            SimbolosDesempenhoMoedas[1].SetActive(false);
-            SimbolosDesempenhoMoedas[2].SetActive(false);
-        }
-        else if(qtdMoedasColetadas > 0 && qtdMoedasColetadas < qtdMoedasDisponiveis)
-        {
-            SimbolosDesempenhoMoedas[0].SetActive(false);
-            SimbolosDesempenhoMoedas[1].SetActive(false);
-            SimbolosDesempenhoMoedas[2].SetActive(true);
+            if (qtdMoedasColetadas == qtdMoedasDisponiveis)
+            {
+                SimbolosDesempenhoMoedas[0].SetActive(true);
+                SimbolosDesempenhoMoedas[1].SetActive(false);
+                SimbolosDesempenhoMoedas[2].SetActive(false);
+            }
+            else if (qtdMoedasColetadas > 0 && qtdMoedasColetadas < qtdMoedasDisponiveis)
+            {
+                SimbolosDesempenhoMoedas[0].SetActive(false);
+                SimbolosDesempenhoMoedas[1].SetActive(false);
+                SimbolosDesempenhoMoedas[2].SetActive(true);
+            }
+            else
+            {
+                SimbolosDesempenhoMoedas[0].SetActive(false);
+                SimbolosDesempenhoMoedas[1].SetActive(true);
+                SimbolosDesempenhoMoedas[2].SetActive(false);
+            }
         }
         else
         {
@@ -251,6 +260,7 @@ public class PainelConclusãoFase : MonoBehaviour
             SimbolosDesempenhoMoedas[1].SetActive(true);
             SimbolosDesempenhoMoedas[2].SetActive(false);
         }
+        
     }
 
     public void calcularDesempenhoColetaBlocos()
@@ -261,17 +271,26 @@ public class PainelConclusãoFase : MonoBehaviour
         int qtdMoedasColetadas = _controllerFase.qtdMoedasColetadas;
         int qtdMoedasDisponiveis = _controllerFase.qtdMoedasDisponiveis;
 
-        if (qtdBlocosUtilizados == qtdBlocosMinimosConclusao)
+        if (_playerController.passeiFase)
         {
-            SimbolosDesempenhoBlocos[0].SetActive(true);
-            SimbolosDesempenhoBlocos[1].SetActive(false);
-            SimbolosDesempenhoBlocos[2].SetActive(false);
-        }
-        else if (qtdBlocosUtilizados > qtdBlocosMinimosConclusao || qtdBlocosUtilizados < qtdBlocosMinimosConclusao && qtdMoedasColetadas < qtdMoedasDisponiveis)
-        {
-            SimbolosDesempenhoBlocos[0].SetActive(false);
-            SimbolosDesempenhoBlocos[1].SetActive(false);
-            SimbolosDesempenhoBlocos[2].SetActive(true);
+            if (qtdBlocosUtilizados <= qtdBlocosMinimosConclusao)
+            {
+                SimbolosDesempenhoBlocos[0].SetActive(true);
+                SimbolosDesempenhoBlocos[1].SetActive(false);
+                SimbolosDesempenhoBlocos[2].SetActive(false);
+            }
+            else if (qtdBlocosUtilizados > qtdBlocosMinimosConclusao || qtdBlocosUtilizados < qtdBlocosMinimosConclusao && qtdMoedasColetadas < qtdMoedasDisponiveis)
+            {
+                SimbolosDesempenhoBlocos[0].SetActive(false);
+                SimbolosDesempenhoBlocos[1].SetActive(false);
+                SimbolosDesempenhoBlocos[2].SetActive(true);
+            }
+            else
+            {
+                SimbolosDesempenhoBlocos[0].SetActive(false);
+                SimbolosDesempenhoBlocos[1].SetActive(true);
+                SimbolosDesempenhoBlocos[2].SetActive(false);
+            }
         }
         else
         {
@@ -279,6 +298,7 @@ public class PainelConclusãoFase : MonoBehaviour
             SimbolosDesempenhoBlocos[1].SetActive(true);
             SimbolosDesempenhoBlocos[2].SetActive(false);
         }
+        
 
     }
 
@@ -287,17 +307,23 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-             //   CentralizarWebGl();
+               CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "SelecaoFase";
                 SceneManager.LoadScene("TelaCarregamento");
                 break;
             case "IrAoPainelPergunta":
-              //  CentralizarWebGl();
+                CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "Perguntas";
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;
+            case "TelaGameWin":
+                CentralizarWebGl();
+                yield return new WaitForSeconds(1.7f);
+                _gameController.descricaoFase = "TelaGameWin";
+                SceneManager.LoadScene("TelaCarregamento");
+                break;
         }
 
        

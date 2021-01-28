@@ -45,8 +45,8 @@ public class SeleçãoFase : MonoBehaviour
     public static extern void SistemaReiniciarWorkspaceBlockly();
     void Start()
     {
-       // SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
-       // SistemaReiniciarWorkspaceBlockly();
+        SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+        SistemaReiniciarWorkspaceBlockly();
         _controleDeFases = FindObjectOfType(typeof(ControleDeFases)) as ControleDeFases;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         //zera estas variaveis pois no momento que esta cena estiver ativa não haverá nenhuma fase em execucao
@@ -151,7 +151,7 @@ public class SeleçãoFase : MonoBehaviour
                 
                 break;
             }
-       // AlterarToolboxFases(id);
+        AlterarToolboxFases(id);
     }
 
     public float pegarTamanhoBarra(float minValor , float maxValor)

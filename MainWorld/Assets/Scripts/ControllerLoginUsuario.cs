@@ -21,11 +21,11 @@ public class ControllerLoginUsuario : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _telaInicial = FindObjectOfType(typeof(TelaInicial)) as TelaInicial;
 
-       // VerificarRegistroPlayerLogado();
+        VerificarRegistroPlayerLogado();
 
         if ( _telaInicial.haRegistroPlayerL == "haRegistro")
         {
-         //   ReceberDadosPlayerLogado();
+            ReceberDadosPlayerLogado();
         }
 
     }

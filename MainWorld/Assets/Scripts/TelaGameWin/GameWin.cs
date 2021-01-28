@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.Runtime.InteropServices;
 public class GameWin : MonoBehaviour
 {
     private GameController _gameController;
     public Button btnVoltarMenu;
+
+    [DllImport("__Internal")]
+    public static extern void CentralizarWebGl();
     void Start()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+       
         StartCoroutine(voltarTelaInicial());
 
 

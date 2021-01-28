@@ -99,7 +99,7 @@ public class ControllerFase : MonoBehaviour
             
             PainelSugestão _painelIntro = FindObjectOfType(typeof(PainelSugestão)) as PainelSugestão;
             _painelIntro.gameObject.SetActive(false); //desativa o painel de Introducao, porque o player estaria voltando em partes posteriores ao inicio da fase
-         // SistemaDeEnableDisableBlocos(false); 
+          SistemaDeEnableDisableBlocos(false); 
         }
 
         //variaveis que precisam ter seus valores preenchidos ao iniciar a nova tentativa da fase
@@ -122,9 +122,9 @@ public class ControllerFase : MonoBehaviour
         //possibilita que os blocos nao sejam excluidos caso o player ja nao esteja mas na sua primeira tentativa dentro da fase        
         if(_gameController.numTentativasFase == 3 && _gameController.numTentativasFixo == 3 || _gameController.numTentativasFase == 5 && _gameController.numTentativasFixo == 5)
         {
-           // SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
+            SistemaLimiteBloco(qtdBlocosDisponiveis[_gameController.parteFaseAtual], _gameController.idFaseEmExecucao);
         }
-           //  EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
+             EnviarQTDBlocosMinimosParaPassarFase(qtdMinimaDeBlocosParaConclusao);
 
         
     }
@@ -173,21 +173,13 @@ public class ControllerFase : MonoBehaviour
         {//se eu usar o minimo ou mais de blocos e coletar mais doque 50% das moedas ganho 2 estrelas
             estrelas = 2;
         }
-        else //if(qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda ||
-               // qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas == 0 && naoTemMoeda ||
-                //qtdBlocosUsados == qtdMinimaDeBlocosParaConclusao && moedasColetadas < metadeMoedaD && !naoTemMoeda  /*Se nao tiver nenhuma moeda para ser coletada e mesmo assim ele utilizar blocos a mais que o minimo*/)
-        {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
+        else {//se eu usar o minimo ou mais de blocos e coletar menos doque 50% das moedas ganho 1 estrelas
             estrelas = 1;
         }
-        /*else
-        {
-            estrelas = 1;
-        }*/ //VERIFICAR DEPOIS SE ESTA CORRETO
         
         return estrelas;
     }
 
-    //grava os dados obtidos pelo player naquela fase em execucao dentro do GameController, para caso o mesmo ainda possuir alguma tentativa na fase ao reinicia-la o seu desempenho seria mantido
     public void DadosFaseMemoria()
     {
         _gameController.qtdBlocosUsados = qtdBlocosUsados;

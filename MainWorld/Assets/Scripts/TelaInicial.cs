@@ -62,7 +62,7 @@ public class TelaInicial : MonoBehaviour
         _audioController.trocarMusica(_audioController.musicaTitulo, "TelaInicio", false);
         _gameController.VerificarQtdObjGameC();
         _audioController.VerificarQtdObjAudioC();
-        //  SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+          SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
     }
     // Update is called once per frame
@@ -139,7 +139,7 @@ public class TelaInicial : MonoBehaviour
     void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
-      //  GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+        GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 
