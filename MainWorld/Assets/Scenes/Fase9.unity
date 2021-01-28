@@ -59233,7 +59233,7 @@ PrefabInstance:
     - target: {fileID: 927557129498801452, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1280282387754441681, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
@@ -59508,12 +59508,12 @@ PrefabInstance:
     - target: {fileID: 5989343720229862274, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7629685165258722800, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7629685165258722800, guid: 22a2ffad1b904204f8f57ff679b09054,
         type: 3}
@@ -62436,7 +62436,7 @@ PrefabInstance:
     - target: {fileID: 8764502753067351496, guid: 1d86fec885786df499b5950b8597d6de,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_IntArgument
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8764502753296510203, guid: 1d86fec885786df499b5950b8597d6de,
         type: 3}

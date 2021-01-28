@@ -205,26 +205,29 @@ public class PainelConclusãoFase : MonoBehaviour
 
    public void contabilizarDesempenho(int idFase)
     {
-
-        if (!habilitarContabilDesemp)
+        if (_playerController.passeiFase)
         {
-            if (_gameController.fasesConcluidas < idFase)
-            {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
-             //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
-             //ao idFase como concluida
-                _gameController.fasesConcluidas = idFase;
+            if (!habilitarContabilDesemp)
+            {
+                if (_gameController.fasesConcluidas < idFase)
+                {//caso o numero de fases concluidas for menor que o id da Fase quer dizer que o jogador ainda nao havia concluido aquela fase
+                 //portanto a variavel recebe o idFase , habilitando o mapa para a proxima fase, e deixando a fase correpondente
+                 //ao idFase como concluida
+                    _gameController.fasesConcluidas = idFase;
+
+                }
+                //if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
+                //{
+                _gameController.numEstrelas += qtdEstrelasAdquiridas;//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
+                _gameController.EstrelasFases[idFase - 1] += qtdEstrelasAdquiridas;
+                _gameController.numGold += _controllerFase.qtdMoedasColetadas;
 
             }
-            //if (_gameController.EstrelasFases[idFase - 1] <= 3 && _gameController.EstrelasFases[idFase - 1] < qtdEstrelasAdquiridas)
-            //{
-            _gameController.numEstrelas += qtdEstrelasAdquiridas;//soma somente a diferenca entre as estrelas que ja havia adquirido nesta fase , com as que adquiri a mais em uma nova tentativa
-            _gameController.EstrelasFases[idFase - 1] += qtdEstrelasAdquiridas;
-            _gameController.numGold += _controllerFase.qtdMoedasColetadas;
+            habilitarContabilDesemp = true;
+            // }
+            GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
         }
-        habilitarContabilDesemp = true;
-        // }
-        GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
 

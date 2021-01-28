@@ -1666,7 +1666,7 @@ MonoBehaviour:
   seqBlocos: 
   numTentativasFase: 3
   qtdBlocosDisponiveisEmTodaFase: 49
-  qtdMinimaDeBlocosParaConclusao: 46
+  qtdMinimaDeBlocosParaConclusao: 45
   qtdBlocosUsados: 0
   qtdMoedasDisponiveis: 10
   qtdBlocosDisponiveis: 0f0000001100000011000000
