@@ -1,3 +1,17 @@
+
+//#region axios
+axios.defaults.withCredentials = true;    
+
+//req GET   
+axios.get('http://www.plataformaceos.com.br/api/user').then(response=>{
+        console.log("Entrei dentro de axios.get -> Vou gravar os dados do usuario em sessionStorage");
+        sessionStorage.setItem('usuario',response.data)
+        console.log("Gravei os dados dentro do sessionStorage");
+})    
+
+//#endregion
+
+
 //Responsável por excluir os blocos caso os blocos escolhidos para passar a fase não sejam suficientes para a conclusão da fase
 function passeiFase(conclusaoFase){
     passeiFase = conclusaoFase;
