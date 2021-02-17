@@ -3,10 +3,13 @@
 axios.defaults.withCredentials = true;    
 
 //req GET   
-axios.get('http://www.plataformaceos.com.br/api/user').then(response=>{
+axios.get('http://www.plataformaceos.com.br/api/user').then((response)=>{
         console.log("Entrei dentro de axios.get -> Vou gravar os dados do usuario em sessionStorage");
-        sessionStorage.setItem('usuario',response.data)
-        console.log("Gravei os dados dentro do sessionStorage");
+       // sessionStorage.setItem('usuario',response.data)
+       console.log(response.data);
+       var jsonRecebido = response.data;
+       sessionStorage.setItem('usuario', response.data.id); 
+        console.log("Gravei os dados dentro do sessionStorage - valor retornado = "+ jsonRecebido.id); 
 })    
 
 //#endregion
