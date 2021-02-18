@@ -18,7 +18,7 @@ public class ControllerLoginUsuario : MonoBehaviour
     
     void Start()
     {
-        _gameController = FindObjectOfType(typeof(GameController)) as GameController;
+      /*  _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _telaInicial = FindObjectOfType(typeof(TelaInicial)) as TelaInicial;
 
         VerificarRegistroPlayerLogado();
@@ -27,7 +27,7 @@ public class ControllerLoginUsuario : MonoBehaviour
         {
             ReceberDadosPlayerLogado();
         }
-
+        */
     }
 
     void Update()

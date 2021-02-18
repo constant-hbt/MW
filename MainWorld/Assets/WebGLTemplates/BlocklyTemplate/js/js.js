@@ -1,17 +1,16 @@
 
 //#region axios
+
+//config
 axios.defaults.withCredentials = true;    
 
-//req GET   
-axios.get('http://www.plataformaceos.com.br/api/user').then((response)=>{
-        console.log("Entrei dentro de axios.get -> Vou gravar os dados do usuario em sessionStorage");
-       // sessionStorage.setItem('usuario',response.data)
-       console.log(response.data);
+//req 
+function buscarUsuarioLogado(){
+    axios.get('http://www.plataformaceos.com.br/api/user').then((response)=>{
        var jsonRecebido = response.data;
-       sessionStorage.setItem('usuario', response.data.id); 
-        console.log("Gravei os dados dentro do sessionStorage - valor retornado = "+ jsonRecebido.id); 
-})    
-
+       //enviar o id para o unity 
+});
+}   
 //#endregion
 
 
@@ -67,7 +66,7 @@ function HabilitarEDesabilitarBlocos(situacao){
     document.getElementById('divWebGl').classList.add('divRightAlterada');
 }
 
-//verifica se o navegador do player já possui dados gravados
+/*//verifica se o navegador do player já possui dados gravados
 function verificarDadosPlayer(){
     if(localStorage.getItem('playerMW') != null){
         unityInstance.SendMessage('ControllerTelaInicial', 'VerificarPlayerL', 'haRegistro');
@@ -86,4 +85,4 @@ function retornarDadosPlayer(){
         let playerMW = localStorage.getItem('playerMW');
         unityInstance.SendMessage('ControllerTelaInicial','PreencherDadosPlayer', playerMW);
     
-}
+}*/

@@ -46,7 +46,7 @@ mergeInto(LibraryManager.library, {
     },
     CentralizarWebGl:function(){
         centralizarWebGl();
-    },
+    }/*,
     ReceberDadosPlayerLogado:function(){
         retornarDadosPlayer();
     },
@@ -55,6 +55,6 @@ mergeInto(LibraryManager.library, {
     },
     VerificarRegistroPlayerLogado:function(){
         verificarDadosPlayer();
-    }
+    }*/
 
 });

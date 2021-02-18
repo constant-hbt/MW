@@ -125,33 +125,6 @@ public class Pergunta_Controller : MonoBehaviour
 
     //sera utilizado somente para a realização dos testes
 
-    public void ChamarPegarUltimoId(System.Action<int> callback)
-    {
-        StartCoroutine(pegarUltimoId(callback));
-    }
-    IEnumerator pegarUltimoId(System.Action<int> callback)
-    {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarultimoid.php";
-        //string caminho = "http://localhost/games/captarultimoid.php";
-        using (UnityWebRequest www = UnityWebRequest.Get(caminho))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                if (www.isDone)
-                {
-                    string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data, 3, www.downloadHandler.data.Length - 3);
-                    string[] resultado = jsonResult.Split(';');
-
-                    callback(Int32.Parse(resultado[1]));
-                }
-            }
-        }
-    }
+    
 
 }

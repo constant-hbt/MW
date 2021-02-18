@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.InteropServices;
-
+using UnityEngine.Networking;
+using System;
 public class TelaInicial : MonoBehaviour
 {
     private Pergunta_Controller _perguntaController;
@@ -63,22 +64,52 @@ public class TelaInicial : MonoBehaviour
     //Script ControllerTelaInicial
     IEnumerator IniciarJogo()
     {
-        if (haRegistroPlayerL == "naoHaRegistro")
+       /* if (haRegistroPlayerL == "naoHaRegistro")
         {
-            _perguntaController.ChamarPegarUltimoId(PreencherIdUsuario);
-        }
+            ChamarPegarUltimoId(PreencherIdUsuario);
+        }*/
         _gameController.descricaoFase = "SelecaoFase";
         yield return new WaitForSeconds(0.42f);
         SceneManager.LoadScene("TelaCarregamento");
     }
 
-    
-    void PreencherIdUsuario(int id_usuario)
+    /*void PreencherIdUsuario(int id_usuario)
     {
         _gameController.id_usuario = id_usuario;
         GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
     }
+
+    public void ChamarPegarUltimoId(System.Action<int> callback)
+    {
+        StartCoroutine(pegarUltimoId(callback));
+    }
+    IEnumerator pegarUltimoId(System.Action<int> callback)
+    {
+        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarultimoid.php";
+        //string caminho = "http://localhost/games/captarultimoid.php";
+        using (UnityWebRequest www = UnityWebRequest.Get(caminho))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                if (www.isDone)
+                {
+                    string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data, 3, www.downloadHandler.data.Length - 3);
+                    string[] resultado = jsonResult.Split(';');
+
+                    callback(Int32.Parse(resultado[1]));
+                }
+            }
+        }
+    }*/
+
+    
 
    IEnumerator HabilitarCliqueBtnIniciar()
     {   
@@ -86,7 +117,7 @@ public class TelaInicial : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         botaoIniciarClicado = false;
     }
-    //Script ControllerTelaInicial
+   /* //Script ControllerTelaInicial
     public void PreencherDadosPlayer(string dadosPlayer)
     {
         if(dadosPlayer != "")
@@ -117,5 +148,5 @@ public class TelaInicial : MonoBehaviour
     public void VerificarPlayerL(string situacaoDadoP)
     {
         haRegistroPlayerL = situacaoDadoP;
-    }
+    }*/
 }
