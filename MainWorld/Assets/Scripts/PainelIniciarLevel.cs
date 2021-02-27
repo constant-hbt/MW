@@ -28,15 +28,15 @@ public class PainelIniciarLevel : MonoBehaviour
     public void btnIniciarLevel()//botaoUtilizado no painel que inicia com cada level
     {
         
-        DisponibilizarToobox();
-        SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+       // DisponibilizarToobox();
+       // SistemaDeEnableDisableBlocos(false);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
         this.gameObject.SetActive(false);
     }
 
     public void btnIniciar() //botao utilizado no painelIntroChefe
     {
-         DisponibilizarToobox();
-          SistemaDeEnableDisableBlocos(false);
+       //  DisponibilizarToobox();
+       //   SistemaDeEnableDisableBlocos(false);
         this.gameObject.SetActive(false);
        
     }

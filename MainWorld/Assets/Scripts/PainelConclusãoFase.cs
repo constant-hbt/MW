@@ -143,8 +143,8 @@ public class PainelConclusãoFase : MonoBehaviour
         habilitarAlertCodigo = true;
        // jaEnvieiRegistro = false;
 
-        _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
-                                             _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
+     //   _controllerFase.EnviarHistorico("Fase" + _gameController.idFaseEmExecucao + "-Parte" + (_gameController.parteFaseAtual + 1), _controllerFase.qtdMoedasColetadasCadaParte, _controllerFase.estrelas,
+     //                                        _gameController.numVida, _gameController.ultima_fase_concluida, _gameController.id_usuario, _gameController.id_atividade);
         
     }
     private void FixedUpdate()
@@ -158,7 +158,7 @@ public class PainelConclusãoFase : MonoBehaviour
 
     public void BtnReiniciar(int numeroFase)
     {
-        ResetarInterprete();
+       // ResetarInterprete();
         _gameController.ZerarVarBancoTentativasFase(); //zera as variaveis para reiniciar a fase do inicio
         _gameController.tentativaFaseAlter = false; // reinicio a variavel para permitir iniciar correntamente a variavel de tentativas disponibilizadas dentro de cada fase
         _gameController.numTentativasFixo = 0;
@@ -225,7 +225,7 @@ public class PainelConclusãoFase : MonoBehaviour
             }
             habilitarContabilDesemp = true;
             // }
-            GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
+         //   GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
         }
 
@@ -310,19 +310,19 @@ public class PainelConclusãoFase : MonoBehaviour
         switch (acao)
         {
             case "voltarSelecaoFase":
-               CentralizarWebGl();
+            //   CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "SelecaoFase";
                 SceneManager.LoadScene("TelaCarregamento");
                 break;
             case "IrAoPainelPergunta":
-                CentralizarWebGl();
+            //    CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "Perguntas";
                 _perguntaController.ChamarPegarPergunta(_gameController.idFaseEmExecucao, GetVerifPergunta);
                break;
             case "TelaGameWin":
-                CentralizarWebGl();
+            //    CentralizarWebGl();
                 yield return new WaitForSeconds(1.7f);
                 _gameController.descricaoFase = "TelaGameWin";
                 SceneManager.LoadScene("TelaCarregamento");

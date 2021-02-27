@@ -13,8 +13,13 @@ public class TelaInicial : MonoBehaviour
     private GameController _gameController;
     private AudioController _audioController;
 
-    public bool botaoIniciarClicado = false;
+    public bool botaoIniciarClicado;
     public string haRegistroPlayerL = "";
+
+    [Header("Botões")]
+    public GameObject btnPlay;
+    public GameObject btnNovoJogo;
+    public GameObject btnCarregarJogo;
 
     //Integração com js da página
     [DllImport("__Internal")]
@@ -35,13 +40,12 @@ public class TelaInicial : MonoBehaviour
         _audioController.VerificarQtdObjAudioC();
           SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
+        botaoIniciarClicado = false;
     }
     // Update is called once per frame
     void Update()
     {
     }
-
-    
 
     public void ControladorDeCoroutine(int id)
     {
@@ -50,13 +54,15 @@ public class TelaInicial : MonoBehaviour
             case 1:
                 if (!botaoIniciarClicado)
                 {
+                    Debug.Log("Entrei");
                     StartCoroutine("IniciarJogo");
                     botaoIniciarClicado = true;
                     HabilitarCliqueBtnIniciar();
                 }
-                
                 break;
-            
+            case 2:
+                StartCoroutine(AtivarBotoesNewLoadGame());
+                break;
         }
         
     }
@@ -64,52 +70,10 @@ public class TelaInicial : MonoBehaviour
     //Script ControllerTelaInicial
     IEnumerator IniciarJogo()
     {
-       /* if (haRegistroPlayerL == "naoHaRegistro")
-        {
-            ChamarPegarUltimoId(PreencherIdUsuario);
-        }*/
         _gameController.descricaoFase = "SelecaoFase";
         yield return new WaitForSeconds(0.42f);
         SceneManager.LoadScene("TelaCarregamento");
     }
-
-    /*void PreencherIdUsuario(int id_usuario)
-    {
-        _gameController.id_usuario = id_usuario;
-        GravarDadosPlayerLogado(id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
-
-    }
-
-    public void ChamarPegarUltimoId(System.Action<int> callback)
-    {
-        StartCoroutine(pegarUltimoId(callback));
-    }
-    IEnumerator pegarUltimoId(System.Action<int> callback)
-    {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarultimoid.php";
-        //string caminho = "http://localhost/games/captarultimoid.php";
-        using (UnityWebRequest www = UnityWebRequest.Get(caminho))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                if (www.isDone)
-                {
-                    string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data, 3, www.downloadHandler.data.Length - 3);
-                    string[] resultado = jsonResult.Split(';');
-
-                    callback(Int32.Parse(resultado[1]));
-                }
-            }
-        }
-    }*/
-
-    
 
    IEnumerator HabilitarCliqueBtnIniciar()
     {   
@@ -117,36 +81,12 @@ public class TelaInicial : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         botaoIniciarClicado = false;
     }
-   /* //Script ControllerTelaInicial
-    public void PreencherDadosPlayer(string dadosPlayer)
+   
+    IEnumerator AtivarBotoesNewLoadGame()//habilita os botões de novo jogo e carregar jogo
     {
-        if(dadosPlayer != "")
-        {
-            string playerMW = dadosPlayer;
-            DadosPlayer objDadosP = JsonUtility.FromJson<DadosPlayer>(playerMW);
-
-            _gameController.id_usuario = objDadosP.Id_usuario;
-            _gameController.fasesConcluidas = objDadosP.Fase_concluida;
-            _gameController.numGold = objDadosP.Moedas;
-            _gameController.numVida = objDadosP.Vidas;
-            _gameController.numEstrelas = objDadosP.Estrelas;
-            _gameController.ultima_fase_concluida = objDadosP.Ultima_fase_concluida;
-
-            if(_gameController.fasesConcluidas != 0)
-            {
-                for(int i =0; i<_gameController.fasesConcluidas; i++)
-                {
-                
-                    _gameController.perguntasRespondidas[i] = true;
-                }
-            }
-
-        }
+        yield return new WaitForSeconds(0.25f);
+        btnPlay.SetActive(false);
+        btnNovoJogo.SetActive(true);
+        btnCarregarJogo.SetActive(true);
     }
-
-    //Script ControllerTelaInicial
-    public void VerificarPlayerL(string situacaoDadoP)
-    {
-        haRegistroPlayerL = situacaoDadoP;
-    }*/
 }

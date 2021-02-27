@@ -46,15 +46,10 @@ mergeInto(LibraryManager.library, {
     },
     CentralizarWebGl:function(){
         centralizarWebGl();
-    }/*,
-    ReceberDadosPlayerLogado:function(){
-        retornarDadosPlayer();
     },
-    GravarDadosPlayerLogado:function(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,p_estrelas,p_ultima_fase_concluida){
-        gravarDesempenhoPlayer(p_id_usuario, p_fase_concluida,p_moedas,p_vidas,p_estrelas,p_ultima_fase_concluida);
-    },
-    VerificarRegistroPlayerLogado:function(){
-        verificarDadosPlayer();
-    }*/
+    PegarIdPlayer:function(){
+        buscarUsuarioLogado();
+    }
+
 
 });

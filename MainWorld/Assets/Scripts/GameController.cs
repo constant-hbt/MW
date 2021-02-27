@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
     /// 
 
     [Header("Variaveis vinda da pagina anterior")]
-    public int id_atividade;
+   // public int id_atividade;
     public int id_usuario;
     public int idGame;
     public string descricaoFase = "Tela Inicio";//ao clicar para abrir a fase essa variavel sera alimentada
@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
 
         tentativaFaseAlter = false;
         parteFaseAtual = 0;
-        id_atividade = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
+       // id_atividade = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
         idGame = 1;//vai ser alimentado com dados vindo do js -------> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR 
     }
 

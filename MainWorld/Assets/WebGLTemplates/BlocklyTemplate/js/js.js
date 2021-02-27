@@ -8,7 +8,10 @@ axios.defaults.withCredentials = true;
 function buscarUsuarioLogado(){
     axios.get('http://www.plataformaceos.com.br/api/user').then((response)=>{
        var jsonRecebido = response.data;
-       //enviar o id para o unity 
+       //enviar o id para o unity
+       
+       var id_usuario = jsonRecebido.data.id;
+       unityInstance.SendMessage('ControllerTelaInicial','PreencherIdUsuario', id_usuario);
 });
 }   
 //#endregion
