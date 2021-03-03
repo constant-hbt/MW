@@ -21,22 +21,24 @@ public class GameController : MonoBehaviour
 
     [Header("Configurações do GAME")]
     public GameObject[] gameControllers;
-    private int numeroFasesGAME = 9; //contém o numero específico de fases que o jogo possui no momento
+    public int numeroFasesGAME = 9; //contém o numero específico de fases que o jogo possui no momento
     public bool[] perguntasRespondidas;//array contendo as perguntas de que fase foram respondidas
 
     [Header("Banco de Dados Seleção de Fase")]
-    public int idFaseEmExecucao; //contem o id da fase que esta sendo executada no momento ---> ao clicar para abrir a fase essa variavel sera alimentada
-    public int fasesConcluidas;// numero de fases concluidas 
-    public int progressoAtual;
+    public int fasesConcluidas;// numero de fases concluidas
     public int numGold;//numero total de moedas coletadas dentro do jogo
     public int numVida = 1;//numero de vidas dentro do jogo
+    public int numEstrelas;//numero total de estrelas coletadas dentro do jogo
+
+    public int ultima_fase_concluida = 0;
+    public int idFaseEmExecucao; //contem o id da fase que esta sendo executada no momento ---> ao clicar para abrir a fase essa variavel sera alimentada 
+    public int progressoAtual;
     public int numTentativasFixo; //contem o numero total de tentivas que cada fase pode ter
     public int numTentativasFase; //contem o numero de tentativas que o usuario contem no momento em que esta jogando(é alterada assim que o usuario perde uma tentativa)
     public bool tentativaFaseAlter;//permite que o numero de tentativas seja alterado uma unica vez dentro de uma fase (sempre no inicio da fase e logo ao inicia-la)
-    public int numEstrelas;//numero total de estrelas coletadas dentro do jogo
     public int[] errosFase;//contém a quantidade de erros que o usuario teve ate a conclusao da fase --> será acrescentado um de erro a posicao da respectiva fase assim que o painel de fase incompleta for acionado --> assim que a fase em questao for concluida ao ativar o painel de conclusao de fase os erros respectivos aquela fase serao excluidos
     public int[] EstrelasFases; //contém as quantidade de estrelas adquiridas em cada fase-- Fase 1=posição 0, 2 = pos 1 ..
-    public int ultima_fase_concluida = 0;
+    
     
 
     [Header("Banco de Dados do Player")]

@@ -38,6 +38,7 @@ public class Save_Controller : MonoBehaviour
 
                     if(resultado[1] != null)
                     {
+                       // Debug.Log("Resultado = "+resultado[1].Trim());
                         saves = JsonUtility.FromJson<Lista_saves>(resultado[1].Trim());
                     }
 
@@ -45,5 +46,37 @@ public class Save_Controller : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ChamarDeletarSave(int id_save_game)
+    {
+        StartCoroutine(DeletarSave(id_save_game));
+    }
+
+    IEnumerator DeletarSave(int id_save_game)
+    {
+        //string caminho = "http://jogos.plataformaceos.com.br/mainworld/deletarsave.php?";
+        string caminho = "http://localhost/games/deletarsave.php?";
+        string p_id_save_game = "id_save_game=" + id_save_game;
+
+        string url = string.Format("{0}{1}", caminho, p_id_save_game);
+
+        using (UnityWebRequest www = UnityWebRequest.Get(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                if (www.isDone)
+                {
+                    Debug.Log("Registro deletado com sucesso");
+                }
+            }
+        }
+
     }
 }

@@ -21,6 +21,9 @@ public class TelaInicial : MonoBehaviour
     public GameObject btnNovoJogo;
     public GameObject btnCarregarJogo;
 
+    [Header("Paineis")]
+    public GameObject painelCarregar;
+
     //Integração com js da página
     [DllImport("__Internal")]
     private static extern void SistemaDeEnableDisableBlocos(bool situacao);
@@ -38,7 +41,7 @@ public class TelaInicial : MonoBehaviour
         _audioController.trocarMusica(_audioController.musicaTitulo, "TelaInicio", false);
         _gameController.VerificarQtdObjGameC();
         _audioController.VerificarQtdObjAudioC();
-          SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
+      //    SistemaDeEnableDisableBlocos(true);//quando o jogo estiver na tela inicial os blocos estarão desabilitados e não mostrar a mensagem com o restante dos blocos
 
         botaoIniciarClicado = false;
     }
@@ -88,5 +91,17 @@ public class TelaInicial : MonoBehaviour
         btnPlay.SetActive(false);
         btnNovoJogo.SetActive(true);
         btnCarregarJogo.SetActive(true);
+    }
+
+    public void BtnCarregarJogo()
+    {
+        if (painelCarregar.activeSelf)
+        {
+            painelCarregar.SetActive(false);
+        }
+        else
+        {
+            painelCarregar.SetActive(true);
+        }
     }
 }
