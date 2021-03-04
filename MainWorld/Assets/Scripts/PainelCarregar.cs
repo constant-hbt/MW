@@ -66,5 +66,17 @@ public class PainelCarregar : MonoBehaviour
     }
 
 
-    
+    public void LimparPaineis()
+    {
+        //limpa os paineis ja existentes
+        paineis = new GameObject[0];
+
+        PainelSave[] pSaves = FindObjectsOfType<PainelSave>();
+
+        for(int i = 0; i< pSaves.Length; i++)
+        {
+            Destroy(pSaves[i].gameObject);
+        }
+        
+    }
 }

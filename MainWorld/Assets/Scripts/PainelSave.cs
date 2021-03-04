@@ -49,6 +49,11 @@ public class PainelSave : MonoBehaviour
     {
         _saveController.ChamarDeletarSave(id_save_game);
 
-        //VER COMO VAI FAZER O REFRESH DO PAINEL
+        _painelCarregar.LimparPaineis();
+        _saveController.ChamarBuscarSaves(/*_gameController.id_usuario*/50, _painelCarregar.CarregarPainelSaves);
+
+
     }
+
+    
 }
