@@ -36,23 +36,20 @@ public class PainelSave : MonoBehaviour
 
     public void Jogar()
     {
+        _gameController.id_save_game = this.id_save_game;
         _gameController.numEstrelas = Convert.ToInt32(this.txtEstrelas.text.ToString());
         _gameController.numGold = Convert.ToInt32(this.txtMoedas.text.ToString());
         _gameController.numVida = Convert.ToInt32(this.txtVidas.text.ToString());
         _gameController.fasesConcluidas = this.fasesConcluidas;
 
         _gameController.descricaoFase = "SelecaoFase";
-        SceneManager.LoadScene("TelaCarregameto");
+        SceneManager.LoadScene("TelaCarregamento");
 
     }
     public void btnExcluirSave()
     {
-        _saveController.ChamarDeletarSave(id_save_game);
-
-        _painelCarregar.LimparPaineis();
-        _saveController.ChamarBuscarSaves(/*_gameController.id_usuario*/50, _painelCarregar.CarregarPainelSaves);
-
-
+        _saveController.ChamarDeletarSave(id_save_game, _painelCarregar.LimparPaineis);
+        
     }
 
     

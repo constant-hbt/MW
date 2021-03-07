@@ -11,6 +11,7 @@ public class PainelConclusãoFase : MonoBehaviour
     private             ControllerFase          _controllerFase;
     private Pergunta_Controller _perguntaController;
     private PlayerController _playerController;
+    private Save_Controller _saveController;
 
     public              TextMeshProUGUI         tmpEstrelas;
     
@@ -62,9 +63,6 @@ public class PainelConclusãoFase : MonoBehaviour
     public static extern void ResetarInterprete();
 
 
-    [DllImport("__Internal")]
-    public static extern void GravarDadosPlayerLogado(int p_id_usuario, int p_fase_concluida, int p_moedas, int p_vidas, int p_estrelas, int p_ultima_fase_concluida);
-
     private             bool                    habilitarAlertCodigo = false;
     private bool habilitarContabilDesemp = false;
 
@@ -73,7 +71,8 @@ public class PainelConclusãoFase : MonoBehaviour
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _controllerFase = FindObjectOfType(typeof(ControllerFase)) as ControllerFase;
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
-        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController; 
+        _playerController = FindObjectOfType(typeof(PlayerController)) as PlayerController;
+        _saveController = FindObjectOfType(typeof(Save_Controller)) as Save_Controller;
 
         qtdEstrelasAdquiridas = _controllerFase.distribuicaoEstrelas();
        // tmpEstrelas.text = qtdEstrelasAdquiridas.ToString();
@@ -225,8 +224,10 @@ public class PainelConclusãoFase : MonoBehaviour
             }
             habilitarContabilDesemp = true;
             // }
-         //   GravarDadosPlayerLogado(_gameController.id_usuario, _gameController.fasesConcluidas, _gameController.numGold, _gameController.numVida, _gameController.numEstrelas, _gameController.ultima_fase_concluida);
 
+            //Atualiza o save do usuário
+            _saveController.ChamarAtualizarSave(_gameController.id_save_game, _gameController.numGold, _gameController.numEstrelas, _gameController.numVida, _gameController.fasesConcluidas
+                                                , _gameController.idGame, _gameController.id_usuario);
         }
 
     }

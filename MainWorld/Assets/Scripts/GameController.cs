@@ -15,9 +15,10 @@ public class GameController : MonoBehaviour
     [Header("Variaveis vinda da pagina anterior")]
    // public int id_atividade;
     public int id_usuario;
+    public int id_save_game; //id correspondente ao save_game em execucao
     public int idGame;
     public string descricaoFase = "Tela Inicio";//ao clicar para abrir a fase essa variavel sera alimentada
-    public int id_Desempenho; //caso estiver com valor 0 representa que ainda nao possui nenhum registro de desempenho, caso contrario ja possui registro
+    
 
     [Header("Configurações do GAME")]
     public GameObject[] gameControllers;
@@ -65,6 +66,7 @@ public class GameController : MonoBehaviour
         parteFaseAtual = 0;
        // id_atividade = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
         idGame = 1;//vai ser alimentado com dados vindo do js -------> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR 
+        id_usuario = 50;
     }
 
     void Update()

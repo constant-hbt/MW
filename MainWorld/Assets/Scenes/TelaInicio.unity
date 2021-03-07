@@ -2510,6 +2510,7 @@ GameObject:
   - component: {fileID: 87958071}
   - component: {fileID: 87958074}
   - component: {fileID: 87958075}
+  - component: {fileID: 87958073}
   m_Layer: 0
   m_Name: GameControllerEntreFases
   m_TagString: GameController
@@ -2530,9 +2531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id_usuario: 0
+  id_save_game: 0
   idGame: 1
   descricaoFase: 
-  id_Desempenho: 0
   gameControllers: []
   numeroFasesGAME: 9
   perguntasRespondidas: 000000000000000101
@@ -2567,6 +2568,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &87958073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87958070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 020e753edc05f2c4ba133c3c7bed6052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &87958074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2734,7 +2747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 41a210c67a9b39a4b964ca07f45ff1ce, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2764,7 +2777,6 @@ GameObject:
   - component: {fileID: 175047479}
   - component: {fileID: 175047481}
   - component: {fileID: 175047482}
-  - component: {fileID: 175047483}
   m_Layer: 0
   m_Name: ControllerTelaInicial
   m_TagString: Untagged
@@ -2826,18 +2838,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aebe03f0fa6cdbc43bb697c0c88c6ea4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &175047483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 175047478}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 020e753edc05f2c4ba133c3c7bed6052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &232750165 stripped
@@ -4802,7 +4802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 139}
+  m_AnchoredPosition: {x: 0, y: 163}
   m_SizeDelta: {x: 0, y: 313.74286}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1209256573
@@ -4822,7 +4822,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_Spacing: 30
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -7342,7 +7342,7 @@ GameObject:
   - component: {fileID: 1966621025}
   - component: {fileID: 1966621024}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: ScrollbarHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7365,7 +7365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28, y: -160}
+  m_AnchoredPosition: {x: 0, y: -150}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1966621024
@@ -7435,7 +7435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 069814a78e376254380d5ab679466545, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

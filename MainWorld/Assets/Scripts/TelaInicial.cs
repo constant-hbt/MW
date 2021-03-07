@@ -12,6 +12,7 @@ public class TelaInicial : MonoBehaviour
     private Pergunta_Controller _perguntaController;
     private GameController _gameController;
     private AudioController _audioController;
+    private Save_Controller _saveController;
 
     public bool botaoIniciarClicado;
     public string haRegistroPlayerL = "";
@@ -37,6 +38,7 @@ public class TelaInicial : MonoBehaviour
         _perguntaController = FindObjectOfType(typeof(Pergunta_Controller)) as Pergunta_Controller;
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _audioController = FindObjectOfType(typeof(AudioController)) as AudioController;
+        _saveController = FindObjectOfType(typeof(Save_Controller)) as Save_Controller;
 
         _audioController.trocarMusica(_audioController.musicaTitulo, "TelaInicio", false);
         _gameController.VerificarQtdObjGameC();
@@ -73,9 +75,9 @@ public class TelaInicial : MonoBehaviour
     //Script ControllerTelaInicial
     IEnumerator IniciarJogo()
     {
-        _gameController.descricaoFase = "SelecaoFase";
-        yield return new WaitForSeconds(0.42f);
-        SceneManager.LoadScene("TelaCarregamento");
+
+        yield return null;
+        _saveController.ChamarCriarSave(_gameController.idGame, _gameController.id_usuario, NovoJogo);
     }
 
    IEnumerator HabilitarCliqueBtnIniciar()
@@ -102,6 +104,21 @@ public class TelaInicial : MonoBehaviour
         else
         {
             painelCarregar.SetActive(true);
+        }
+    }
+
+    //CALLBACK NOVO JOGO
+    public void NovoJogo(bool flag,int id_save_game)
+    {
+        if (flag)
+        {
+            _gameController.id_save_game = id_save_game;
+            _gameController.descricaoFase = "SelecaoFase";
+            SceneManager.LoadScene("TelaCarregamento");
+        }
+        else
+        {
+            Debug.Log("Erro ao criar novo jogo");
         }
     }
 }

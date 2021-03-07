@@ -88,8 +88,8 @@ public class Pergunta_Controller : MonoBehaviour
     //faz a requisição ao banco e traz o retorno
     IEnumerator PegarPergunta(int id_fase, System.Action<Perguntas> callback)
     {
-        string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarperguntas.php?";
-       //string caminho = "http://localhost/games/captarperguntas.php?";
+       // string caminho = "http://jogos.plataformaceos.com.br/mainworld/captarperguntas.php?";
+       string caminho = "http://localhost/games/captarperguntas.php?";
         string p_id_fase = "idfase=" + id_fase;
 
         string url = string.Format("{0}{1}", caminho, p_id_fase);
