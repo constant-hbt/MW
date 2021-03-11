@@ -62,6 +62,8 @@ public class GameController : MonoBehaviour
             errosFase[i] = 0;
         }
 
+        
+
         tentativaFaseAlter = false;
         parteFaseAtual = 0;
        // id_atividade = 1;//vai ser alimentado com dados vindo do js ---> MUDAR MAIS A FRENTE QUANDO FOR INTEGRAR
@@ -130,4 +132,6 @@ public class GameController : MonoBehaviour
             Destroy(gameControllers[1]);
         }
     }
+
+    
 }

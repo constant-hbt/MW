@@ -8,4 +8,5 @@ public class Lista_saves
 
     public Save_game[] saves;
 
+    public Lista_saves(){}
 }

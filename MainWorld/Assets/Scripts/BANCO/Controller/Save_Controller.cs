@@ -38,7 +38,7 @@ public class Save_Controller : MonoBehaviour
 
                     if(resultado[1] != null)
                     {
-                       // Debug.Log("Resultado = "+resultado[1].Trim());
+                       
                         saves = JsonUtility.FromJson<Lista_saves>(resultado[1].Trim());
                     }
 
@@ -82,7 +82,6 @@ public class Save_Controller : MonoBehaviour
                     if(resultado[1] != null)
                     {
                             callback(true, Convert.ToInt32(resultado[1].ToString()));
-                             Debug.Log("Registro criado com sucesso");
                     }
                     else
                     {
@@ -119,7 +118,6 @@ public class Save_Controller : MonoBehaviour
             {
                 if (www.isDone)
                 {
-                    Debug.Log("Registro deletado com sucesso");
                     callback(true);
                 }
             }

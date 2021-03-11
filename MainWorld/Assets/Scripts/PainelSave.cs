@@ -21,11 +21,14 @@ public class PainelSave : MonoBehaviour
 
     public Button btnJogar;
 
+    private bool validCliqExcluir;
     private void Awake()
     {
         _gameController = FindObjectOfType(typeof(GameController)) as GameController;
         _painelCarregar = FindObjectOfType(typeof(PainelCarregar)) as PainelCarregar;
         _saveController = FindObjectOfType(typeof(Save_Controller)) as Save_Controller;
+
+        validCliqExcluir = true;
     }
 
     // Update is called once per frame
@@ -42,15 +45,34 @@ public class PainelSave : MonoBehaviour
         _gameController.numVida = Convert.ToInt32(this.txtVidas.text.ToString());
         _gameController.fasesConcluidas = this.fasesConcluidas;
 
+        MarcarPerguntasRespondidas(this.fasesConcluidas);
+
         _gameController.descricaoFase = "SelecaoFase";
         SceneManager.LoadScene("TelaCarregamento");
 
     }
+
+    public void MarcarPerguntasRespondidas(int ultima_fase_concluida)
+    {
+        for (int i = 0; i < ultima_fase_concluida; i++)
+        {
+            _gameController.perguntasRespondidas[i] = true;
+        }
+    }
     public void btnExcluirSave()
     {
-        _saveController.ChamarDeletarSave(id_save_game, _painelCarregar.LimparPaineis);
-        
+        if (validCliqExcluir)
+        {
+            _saveController.ChamarDeletarSave(id_save_game, _painelCarregar.LimparPaineis);
+            validCliqExcluir = false;
+            StartCoroutine(HabilitBtnExcluir());
+        }
+
     }
 
-    
+    IEnumerator HabilitBtnExcluir()
+    {
+        yield return new WaitForSeconds(0.3f);
+        validCliqExcluir = true;
+    }
 }

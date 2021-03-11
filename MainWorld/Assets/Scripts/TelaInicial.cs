@@ -59,7 +59,6 @@ public class TelaInicial : MonoBehaviour
             case 1:
                 if (!botaoIniciarClicado)
                 {
-                    Debug.Log("Entrei");
                     StartCoroutine("IniciarJogo");
                     botaoIniciarClicado = true;
                     HabilitarCliqueBtnIniciar();
